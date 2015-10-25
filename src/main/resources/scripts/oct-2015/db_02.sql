@@ -5,217 +5,217 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema hackandslash
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema hackandslash
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `hackandslash` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `hackandslash` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Place`
+-- Table `hackandslash`.`Place`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Place` (
-  `id` INT NOT NULL COMMENT '',
-  `latitude` VARCHAR(45) NULL COMMENT '',
-  `longitude` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Place` (
+  `id` INT NOT NULL,
+  `latitude` VARCHAR(45),
+  `longitude` VARCHAR(45),
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`GameRole`
+-- Table `hackandslash`.`GameRole`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`GameRole` (
-  `id` INT NOT NULL COMMENT '',
-  `rolename` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+CREATE TABLE IF NOT EXISTS `hackandslash`.`GameRole` (
+  `id` INT NOT NULL,
+  `rolename` VARCHAR(45),
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`GameUser`
+-- Table `hackandslash`.`GameUser`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`GameUser` (
-  `id` INT NOT NULL COMMENT '',
-  `firstname` VARCHAR(45) NULL COMMENT '',
-  `lastname` VARCHAR(45) NULL COMMENT '',
-  `age` INT NULL COMMENT '',
-  `gender` INT NULL COMMENT '',
-  `login` VARCHAR(45) NULL COMMENT '',
-  `password` VARCHAR(45) NULL COMMENT '',
-  `activated` INT NULL COMMENT '',
-  `GameRole_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_GameUser_GameRole1_idx` (`GameRole_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`GameUser` (
+  `id` INT NOT NULL,
+  `firstname` VARCHAR(45),
+  `lastname` VARCHAR(45),
+  `age` INT,
+  `gender` INT,
+  `login` VARCHAR(45),
+  `password` VARCHAR(45),
+  `activated` INT,
+  `GameRole_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_GameUser_GameRole1_idx` (`GameRole_id` ASC),
   CONSTRAINT `fk_GameUser_GameRole1`
     FOREIGN KEY (`GameRole_id`)
-    REFERENCES `mydb`.`GameRole` (`id`)
+    REFERENCES `hackandslash`.`GameRole` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Equipment`
+-- Table `hackandslash`.`Equipment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Equipment` (
-  `id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Equipment` (
+  `id` INT NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`GameCharacter`
+-- Table `hackandslash`.`GameCharacter`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`GameCharacter` (
-  `id` INT NOT NULL COMMENT '',
-  `firstname` VARCHAR(45) NULL COMMENT '',
-  `lastname` VARCHAR(45) NULL COMMENT '',
-  `gender` VARCHAR(45) NULL COMMENT '',
-  `age` VARCHAR(45) NULL COMMENT '',
-  `race` VARCHAR(45) NULL COMMENT '',
-  `profession` VARCHAR(45) NULL COMMENT '',
-  `strength` INT NULL COMMENT '',
-  `dexterity` INT NULL COMMENT '',
-  `constitution` INT NULL COMMENT '',
-  `intelligence` INT NULL COMMENT '',
-  `charisma` INT NULL COMMENT '',
-  `Equipment_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_GameCharacter_Equipment1_idx` (`Equipment_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`GameCharacter` (
+  `id` INT NOT NULL,
+  `firstname` VARCHAR(45),
+  `lastname` VARCHAR(45),
+  `gender` VARCHAR(45),
+  `age` VARCHAR(45),
+  `race` VARCHAR(45),
+  `profession` VARCHAR(45),
+  `strength` INT,
+  `dexterity` INT,
+  `constitution` INT,
+  `intelligence` INT,
+  `charisma` INT,
+  `Equipment_id` INT NOT NULL,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_GameCharacter_Equipment1_idx` (`Equipment_id` ASC) ,
   CONSTRAINT `fk_GameCharacter_Equipment1`
     FOREIGN KEY (`Equipment_id`)
-    REFERENCES `mydb`.`Equipment` (`id`)
+    REFERENCES `hackandslash`.`Equipment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Hero`
+-- Table `hackandslash`.`Hero`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Hero` (
-  `id` INT NOT NULL COMMENT '',
-  `activated` VARCHAR(45) NULL COMMENT '',
-  `Place_id` INT NOT NULL COMMENT '',
-  `GameUser_id` INT NOT NULL COMMENT '',
-  `GameCharacter_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_Hero_Place_idx` (`Place_id` ASC)  COMMENT '',
-  INDEX `fk_Hero_GameUser1_idx` (`GameUser_id` ASC)  COMMENT '',
-  INDEX `fk_Hero_GameCharacter1_idx` (`GameCharacter_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Hero` (
+  `id` INT NOT NULL,
+  `activated` VARCHAR(45),
+  `Place_id` INT NOT NULL,
+  `GameUser_id` INT NOT NULL,
+  `GameCharacter_id` INT NOT NULL,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Hero_Place_idx` (`Place_id` ASC) ,
+  INDEX `fk_Hero_GameUser1_idx` (`GameUser_id` ASC) ,
+  INDEX `fk_Hero_GameCharacter1_idx` (`GameCharacter_id` ASC) ,
   CONSTRAINT `fk_Hero_Place`
     FOREIGN KEY (`Place_id`)
-    REFERENCES `mydb`.`Place` (`id`)
+    REFERENCES `hackandslash`.`Place` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Hero_GameUser1`
     FOREIGN KEY (`GameUser_id`)
-    REFERENCES `mydb`.`GameUser` (`id`)
+    REFERENCES `hackandslash`.`GameUser` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Hero_GameCharacter1`
     FOREIGN KEY (`GameCharacter_id`)
-    REFERENCES `mydb`.`GameCharacter` (`id`)
+    REFERENCES `hackandslash`.`GameCharacter` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Item`
+-- Table `hackandslash`.`Item`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Item` (
-  `id` INT NOT NULL COMMENT '',
-  `name` VARCHAR(45) NULL COMMENT '',
-  `type` INT NULL COMMENT '',
-  `wage` INT NULL COMMENT '',
-  `attack` INT NULL COMMENT '',
-  `defend` INT NULL COMMENT '',
-  `magic` INT NULL COMMENT '',
-  `addHealth` INT NULL COMMENT '',
-  `addStrength` INT NULL COMMENT '',
-  `addDexterity` INT NULL COMMENT '',
-  `addConstitution` INT NULL COMMENT '',
-  `addIntelligence` INT NULL COMMENT '',
-  `addCharisma` INT NULL COMMENT '',
-  `amount` INT NULL COMMENT '',
-  `Equipment_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_Item_Equipment1_idx` (`Equipment_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Item` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45),
+  `type` INT,
+  `wage` INT,
+  `attack` INT,
+  `defend` INT,
+  `magic` INT,
+  `addHealth` INT,
+  `addStrength` INT,
+  `addDexterity` INT,
+  `addConstitution` INT,
+  `addIntelligence` INT,
+  `addCharisma` INT,
+  `amount` INT,
+  `Equipment_id` INT NOT,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Item_Equipment1_idx` (`Equipment_id` ASC) ,
   CONSTRAINT `fk_Item_Equipment1`
     FOREIGN KEY (`Equipment_id`)
-    REFERENCES `mydb`.`Equipment` (`id`)
+    REFERENCES `hackandslash`.`Equipment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Quest`
+-- Table `hackandslash`.`Quest`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Quest` (
-  `id` INT NOT NULL COMMENT '',
-  `description` VARCHAR(45) NULL COMMENT '',
-  `target` VARCHAR(45) NULL COMMENT '',
-  `startDate` DATE NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Quest` (
+  `id` INT NOT NULL,
+  `description` VARCHAR(45),
+  `target` VARCHAR(45),
+  `startDate` DATE,
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Journal`
+-- Table `hackandslash`.`Journal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Journal` (
-  `id` INT NOT NULL COMMENT '',
-  `Hero_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_Journal_Hero1_idx` (`Hero_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Journal` (
+  `id` INT NOT NULL,
+  `Hero_id` INT NOT NULL,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Journal_Hero1_idx` (`Hero_id` ASC) ,
   CONSTRAINT `fk_Journal_Hero1`
     FOREIGN KEY (`Hero_id`)
-    REFERENCES `mydb`.`Hero` (`id`)
+    REFERENCES `hackandslash`.`Hero` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`NPC`
+-- Table `hackandslash`.`NPC`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`NPC` (
-  `id` INT NOT NULL COMMENT '',
-  `behaviour` VARCHAR(45) NULL COMMENT '',
-  `GameCharacter_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_NPC_GameCharacter1_idx` (`GameCharacter_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`NPC` (
+  `id` INT NOT NULL,
+  `behaviour` VARCHAR(45),
+  `GameCharacter_id` INT NOT NULL,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_NPC_GameCharacter1_idx` (`GameCharacter_id` ASC) ,
   CONSTRAINT `fk_NPC_GameCharacter1`
     FOREIGN KEY (`GameCharacter_id`)
-    REFERENCES `mydb`.`GameCharacter` (`id`)
+    REFERENCES `hackandslash`.`GameCharacter` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Journal_has_Quest`
+-- Table `hackandslash`.`Journal_has_Quest`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Journal_has_Quest` (
-  `Journal_id` INT NOT NULL COMMENT '',
-  `Quest_id` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`Journal_id`, `Quest_id`)  COMMENT '',
-  INDEX `fk_Journal_has_Quest_Quest1_idx` (`Quest_id` ASC)  COMMENT '',
-  INDEX `fk_Journal_has_Quest_Journal1_idx` (`Journal_id` ASC)  COMMENT '',
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Journal_has_Quest` (
+  `Journal_id` INT NOT NULL,
+  `Quest_id` INT NOT NULL,
+  PRIMARY KEY (`Journal_id`, `Quest_id`) ,
+  INDEX `fk_Journal_has_Quest_Quest1_idx` (`Quest_id` ASC) ,
+  INDEX `fk_Journal_has_Quest_Journal1_idx` (`Journal_id` ASC) ,
   CONSTRAINT `fk_Journal_has_Quest_Journal1`
     FOREIGN KEY (`Journal_id`)
-    REFERENCES `mydb`.`Journal` (`id`)
+    REFERENCES `hackandslash`.`Journal` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Journal_has_Quest_Quest1`
     FOREIGN KEY (`Quest_id`)
-    REFERENCES `mydb`.`Quest` (`id`)
+    REFERENCES `hackandslash`.`Quest` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

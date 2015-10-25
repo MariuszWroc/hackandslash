@@ -17,7 +17,7 @@ public class CharacterService implements ICharacterService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(GameCharacter character) {
-		dao.save(character);
+		dao.add(character);
 	}
 
 	@Transactional(readOnly = false)
@@ -36,6 +36,6 @@ public class CharacterService implements ICharacterService{
 	@Override
 	public GameCharacter findById(Integer id) {
 		// TODO Auto-generated method stub
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

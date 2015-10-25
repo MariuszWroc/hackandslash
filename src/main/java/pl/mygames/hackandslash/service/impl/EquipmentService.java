@@ -17,7 +17,7 @@ public class EquipmentService implements IEquipmentService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Equipment equipment) {
-		dao.save(equipment);
+		dao.add(equipment);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class EquipmentService implements IEquipmentService{
 
 	@Override
 	public Equipment findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

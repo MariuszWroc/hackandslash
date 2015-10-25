@@ -17,7 +17,7 @@ public class NpcService implements INpcService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Npc npc) {
-		dao.save(npc);
+		dao.add(npc);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class NpcService implements INpcService{
 
 	@Override
 	public Npc findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

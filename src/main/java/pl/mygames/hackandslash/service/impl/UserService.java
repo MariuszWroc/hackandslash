@@ -18,7 +18,7 @@ public class UserService implements IUserService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(GameUser user) {
-		dao.save(user);
+		dao.add(user);
 	}
 
 	@Transactional(readOnly = false)
@@ -36,7 +36,7 @@ public class UserService implements IUserService{
 
 	@Override
 	public GameUser findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
     
 

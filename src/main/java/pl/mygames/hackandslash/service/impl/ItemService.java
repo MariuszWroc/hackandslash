@@ -17,7 +17,7 @@ public class ItemService implements IItemService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Item item) {
-		dao.save(item);
+		dao.add(item);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class ItemService implements IItemService{
 
 	@Override
 	public Item findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

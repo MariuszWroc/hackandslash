@@ -17,7 +17,7 @@ public class PlaceService implements IPlaceService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Place place) {
-		dao.save(place);
+		dao.add(place);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class PlaceService implements IPlaceService{
 
 	@Override
 	public Place findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

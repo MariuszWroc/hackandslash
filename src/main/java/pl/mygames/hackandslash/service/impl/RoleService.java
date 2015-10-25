@@ -18,7 +18,7 @@ public class RoleService implements IRoleService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(GameRole role) {
-		dao.save(role);
+		dao.add(role);
 	}
 
 	@Transactional(readOnly = false)
@@ -36,7 +36,7 @@ public class RoleService implements IRoleService{
 
 	@Override
 	public GameRole findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 
 

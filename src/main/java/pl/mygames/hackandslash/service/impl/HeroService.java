@@ -17,7 +17,7 @@ public class HeroService implements IHeroService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Hero hero) {
-		dao.save(hero);
+		dao.add(hero);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class HeroService implements IHeroService{
 
 	@Override
 	public Hero findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

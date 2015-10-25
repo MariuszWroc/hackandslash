@@ -3,7 +3,7 @@
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
         ">
 
@@ -24,18 +24,13 @@
     <!-- Session Factory Declaration -->
     <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="DataSource" />
-        <property name="packagesToScan">
-            <list>
-                <value>pl.mariuszczarny.slask.model</value>
-            </list>
-        </property>
-            
+        <property name="packagesToScan" value="pl.mygames.hackandslash.model" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <prop key="hbm2ddl.auto">create</prop>
+                <!--<prop key="hbm2ddl.auto">create</prop>-->
             </props>
         </property>
     </bean>

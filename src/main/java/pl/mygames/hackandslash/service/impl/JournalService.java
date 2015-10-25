@@ -17,7 +17,7 @@ public class JournalService implements IJournalService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Journal journal) {
-		dao.save(journal);
+		dao.add(journal);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class JournalService implements IJournalService{
 
 	@Override
 	public Journal findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

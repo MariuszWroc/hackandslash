@@ -17,7 +17,7 @@ public class QuestService implements IQuestService{
 	@Transactional(readOnly = false)
 	@Override
 	public void add(Quest quest) {
-		dao.save(quest);
+		dao.add(quest);
 	}
 
 	@Transactional(readOnly = false)
@@ -35,6 +35,6 @@ public class QuestService implements IQuestService{
 
 	@Override
 	public Quest findById(Integer id) {
-		return dao.findOne(id);
+		return dao.findById(id);
 	}
 }

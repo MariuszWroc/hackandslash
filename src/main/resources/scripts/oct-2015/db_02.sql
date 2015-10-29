@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `hackandslash`.`Item` (
   `addIntelligence` INT,
   `addCharisma` INT,
   `amount` INT,
-  `Equipment_id` INT NOT,
+  `Equipment_id` INT NOT NULL,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Item_Equipment1_idx` (`Equipment_id` ASC) ,
   CONSTRAINT `fk_Item_Equipment1`

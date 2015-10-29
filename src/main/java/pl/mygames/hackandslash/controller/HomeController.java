@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.impl.UserService;
 
@@ -53,6 +55,18 @@ public class HomeController {
                List<GameUser> users = service.findAll();
                model.addAttribute("users", users);
                return "allusers";
+           }
+           
+           /*
+            * This method will add a user.
+            */
+           @RequestMapping(value = {"/addUser"}, method = RequestMethod.POST)
+           public @ResponseBody void addUser(@RequestBody GameUser user) {
+               
+               service.add(user);
+
+//               List<GameUser> users = service.findAll();
+//               model.addAttribute("users", users);
            }
 	
 }

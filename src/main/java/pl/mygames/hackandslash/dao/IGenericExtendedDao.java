@@ -39,8 +39,6 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
 
     T findById(PK id) throws EmptyResultDataAccessException;
 
-    List<T> findAllByCriteria() throws EmptyResultDataAccessException;
-    
     Integer count() throws EmptyResultDataAccessException; 
     
     Integer generateId();

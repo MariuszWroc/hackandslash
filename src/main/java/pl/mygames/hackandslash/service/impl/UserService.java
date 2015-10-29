@@ -1,5 +1,6 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,9 @@ public class UserService implements IUserService{
 		return dao.findById(id);
 	}
     
+        @Override
+	public List<GameUser> findAll() {
+		return dao.findAll();
+	}
 
 }

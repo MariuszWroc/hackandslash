@@ -100,14 +100,6 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<T> findAllByCriteria() {
-        Criteria criteria = getSession().createCriteria(type);
-        List list = criteria.list();
-        return list;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
     public List<T> findByQuery(String query) {
         List<T> listObjects = getSession().createQuery(query).list();
         return listObjects;

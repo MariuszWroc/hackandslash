@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pl.mygames.hackandslash.model.Equipment;
 
 @Repository
-public class EquipmentDao extends GenericExtendedDao<Equipment>{
+public class EquipmentDao extends GenericExtendedDao<Equipment, Integer>{
 
 }

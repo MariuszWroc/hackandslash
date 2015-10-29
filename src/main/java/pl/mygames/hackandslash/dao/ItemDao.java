@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pl.mygames.hackandslash.model.Item;
 
 @Repository
-public class ItemDao extends GenericExtendedDao<Item>{
+public class ItemDao extends GenericExtendedDao<Item, Integer>{
 
 }

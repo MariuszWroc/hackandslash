@@ -8,9 +8,10 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
-	public abstract Integer getId();
-	
-	@Override
+
+    public abstract Integer getId();
+
+    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;

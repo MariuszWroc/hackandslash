@@ -5,6 +5,7 @@
  */
 package pl.mygames.hackandslash.dao;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -19,8 +20,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 /**
  *
  * @author Mariusz
+ * @param <T>
+ * @param <PK>
  */
-public abstract class GenericExtendedDao<T> implements IGenericExtendedDao<T> {
+public abstract class GenericExtendedDao<T, PK extends Serializable> implements IGenericExtendedDao<T, PK> {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,7 +32,7 @@ public abstract class GenericExtendedDao<T> implements IGenericExtendedDao<T> {
         return this.sessionFactory.getCurrentSession();
     }
 
-    private Class<T> type;
+    private final Class<T> type;
 
     protected Class<T> getType() {
         return this.type;
@@ -87,7 +90,7 @@ public abstract class GenericExtendedDao<T> implements IGenericExtendedDao<T> {
     }
 
     @Override
-    public T findById(Integer id) throws DataAccessException {
+    public T findById(PK id) throws DataAccessException {
         T found = type.cast(getSession().byId(type));
         if (found == null) {
             throw new EmptyResultDataAccessException(1);

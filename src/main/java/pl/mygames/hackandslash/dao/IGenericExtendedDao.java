@@ -5,6 +5,7 @@
  */
 package pl.mygames.hackandslash.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -12,8 +13,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 /**
  *
  * @author Mariusz
+ * @param <T>
+ * @param <PK>
  */
-public interface IGenericExtendedDao<T> {
+public interface IGenericExtendedDao<T, PK extends Serializable> {
     List<T> findByQuery(String query);
 
     List<T> findAll();
@@ -34,7 +37,7 @@ public interface IGenericExtendedDao<T> {
     
     void saveOrUpdate(T entity) throws DataAccessException;
 
-    T findById(Integer id) throws EmptyResultDataAccessException;
+    T findById(PK id) throws EmptyResultDataAccessException;
 
     List<T> findAllByCriteria() throws EmptyResultDataAccessException;
     

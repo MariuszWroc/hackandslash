@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import pl.mygames.hackandslash.model.Quest;
 
 @Repository
-public class QuestDao extends GenericExtendedDao<Quest>{
+public class QuestDao extends GenericExtendedDao<Quest, Integer>{
 
 }

@@ -5,10 +5,11 @@
  */
 package pl.mygames.hackandslash.model;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -31,8 +32,8 @@ public class Quest extends AbstractEntity {
     private String description;
     @Size(max = 45)
     private String target;
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+    @DateTimeFormat(pattern="dd/MM/yyyy") 
+    private LocalDate startDate;
     @ManyToMany(mappedBy = "questList", fetch = FetchType.EAGER)
     private List<Journal> journalList;
 
@@ -68,11 +69,11 @@ public class Quest extends AbstractEntity {
         this.target = target;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -83,30 +84,4 @@ public class Quest extends AbstractEntity {
     public void setJournalList(List<Journal> journalList) {
         this.journalList = journalList;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Quest)) {
-            return false;
-        }
-        Quest other = (Quest) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "test.Quest[ id=" + id + " ]";
-    }
-    
 }

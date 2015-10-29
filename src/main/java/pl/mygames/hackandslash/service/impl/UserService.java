@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ public class UserService implements IUserService{
 	}
 
 	@Transactional(readOnly = false)
+        @Secured("ROLE_ADMIN")
 	@Override
 	public void delete(GameUser user) {
 		dao.delete(user);

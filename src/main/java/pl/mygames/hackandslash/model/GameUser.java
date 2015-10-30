@@ -50,8 +50,14 @@ public class GameUser extends AbstractEntity {
     public GameUser() {
     }
 
-    public GameUser(Integer id) {
+    public GameUser(Integer id, Integer age, String firstname, String lastname, 
+                    String login, String password) {
         this.id = id;
+        this.age = age;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.login = login;
+        this.password = password;
     }
 
     @Override

@@ -27,26 +27,25 @@
           <md-button ng-click="register()">Register</md-button>
         </md-sidenav>
         <div ng-show="isRegister" ng-controller="registerController" flex id="content">
-        	<!--<ng-include src="userRegistration.html"></ng-include>  i intend to use something like this to cycle through pages-->
+        	<ng-include src="userRegistration.html"></ng-include>  i intend to use something like this to cycle through pages
             <md-content layout="column" flex class="md-padding"> 
                 firstname <input type="text" ng-model="user.firstname"/>
                 lastname    <input type="text" ng-model="user.lastname"/>
                 age         <input type="number" ng-model="user.age"/>
-                gender      <input type="text" ng-model="user.gender"/>
                 login       <input type="text" ng-model="user.login"/>
                 password    <input type="password" ng-model="user.password"/>
                 <md-button ng-click="doRegister()">Register</md-button>
             </md-content>
         </div>
     </div>
-    <!-- Angular Material Dependencies -->
+     Angular Material Dependencies 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-    <!-- this is from homeController.js it needs to be added so that the server will serve it via src="homeControlle.js"
-                     it procs a http GET request -->
+<!--     this is from homeController.js it needs to be added so that the server will serve it via src="homeControlle.js"
+                     it procs a http GET request              src="homeControlle.js" -->
     <script>    
         var app = angular.module('StarterApp', ['ngMaterial']);
 
@@ -67,23 +66,31 @@
 
         }]);
         app.controller('registerController', ['$scope', '$http', function($scope, $http){
-                $scope.user ={};
+                $scope.user ={
+                            id : 0,
+                            age : 26,
+                            firstname : 'firstname',
+                            lastname : 'lastname',
+                            login : 'login',
+                            password : 'password',
+                            };
                 $scope.doRegister = function (){
-                    console.log('adding',$scope.user);
-//                    $http.get('/hackandslash/list').success(function(res) {
-//                        console.log(res);
-//                    }).error(function(error) {
-//                        alert(error);
-//                    });
-//                    
-//                    $http.post('/hackandslash/addUser', $scope.user).success(function() {
-//                        console.log('success');
-//                    }).error(function(error) {
-//                        alert(error);
-//                    });
+                    $http.get('/hackandslash/userList.json').success(function(res) {
+                        console.log(res);
+                        $scope.user.id = res.length;
+                        console.log('adding',$scope.user);
+                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
+                            console.log('success');
+                        }).error(function(error) {
+                            console.log(error);
+                        });
+                    }).error(function(error) {
+                        alert(error);
+                    });
+                    
+                    
                 };
         }]);
-    </script>           <!-- src="homeControlle.js" -->
+    </script>
   </body>
 </html>
-

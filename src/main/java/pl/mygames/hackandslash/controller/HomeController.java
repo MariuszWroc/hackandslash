@@ -61,12 +61,8 @@ public class HomeController {
             * This method will add a user.
             */
            @RequestMapping(value = {"/addUser"}, method = RequestMethod.POST)
-           public @ResponseBody void addUser(@RequestBody GameUser user) {
-               
+           public @ResponseBody void addUser(@RequestBody GameUser user) {    
                service.add(user);
-
-//               List<GameUser> users = service.findAll();
-//               model.addAttribute("users", users);
            }
 	
 }

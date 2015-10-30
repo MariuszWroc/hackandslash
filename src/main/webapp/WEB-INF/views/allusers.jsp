@@ -20,7 +20,7 @@
         </tr>
         <c:forEach items="${users}" var="user">
             <tr>
-            <td>${user.name}</td>
+            <td>${user.firstname}</td>
             <td>${user.lastname}</td>
             <td>${user.login}</td>
             </tr>

@@ -41,11 +41,11 @@ public class GameUser extends AbstractEntity {
     @Size(max = 45)
     private String password;
     private Integer activated;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameUser", fetch = FetchType.EAGER)
-    private List<Hero> heroList;
-    @JoinColumn(name = "GameRole_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private GameRole gameRole;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameUser", fetch = FetchType.LAZY)
+//    private List<Hero> heroList;
+//    @JoinColumn(name = "GameRole_id", referencedColumnName = "id")
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    private GameRole gameRole;
 
     public GameUser() {
     }
@@ -119,19 +119,19 @@ public class GameUser extends AbstractEntity {
         this.activated = activated;
     }
 
-    public List<Hero> getHeroList() {
-        return heroList;
-    }
-
-    public void setHeroList(List<Hero> heroList) {
-        this.heroList = heroList;
-    }
-
-    public GameRole getGameRole() {
-        return gameRole;
-    }
-
-    public void setGameRole(GameRole gameRole) {
-        this.gameRole = gameRole;
-    }
+//    public List<Hero> getHeroList() {
+//        return heroList;
+//    }
+//
+//    public void setHeroList(List<Hero> heroList) {
+//        this.heroList = heroList;
+//    }
+//
+//    public GameRole getGameRole() {
+//        return gameRole;
+//    }
+//
+//    public void setGameRole(GameRole gameRole) {
+//        this.gameRole = gameRole;
+//    }
 }

@@ -9,5 +9,5 @@
 <!--        <context:annotation-config/>
         <context:spring-configured/>-->
         
-	<import resource="database-config.xml" />
+	<!--<import resource="database-config.xml" />-->
 </beans>

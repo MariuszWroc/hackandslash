@@ -27,7 +27,7 @@
           <md-button ng-click="register()">Register</md-button>
         </md-sidenav>
         <div ng-show="isRegister" ng-controller="registerController" flex id="content">
-        	<ng-include src="userRegistration.html"></ng-include>  i intend to use something like this to cycle through pages
+        	<ng-include src="userRegistration.html"></ng-include>  <!--i intend to use something like this to cycle through pages-->
             <md-content layout="column" flex class="md-padding"> 
                 firstname <input type="text" ng-model="user.firstname"/>
                 lastname    <input type="text" ng-model="user.lastname"/>
@@ -38,7 +38,7 @@
             </md-content>
         </div>
     </div>
-     Angular Material Dependencies 
+<!--     Angular Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
@@ -79,11 +79,11 @@
                         console.log(res);
                         $scope.user.id = res.length;
                         console.log('adding',$scope.user);
-                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
-                            console.log('success');
-                        }).error(function(error) {
-                            console.log(error);
-                        });
+//                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
+//                            console.log('success');
+//                        }).error(function(error) {
+//                            console.log(error);
+//                        });
                     }).error(function(error) {
                         alert(error);
                     });

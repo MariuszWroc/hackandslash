@@ -68,7 +68,12 @@ public class HomeController {
             */
            @RequestMapping(value = {"/addUser"}, method = RequestMethod.POST)
            public @ResponseBody void addUser(@RequestBody GameUser user) {    
-               service.add(user);
+               userService.add(user);
            }
-	
+           
+           
+           @RequestMapping(value = {"/userList.json"}, method = RequestMethod.GET)
+            public @ResponseBody List<GameUser> getUserList() {
+                return userService.findAll();
+            }
 }

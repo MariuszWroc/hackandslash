@@ -14,20 +14,23 @@ import pl.mygames.hackandslash.service.IUserService;
 @Transactional(readOnly = true)
 public class UserService implements IUserService{
 	
-	@Autowired
-	private UserDao dao;
+    private UserDao userDao;
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
 	@Transactional(readOnly = false)
 	@Override
 	public void add(GameUser user) {
-		dao.add(user);
+		userDao.add(user);
 	}
 
 	@Transactional(readOnly = false)
         @Secured("ROLE_ADMIN")
 	@Override
 	public void delete(GameUser user) {
-		dao.delete(user);
+		userDao.delete(user);
 	}
 
 	@Transactional(readOnly = false)
@@ -39,12 +42,12 @@ public class UserService implements IUserService{
 
 	@Override
 	public GameUser findById(Integer id) {
-		return dao.findById(id);
+		return userDao.findById(id);
 	}
     
         @Override
 	public List<GameUser> findAll() {
-		return dao.findAll();
+		return userDao.findAll();
 	}
 
 }

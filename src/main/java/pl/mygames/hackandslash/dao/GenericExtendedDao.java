@@ -31,6 +31,10 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     protected Session getSession() {
         return this.sessionFactory.getCurrentSession();
     }
+    
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     private final Class<T> type;
 

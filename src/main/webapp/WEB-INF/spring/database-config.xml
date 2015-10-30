@@ -35,13 +35,20 @@
             </props>
         </property>
     </bean>
+    
+            <bean id="userDao" class="pl.mygames.hackandslash.dao.UserDao">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean>
+	<bean id="userService" class="pl.mygames.hackandslash.service.impl.UserService">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
 
     <!-- Enable the configuration of transactional behavior based on annotations -->
     <tx:annotation-driven transaction-manager="txManager"/>
 
     <!-- Transaction Manager is defined -->
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="SessionFactory"/>
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
     
 </beans>

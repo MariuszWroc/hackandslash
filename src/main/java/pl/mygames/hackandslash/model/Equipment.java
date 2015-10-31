@@ -23,9 +23,9 @@ public class Equipment extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.LAZY)
     private List<Item> itemList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.LAZY)
     private List<GameCharacter> gameCharacterList;
 
     public Equipment() {

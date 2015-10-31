@@ -1,11 +1,14 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.QuestDao;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
@@ -14,6 +17,10 @@ import pl.mygames.hackandslash.service.IQuestService;
 public class QuestService implements IQuestService{
 	@Autowired
 	private QuestDao dao;
+
+    public void setDao(QuestDao dao) {
+        this.dao = dao;
+    }
 
 	@Transactional(readOnly = false)
 	@Override
@@ -38,5 +45,10 @@ public class QuestService implements IQuestService{
 	@Override
 	public Quest findById(Integer id) {
 		return dao.findById(id);
+	}     
+        
+        @Override
+	public List<Quest> findAll() {
+		return dao.findAll();
 	}
 }

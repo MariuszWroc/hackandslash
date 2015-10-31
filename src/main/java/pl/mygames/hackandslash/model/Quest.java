@@ -34,7 +34,7 @@ public class Quest extends AbstractEntity {
     private String target;
     @DateTimeFormat(pattern="dd/MM/yyyy") 
     private LocalDate startDate;
-    @ManyToMany(mappedBy = "questList", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "questList", fetch = FetchType.LAZY)
     private List<Journal> journalList;
 
     public Quest() {

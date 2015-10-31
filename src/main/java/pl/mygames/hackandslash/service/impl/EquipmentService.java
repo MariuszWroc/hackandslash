@@ -1,12 +1,15 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.EquipmentDao;
+import pl.mygames.hackandslash.dao.NpcDao;
 import pl.mygames.hackandslash.model.Equipment;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
 @Service
@@ -39,4 +42,13 @@ public class EquipmentService implements IEquipmentService{
 	public Equipment findById(Integer id) {
 		return dao.findById(id);
 	}
+        
+        @Override
+	public List<Equipment> findAll() {
+		return dao.findAll();
+	}
+        
+            public void setDao(EquipmentDao dao) {
+        this.dao = dao;
+    }
 }

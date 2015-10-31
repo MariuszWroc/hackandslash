@@ -26,10 +26,10 @@ public class Journal extends AbstractEntity {
     @JoinTable(name = "Journal_has_Quest", joinColumns = {
         @JoinColumn(name = "Journal_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "Quest_id", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Quest> questList;
     @JoinColumn(name = "Hero_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Hero hero;
 
     public Journal() {

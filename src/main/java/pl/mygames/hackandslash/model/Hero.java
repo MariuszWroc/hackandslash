@@ -27,15 +27,15 @@ public class Hero extends AbstractEntity {
     @Size(max = 45)
     private String activated;
     @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameCharacter gameCharacter;
     @JoinColumn(name = "GameUser_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameUser gameUser;
     @JoinColumn(name = "Place_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Place place;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
     private List<Journal> journalList;
 
     public Hero() {

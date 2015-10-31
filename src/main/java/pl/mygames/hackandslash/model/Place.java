@@ -29,7 +29,7 @@ public class Place extends AbstractEntity {
     private String latitude;
     @Size(max = 45)
     private String longitude;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "place", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "place", fetch = FetchType.LAZY)
     private List<Hero> heroList;
 
     public Place() {

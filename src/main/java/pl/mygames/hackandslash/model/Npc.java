@@ -26,7 +26,7 @@ public class Npc extends AbstractEntity {
     @Size(max = 45)
     private String behaviour;
     @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameCharacter gameCharacter;
 
     public Npc() {

@@ -50,7 +50,7 @@ public class Item extends AbstractEntity {
     private Integer addCharisma;
     private Integer amount;
     @JoinColumn(name = "Equipment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Equipment equipment;
 
     public Item() {

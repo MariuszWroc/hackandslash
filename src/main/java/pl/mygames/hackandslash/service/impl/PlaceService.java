@@ -1,11 +1,13 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.PlaceDao;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 
@@ -39,4 +41,13 @@ public class PlaceService implements IPlaceService{
 	public Place findById(Integer id) {
 		return dao.findById(id);
 	}
+                
+        @Override
+	public List<Place> findAll() {
+		return dao.findAll();
+	}
+
+    public void setDao(PlaceDao dao) {
+        this.dao = dao;
+    }
 }

@@ -1,11 +1,14 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.JournalDao;
+import pl.mygames.hackandslash.dao.NpcDao;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Journal;
 import pl.mygames.hackandslash.service.IJournalService;
 
@@ -39,4 +42,12 @@ public class JournalService implements IJournalService{
 	public Journal findById(Integer id) {
 		return dao.findById(id);
 	}
+        
+        @Override
+	public List<Journal> findAll() {
+		return dao.findAll();
+	}
+            public void setDao(JournalDao dao) {
+        this.dao = dao;
+    }
 }

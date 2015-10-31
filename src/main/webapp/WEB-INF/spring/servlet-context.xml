@@ -48,21 +48,85 @@
 		</beans:property>
 	</beans:bean>
 	
+        <!-- Dao and Service mapping -->
         <beans:bean id="userDao" class="pl.mygames.hackandslash.dao.UserDao">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="userService" class="pl.mygames.hackandslash.service.impl.UserService">
-		<beans:property name="userDao" ref="userDao"></beans:property>
-	</beans:bean>
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="userService" class="pl.mygames.hackandslash.service.impl.UserService">
+            <beans:property name="userDao" ref="userDao"></beans:property>
+        </beans:bean>
+        	
+        <beans:bean id="dao" class="pl.mygames.hackandslash.dao.RoleDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="roleService" class="pl.mygames.hackandslash.service.impl.RoleService">
+            <beans:property name="dao" ref="dao"></beans:property>
+        </beans:bean>	
+        
+        <beans:bean id="characterDao" class="pl.mygames.hackandslash.dao.CharacterDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="characterService" class="pl.mygames.hackandslash.service.impl.CharacterService">
+            <beans:property name="dao" ref="characterDao"></beans:property>
+        </beans:bean>
+        	
+        <beans:bean id="equipmentDao" class="pl.mygames.hackandslash.dao.EquipmentDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="equipmentService" class="pl.mygames.hackandslash.service.impl.EquipmentService">
+            <beans:property name="dao" ref="equipmentDao"></beans:property>
+        </beans:bean>
+        	
+        <beans:bean id="heroDao" class="pl.mygames.hackandslash.dao.HeroDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="heroService" class="pl.mygames.hackandslash.service.impl.HeroService">
+            <beans:property name="dao" ref="heroDao"></beans:property>
+        </beans:bean> 
+        	
+        <beans:bean id="journalDao" class="pl.mygames.hackandslash.dao.JournalDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="journalService" class="pl.mygames.hackandslash.service.impl.JournalService">
+            <beans:property name="dao" ref="journalDao"></beans:property>
+        </beans:bean> 
+        	
+        <beans:bean id="npcDao" class="pl.mygames.hackandslash.dao.NpcDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="npcService" class="pl.mygames.hackandslash.service.impl.NpcService">
+            <beans:property name="dao" ref="npcDao"></beans:property>
+        </beans:bean> 
+                	
+        <beans:bean id="placeDao" class="pl.mygames.hackandslash.dao.PlaceDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="placeService" class="pl.mygames.hackandslash.service.impl.PlaceService">
+            <beans:property name="dao" ref="placeDao"></beans:property>
+        </beans:bean> 
+        
+        <beans:bean id="questDao" class="pl.mygames.hackandslash.dao.QuestDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="questService" class="pl.mygames.hackandslash.service.impl.QuestService">
+            <beans:property name="dao" ref="questDao"></beans:property>
+        </beans:bean> 
+        
+        <beans:bean id="itemDao" class="pl.mygames.hackandslash.dao.ItemDao">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
+        <beans:bean id="itemService" class="pl.mygames.hackandslash.service.impl.ItemService">
+            <beans:property name="dao" ref="itemDao"></beans:property>
+        </beans:bean> 
         
         <context:annotation-config/>
-	<context:component-scan base-package="pl.mygames.hackandslash" />
+        <context:component-scan base-package="pl.mygames.hackandslash" />
 	
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+        <tx:annotation-driven transaction-manager="transactionManager"/>
 	
-	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
+        <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+        </beans:bean>
 
 
 </beans:beans>

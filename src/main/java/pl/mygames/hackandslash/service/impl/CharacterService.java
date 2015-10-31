@@ -1,5 +1,6 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.CharacterDao;
 import pl.mygames.hackandslash.model.GameCharacter;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.ICharacterService;
 
 @Service
@@ -14,6 +16,12 @@ import pl.mygames.hackandslash.service.ICharacterService;
 public class CharacterService implements ICharacterService{
 	@Autowired
 	private CharacterDao dao;
+
+    public void setDao(CharacterDao dao) {
+        this.dao = dao;
+    }
+        
+        
 
 	@Transactional(readOnly = false)
 	@Override
@@ -40,4 +48,10 @@ public class CharacterService implements ICharacterService{
 		// TODO Auto-generated method stub
 		return dao.findById(id);
 	}
+        
+        @Override
+	public List<GameCharacter> findAll() {
+		return dao.findAll();
+	}
+        
 }

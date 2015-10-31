@@ -51,12 +51,12 @@ public class GameCharacter extends AbstractEntity {
     private Integer constitution;
     private Integer intelligence;
     private Integer charisma;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Npc> npcList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Hero> heroList;
     @JoinColumn(name = "Equipment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Equipment equipment;
 
     public GameCharacter() {

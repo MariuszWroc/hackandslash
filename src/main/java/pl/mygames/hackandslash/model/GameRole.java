@@ -26,8 +26,8 @@ public class GameRole extends AbstractEntity {
     private Integer id;
     @Size(max = 45)
     private String rolename;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameRole", fetch = FetchType.LAZY)
-//    private List<GameUser> gameUserList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameRole", fetch = FetchType.LAZY)
+    private List<GameUser> gameUserList;
 
     public GameRole() {
     }
@@ -53,11 +53,11 @@ public class GameRole extends AbstractEntity {
         this.rolename = rolename;
     }
 
-//    public List<GameUser> getGameUserList() {
-//        return gameUserList;
-//    }
-//
-//    public void setGameUserList(List<GameUser> gameUserList) {
-//        this.gameUserList = gameUserList;
-//    } 
+    public List<GameUser> getGameUserList() {
+        return gameUserList;
+    }
+
+    public void setGameUserList(List<GameUser> gameUserList) {
+        this.gameUserList = gameUserList;
+    } 
 }

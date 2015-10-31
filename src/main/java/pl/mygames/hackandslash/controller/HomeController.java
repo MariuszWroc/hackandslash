@@ -60,7 +60,7 @@ public class HomeController {
 
                List<GameUser> users = userService.findAll();
                model.addAttribute("users", users);
-               return "allusers";
+               return "test/allusers";
            }
            
            /*

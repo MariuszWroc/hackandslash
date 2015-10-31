@@ -14,26 +14,26 @@
     </head>
     <body>
         <h2>List of users</h2>  
-    <table>
-        <tr>
-            <td>Name</td><td>Last name</td><td>Login</td>
-            <td>Id</td><td>Password</td><td>Age</td>
-            <td>Gender</td><td>Activated</td>
-        </tr>
-        <c:forEach items="${users}" var="user">
+        <table>
             <tr>
-            <td>${user.firstname}</td>
-            <td>${user.lastname}</td>
-            <td>${user.login}</td>
-            <td>${user.age}</td>
-            <td>${user.id}</td>
-            <td>${user.password}</td>
-            <td>${user.gender}</td>
-            <td>${user.activated}</td>
+                <td>Name</td><td>Last name</td><td>Login</td>
+                <td>Id</td><td>Password</td><td>Age</td>
+                <td>Gender</td><td>Activated</td>
             </tr>
-        </c:forEach>
-    </table>
-    <br/>
-    <a href="<c:url value='/new' />">Add New Employee</a>
+            <c:forEach items="${users}" var="user">
+                <tr>
+                    <td>${user.firstname}</td>
+                    <td>${user.lastname}</td>
+                    <td>${user.login}</td>
+                    <td>${user.age}</td>
+                    <td>${user.id}</td>
+                    <td>${user.password}</td>
+                    <td>${user.gender}</td>
+                    <td>${user.activated}</td>
+                </tr>
+            </c:forEach>
+        </table>
+        <br/>
+        <a href="<c:url value='/new' />">Add New Employee</a>
     </body>
 </html>

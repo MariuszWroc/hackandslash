@@ -51,17 +51,6 @@ public class HomeController {
 		
 		return "home";
 	}
-        
-            /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-           public String listEmployees(ModelMap model) {
-
-               List<GameUser> users = userService.findAll();
-               model.addAttribute("users", users);
-               return "test/allusers";
-           }
            
            /*
             * This method will add a user.

@@ -6,6 +6,8 @@
 package pl.mygames.hackandslash.controller;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import pl.mygames.hackandslash.service.*;
  */
 @Controller
 public class TestController {
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private IUserService userService;
     private ICharacterService characterService;
     private IEquipmentService equipmentService;
@@ -99,6 +102,7 @@ public class TestController {
            public String getUsers(ModelMap model) {
 
                List<GameUser> users = userService.findAll();
+               logger.info("getUsers results " + users.iterator().next().getId());
                model.addAttribute("users", users);
                return "test/users";
            }
@@ -111,6 +115,7 @@ public class TestController {
            public String getEquipments(ModelMap model) {
 
                List<Equipment> equipments = equipmentService.findAll();
+               logger.info("get results " + equipments.iterator().next().getId());
                model.addAttribute("equipments", equipments);
                return "test/equipments";
            }
@@ -122,6 +127,7 @@ public class TestController {
            public String getCharacters(ModelMap model) {
 
                List<GameCharacter> characters = characterService.findAll();
+               logger.info("get results " + characters.iterator().next().getId());
                model.addAttribute("characters", characters);
                return "test/characters";
            }
@@ -133,6 +139,7 @@ public class TestController {
            public String getRoles(ModelMap model) {
 
                List<GameRole> roles = roleService.findAll();
+               logger.info("get results " + roles.iterator().next().getId());
                model.addAttribute("roles", roles);
                return "test/roles";
            }
@@ -144,6 +151,7 @@ public class TestController {
            public String getHeroes(ModelMap model) {
 
                List<Hero> heroes = heroService.findAll();
+               logger.info("get results " + heroes.iterator().next().getId());
                model.addAttribute("heroes", heroes);
                return "test/heroes";
            }
@@ -155,6 +163,7 @@ public class TestController {
            public String getItems(ModelMap model) {
 
                List<Item> items = itemService.findAll();
+               logger.info("get results " + items.iterator().next().getId());
                model.addAttribute("items", items);
                return "test/items";
            }
@@ -166,6 +175,7 @@ public class TestController {
            public String getJournals(ModelMap model) {
 
                List<Journal> journals = journalService.findAll();
+               logger.info("get results " + journals.iterator().next().getId());
                model.addAttribute("journals", journals);
                return "test/journals";
            }
@@ -177,6 +187,7 @@ public class TestController {
            public String getNpcs(ModelMap model) {
 
                List<Npc> npcs = npcService.findAll();
+               logger.info("get results " + npcs.iterator().next().getId());
                model.addAttribute("npcs", npcs);
                return "test/npcs";
            }
@@ -188,6 +199,7 @@ public class TestController {
            public String getPlaces(ModelMap model) {
 
                List<Place> places = placeService.findAll();
+               logger.info("get results " + places.iterator().next().getId());
                model.addAttribute("places", places);
                return "test/places";
            }
@@ -199,6 +211,7 @@ public class TestController {
            public String getQuests(ModelMap model) {
 
                List<Quest> quests = questService.findAll();
+               logger.info("get results " + quests.iterator().next().getId());
                model.addAttribute("quests", quests);
                return "test/quests";
            }

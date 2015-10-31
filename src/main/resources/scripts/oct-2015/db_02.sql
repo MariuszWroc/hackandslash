@@ -185,7 +185,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `hackandslash`.`NPC`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `hackandslash`.`NPC` (
+CREATE TABLE IF NOT EXISTS `hackandslash`.`Npc` (
   `id` INT NOT NULL,
   `behaviour` VARCHAR(45),
   `GameCharacter_id` INT NOT NULL,

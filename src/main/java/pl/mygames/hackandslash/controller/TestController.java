@@ -23,6 +23,7 @@ import pl.mygames.hackandslash.service.*;
  */
 @Controller
 public class TestController {
+
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private IUserService userService;
     private ICharacterService characterService;
@@ -94,132 +95,131 @@ public class TestController {
     public void setQuestService(IQuestService questService) {
         this.questService = questService;
     }
-    
-                /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
-           public String getUsers(ModelMap model) {
 
-               List<GameUser> users = userService.findAll();
-               logger.info("getUsers results " + users.iterator().next().getId());
-               model.addAttribute("users", users);
-               return "test/users";
-           }
-           
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/equipments"}, method = RequestMethod.GET)
-           public String getEquipments(ModelMap model) {
+    /*
+     * This method will list all existing users.
+     */
+    @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
+    public String getUsers(ModelMap model) {
 
-               List<Equipment> equipments = equipmentService.findAll();
-               logger.info("get results " + equipments.iterator().next().getId());
-               model.addAttribute("equipments", equipments);
-               return "test/equipments";
-           }
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/characters"}, method = RequestMethod.GET)
-           public String getCharacters(ModelMap model) {
+        List<GameUser> users = userService.findAll();
+        logger.info("getUsers results " + users.iterator().next().getId());
+        model.addAttribute("users", users);
+        return "test/users";
+    }
 
-               List<GameCharacter> characters = characterService.findAll();
-               logger.info("get results " + characters.iterator().next().getId());
-               model.addAttribute("characters", characters);
-               return "test/characters";
-           }
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
-           public String getRoles(ModelMap model) {
+    /*
+     * This method will list all existing equipments.
+     */
+    @RequestMapping(value = {"/equipments"}, method = RequestMethod.GET)
+    public String getEquipments(ModelMap model) {
 
-               List<GameRole> roles = roleService.findAll();
-               logger.info("get results " + roles.iterator().next().getId());
-               model.addAttribute("roles", roles);
-               return "test/roles";
-           }
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/heroes"}, method = RequestMethod.GET)
-           public String getHeroes(ModelMap model) {
+        List<Equipment> equipments = equipmentService.findAll();
+        logger.info("get results " + equipments.iterator().next().getId());
+        model.addAttribute("equipments", equipments);
+        return "test/equipments";
+    }
 
-               List<Hero> heroes = heroService.findAll();
-               logger.info("get results " + heroes.iterator().next().getId());
-               model.addAttribute("heroes", heroes);
-               return "test/heroes";
-           }
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/items"}, method = RequestMethod.GET)
-           public String getItems(ModelMap model) {
+    /*
+     * This method will list all existing characters.
+     */
+    @RequestMapping(value = {"/characters"}, method = RequestMethod.GET)
+    public String getCharacters(ModelMap model) {
 
-               List<Item> items = itemService.findAll();
-               logger.info("get results " + items.iterator().next().getId());
-               model.addAttribute("items", items);
-               return "test/items";
-           }
-           
-                       /*
-            * This method will list all existing journals.
-            */
-           @RequestMapping(value = {"/journals"}, method = RequestMethod.GET)
-           public String getJournals(ModelMap model) {
+        List<GameCharacter> characters = characterService.findAll();
+        logger.info("get results " + characters.iterator().next().getId());
+        model.addAttribute("characters", characters);
+        return "test/characters";
+    }
 
-               List<Journal> journals = journalService.findAll();
-               logger.info("get results " + journals.iterator().next().getId());
-               model.addAttribute("journals", journals);
-               return "test/journals";
-           }
-           
-                       /*
-            * This method will list all existing npcs.
-            */
-           @RequestMapping(value = {"/npcs"}, method = RequestMethod.GET)
-           public String getNpcs(ModelMap model) {
+    /*
+     * This method will list all existing roles.
+     */
+    @RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
+    public String getRoles(ModelMap model) {
 
-               List<Npc> npcs = npcService.findAll();
-               logger.info("get results " + npcs.iterator().next().getId());
-               model.addAttribute("npcs", npcs);
-               return "test/npcs";
-           }
-           
-                       /*
-            * This method will list all existing places.
-            */
-           @RequestMapping(value = {"/places"}, method = RequestMethod.GET)
-           public String getPlaces(ModelMap model) {
+        List<GameRole> roles = roleService.findAll();
+        logger.info("get results " + roles.iterator().next().getId());
+        model.addAttribute("roles", roles);
+        return "test/roles";
+    }
 
-               List<Place> places = placeService.findAll();
-               logger.info("get results " + places.iterator().next().getId());
-               model.addAttribute("places", places);
-               return "test/places";
-           }
-           
-                       /*
-            * This method will list all existing users.
-            */
-           @RequestMapping(value = {"/quests"}, method = RequestMethod.GET)
-           public String getQuests(ModelMap model) {
+    /*
+     * This method will list all existing heroes.
+     */
+    @RequestMapping(value = {"/heroes"}, method = RequestMethod.GET)
+    public String getHeroes(ModelMap model) {
 
-               List<Quest> quests = questService.findAll();
-               logger.info("get results " + quests.iterator().next().getId());
-               model.addAttribute("quests", quests);
-               return "test/quests";
-           }
-           
-                       /* This method will list all existing users.
-            */
-           @RequestMapping(value = {"/tests"}, method = RequestMethod.GET)
-           public String getTests() {
-               return "test/testlist";
-           }
+        List<Hero> heroes = heroService.findAll();
+        logger.info("get results " + heroes.iterator().next().getId());
+        model.addAttribute("heroes", heroes);
+        return "test/heroes";
+    }
+
+    /*
+     * This method will list all existing items.
+     */
+    @RequestMapping(value = {"/items"}, method = RequestMethod.GET)
+    public String getItems(ModelMap model) {
+
+        List<Item> items = itemService.findAll();
+        logger.info("get results " + items.iterator().next().getId());
+        model.addAttribute("items", items);
+        return "test/items";
+    }
+
+    /*
+     * This method will list all existing journals.
+     */
+    @RequestMapping(value = {"/journals"}, method = RequestMethod.GET)
+    public String getJournals(ModelMap model) {
+
+        List<Journal> journals = journalService.findAll();
+        logger.info("get results " + journals.iterator().next().getId());
+        model.addAttribute("journals", journals);
+        return "test/journals";
+    }
+
+    /*
+     * This method will list all existing npcs.
+     */
+    @RequestMapping(value = {"/npcs"}, method = RequestMethod.GET)
+    public String getNpcs(ModelMap model) {
+
+        List<Npc> npcs = npcService.findAll();
+        logger.info("get results " + npcs.iterator().next().getId());
+        model.addAttribute("npcs", npcs);
+        return "test/npcs";
+    }
+
+    /*
+     * This method will list all existing places.
+     */
+    @RequestMapping(value = {"/places"}, method = RequestMethod.GET)
+    public String getPlaces(ModelMap model) {
+
+        List<Place> places = placeService.findAll();
+        logger.info("get results " + places.iterator().next().getId());
+        model.addAttribute("places", places);
+        return "test/places";
+    }
+
+    /*
+     * This method will list all existing quests.
+     */
+    @RequestMapping(value = {"/quests"}, method = RequestMethod.GET)
+    public String getQuests(ModelMap model) {
+
+        List<Quest> quests = questService.findAll();
+        logger.info("get results " + quests.iterator().next().getId());
+        model.addAttribute("quests", quests);
+        return "test/quests";
+    }
+
+    /* This method will list all existing tests.
+     */
+    @RequestMapping(value = {"/tests"}, method = RequestMethod.GET)
+    public String getTests() {
+        return "test/testlist";
+    }
 }

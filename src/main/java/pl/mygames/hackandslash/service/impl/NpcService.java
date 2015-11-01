@@ -7,45 +7,44 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.NpcDao;
-import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Npc;
 import pl.mygames.hackandslash.service.INpcService;
 
 @Service
 @Transactional(readOnly = true)
-public class NpcService implements INpcService{
-	@Autowired
-	private NpcDao dao;
+public class NpcService implements INpcService {
 
-	@Transactional(readOnly = false)
-	@Override
-	public void add(Npc npc) {
-		dao.add(npc);
-	}
+    @Autowired
+    private NpcDao dao;
 
-	@Transactional(readOnly = false)
-        @Secured("ROLE_ADMIN")
-	@Override
-	public void delete(Npc npc) {
-		dao.delete(npc);
-	}
+    @Transactional(readOnly = false)
+    @Override
+    public void add(Npc npc) {
+        dao.add(npc);
+    }
 
-	@Transactional(readOnly = false)
-	@Override
-	public void update(Npc npc) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Transactional(readOnly = false)
+    @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Npc npc) {
+        dao.delete(npc);
+    }
 
-	@Override
-	public Npc findById(Integer id) {
-		return dao.findById(id);
-	}
-        
-        @Override
-	public List<Npc> findAll() {
-		return dao.findAll();
-	}
+    @Transactional(readOnly = false)
+    @Override
+    public void update(Npc npc) {
+        dao.update(npc);
+    }
+
+    @Override
+    public Npc findById(Integer id) {
+        return dao.findById(id);
+    }
+
+    @Override
+    public List<Npc> findAll() {
+        return dao.findAll();
+    }
 
     public void setDao(NpcDao dao) {
         this.dao = dao;

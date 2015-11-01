@@ -1,54 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
         ">
-
     
-    <!-- DB Properties Placeholder -->
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="/resources/database.local.properties" />
-    </bean>
-
+       <!-- DB Properties Placeholder -->
+    <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <beans:property name="location" value="classpath:database.local.properties" />
+    </beans:bean>
+    
     <!-- Data Source Declaration -->
-    <bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${jdbc.driverClassName}" />
-        <property name="url" value="${jdbc.url}" />
-        <property name="username" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
-    </bean>
+    <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+                destroy-method="close">
+        <beans:property name="driverClassName" value="${jdbc.driverClassName}" />
+        <beans:property name="url" value="${jdbc.url}" />
+        <beans:property name="username" value="${jdbc.username}" />
+        <beans:property name="password" value="${jdbc.password}" />
+    </beans:bean>
 
-    <!-- Session Factory Declaration -->
-    <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="DataSource" />
-        <property name="packagesToScan" value="pl.mygames.hackandslash.model" />
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.format_sql">true</prop>
-                <prop key="jadira.usertype.autoRegisterUserTypes">true</prop>
-                <!--<prop key="hbm2ddl.auto">create</prop>-->
-            </props>
-        </property>
-    </bean>
+    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <beans:bean id="hibernate4AnnotatedSessionFactory"
+                    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="packagesToScan" value="pl.mygames.hackandslash.model" />
+        <beans:property name="hibernateProperties">
+            <beans:props>
+                <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect
+                </beans:prop>
+                <beans:prop key="hibernate.show_sql">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+	
+    <!-- Dao and Service mapping -->
+    <beans:bean id="userDao" class="pl.mygames.hackandslash.dao.UserDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="userService" class="pl.mygames.hackandslash.service.impl.UserService">
+        <beans:property name="userDao" ref="userDao"></beans:property>
+    </beans:bean>
+        	
+    <beans:bean id="dao" class="pl.mygames.hackandslash.dao.RoleDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="roleService" class="pl.mygames.hackandslash.service.impl.RoleService">
+        <beans:property name="dao" ref="dao"></beans:property>
+    </beans:bean>	
+        
+    <beans:bean id="characterDao" class="pl.mygames.hackandslash.dao.CharacterDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="characterService" class="pl.mygames.hackandslash.service.impl.CharacterService">
+        <beans:property name="dao" ref="characterDao"></beans:property>
+    </beans:bean>
+        	
+    <beans:bean id="equipmentDao" class="pl.mygames.hackandslash.dao.EquipmentDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="equipmentService" class="pl.mygames.hackandslash.service.impl.EquipmentService">
+        <beans:property name="dao" ref="equipmentDao"></beans:property>
+    </beans:bean>
+        	
+    <beans:bean id="heroDao" class="pl.mygames.hackandslash.dao.HeroDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="heroService" class="pl.mygames.hackandslash.service.impl.HeroService">
+        <beans:property name="dao" ref="heroDao"></beans:property>
+    </beans:bean> 
+        	
+    <beans:bean id="journalDao" class="pl.mygames.hackandslash.dao.JournalDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="journalService" class="pl.mygames.hackandslash.service.impl.JournalService">
+        <beans:property name="dao" ref="journalDao"></beans:property>
+    </beans:bean> 
+        	
+    <beans:bean id="npcDao" class="pl.mygames.hackandslash.dao.NpcDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="npcService" class="pl.mygames.hackandslash.service.impl.NpcService">
+        <beans:property name="dao" ref="npcDao"></beans:property>
+    </beans:bean> 
+                	
+    <beans:bean id="placeDao" class="pl.mygames.hackandslash.dao.PlaceDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="placeService" class="pl.mygames.hackandslash.service.impl.PlaceService">
+        <beans:property name="dao" ref="placeDao"></beans:property>
+    </beans:bean> 
+        
+    <beans:bean id="questDao" class="pl.mygames.hackandslash.dao.QuestDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="questService" class="pl.mygames.hackandslash.service.impl.QuestService">
+        <beans:property name="dao" ref="questDao"></beans:property>
+    </beans:bean> 
+        
+    <beans:bean id="itemDao" class="pl.mygames.hackandslash.dao.ItemDao">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    <beans:bean id="itemService" class="pl.mygames.hackandslash.service.impl.ItemService">
+        <beans:property name="dao" ref="itemDao"></beans:property>
+    </beans:bean> 
+        
+    <context:annotation-config/>
+    <context:component-scan base-package="pl.mygames.hackandslash" />
+	
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+	
+    <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
     
-            <bean id="userDao" class="pl.mygames.hackandslash.dao.UserDao">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean>
-	<bean id="userService" class="pl.mygames.hackandslash.service.impl.UserService">
-		<property name="userDao" ref="userDao"></property>
-	</bean>
-
-    <!-- Enable the configuration of transactional behavior based on annotations -->
-    <tx:annotation-driven transaction-manager="txManager"/>
-
-    <!-- Transaction Manager is defined -->
-    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    
-</beans>
+</beans:beans>

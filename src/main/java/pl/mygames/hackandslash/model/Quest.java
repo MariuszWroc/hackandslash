@@ -5,6 +5,7 @@
  */
 package pl.mygames.hackandslash.model;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -33,7 +34,7 @@ public class Quest extends AbstractEntity {
     @Size(max = 45)
     private String target;
     @DateTimeFormat(pattern="dd/MM/yyyy") 
-    private LocalDate startDate;
+    private Date startDate;
     @ManyToMany(mappedBy = "questList", fetch = FetchType.LAZY)
     private List<Journal> journalList;
 
@@ -69,11 +70,11 @@ public class Quest extends AbstractEntity {
         this.target = target;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

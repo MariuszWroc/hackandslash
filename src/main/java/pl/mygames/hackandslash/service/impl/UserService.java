@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,8 @@ import pl.mygames.hackandslash.service.IUserService;
 @Service
 @Transactional(readOnly = true)
 public class UserService implements IUserService {
-
+    
+    @Autowired
     private UserDao dao;
 
     public void setUserDao(UserDao dao) {

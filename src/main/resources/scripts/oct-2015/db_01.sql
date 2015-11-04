@@ -72,9 +72,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hackandslash`.`GameCharacter` (
   `id` INT NOT NULL,
-  `firstname` VARCHAR(45) NULL,
-  `lastname` VARCHAR(45) NULL,
-  `gender` VARCHAR(45) NULL,
+  `firstname` VARCHAR(45),
+  `lastname` VARCHAR(45),
+  `gender` VARCHAR(45),
   `age` VARCHAR(45),
   `race` VARCHAR(45),
   `profession` VARCHAR(45),
@@ -130,19 +130,19 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hackandslash`.`Item` (
   `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `type` INT NULL,
-  `wage` INT NULL,
-  `attack` INT NULL,
-  `defend` INT NULL,
-  `magic` INT NULL,
-  `addHealth` INT NULL,
-  `addStrength` INT NULL,
-  `addDexterity` INT NULL,
-  `addConstitution` INT NULL,
-  `addIntelligence` INT NULL,
-  `addCharisma` INT NULL,
-  `amount` INT NULL,
+  `name` VARCHAR(45),
+  `type` INT,
+  `wage` INT,
+  `attack` INT,
+  `defend` INT,
+  `magic` INT,
+  `addHealth` INT,
+  `addStrength` INT,
+  `addDexterity` INT,
+  `addConstitution` INT,
+  `addIntelligence` INT,
+  `addCharisma` INT,
+  `amount` INT,
   `Equipment_id` INT NOT NULL,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Item_Equipment1_idx` (`Equipment_id` ASC) ,
@@ -159,9 +159,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hackandslash`.`Quest` (
   `id` INT NOT NULL,
-  `description` VARCHAR(45) NULL,
-  `target` VARCHAR(45) NULL,
-  `startDate` DATE NULL,
+  `description` VARCHAR(45),
+  `target` VARCHAR(45),
+  `startDate` DATE,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
@@ -224,4 +224,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

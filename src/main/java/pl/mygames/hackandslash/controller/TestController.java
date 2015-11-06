@@ -5,6 +5,7 @@
  */
 package pl.mygames.hackandslash.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ import pl.mygames.hackandslash.service.*;
 @Controller
 public class TestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
     private IUserService userService;
     private ICharacterService characterService;
     private IEquipmentService equipmentService;
@@ -95,16 +96,25 @@ public class TestController {
     public void setQuestService(IQuestService questService) {
         this.questService = questService;
     }
+    
+    public TestController() {
+    	logger.info("Logger initialization in TestController!");
+	}
 
     /*
      * This method will list all existing users.
      */
     @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
     public String getUsers(ModelMap model) {
-
-        List<GameUser> users = userService.findAll();
-        logger.info("getUsers results " + users.iterator().next().getId());
-        model.addAttribute("users", users);
+    	List<GameUser> users;
+    	if (userService.findAll().isEmpty()){
+    		logger.info("User list is empty");
+    		users = new ArrayList<GameUser>();
+    	} else {
+    		users = userService.findAll();
+    		model.addAttribute("users", users);
+    	}
+        
         return "test/users";
     }
 
@@ -113,10 +123,15 @@ public class TestController {
      */
     @RequestMapping(value = {"/equipments"}, method = RequestMethod.GET)
     public String getEquipments(ModelMap model) {
+    	List<Equipment> equipments;
+    	if (equipmentService.findAll().isEmpty()){
+    		logger.info("Equipment list is empty");
+    		equipments = new ArrayList<Equipment>();
+    	} else {
+    		equipments = equipmentService.findAll();
+    		model.addAttribute("equipments", equipments);
+    	}
 
-        List<Equipment> equipments = equipmentService.findAll();
-        logger.info("get results " + equipments.iterator().next().getId());
-        model.addAttribute("equipments", equipments);
         return "test/equipments";
     }
 
@@ -126,9 +141,14 @@ public class TestController {
     @RequestMapping(value = {"/characters"}, method = RequestMethod.GET)
     public String getCharacters(ModelMap model) {
 
-        List<GameCharacter> characters = characterService.findAll();
-        logger.info("get results " + characters.iterator().next().getId());
-        model.addAttribute("characters", characters);
+        List<GameCharacter> characters;
+        if(characterService.findAll().isEmpty()) {
+        	logger.info("Character list is empty");
+        } else {
+        	characters = characterService.findAll();
+        	model.addAttribute("characters", characters);
+        }
+        
         return "test/characters";
     }
 
@@ -137,10 +157,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
     public String getRoles(ModelMap model) {
-
-        List<GameRole> roles = roleService.findAll();
-        logger.info("get results " + roles.iterator().next().getId());
-        model.addAttribute("roles", roles);
+        List<GameRole> roles;
+        if(roleService.findAll().isEmpty()) {
+        	logger.info("Roles list is empty");
+        } else {
+        	roles = roleService.findAll();
+        	model.addAttribute("roles", roles);
+        }
         return "test/roles";
     }
 
@@ -149,10 +172,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/heroes"}, method = RequestMethod.GET)
     public String getHeroes(ModelMap model) {
-
-        List<Hero> heroes = heroService.findAll();
-        logger.info("get results " + heroes.iterator().next().getId());
-        model.addAttribute("heroes", heroes);
+        List<Hero> heroes;
+        if(heroService.findAll().isEmpty()) {
+        	logger.info("Heroes list is empty");
+        } else {
+        	heroes = heroService.findAll();
+        	model.addAttribute("heroes", heroes);
+        }
         return "test/heroes";
     }
 
@@ -161,10 +187,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/items"}, method = RequestMethod.GET)
     public String getItems(ModelMap model) {
-
-        List<Item> items = itemService.findAll();
-        logger.info("get results " + items.iterator().next().getId());
-        model.addAttribute("items", items);
+        List<Item> items;
+        if(itemService.findAll().isEmpty()) {
+        	logger.info("Item list is empty");
+        } else {
+        	items = itemService.findAll();
+        	model.addAttribute("items", items);
+        }
         return "test/items";
     }
 
@@ -173,10 +202,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/journals"}, method = RequestMethod.GET)
     public String getJournals(ModelMap model) {
-
-        List<Journal> journals = journalService.findAll();
-        logger.info("get results " + journals.iterator().next().getId());
-        model.addAttribute("journals", journals);
+        List<Journal> journals;
+        if(journalService.findAll().isEmpty()) {
+        	logger.info("Journals list is empty");
+        } else {
+        	journals = journalService.findAll();
+        	model.addAttribute("journals", journals);
+        }
         return "test/journals";
     }
 
@@ -185,10 +217,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/npcs"}, method = RequestMethod.GET)
     public String getNpcs(ModelMap model) {
-
-        List<Npc> npcs = npcService.findAll();
-        logger.info("get results " + npcs.iterator().next().getId());
-        model.addAttribute("npcs", npcs);
+        List<Npc> npcs;
+        if(npcService.findAll().isEmpty()) {
+        	logger.info("Npcs list is empty");
+        } else {
+        	npcs = npcService.findAll();
+        	model.addAttribute("npcs", npcs);
+        }
         return "test/npcs";
     }
 
@@ -197,10 +232,13 @@ public class TestController {
      */
     @RequestMapping(value = {"/places"}, method = RequestMethod.GET)
     public String getPlaces(ModelMap model) {
-
-        List<Place> places = placeService.findAll();
-        logger.info("get results " + places.iterator().next().getId());
-        model.addAttribute("places", places);
+    	List<Place> places;
+        if(placeService.findAll().isEmpty()) {
+        	logger.info("Places list is empty");
+        } else {
+        	places = placeService.findAll();
+        	model.addAttribute("places", places);
+        }
         return "test/places";
     }
 
@@ -209,10 +247,15 @@ public class TestController {
      */
     @RequestMapping(value = {"/quests"}, method = RequestMethod.GET)
     public String getQuests(ModelMap model) {
-
-        List<Quest> quests = questService.findAll();
-        logger.info("get results " + quests.iterator().next().getId());
-        model.addAttribute("quests", quests);
+    	List<Quest> quests;
+        
+        if(questService.findAll().isEmpty()) {
+        	logger.info("Quests list is empty");
+        } else {
+        	quests = questService.findAll();
+        	model.addAttribute("quests", quests);
+        }
+        
         return "test/quests";
     }
 

@@ -36,14 +36,18 @@ public class GameUser extends AbstractEntity {
     private String lastname;
     private Integer age;
     private Integer gender;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String login;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String password;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer activated;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameUser", fetch = FetchType.LAZY)
     private List<Hero> heroList;
-    @JoinColumn(name = "GameRole_id", referencedColumnName = "id")
+    @JoinColumn(name = "GameRole_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameRole gameRole;
 

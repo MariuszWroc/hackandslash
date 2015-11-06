@@ -5,6 +5,8 @@
  */
 package pl.mygames.hackandslash.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -17,7 +19,7 @@ import javax.validation.constraints.*;
     @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i"),
     @NamedQuery(name = "Item.findById", query = "SELECT i FROM Item i WHERE i.id = :id"),
     @NamedQuery(name = "Item.findByName", query = "SELECT i FROM Item i WHERE i.name = :name"),
-    @NamedQuery(name = "Item.findByType", query = "SELECT i FROM Item i WHERE i.type = :type"),
+    @NamedQuery(name = "Item.findByCategory", query = "SELECT i FROM Item i WHERE i.category = :category"),
     @NamedQuery(name = "Item.findByWage", query = "SELECT i FROM Item i WHERE i.wage = :wage"),
     @NamedQuery(name = "Item.findByAttack", query = "SELECT i FROM Item i WHERE i.attack = :attack"),
     @NamedQuery(name = "Item.findByDefend", query = "SELECT i FROM Item i WHERE i.defend = :defend"),
@@ -35,9 +37,10 @@ public class Item extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String name;
-    private Integer type;
+    private Integer category;
     private Integer wage;
     private Integer attack;
     private Integer defend;
@@ -49,9 +52,8 @@ public class Item extends AbstractEntity {
     private Integer addIntelligence;
     private Integer addCharisma;
     private Integer amount;
-    @JoinColumn(name = "Equipment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Equipment equipment;
+    @OneToMany(mappedBy = "item", fetch = FetchType.LAZY)
+    private List<Equipment> equipmentList;
 
     public Item() {
     }
@@ -77,15 +79,15 @@ public class Item extends AbstractEntity {
         this.name = name;
     }
 
-    public Integer getType() {
-        return type;
-    }
+    public Integer getCategory() {
+		return category;
+	}
 
-    public void setType(Integer type) {
-        this.type = type;
-    }
+	public void setCategory(Integer category) {
+		this.category = category;
+	}
 
-    public Integer getWage() {
+	public Integer getWage() {
         return wage;
     }
 
@@ -173,11 +175,12 @@ public class Item extends AbstractEntity {
         this.amount = amount;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
-    }
+	public List<Equipment> getEquipmentList() {
+		return equipmentList;
+	}
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
-    }   
+	public void setEquipmentList(List<Equipment> equipmentList) {
+		this.equipmentList = equipmentList;
+	}
+  
 }

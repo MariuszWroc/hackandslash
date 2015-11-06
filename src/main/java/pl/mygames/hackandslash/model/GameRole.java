@@ -24,7 +24,8 @@ public class GameRole extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String rolename;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameRole", fetch = FetchType.LAZY)
     private List<GameUser> gameUserList;

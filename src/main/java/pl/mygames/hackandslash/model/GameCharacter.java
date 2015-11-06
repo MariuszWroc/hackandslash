@@ -35,17 +35,21 @@ public class GameCharacter extends AbstractEntity {
     @NotNull
     private Integer id;
     @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String firstname;
-    @Size(max = 45)
+    @Column(length = 45)
     private String lastname;
-    @Size(max = 45)
-    private String gender;
-    @Size(max = 45)
-    private String age;
-    @Size(max = 45)
-    private String race;
-    @Size(max = 45)
-    private String profession;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer gender;
+    private Integer age;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer race;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer profession;
     private Integer strength;
     private Integer dexterity;
     private Integer constitution;
@@ -55,9 +59,8 @@ public class GameCharacter extends AbstractEntity {
     private List<Npc> npcList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Hero> heroList;
-    @JoinColumn(name = "Equipment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Equipment equipment;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
+    private List<Equipment> equipmentList;
 
     public GameCharacter() {
     }
@@ -91,39 +94,39 @@ public class GameCharacter extends AbstractEntity {
         this.lastname = lastname;
     }
 
-    public String getGender() {
-        return gender;
-    }
+    public Integer getGender() {
+		return gender;
+	}
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
 
-    public String getAge() {
-        return age;
-    }
+	public Integer getAge() {
+		return age;
+	}
 
-    public void setAge(String age) {
-        this.age = age;
-    }
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    public String getRace() {
-        return race;
-    }
+	public Integer getRace() {
+		return race;
+	}
 
-    public void setRace(String race) {
-        this.race = race;
-    }
+	public void setRace(Integer race) {
+		this.race = race;
+	}
 
-    public String getProfession() {
-        return profession;
-    }
+	public Integer getProfession() {
+		return profession;
+	}
 
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
+	public void setProfession(Integer profession) {
+		this.profession = profession;
+	}
 
-    public Integer getStrength() {
+	public Integer getStrength() {
         return strength;
     }
 
@@ -179,12 +182,12 @@ public class GameCharacter extends AbstractEntity {
         this.heroList = heroList;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
-    }
+	public List<Equipment> getEquipmentList() {
+		return equipmentList;
+	}
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
-    }
-    
+	public void setEquipmentList(List<Equipment> equipmentList) {
+		this.equipmentList = equipmentList;
+	}
+
 }

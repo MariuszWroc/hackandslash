@@ -6,6 +6,7 @@
 package pl.mygames.hackandslash.model;
 
 import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -24,15 +25,16 @@ public class Hero extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
-    private String activated;
-    @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id")
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer activated;
+    @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameCharacter gameCharacter;
-    @JoinColumn(name = "GameUser_id", referencedColumnName = "id")
+    @JoinColumn(name = "GameUser_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameUser gameUser;
-    @JoinColumn(name = "Place_id", referencedColumnName = "id")
+    @JoinColumn(name = "Place_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Place place;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
@@ -54,15 +56,15 @@ public class Hero extends AbstractEntity {
         this.id = id;
     }
 
-    public String getActivated() {
-        return activated;
-    }
+    public Integer getActivated() {
+		return activated;
+	}
 
-    public void setActivated(String activated) {
-        this.activated = activated;
-    }
+	public void setActivated(Integer activated) {
+		this.activated = activated;
+	}
 
-    public GameCharacter getGameCharacter() {
+	public GameCharacter getGameCharacter() {
         return gameCharacter;
     }
 
@@ -86,11 +88,12 @@ public class Hero extends AbstractEntity {
         this.place = place;
     }
 
-    public List<Journal> getJournalList() {
-        return journalList;
-    }
+	public List<Journal> getJournalList() {
+		return journalList;
+	}
 
-    public void setJournalList(List<Journal> journalList) {
-        this.journalList = journalList;
-    } 
+	public void setJournalList(List<Journal> journalList) {
+		this.journalList = journalList;
+	} 
+    
 }

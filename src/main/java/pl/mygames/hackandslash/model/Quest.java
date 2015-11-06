@@ -29,13 +29,15 @@ public class Quest extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String description;
-    @Size(max = 45)
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
     private String target;
-    @DateTimeFormat(pattern="dd/MM/yyyy") 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
-    @ManyToMany(mappedBy = "questList", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "quest", fetch = FetchType.LAZY)
     private List<Journal> journalList;
 
     public Quest() {
@@ -78,11 +80,12 @@ public class Quest extends AbstractEntity {
         this.startDate = startDate;
     }
 
-    public List<Journal> getJournalList() {
-        return journalList;
-    }
+	public List<Journal> getJournalList() {
+		return journalList;
+	}
 
-    public void setJournalList(List<Journal> journalList) {
-        this.journalList = journalList;
-    }
+	public void setJournalList(List<Journal> journalList) {
+		this.journalList = journalList;
+	}
+    
 }

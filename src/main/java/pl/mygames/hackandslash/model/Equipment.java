@@ -5,7 +5,6 @@
  */
 package pl.mygames.hackandslash.model;
 
-import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -23,10 +22,12 @@ public class Equipment extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.LAZY)
-    private List<Item> itemList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipment", fetch = FetchType.LAZY)
-    private List<GameCharacter> gameCharacterList;
+    @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private GameCharacter gameCharacter;
+    @JoinColumn(name = "Item_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Item item;
 
     public Equipment() {
     }
@@ -44,20 +45,20 @@ public class Equipment extends AbstractEntity {
         this.id = id;
     }
 
-    public List<Item> getItemList() {
-        return itemList;
-    }
+	public GameCharacter getGameCharacter() {
+		return gameCharacter;
+	}
 
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
-    }
+	public void setGameCharacter(GameCharacter gameCharacter) {
+		this.gameCharacter = gameCharacter;
+	}
 
-    public List<GameCharacter> getGameCharacterList() {
-        return gameCharacterList;
-    }
+	public Item getItem() {
+		return item;
+	}
 
-    public void setGameCharacterList(List<GameCharacter> gameCharacterList) {
-        this.gameCharacterList = gameCharacterList;
-    }
-    
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
 }

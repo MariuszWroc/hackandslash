@@ -25,10 +25,12 @@ public class Place extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
-    private String latitude;
-    @Size(max = 45)
-    private String longitude;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private Integer latitude;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private Integer longitude;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "place", fetch = FetchType.LAZY)
     private List<Hero> heroList;
 
@@ -48,19 +50,19 @@ public class Place extends AbstractEntity {
         this.id = id;
     }
 
-    public String getLatitude() {
+    public Integer getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Integer latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongitude() {
+    public Integer getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Integer longitude) {
         this.longitude = longitude;
     }
 

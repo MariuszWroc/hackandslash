@@ -5,7 +5,6 @@
  */
 package pl.mygames.hackandslash.model;
 
-import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -23,11 +22,9 @@ public class Journal extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @JoinTable(name = "Journal_has_Quest", joinColumns = {
-        @JoinColumn(name = "Journal_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "Quest_id", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Quest> questList;
+    @JoinColumn(name = "Quest_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Quest quest;
     @JoinColumn(name = "Hero_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Hero hero;
@@ -48,15 +45,15 @@ public class Journal extends AbstractEntity {
         this.id = id;
     }
 
-    public List<Quest> getQuestList() {
-        return questList;
-    }
+    public Quest getQuest() {
+		return quest;
+	}
 
-    public void setQuestList(List<Quest> questList) {
-        this.questList = questList;
-    }
+	public void setQuest(Quest quest) {
+		this.quest = quest;
+	}
 
-    public Hero getHero() {
+	public Hero getHero() {
         return hero;
     }
 

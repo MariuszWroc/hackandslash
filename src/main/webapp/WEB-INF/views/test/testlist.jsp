@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Test Page</title>
     </head>
     <body>
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-        <h1>Hello World!</h1>
+        <h1>View database queries results</h1>
         <a href="${contextPath}/characters">characters</a></br>
         <a href="${contextPath}/roles">roles</a></br>
         <a href="${contextPath}/users">users</a></br>

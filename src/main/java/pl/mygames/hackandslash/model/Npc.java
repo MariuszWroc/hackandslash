@@ -24,8 +24,10 @@ public class Npc extends AbstractEntity {
     @NotNull
     private Integer id;
     @Size(max = 45)
-    private String behaviour;
-    @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id")
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Integer behaviour;
+    @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private GameCharacter gameCharacter;
 
@@ -45,11 +47,11 @@ public class Npc extends AbstractEntity {
         this.id = id;
     }
 
-    public String getBehaviour() {
+    public Integer getBehaviour() {
         return behaviour;
     }
 
-    public void setBehaviour(String behaviour) {
+    public void setBehaviour(Integer behaviour) {
         this.behaviour = behaviour;
     }
 

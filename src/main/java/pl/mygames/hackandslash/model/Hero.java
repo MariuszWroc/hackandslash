@@ -57,14 +57,14 @@ public class Hero extends AbstractEntity {
     }
 
     public Integer getActivated() {
-		return activated;
-	}
+        return activated;
+    }
 
-	public void setActivated(Integer activated) {
-		this.activated = activated;
-	}
+    public void setActivated(Integer activated) {
+        this.activated = activated;
+    }
 
-	public GameCharacter getGameCharacter() {
+    public GameCharacter getGameCharacter() {
         return gameCharacter;
     }
 
@@ -88,12 +88,12 @@ public class Hero extends AbstractEntity {
         this.place = place;
     }
 
-	public List<Journal> getJournalList() {
-		return journalList;
-	}
+    public List<Journal> getJournalList() {
+        return journalList;
+    }
 
-	public void setJournalList(List<Journal> journalList) {
-		this.journalList = journalList;
-	} 
-    
+    public void setJournalList(List<Journal> journalList) {
+        this.journalList = journalList;
+    }
+
 }

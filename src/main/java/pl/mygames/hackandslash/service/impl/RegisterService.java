@@ -10,11 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.mygames.hackandslash.dao.RoleDao;
-import pl.mygames.hackandslash.dao.UserDao;
+import pl.mygames.hackandslash.dao.*;
 import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.model.GameRole;
-import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.model.*;
 
 /**
  *
@@ -30,6 +28,9 @@ public class RegisterService {
     
     @Autowired
     private RoleDao roleDao;
+    
+    @Autowired
+    private HeroDao heroDao;
     
     @Transactional(readOnly = false)
     public void add(RegisterDTO registerDTO) {
@@ -48,22 +49,5 @@ public class RegisterService {
         user.setGameRole(role);
         
         userDao.add(user);
-    }
-
-    @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
-    public void delete(GameUser user) {
-    }
-
-    @Transactional(readOnly = false)
-    public void update(GameUser user) {
-    }
-
-    public GameUser findById(Integer id) {
-        return null;
-    }
-
-    public List<GameUser> findAll() {
-        return null;
     }
 }

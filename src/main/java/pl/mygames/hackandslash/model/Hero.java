@@ -39,6 +39,7 @@ public class Hero extends AbstractEntity {
     private Place place;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
     private List<Journal> journalList;
+    private Integer money;
 
     public Hero() {
     }
@@ -96,4 +97,12 @@ public class Hero extends AbstractEntity {
         this.journalList = journalList;
     }
 
+	public Integer getMoney() {
+		return money;
+	}
+
+	public void setMoney(Integer money) {
+		this.money = money;
+	}
+    
 }

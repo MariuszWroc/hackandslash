@@ -7,6 +7,7 @@ package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
 
+
 /**
  *
  * @author mariusz

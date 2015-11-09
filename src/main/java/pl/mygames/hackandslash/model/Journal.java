@@ -28,6 +28,8 @@ public class Journal extends AbstractEntity {
     @JoinColumn(name = "Hero_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Hero hero;
+    @Basic(optional = false)
+    private Integer passed;
 
     public Journal() {
     }
@@ -59,5 +61,14 @@ public class Journal extends AbstractEntity {
 
     public void setHero(Hero hero) {
         this.hero = hero;
-    } 
+    }
+
+	public Integer getPassed() {
+		return passed;
+	}
+
+	public void setPassed(Integer passed) {
+		this.passed = passed;
+	} 
+    
 }

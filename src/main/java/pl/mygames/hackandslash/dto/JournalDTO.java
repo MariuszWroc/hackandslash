@@ -6,11 +6,14 @@
 package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
+import pl.mygames.hackandslash.model.Quest;
 /**
  *
  * @author mariusz
  */
 public class JournalDTO implements Serializable{
     private static final long serialVersionUID = 1L;
+    private List<Quest> quests;
 }

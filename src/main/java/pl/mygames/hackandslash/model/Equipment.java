@@ -28,6 +28,8 @@ public class Equipment extends AbstractEntity {
     @JoinColumn(name = "Item_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Item item;
+    @Basic(optional = false)
+    private Integer inPlace;
 
     public Equipment() {
     }
@@ -59,6 +61,14 @@ public class Equipment extends AbstractEntity {
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+
+	public Integer getInPlace() {
+		return inPlace;
+	}
+
+	public void setInPlace(Integer inPlace) {
+		this.inPlace = inPlace;
 	}
 
 }

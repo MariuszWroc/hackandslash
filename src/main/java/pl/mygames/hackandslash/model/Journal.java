@@ -5,6 +5,8 @@
  */
 package pl.mygames.hackandslash.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -30,6 +32,8 @@ public class Journal extends AbstractEntity {
     private Hero hero;
     @Basic(optional = false)
     private Integer passed;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date startDate;
 
     public Journal() {
     }
@@ -70,5 +74,13 @@ public class Journal extends AbstractEntity {
 	public void setPassed(Integer passed) {
 		this.passed = passed;
 	} 
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
     
 }

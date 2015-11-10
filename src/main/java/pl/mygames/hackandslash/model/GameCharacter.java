@@ -55,6 +55,8 @@ public class GameCharacter extends AbstractEntity {
     private Integer constitution;
     private Integer intelligence;
     private Integer charisma;
+    private Integer baseHP;
+    private Integer experience;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Npc> npcList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
@@ -188,6 +190,22 @@ public class GameCharacter extends AbstractEntity {
 
 	public void setEquipmentList(List<Equipment> equipmentList) {
 		this.equipmentList = equipmentList;
+	}
+
+	public Integer getBaseHP() {
+		return baseHP;
+	}
+
+	public void setBaseHP(Integer baseHP) {
+		this.baseHP = baseHP;
+	}
+
+	public Integer getExperience() {
+		return experience;
+	}
+
+	public void setExperience(Integer experience) {
+		this.experience = experience;
 	}
 
 }

@@ -35,8 +35,6 @@ public class Quest extends AbstractEntity {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String target;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDate;
     @OneToMany(mappedBy = "quest", fetch = FetchType.LAZY)
     private List<Journal> journalList;
 
@@ -70,14 +68,6 @@ public class Quest extends AbstractEntity {
 
     public void setTarget(String target) {
         this.target = target;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
     }
 
 	public List<Journal> getJournalList() {

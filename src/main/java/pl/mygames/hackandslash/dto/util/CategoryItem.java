@@ -1,17 +1,23 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum CategoryItem {
-	Shields(1),
-	Swords(2),
-	Bows(3);
+	Shields(1, "Tarcze"),
+	Swords(2, "Miecze"),
+	Bows(3, "Łuki");
 	
 	private int value;
+	private String name;
 
-	private CategoryItem(int value) {
+	private CategoryItem(int value, String name) {
 		this.value = value;
+		this.name = name;
 	}
 
 	public int getValue() {
 		return value;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

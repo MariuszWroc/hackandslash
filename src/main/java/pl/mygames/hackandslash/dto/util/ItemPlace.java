@@ -1,22 +1,28 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum ItemPlace {
-	RightHand(1),
-	LeftHand(2),
-	Head(3),
-	Body(4),
-	Feet(5),
-	Hands(6),
-	LeftFinger(7),
-	RightFinger(8);
+	RightHand(1, "Prawa ręka"),
+	LeftHand(2, "Lewa ręka"),
+	Head(3, "Głowa"),
+	Body(4, "Tułów"),
+	Feet(5, "Stopy"),
+	Hands(6, "Ręce"),
+	LeftFinger(7, "Lewy palec"),
+	RightFinger(8, "Prawy palec");
 	
 	private int value;
+	private String name;
 
-	private ItemPlace(int value) {
+	private ItemPlace(int value, String name) {
 		this.value = value;
+		this.name = name;
 	}
 
 	public int getValue() {
 		return value;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

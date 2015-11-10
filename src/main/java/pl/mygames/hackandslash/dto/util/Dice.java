@@ -1,17 +1,14 @@
 package pl.mygames.hackandslash.dto.util;
 
-public enum Profession {
-	Other(0, "Inna"),
-	Mage(1, "Mag"),
-	Warrior(2, "Wojownik"),
-	Hunter(3, "Łowca"),
-	Thief(4, "Złodziej");
-	
+public enum Dice {
+	Dice1(1, "1D4"),
+	Dice2(2, "1D6"),
+	Dice3(3, "1D8");
 	
 	private int value;
 	private String name;
 
-	private Profession(int value, String name) {
+	private Dice(int value, String name) {
 		this.value = value;
 		this.name = name;
 	}

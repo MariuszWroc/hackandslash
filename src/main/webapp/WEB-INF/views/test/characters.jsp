@@ -18,7 +18,8 @@
             <tr>
                 <td>Id</td><td>first name</td><td>last name</td><td>gender</td>
                 <td>age</td><td>race</td><td>profession</td><td>strength</td>
-                <td>dexterity</td><td>constitution</td><td>intelligence</td><td>charisma</td>
+                <td>dexterity</td><td>constitution</td><td>intelligence</td>
+                <td>charisma</td><td>baseHP</td><td>experience</td>
             </tr>
             <c:forEach items="${characters}" var="character">
                 <tr>
@@ -34,6 +35,8 @@
                     <td>${character.constitution}</td>
                     <td>${character.intelligence}</td>
                     <td>${character.charisma}</td>
+                    <td>${character.baseHP}</td>
+                    <td>${character.experience}</td>
                 </tr>
             </c:forEach>
         </table>

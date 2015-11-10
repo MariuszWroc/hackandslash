@@ -16,12 +16,13 @@
         <h2>List of heroes</h2>  
         <table>
             <tr>
-                <td>Id</td><td>activated</td>
+                <td>id</td><td>activated</td><td>money</td>
             </tr>
             <c:forEach items="${heroes}" var="hero">
                 <tr>
                     <td>${hero.id}</td>
                     <td>${hero.activated}</td>
+                    <td>${hero.money}</td>
                 </tr>
             </c:forEach>
         </table>

@@ -16,11 +16,12 @@
         <h2>List of equipments</h2>  
         <table>
             <tr>
-                <td>Id</td><td>Role name</td>
+                <td>Id</td><td>In place</td>
             </tr>
             <c:forEach items="${equipments}" var="equipment">
                 <tr>
                     <td>${equipment.id}</td>
+                    <td>${equipment.inPlace}</td>
                 </tr>
             </c:forEach>
         </table>

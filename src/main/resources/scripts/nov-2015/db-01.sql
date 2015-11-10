@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `hackandslash`.`Hero` (
   `Place_id` INT(11) NOT NULL COMMENT '',
   `GameUser_id` INT(11) NOT NULL COMMENT '',
   `GameCharacter_id` INT(11) NOT NULL COMMENT '',
+  `money` INT(11) NOT NULL DEFAULT 0 COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_Hero_Place_idx` (`Place_id` ASC)  COMMENT '',
   INDEX `fk_Hero_GameUser1_idx` (`GameUser_id` ASC)  COMMENT '',
@@ -299,7 +300,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hackandslash`;
-INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`) VALUES (1, 1, 1, 1, 1);
+INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`) VALUES (1, 1, 1, 1, 1, DEFAULT);
 
 COMMIT;
 
@@ -330,6 +331,7 @@ COMMIT;
 START TRANSACTION;
 USE `hackandslash`;
 INSERT INTO `hackandslash`.`Npc` (`id`, `behaviour`, `GameCharacter_id`) VALUES (1, 1, 2);
+INSERT INTO `hackandslash`.`Npc` (`id`, `behaviour`, `GameCharacter_id`) VALUES (2, 2, 3);
 
 COMMIT;
 

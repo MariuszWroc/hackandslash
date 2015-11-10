@@ -5,12 +5,9 @@
  */
 package pl.mygames.hackandslash.model;
 
-import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import org.joda.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -21,8 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "Quest.findAll", query = "SELECT q FROM Quest q"),
     @NamedQuery(name = "Quest.findById", query = "SELECT q FROM Quest q WHERE q.id = :id"),
     @NamedQuery(name = "Quest.findByDescription", query = "SELECT q FROM Quest q WHERE q.description = :description"),
-    @NamedQuery(name = "Quest.findByTarget", query = "SELECT q FROM Quest q WHERE q.target = :target"),
-    @NamedQuery(name = "Quest.findByStartDate", query = "SELECT q FROM Quest q WHERE q.startDate = :startDate")})
+    @NamedQuery(name = "Quest.findByTarget", query = "SELECT q FROM Quest q WHERE q.target = :target")})
 public class Quest extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     @Id

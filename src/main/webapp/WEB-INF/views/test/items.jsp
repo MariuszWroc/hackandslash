@@ -25,7 +25,7 @@
                 <tr>
                     <td>${item.id}</td>
                     <td>${item.name}</td>
-                    <td>${item.type}</td>
+                    <td>${item.category}</td>
                     <td>${item.wage}</td>
                     <td>${item.attack}</td>
                     <td>${item.defend}</td>

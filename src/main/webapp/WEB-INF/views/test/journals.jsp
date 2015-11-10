@@ -16,11 +16,13 @@
         <h2>List of journals</h2>  
         <table>
             <tr>
-                <td>Id</td>
+                <td>id</td><td>passed</td><td>start date</td>
             </tr>
             <c:forEach items="${journals}" var="journal">
                 <tr>
                     <td>${journal.id}</td>
+                    <td>${journal.passed}</td>
+                    <td>${journal.startDate}</td>
                 </tr>
             </c:forEach>
         </table>

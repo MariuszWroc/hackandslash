@@ -68,22 +68,28 @@
         app.controller('registerController', ['$scope', '$http', function($scope, $http){
                 $scope.user ={
                             id : 0,
-                            age : 26,
                             firstname : 'firstname',
                             lastname : 'lastname',
+                            age : 26,
+                            gender : 0,
                             login : 'login',
                             password : 'password',
+                            activated: 0,
+                            roleId : 0,
+                            heroesIds : [],
                             };
+                            
                 $scope.doRegister = function (){
                     $http.get('/hackandslash/userList.json').success(function(res) {
                         console.log('getUsers',res);
                         $scope.user.id = res.length;
+                        $scope.user.heroesIds.push(0);
                         console.log('adding',$scope.user);
-//                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
-//                            console.log('success');
-//                        }).error(function(error) {
-//                            console.log(error);
-//                        });
+                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
+                            console.log('success');
+                        }).error(function(error) {
+                            console.log(error);
+                        });
                     }).error(function(error) {
                         alert(error);
                     });

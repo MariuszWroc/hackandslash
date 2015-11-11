@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.mygames.hackandslash.dto.RegisterDTO;
 import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IUserService;
 
 /**
@@ -32,6 +34,14 @@ public class HomeController {
         @Qualifier(value = "userService")
         public void setUserService(IUserService userService) {
             this.userService = userService;
+        }
+        
+        private IRegisterService registerService;
+        
+        @Autowired(required = true)
+        @Qualifier(value = "registerService")
+        public void setRegisterService(IRegisterService registerService) {
+            this.registerService = registerService;
         }
         
 	/**
@@ -55,8 +65,8 @@ public class HomeController {
             * This method will add a user.
             */
            @RequestMapping(value = {"/addUser"}, method = RequestMethod.POST)
-           public @ResponseBody void addUser(@RequestBody GameUser user) {    
-               userService.add(user);
+           public @ResponseBody void addUser(@RequestBody RegisterDTO user) {    
+               registerService.add(user);
            }
            
            

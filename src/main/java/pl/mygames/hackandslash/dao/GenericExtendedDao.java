@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -91,6 +93,11 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     public void saveOrUpdate(T entity) {
         getSession().saveOrUpdate(entity);
     }
+    
+    @Override
+    public T get(PK id) {
+        return (T) type.cast(getSession().load(type, id));
+    }
 
     @Override
     public T findById(PK id) throws DataAccessException {
@@ -116,6 +123,15 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     public List<T> findAll() {
         return getSession().createCriteria(type).list();
     }
+    
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<T> findAllByCriteria() {
+        Criteria criteria = getSession().createCriteria(type);
+        List<T> list = criteria.list();
+        return list;
+    }
+    
     
     @Override
     public Integer count() {

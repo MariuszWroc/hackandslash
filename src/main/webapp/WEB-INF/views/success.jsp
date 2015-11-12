@@ -15,7 +15,11 @@
     <body>
         message : ${success}
         <br/>
-        <br/>
-        Go back to <a href="<c:url value='/list' />">List of All Employees</a>
+        <table>        
+	        <tr>
+	        	<td>Login :</td> <td>${registerForm.login}</td>
+	        	<td>Password :</td> <td>${registerForm.password}</td>
+	        </tr>
+		</table>
     </body>
 </html>

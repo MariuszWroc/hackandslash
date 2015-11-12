@@ -157,11 +157,11 @@ public class TestController {
      */
     @RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
     public String getRoles(ModelMap model) {
-        List<GameRole> roles;
+        GameRole roles;
         if(roleService.findAll().isEmpty()) {
         	logger.info("Roles list is empty");
         } else {
-        	roles = roleService.findAll();
+        	roles = roleService.fin
         	model.addAttribute("roles", roles);
         }
         return "test/roles";

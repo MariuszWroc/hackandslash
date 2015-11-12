@@ -1,6 +1,8 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
@@ -43,6 +45,11 @@ public class RoleService implements IRoleService {
     @Override
     public GameRole findById(Integer id) {
         return dao.findById(id);
+    }
+    
+    @Override
+    public GameRole findByQuery(Integer id) {
+        return dao.findAllByCriteria().iterator().next();
     }
 
     @Override

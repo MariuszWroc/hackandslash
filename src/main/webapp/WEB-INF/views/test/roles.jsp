@@ -18,11 +18,11 @@
             <tr>
                 <td>Id</td><td>Role name</td>
             </tr>
-            <c:forEach items="${roles}" var="role">
+<%--             <c:forEach items="${roles}" var="role"> --%>
                 <tr>
                     <td>${role.id}</td>
                     <td>${role.rolename}</td>
                 </tr>
-            </c:forEach>
+<%--             </c:forEach> --%>
         </table>
 </html>

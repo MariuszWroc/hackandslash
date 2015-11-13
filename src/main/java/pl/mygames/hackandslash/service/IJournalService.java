@@ -9,4 +9,5 @@ public interface IJournalService {
     void update(Journal journal);
     Journal findById(Integer id);	
     List<Journal> findAll();
+    List<Journal> findByQuery(Integer id);
 }

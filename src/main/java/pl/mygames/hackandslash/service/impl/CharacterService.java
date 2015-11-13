@@ -39,6 +39,13 @@ public class CharacterService implements ICharacterService {
     public void update(GameCharacter character) {
         dao.update(character);
     }
+    
+    @Override
+    public List<GameCharacter> findByQuery(Integer id) {
+        String query = "FROM GameCharacter C WHERE C.id = " + id;
+        
+        return dao.findByQuery(query);
+    }
 
     @Override
     public GameCharacter findById(Integer id) {

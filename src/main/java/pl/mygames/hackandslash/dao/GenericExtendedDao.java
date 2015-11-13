@@ -100,6 +100,7 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     }
 
     @Override
+    @Deprecated
     public T findById(PK id) throws DataAccessException {
         T found = type.cast(getSession().byId(type));
         if (found == null) {
@@ -111,27 +112,18 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> findByQuery(String query) {
-        List<T> listObjects = getSession().createQuery(query).list();
-        return listObjects;
+        return getSession().createQuery(query).list();
     }
     
      /**
      * Find all entities
      * @return
      */
+    @SuppressWarnings("unchecked")
     @Override
     public List<T> findAll() {
         return getSession().createCriteria(type).list();
     }
-    
-    @SuppressWarnings("unchecked")
-    @Override
-    public List<T> findAllByCriteria() {
-        Criteria criteria = getSession().createCriteria(type);
-        List<T> list = criteria.list();
-        return list;
-    }
-    
     
     @Override
     public Integer count() {

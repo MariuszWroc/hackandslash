@@ -9,4 +9,5 @@ public interface IPlaceService {
     void update(Place place);
     Place findById(Integer id);
     List<Place> findAll();
+    List<Place> findByQuery(Integer id);
 }

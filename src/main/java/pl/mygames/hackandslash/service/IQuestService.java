@@ -9,4 +9,5 @@ public interface IQuestService {
     void update(Quest quest);
     Quest findById(Integer id);
     List<Quest> findAll();
+    List<Quest> findByQuery(Integer id);
 }

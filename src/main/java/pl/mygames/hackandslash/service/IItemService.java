@@ -9,4 +9,5 @@ public interface IItemService {
     void update(Item item);
     Item findById(Integer id);	
     List<Item> findAll();
+    List<Item> findByQuery(Integer id);
 }

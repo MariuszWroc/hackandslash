@@ -45,5 +45,4 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
 
 	T get(PK id);
 
-	List<T> findAllByCriteria();
 }

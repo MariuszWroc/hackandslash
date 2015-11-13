@@ -9,4 +9,5 @@ public interface IHeroService {
     void update(Hero hero);
     Hero findById(Integer id);	
     List<Hero> findAll();
+    List<Hero> findByQuery(Integer id);
 }

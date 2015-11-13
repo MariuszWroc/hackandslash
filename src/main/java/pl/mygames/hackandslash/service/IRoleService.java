@@ -9,5 +9,5 @@ public interface IRoleService {
     void update(GameRole role);
     GameRole findById(Integer id);
     List<GameRole> findAll();
-	GameRole findByQuery(Integer id);
+	List<GameRole> findByQuery(Integer id);
 }

@@ -10,8 +10,8 @@ public enum ItemPlace {
 	LeftFinger(7, "Lewy palec"),
 	RightFinger(8, "Prawy palec");
 	
-	private int value;
-	private String name;
+	private final int value;
+	private final String name;
 
 	private ItemPlace(int value, String name) {
 		this.value = value;

@@ -9,4 +9,5 @@ public interface IEquipmentService {
     void update(Equipment equipment);
     Equipment findById(Integer id);
     List<Equipment> findAll();
+    List<Equipment> findByQuery(Integer id);
 }

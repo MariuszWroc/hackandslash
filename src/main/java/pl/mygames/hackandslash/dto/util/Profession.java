@@ -8,8 +8,8 @@ public enum Profession {
 	Thief(4, "Złodziej");
 	
 	
-	private int value;
-	private String name;
+	private final int value;
+	private final String name;
 
 	private Profession(int value, String name) {
 		this.value = value;

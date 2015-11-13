@@ -40,6 +40,13 @@ public class HeroService implements IHeroService {
     public Hero findById(Integer id) {
         return dao.findById(id);
     }
+    
+    @Override
+    public List<Hero> findByQuery(Integer id) {
+        String query = "FROM Hero H WHERE H.id = " + id;
+        
+        return dao.findByQuery(query);
+    }
 
     @Override
     public List<Hero> findAll() {

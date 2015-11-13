@@ -2,12 +2,14 @@ package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.controller.test.TestController;
 import pl.mygames.hackandslash.dao.RoleDao;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
@@ -15,7 +17,8 @@ import pl.mygames.hackandslash.service.IRoleService;
 @Service
 @Transactional(readOnly = true)
 public class RoleService implements IRoleService {
-
+    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+    
     @Autowired
     private RoleDao dao;
 
@@ -39,7 +42,7 @@ public class RoleService implements IRoleService {
     @Transactional(readOnly = false)
     @Override
     public void update(GameRole role) {
-	dao.update(role);
+    	dao.update(role);
     }
 
     @Override
@@ -48,8 +51,10 @@ public class RoleService implements IRoleService {
     }
     
     @Override
-    public GameRole findByQuery(Integer id) {
-        return dao.findAllByCriteria().iterator().next();
+    public List<GameRole> findByQuery(Integer id) {
+        String query = "FROM GameRole R WHERE R.id = " + id;
+        
+        return dao.findByQuery(query);
     }
 
     @Override

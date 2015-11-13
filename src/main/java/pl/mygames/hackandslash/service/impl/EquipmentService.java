@@ -40,6 +40,13 @@ public class EquipmentService implements IEquipmentService {
     public Equipment findById(Integer id) {
         return dao.findById(id);
     }
+    
+    @Override
+    public List<Equipment> findByQuery(Integer id) {
+        String query = "FROM Equipment E WHERE E.id = " + id;
+        
+        return dao.findByQuery(query);
+    }
 
     @Override
     public List<Equipment> findAll() {

@@ -8,21 +8,38 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Show users</title>
-    </head>
-    <body>
-        <h2>List of roles</h2>  
-        <table>
-            <tr>
-                <td>Id</td><td>Role name</td>
-            </tr>
-<%--             <c:forEach items="${roles}" var="role"> --%>
-                <tr>
-                    <td>${role.id}</td>
-                    <td>${role.rolename}</td>
-                </tr>
-<%--             </c:forEach> --%>
-        </table>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Show users</title>
+</head>
+<body>
+	<div>
+		<h2>List of roles</h2>
+		<table>
+			<tr>
+				<td>Id</td>
+				<td>Role name</td>
+			</tr>
+            <c:forEach items="${roles}" var="role">
+			<tr>
+				<td>${role.id}</td>
+				<td>${role.rolename}</td>
+			</tr>
+			</c:forEach>
+		</table>
+	</div>
+	<div>
+		<h2>One role</h2>
+		<table>
+			<tr>
+				<td>Id</td>
+				<td>Role name</td>
+			</tr>
+			<tr>
+				<td>${one_role.id}</td>
+				<td>${one_role.rolename}</td>
+			</tr>
+		</table>
+	</div>
+</body>
 </html>

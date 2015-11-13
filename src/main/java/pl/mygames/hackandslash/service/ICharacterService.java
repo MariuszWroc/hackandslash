@@ -9,4 +9,5 @@ public interface ICharacterService {
     void update(GameCharacter character);
     GameCharacter findById(Integer id);
     List<GameCharacter> findAll();
+    List<GameCharacter> findByQuery(Integer id);
 }

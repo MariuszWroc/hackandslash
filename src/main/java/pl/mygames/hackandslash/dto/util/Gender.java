@@ -4,8 +4,8 @@ public enum Gender {
 	Male(1, "Mężczyzna"),
 	Female(2, "Kobieta");
 	
-	private int value;
-	private String name;
+	private final int value;
+	private final String name;
 
 	private Gender(int value, String name) {
 		this.value = value;

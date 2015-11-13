@@ -5,8 +5,8 @@ public enum Dice {
 	Dice2(2, "1D6"),
 	Dice3(3, "1D8");
 	
-	private int value;
-	private String name;
+	private final int value;
+	private final String name;
 
 	private Dice(int value, String name) {
 		this.value = value;

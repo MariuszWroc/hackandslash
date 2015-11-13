@@ -9,4 +9,5 @@ public interface INpcService {
     void update(Npc npc);
     Npc findById(Integer id);	
     List<Npc> findAll();
+    List<Npc> findByQuery(Integer id);
 }

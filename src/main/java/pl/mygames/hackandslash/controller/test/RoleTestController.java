@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,6 +30,16 @@ public class RoleTestController {
         model.addAttribute("one_role", one_role);
         return "test/roles";
     }
+
+    @RequestMapping(value = "/role/add", method = RequestMethod.POST)  
+    public String addRole(@ModelAttribute("one_role")GameRole role) {
+        if (role.getId() == 0) {
+            roleService.add(role);
+        } else {
+            roleService.update(role);
+        } 
+        return "redirect:/roles";  
+    } 
 
     /*
      * This method will get all existing roles.

@@ -26,5 +26,16 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One quest</h2>
+        <table>
+            <tr>
+                <td>Id</td><td>description</td><td>target</td>
+            </tr>
+            <tr>
+                <td>${one_quest.id}</td>
+                <td>${one_quest.description}</td>
+                <td>${one_quest.target}</td>
+            </tr>
+        </table>
     </body>
 </html>

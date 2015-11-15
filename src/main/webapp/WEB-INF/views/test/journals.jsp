@@ -26,5 +26,16 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One journal</h2>
+        <table>
+            <tr>
+                <td>id</td><td>passed</td><td>start date</td>
+            </tr>
+            <tr>
+                <td>${one_journal.id}</td>
+                <td>${one_journal.passed}</td>
+                <td>${one_journal.startDate}</td>
+            </tr>
+        </table>
     </body>
 </html>

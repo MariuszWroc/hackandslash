@@ -25,5 +25,15 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One npc</h2>
+        <table>
+            <tr>
+                <td>Id</td><td>behaviour</td>
+            </tr>
+            <tr>
+                <td>${one_npc.id}</td>
+                <td>${one_npc.behaviour}</td>
+            </tr>
+        </table>
     </body>
 </html>

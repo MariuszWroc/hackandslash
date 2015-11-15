@@ -26,5 +26,16 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One place</h2>
+        <table>     
+            <tr>
+                <td>Id</td><td>latitude</td><td>longitude</td>
+            </tr>
+            <tr>
+                <td>${one_place.id}</td>
+                <td>${one_place.latitude}</td>
+                <td>${one_place.longitude}</td>
+            </tr>
+        </table>
     </body>
 </html>

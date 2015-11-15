@@ -33,7 +33,23 @@
                 </tr>
             </c:forEach>
         </table>
-        <br/>
-        <a href="<c:url value='/new' />">Add New Employee</a>
+        <h2>One user</h2>
+        <table>
+            <tr>
+                <td>Name</td><td>Last name</td><td>Login</td>
+                <td>Id</td><td>Password</td><td>Age</td>
+                <td>Gender</td><td>Activated</td>
+            </tr>
+            <tr>
+                <td>${one_user.id}</td>
+                <td>${one_user.firstname}</td>
+                <td>${one_user.lastname}</td>
+                <td>${one_user.login}</td>
+                <td>${one_user.age}</td>
+                <td>${one_user.password}</td>
+                <td>${one_user.gender}</td>
+                <td>${one_user.activated}</td>
+            </tr>
+        </table>
     </body>
 </html>

@@ -25,5 +25,15 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One equipment</h2>
+        <table>
+            <tr>
+                <td>Id</td><td>In place</td>
+            </tr>
+            <tr>
+                <td>${one_equipment.id}</td>
+                <td>${one_equipment.inPlace}</td>
+            </tr>
+        </table>
     </body>
 </html>

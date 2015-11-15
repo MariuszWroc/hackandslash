@@ -40,5 +40,30 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One character</h2>
+        <table>
+                <tr>
+                    <td>Id</td><td>first name</td><td>last name</td><td>gender</td>
+                    <td>age</td><td>race</td><td>profession</td><td>strength</td>
+                    <td>dexterity</td><td>constitution</td><td>intelligence</td>
+                    <td>charisma</td><td>baseHP</td><td>experience</td>
+                </tr>
+                <tr>
+                    <td>${one_character.id}</td>
+                    <td>${one_character.firstname}</td>
+                    <td>${one_character.lastname}</td>
+                    <td>${one_character.gender}</td>
+                    <td>${one_character.age}</td>
+                    <td>${one_character.race}</td>
+                    <td>${one_character.profession}</td>
+                    <td>${one_character.strength}</td>
+                    <td>${one_character.dexterity}</td>
+                    <td>${one_character.constitution}</td>
+                    <td>${one_character.intelligence}</td>
+                    <td>${one_character.charisma}</td>
+                    <td>${one_character.baseHP}</td>
+                    <td>${one_character.experience}</td>
+                </tr>
+        </table>
     </body>
 </html>

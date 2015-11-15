@@ -26,5 +26,16 @@
                 </tr>
             </c:forEach>
         </table>
+        <h2>One hero</h2>
+        <table>
+            <tr>
+                <td>id</td><td>activated</td><td>money</td>   
+            </tr>
+            <tr>
+                <td>${one_hero.id}</td>
+                <td>${one_hero.activated}</td>
+                <td>${one_hero.money}</td>
+            </tr>
+        </table>
     </body>
 </html>

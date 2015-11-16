@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameCharacter;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.ICharacterService;
 
 @Controller
@@ -30,6 +32,16 @@ public class CharacterTestController {
        	model.addAttribute("one_character", one_character);
         return "test/characters";
     }
+	
+    @RequestMapping(value = "/characters/add", method = RequestMethod.POST)  
+    public String addCharacter(@ModelAttribute("one_character")GameCharacter character) {
+        if (character.getId() == 0) {
+        	characterService.add(character);
+        } else {
+        	characterService.update(character);
+        } 
+        return "redirect:/characters";  
+    } 
     
     /*
      * This method will list all existing characters.

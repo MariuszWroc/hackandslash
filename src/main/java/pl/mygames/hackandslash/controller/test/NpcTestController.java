@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Npc;
 import pl.mygames.hackandslash.service.INpcService;
 
@@ -29,6 +31,16 @@ public class NpcTestController {
     	model.addAttribute("one_npc", one_npc);
         return "test/npcs";
     }
+	
+    @RequestMapping(value = "/npcs/add", method = RequestMethod.POST)  
+    public String addNpc(@ModelAttribute("one_npc")Npc npc) {
+        if (npc.getId() == 0) {
+        	npcService.add(npc);
+        } else {
+        	npcService.update(npc);
+        } 
+        return "redirect:/npcs";  
+    } 
     
     /*
      * This method will list all existing npcs.

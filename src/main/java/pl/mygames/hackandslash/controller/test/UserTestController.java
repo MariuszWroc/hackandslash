@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -33,6 +35,16 @@ public class UserTestController {
 		model.addAttribute("one_user", one_user);
 	    return "test/users";
 	}
+	
+    @RequestMapping(value = "/users/add", method = RequestMethod.POST)  
+    public String addUser(@ModelAttribute("one_user")GameUser user) {
+        if (user.getId() == 0) {
+            userService.add(user);
+        } else {
+        	userService.update(user);
+        } 
+        return "redirect:/users";  
+    } 
 	
 	/*
 	 * This method will list all existing users.

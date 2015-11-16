@@ -46,11 +46,12 @@
     </div>
     <div>
         <h2>Add/Edit role</h2>  
-        <c:url var="addAction" value="/role/add" ></c:url>
+        <c:url var="addAction" value="/roles/add" ></c:url>
         <form:form method="POST" action="${addAction}" commandName="one_role">  
             <table>  
                 <tr>  
                     <td>
+                    	<form:select path="id" items="${roles}" itemLabel="id" itemLabel = "name"/>
                         <form:label path="id"><spring:message text="ID"/></form:label></td>  
                     <td>
                         <form:input path="id" readonly="true" size="8"  disabled="true" />
@@ -66,7 +67,14 @@
                     </td> 
                 </tr>   
                 <tr>  
-                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+                    <td colspan="2">
+                    	<c:if test="${!empty one_role.id}">
+                    		<input type="submit" value="Edit"/>
+                    	</c:if>
+                    	<c:if test="${empty one_role.id}">
+                    		<input type="submit" value="Add"/>
+                    	</c:if>
+                    </td>  
                 </tr>  
             </table>   
         </form:form>                    

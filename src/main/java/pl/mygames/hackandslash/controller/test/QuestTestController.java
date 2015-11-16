@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
@@ -29,6 +31,16 @@ public class QuestTestController {
     	model.addAttribute("one_quest", one_quest);
         return "test/quests";
     }
+	
+    @RequestMapping(value = "/quests/add", method = RequestMethod.POST)  
+    public String addQuest(@ModelAttribute("one_quest")Quest quest) {
+        if (quest.getId() == 0) {
+        	questService.add(quest);
+        } else {
+        	questService.update(quest);
+        } 
+        return "redirect:/quests";  
+    } 
 
     /*
      * This method will list all existing quests.

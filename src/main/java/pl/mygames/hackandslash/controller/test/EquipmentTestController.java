@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.Equipment;
+import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
 @Controller
@@ -29,6 +31,16 @@ public class EquipmentTestController {
 		model.addAttribute("one_equipment", one_equipment);
         return "test/equipments";
     }
+	
+    @RequestMapping(value = "/equipments/add", method = RequestMethod.POST)  
+    public String addEquipment(@ModelAttribute("one_equipment")Equipment equipment) {
+        if (equipment.getId() == 0) {
+        	equipmentService.add(equipment);
+        } else {
+        	equipmentService.update(equipment);
+        } 
+        return "redirect:/equipments";  
+    } 
     
     /*
      * This method will list all existing equipments.

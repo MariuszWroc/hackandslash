@@ -1,7 +1,12 @@
 package pl.mygames.hackandslash.controller.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +36,7 @@ public class RoleTestController {
         return "test/roles";
     }
 
-    @RequestMapping(value = "/role/add", method = RequestMethod.POST)  
+    @RequestMapping(value = "/roles/add", method = RequestMethod.POST)  
     public String addRole(@ModelAttribute("one_role")GameRole role) {
         if (role.getId() == 0) {
             roleService.add(role);
@@ -41,6 +46,17 @@ public class RoleTestController {
         return "redirect:/roles";  
     } 
 
+    
+    @SuppressWarnings("rawtypes")
+	protected Map mappingRoles(HttpServletRequest request, List<GameRole> roles) throws Exception {
+    	Map<Integer,String> mappedRoles = new LinkedHashMap<>();
+    	for(GameRole role : roles) {
+    		mappedRoles.put(role.getId(), role.getRolename());
+    	}
+    	
+    	return mappedRoles; 
+    }
+    
     /*
      * This method will get all existing roles.
      */

@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.Item;
+import pl.mygames.hackandslash.model.Journal;
 import pl.mygames.hackandslash.service.IItemService;
 
 @Controller
@@ -29,6 +31,16 @@ public class ItemTestController {
     	model.addAttribute("one_item", one_item);
         return "test/items";
     }
+	  
+    @RequestMapping(value = "/items/add", method = RequestMethod.POST)  
+    public String addItem(@ModelAttribute("one_item")Item item) {
+        if (item.getId() == 0) {
+        	itemService.add(item);
+        } else {
+        	itemService.update(item);
+        } 
+        return "redirect:/items";  
+    } 
     
     /*
      * This method will list all existing items.

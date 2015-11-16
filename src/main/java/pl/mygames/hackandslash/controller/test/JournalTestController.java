@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Journal;
 import pl.mygames.hackandslash.service.IJournalService;
 
@@ -29,6 +31,16 @@ public class JournalTestController {
 	    	model.addAttribute("one_journal", one_journal);
 	        return "test/journals";
 	    }
+	  
+	    @RequestMapping(value = "/journals/add", method = RequestMethod.POST)  
+	    public String addJournal(@ModelAttribute("one_journal")Journal journal) {
+	        if (journal.getId() == 0) {
+	        	journalService.add(journal);
+	        } else {
+	        	journalService.update(journal);
+	        } 
+	        return "redirect:/journals";  
+	    } 
 	    
 	    /*
 	     * This method will list all existing journals.

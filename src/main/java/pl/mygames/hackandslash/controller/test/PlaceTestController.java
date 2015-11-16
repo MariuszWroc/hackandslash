@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 
@@ -29,6 +31,16 @@ public class PlaceTestController {
     	model.addAttribute("one_place", one_place);
         return "test/places";
     }
+	
+    @RequestMapping(value = "/places/add", method = RequestMethod.POST)  
+    public String addPlace(@ModelAttribute("one_place")Place place) {
+        if (place.getId() == 0) {
+        	placeService.add(place);
+        } else {
+        	placeService.update(place);
+        } 
+        return "redirect:/places";  
+    } 
     
     /*
      * This method will list all existing places.

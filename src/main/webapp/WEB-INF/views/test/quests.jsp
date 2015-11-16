@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,5 +40,40 @@
                 <td>${one_quest.target}</td>
             </tr>
         </table>
+        <div>
+        	<h2>Add/Edit quest</h2>  
+	        <c:url var="addAction" value="/quests/add" ></c:url>
+	        <form:form method="POST" action="${addAction}" commandName="one_quest">  
+	            <table>  
+	                <tr>  
+	                    <td>
+	                        <form:label path="id"><spring:message text="ID"/></form:label></td>  
+	                    <td>
+	                        <form:input path="id" readonly="true" size="8"  disabled="true" />
+	                        <form:hidden path="id" />
+	                    </td>  
+	                </tr>  
+	                <tr>
+	                    <td>
+	                        <form:label path="description"><spring:message text="Description"/></form:label>
+	                    </td>
+	                    <td>
+	                        <form:input path="description" />
+	                    </td> 
+	                </tr>  
+	                <tr>
+	                    <td>
+	                        <form:label path="target"><spring:message text="Target"/></form:label>
+	                    </td>
+	                    <td>
+	                        <form:input path="target" />
+	                    </td> 
+	                </tr> 
+	                <tr>  
+	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                </tr>  
+	            </table>   
+	        </form:form> 
+        </div>
     </body>
 </html>

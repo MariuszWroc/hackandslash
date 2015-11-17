@@ -7,7 +7,7 @@ public interface IRoleService {
     void add(GameRole role);
     void delete(GameRole role);
     void update(GameRole role);
-    GameRole findById(Integer id);
+    List<GameRole> findById(Integer id);
     List<GameRole> findAll();
-	List<GameRole> findByQuery(Integer id);
+	void delete(Integer id);
 }

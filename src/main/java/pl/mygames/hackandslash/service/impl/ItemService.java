@@ -37,20 +37,13 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    public Item findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<Item> findByQuery(Integer id) {
-        String query = "FROM Item I WHERE I.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<Item> findById(Integer id) {
+        return dao.findByQuery("Item.findById", id);
     }
 
     @Override
     public List<Item> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Item.findAll");
     }
 
     public void setDao(ItemDao dao) {

@@ -7,7 +7,6 @@ public interface INpcService {
     void add(Npc npc);
     void delete(Npc npc);
     void update(Npc npc);
-    Npc findById(Integer id);	
+    List<Npc> findById(Integer id);	
     List<Npc> findAll();
-    List<Npc> findByQuery(Integer id);
 }

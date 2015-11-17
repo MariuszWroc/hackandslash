@@ -5,6 +5,8 @@
  */
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +38,7 @@ public class RegisterService implements IRegisterService {
 	@Transactional(readOnly = false)
     public void add(RegisterDTO registerDTO) {
         GameUser user = new GameUser();
-        GameRole findById = roleService.findById(1);
+        List<GameRole> findById = roleService.findById(1);
 //        GameRole role = roleDao.findById(registerDTO.getRoleId());
         user.setId(3);
         user.setAge(registerDTO.getAge());
@@ -47,7 +49,7 @@ public class RegisterService implements IRegisterService {
         user.setPassword(registerDTO.getPassword());
         user.setActivated(0);
         user.setHeroList(null);
-        user.setGameRole(findById);
+        user.setGameRole(findById.get(0));
         
         userDao.add(user);
     }

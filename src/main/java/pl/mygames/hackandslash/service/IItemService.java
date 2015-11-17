@@ -7,7 +7,6 @@ public interface IItemService {
     void add(Item item);
     void delete(Item item);
     void update(Item item);
-    Item findById(Integer id);	
+    List<Item> findById(Integer id);	
     List<Item> findAll();
-    List<Item> findByQuery(Integer id);
 }

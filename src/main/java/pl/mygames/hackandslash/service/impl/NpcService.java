@@ -37,20 +37,13 @@ public class NpcService implements INpcService {
     }
 
     @Override
-    public Npc findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<Npc> findByQuery(Integer id) {
-        String query = "FROM Npc N WHERE N.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<Npc> findById(Integer id) {
+        return dao.findByQuery("Npc.findById", id);
     }
 
     @Override
     public List<Npc> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Npc.findAll");
     }
 
     public void setDao(NpcDao dao) {

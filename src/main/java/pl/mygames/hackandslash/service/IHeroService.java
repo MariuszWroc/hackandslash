@@ -7,7 +7,6 @@ public interface IHeroService {
     void add(Hero hero);
     void delete(Hero hero);
     void update(Hero hero);
-    Hero findById(Integer id);	
+    List<Hero> findById(Integer id);	
     List<Hero> findAll();
-    List<Hero> findByQuery(Integer id);
 }

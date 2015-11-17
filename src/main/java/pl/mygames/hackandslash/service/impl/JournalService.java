@@ -37,20 +37,13 @@ public class JournalService implements IJournalService {
     }
 
     @Override
-    public Journal findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<Journal> findByQuery(Integer id) {
-        String query = "FROM Journal J WHERE J.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<Journal> findById(Integer id) {
+        return dao.findByQuery("Journal.findById", id);
     }
 
     @Override
     public List<Journal> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Journal.findAll");
     }
 
     public void setDao(JournalDao dao) {

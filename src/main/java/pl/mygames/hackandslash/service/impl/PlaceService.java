@@ -37,20 +37,13 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public Place findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<Place> findByQuery(Integer id) {
-        String query = "FROM Place P WHERE P.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<Place> findById(Integer id) {
+        return dao.findByQuery("Place.findById", id);
     }
 
     @Override
     public List<Place> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Place.findAll");
     }
 
     public void setDao(PlaceDao dao) {

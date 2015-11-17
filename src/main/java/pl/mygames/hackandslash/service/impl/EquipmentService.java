@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.EquipmentDao;
 import pl.mygames.hackandslash.model.Equipment;
+import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
 @Service
@@ -37,20 +38,13 @@ public class EquipmentService implements IEquipmentService {
     }
 
     @Override
-    public Equipment findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<Equipment> findByQuery(Integer id) {
-        String query = "FROM Equipment E WHERE E.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<Equipment> findById(Integer id) {
+        return dao.findByQuery("Equipment.findById", id);
     }
 
     @Override
     public List<Equipment> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Equipment.findAll");
     }
 
     public void setDao(EquipmentDao dao) {

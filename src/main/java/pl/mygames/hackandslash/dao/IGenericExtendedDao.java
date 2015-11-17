@@ -17,8 +17,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
  * @param <PK>
  */
 public interface IGenericExtendedDao<T, PK extends Serializable> {
-    List<T> findByQuery(String query);
-
     List<T> findAll();
     
     void flushSession();
@@ -44,5 +42,11 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
     Integer generateId();
 
 	T get(PK id);
+
+	void delete(PK id);
+
+	List<T> findByQuery(String namedQuery);
+
+	List<T> findByQuery(String namedQuery, Integer id);
 
 }

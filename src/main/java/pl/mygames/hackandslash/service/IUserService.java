@@ -7,7 +7,6 @@ public interface IUserService {
     void add(GameUser user);
     void delete(GameUser user);
     void update(GameUser user);
-    GameUser findById(Integer id);
+    List<GameUser> findById(Integer id);
     List<GameUser> findAll();
-    List<GameUser> findByQuery(Integer id);
 }

@@ -41,20 +41,13 @@ public class CharacterService implements ICharacterService {
     }
     
     @Override
-    public List<GameCharacter> findByQuery(Integer id) {
-        String query = "FROM GameCharacter C WHERE C.id = " + id;
-        
-        return dao.findByQuery(query);
-    }
-
-    @Override
-    public GameCharacter findById(Integer id) {
-        return dao.findById(id);
+    public List<GameCharacter> findById(Integer id) {
+        return dao.findByQuery("GameRole.findById", id);
     }
 
     @Override
     public List<GameCharacter> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("GameCharacter.findAll");
     }
 
 }

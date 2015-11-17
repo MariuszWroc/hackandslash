@@ -41,19 +41,13 @@ public class QuestService implements IQuestService {
     }
 
     @Override
-    public Quest findById(Integer id) {
-        return dao.findById(id);
+    public List<Quest> findById(Integer id) {
+        return dao.findByQuery("Quest.findById", id);
     }
-    
-    @Override
-    public List<Quest> findByQuery(Integer id) {
-        String query = "FROM Quest Q WHERE Q.id = " + id;
-        
-        return dao.findByQuery(query);
-    }
+
 
     @Override
     public List<Quest> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("Quest.findAll");
     }
 }

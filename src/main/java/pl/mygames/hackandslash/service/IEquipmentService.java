@@ -7,7 +7,6 @@ public interface IEquipmentService {
     void add(Equipment equipment);
     void delete(Equipment equipment);
     void update(Equipment equipment);
-    Equipment findById(Integer id);
+    List<Equipment> findById(Integer id);
     List<Equipment> findAll();
-    List<Equipment> findByQuery(Integer id);
 }

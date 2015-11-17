@@ -10,13 +10,19 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.management.Query;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
+
+import pl.mygames.hackandslash.controller.test.UserTestController;
 
 /**
  *
@@ -25,7 +31,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
  * @param <PK>
  */
 public abstract class GenericExtendedDao<T, PK extends Serializable> implements IGenericExtendedDao<T, PK> {
-
+    private static final Logger logger = LoggerFactory.getLogger(GenericExtendedDao.class);
+    
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -83,6 +90,14 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     public void delete(T entity) {
         getSession().delete(entity);
     }
+    
+    @Override
+    public void delete(PK id) {
+		T entityToDelete = get(id);
+        if(entityToDelete != null){
+            delete(entityToDelete);
+        }
+    }
 
     @Override
     public void update(T entity) {
@@ -94,9 +109,10 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
         getSession().saveOrUpdate(entity);
     }
     
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public T get(PK id) {
-        return (T) type.cast(getSession().load(type, id));
+        return (T) getSession().load(type, id);
     }
 
     @Override
@@ -111,8 +127,14 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<T> findByQuery(String query) {
-        return getSession().createQuery(query).list();
+    public List<T> findByQuery(String namedQuery) {
+        return getSession().getNamedQuery(namedQuery).list();
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<T> findByQuery(String namedQuery, Integer id) {
+		return getSession().getNamedQuery(namedQuery).setInteger("id", id).list();
     }
     
      /**

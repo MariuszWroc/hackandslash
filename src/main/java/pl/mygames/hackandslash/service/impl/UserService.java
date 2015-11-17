@@ -41,20 +41,13 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public GameUser findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<GameUser> findByQuery(Integer id) {
-        String query = "FROM GameUser U WHERE U.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<GameUser> findById(Integer id) {
+        return dao.findByQuery("GameUser.findById", id);
     }
 
     @Override
     public List<GameUser> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("GameUser.findAll");
     }
 
 }

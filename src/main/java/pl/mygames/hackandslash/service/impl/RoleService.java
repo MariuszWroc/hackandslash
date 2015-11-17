@@ -2,8 +2,6 @@ package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
@@ -17,7 +15,6 @@ import pl.mygames.hackandslash.service.IRoleService;
 @Service
 @Transactional(readOnly = true)
 public class RoleService implements IRoleService {
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
     
     @Autowired
     private RoleDao dao;
@@ -33,10 +30,17 @@ public class RoleService implements IRoleService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(GameRole role) {
         dao.delete(role);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)
@@ -46,20 +50,13 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public GameRole findById(Integer id) {
-        return dao.findById(id);
-    }
-    
-    @Override
-    public List<GameRole> findByQuery(Integer id) {
-        String query = "FROM GameRole R WHERE R.id = " + id;
-        
-        return dao.findByQuery(query);
+    public List<GameRole> findById(Integer id) {
+        return dao.findByQuery("GameRole.findById", id);
     }
 
     @Override
     public List<GameRole> findAll() {
-        return dao.findAll();
+        return dao.findByQuery("GameRole.findAll");
     }
 
 }

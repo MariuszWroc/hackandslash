@@ -7,7 +7,6 @@ public interface ICharacterService {
     void add(GameCharacter character);
     void delete(GameCharacter character);
     void update(GameCharacter character);
-    GameCharacter findById(Integer id);
+    List<GameCharacter> findById(Integer id);
     List<GameCharacter> findAll();
-    List<GameCharacter> findByQuery(Integer id);
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameCharacter;
-import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.ICharacterService;
 
 @Controller
@@ -63,7 +62,7 @@ public class CharacterTestController {
      */
 	private GameCharacter findCharacter(Integer id) {
 		GameCharacter character;
-		List<GameCharacter> characters = characterService.findByQuery(id);
+		List<GameCharacter> characters = characterService.findById(id);
 		if (characters.isEmpty()){
     		logger.info("Characters list is empty");
     		character = new GameCharacter();

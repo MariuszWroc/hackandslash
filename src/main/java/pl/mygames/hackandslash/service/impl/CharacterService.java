@@ -42,7 +42,7 @@ public class CharacterService implements ICharacterService {
     
     @Override
     public List<GameCharacter> findById(Integer id) {
-        return dao.findByQuery("GameRole.findById", id);
+        return dao.findByQuery("GameCharacter.findById", id);
     }
 
     @Override

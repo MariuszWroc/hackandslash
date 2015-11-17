@@ -27,6 +27,8 @@
                 <tr>
                     <td>${role.id}</td>
                     <td>${role.rolename}</td>
+                    <td><a href="<c:url value='/edit/${role.id}' />" >Edit</a></td>
+            		<td><a href="<c:url value='/remove/${role.id}' />" >Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -49,10 +51,10 @@
         <c:url var="addAction" value="/roles/add" ></c:url>
         <form:form method="POST" action="${addAction}" commandName="one_role">  
             <table>  
-                <tr>  
-                    <td>
-                    	<form:select path="id" items="${roles}" itemLabel="id" itemLabel = "name"/>
-                        <form:label path="id"><spring:message text="ID"/></form:label></td>  
+                <tr>
+                	<td>
+                        <form:label path="id"><spring:message text="Id"/></form:label>
+                    </td>    
                     <td>
                         <form:input path="id" readonly="true" size="8"  disabled="true" />
                         <form:hidden path="id" />

@@ -61,7 +61,7 @@ public class ItemTestController {
      */
 	private Item findItem(Integer id) {
 		Item item;
-		List<Item> items = itemService.findByQuery(id);
+		List<Item> items = itemService.findById(id);
 		if (items.isEmpty()){
     		logger.info("Items list is empty");
     		item = new Item();

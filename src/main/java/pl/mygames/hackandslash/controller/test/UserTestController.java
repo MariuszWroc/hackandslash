@@ -1,7 +1,9 @@
 package pl.mygames.hackandslash.controller.test;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
-import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -27,7 +28,7 @@ public class UserTestController {
 	/*
 	 * Mapping users list and one user 
 	 */
-	@RequestMapping(value = {"/users"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String getUsers(ModelMap model) {
 		List<GameUser> users = findUsers();
 		GameUser one_user = findUser(ProjectConstants.TEST_ID.getValue());
@@ -45,7 +46,7 @@ public class UserTestController {
         } 
         return "redirect:/users";  
     } 
-	
+    
 	/*
 	 * This method will list all existing users.
 	 */
@@ -65,7 +66,7 @@ public class UserTestController {
 	 */
 	private GameUser findUser(Integer id) {
 		GameUser user;
-		List<GameUser> users = userService.findByQuery(id);
+		List<GameUser> users = userService.findById(id);
 		if (users.isEmpty()){
 			logger.info("Users list is empty");
 			user = new GameUser();

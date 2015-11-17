@@ -61,7 +61,7 @@ public class NpcTestController {
      */
 	private Npc findNpc(Integer id) {
 		Npc npc;
-		List<Npc> npcs = npcService.findByQuery(id);
+		List<Npc> npcs = npcService.findById(id);
 		if (npcs.isEmpty()){
     		logger.info("Npcs list is empty");
     		npc = new Npc();

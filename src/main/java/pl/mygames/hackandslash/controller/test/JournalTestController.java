@@ -61,7 +61,7 @@ public class JournalTestController {
 	     */
 		private Journal findJournal(Integer id) {
 			Journal journal;
-			List<Journal> journals = journalService.findByQuery(id);
+			List<Journal> journals = journalService.findById(id);
 			if (journals.isEmpty()){
 	    		logger.info("Journals list is empty");
 	    		journal = new Journal();

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,15 +30,15 @@ public class RoleTestController {
     
 	@RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
     public String getRoles(ModelMap model) {
-        List<GameRole> roles = findRolesInService();
-        GameRole one_role = findRoleInService();
+        List<GameRole> roles = findRoles();
+        GameRole one_role = findRole(ProjectConstants.TEST_ID.getValue());
         model.addAttribute("roles", roles);
         model.addAttribute("one_role", one_role);
         return "test/roles";
     }
 
     @RequestMapping(value = "/roles/add", method = RequestMethod.POST)  
-    public String addRole(@ModelAttribute("one_role")GameRole role) {
+    public String addRole(@ModelAttribute("mappedroles")GameRole role) {
         if (role.getId() == 0) {
             roleService.add(role);
         } else {
@@ -45,22 +46,18 @@ public class RoleTestController {
         } 
         return "redirect:/roles";  
     } 
-
     
-    @SuppressWarnings("rawtypes")
-	protected Map mappingRoles(HttpServletRequest request, List<GameRole> roles) throws Exception {
-    	Map<Integer,String> mappedRoles = new LinkedHashMap<>();
-    	for(GameRole role : roles) {
-    		mappedRoles.put(role.getId(), role.getRolename());
-    	}
-    	
-    	return mappedRoles; 
+    @RequestMapping("/remove/{id}")
+    public String removePerson(@PathVariable("id") Integer id){
+         
+        this.roleService.delete(id);
+        return "redirect:/persons";
     }
     
     /*
      * This method will get all existing roles.
      */
-	private List<GameRole> findRolesInService() {
+	public List<GameRole> findRoles() {
 		List<GameRole> roles;
         if(roleService.findAll().isEmpty()) {
         	logger.info("Roles list is empty");
@@ -75,9 +72,9 @@ public class RoleTestController {
     /*
      * This method will return one role.
      */
-	private GameRole findRoleInService() {
+	private GameRole findRole(Integer id) {
 		GameRole role = null;
-		List<GameRole> findByQuery = roleService.findByQuery(ProjectConstants.TEST_ID.getValue());
+		List<GameRole> findByQuery = roleService.findById(id);
 		if (findByQuery.isEmpty()) {
 			logger.info("Roles list is empty");
         	role = new GameRole();

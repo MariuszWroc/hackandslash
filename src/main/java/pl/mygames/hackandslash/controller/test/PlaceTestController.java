@@ -61,7 +61,7 @@ public class PlaceTestController {
      */
 	private Place findPlace(Integer id) {
 		Place place;
-		List<Place> places = placeService.findByQuery(id);
+		List<Place> places = placeService.findById(id);
 		if (places.isEmpty()){
     		logger.info("Places list is empty");
     		place = new Place();

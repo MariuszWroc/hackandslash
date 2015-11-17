@@ -61,7 +61,7 @@ public class HeroTestController {
      */
 	private Hero findHero(Integer id) {
 		Hero hero;
-		List<Hero> heroes = heroService.findByQuery(id);
+		List<Hero> heroes = heroService.findById(id);
 		if (heroes.isEmpty()){
     		logger.info("Heroes list is empty");
     		hero = new Hero();

@@ -62,7 +62,7 @@ public class EquipmentTestController {
      */
 	private Equipment findEquipment(Integer id) {
 		Equipment equipment;
-		List<Equipment> equipments = equipmentService.findByQuery(id);
+		List<Equipment> equipments = equipmentService.findById(id);
 		if (equipments.isEmpty()){
     		logger.info("Equipments list is empty");
     		equipment = new Equipment();

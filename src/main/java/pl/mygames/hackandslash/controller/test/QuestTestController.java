@@ -62,7 +62,7 @@ public class QuestTestController {
      */
 	private Quest findQuest(Integer id) {
 		Quest quest;
-		List<Quest> quests = questService.findByQuery(id);
+		List<Quest> quests = questService.findById(id);
 		if (quests.isEmpty()){
     		logger.info("Quests list is empty");
     		quest = new Quest();

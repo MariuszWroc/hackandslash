@@ -20,17 +20,17 @@
 	        <h2>List of users</h2>  
 	        <table>
 	            <tr>
-	                <td>Name</td><td>Last name</td><td>Login</td>
-	                <td>Id</td><td>Password</td><td>Age</td>
+	                <td>Id</td><td>First name</td><td>Last name</td>
+	                <td>Login</td><td>Age</td><td>Password</td>
 	                <td>Gender</td><td>Activated</td>
 	            </tr>
 	            <c:forEach items="${users}" var="user">
 	                <tr>
+	                	<td>${user.id}</td>
 	                    <td>${user.firstname}</td>
 	                    <td>${user.lastname}</td>
 	                    <td>${user.login}</td>
 	                    <td>${user.age}</td>
-	                    <td>${user.id}</td>
 	                    <td>${user.password}</td>
 	                    <td>${user.gender}</td>
 	                    <td>${user.activated}</td>
@@ -42,8 +42,8 @@
 	        <h2>One user</h2>
 	        <table>
 	            <tr>
-	                <td>Name</td><td>Last name</td><td>Login</td>
-	                <td>Id</td><td>Password</td><td>Age</td>
+	                <td>Id</td><td>First name</td><td>Last name</td>
+	                <td>Login</td><td>Age</td><td>Password</td>
 	                <td>Gender</td><td>Activated</td>
 	            </tr>
 	            <tr>
@@ -126,7 +126,7 @@
 	                    <td>
 	                        <form:input path="activated" />
 	                    </td> 
-	                </tr> 
+	                </tr>
 	                <tr>  
 	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
 	                </tr>  

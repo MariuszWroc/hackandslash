@@ -21,32 +21,27 @@ import pl.mygames.hackandslash.service.IRegisterService;
 @Controller
 @RequestMapping(value = "/register")
 public class RegisterController {
-	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);     
+	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class); 
+	@Autowired
     private IRegisterService registerService;
-    
-	@Autowired(required = true)
-    @Qualifier(value = "registerService")
-	public void setRegisterService(IRegisterService registerService) {
-		this.registerService = registerService;
-	}
 	
-    @RequestMapping(method = RequestMethod.GET)
-    public String viewRegistration(Map<String, Object> model) {
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String viewRegistration(ModelMap model) {
     	RegisterDTO register = new RegisterDTO();
-    	model.put("registerForm", register);
+    	model.addAttribute("registerDTO", register);
     	logger.info("register view"); 
         return "register";
     }
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public String processRegistration(@ModelAttribute(value = "registerForm") RegisterDTO register, BindingResult result) {
-
+	@RequestMapping(value = "/register/add", method = RequestMethod.POST)
+	public String processRegistration(@ModelAttribute(value = "registerDTO") RegisterDTO register, BindingResult result) {
+		
 		if (result.hasErrors()) {
-			return "register";
+			return "redirect:/failed";
 		} else {
 			logger.info("User values is : " + register.getLogin() + " " + register.getPassword());
 			registerService.add(register);
-			return "success";
+			return "redirect:/success";
 		}
 	}
 }

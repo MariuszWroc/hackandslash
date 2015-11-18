@@ -40,8 +40,10 @@ public class HeroTestController {
         if (hero.getId() == null) {
         	hero.setId(keyValue);
         	heroService.add(hero);
+            logger.info("Hero with id = " + keyValue + ", added");
         } else {
         	heroService.update(hero);
+            logger.info("Hero with id = " + hero.getId() + ", updated");
         } 
         return "redirect:/heroes";  
     }  
@@ -49,6 +51,7 @@ public class HeroTestController {
     @RequestMapping(value = "/heroes/remove/{id}")
     public String removeHero(@PathVariable("id") Integer id){
         heroService.delete(id);
+        logger.info("Hero with id = " + id + ", deleted");
         return "redirect:/heroes";
     }
     
@@ -56,6 +59,7 @@ public class HeroTestController {
     public String editHero(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("heroes", findHeroes());
         model.addAttribute("one_hero", findHero(id));
+        logger.info("Hero with id = " + id + ", edited");
         return "test/heroes";
     }
     

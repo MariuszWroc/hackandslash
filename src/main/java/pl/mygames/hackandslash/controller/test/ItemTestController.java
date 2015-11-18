@@ -40,8 +40,10 @@ public class ItemTestController {
         if (item.getId() == null) {
         	item.setId(keyValue);
         	itemService.add(item);
+            logger.info("Item with id = " + keyValue + ", added");
         } else {
         	itemService.update(item);
+            logger.info("Item with id = " + item.getId() + ", updated");
         } 
         return "redirect:/items";  
     } 
@@ -49,13 +51,15 @@ public class ItemTestController {
     @RequestMapping(value = "/items/remove/{id}")
     public String removeItem(@PathVariable("id") Integer id){
         itemService.delete(id);
+        logger.info("Item with id = " + id + ", deleted");
         return "redirect:/items";
     }
     
-    @RequestMapping("/items/edit/{id}")
+    @RequestMapping(value = "/items/edit/{id}")
     public String editItem(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("items", findItems());
         model.addAttribute("one_item", findItem(id));
+        logger.info("Item with id = " + id + ", edited");
         return "test/items";
     }
     

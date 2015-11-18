@@ -40,8 +40,10 @@ public class QuestTestController {
         if (quest.getId() == null) {
         	quest.setId(keyValue);
         	questService.add(quest);
+            logger.info("Place with id = " + keyValue + ", added");
         } else {
         	questService.update(quest);
+            logger.info("Place with id = " + quest.getId() + ", updated");
         } 
         return "redirect:/quests";  
     } 
@@ -49,6 +51,7 @@ public class QuestTestController {
     @RequestMapping(value = "/quests/remove/{id}")
     public String removeQuest(@PathVariable("id") Integer id){
         questService.delete(id);
+        logger.info("Place with id = " + id + ", deleted");
         return "redirect:/quests";
     }
     
@@ -56,6 +59,7 @@ public class QuestTestController {
     public String editQuest(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("quests", findQuests());
         model.addAttribute("one_quest", findQuest(id));
+        logger.info("Place with id = " + id + ", edited");
         return "test/quests";
     }
 

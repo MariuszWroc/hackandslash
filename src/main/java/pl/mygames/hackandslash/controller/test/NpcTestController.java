@@ -40,8 +40,10 @@ public class NpcTestController {
         if (npc.getId() == null) {
         	npc.setId(keyValue);
         	npcService.add(npc);
+	        logger.info("Npc with id = " + keyValue + ", added");
         } else {
         	npcService.update(npc);
+	        logger.info("Npc with id = " + npc.getId() + ", updated");
         } 
         return "redirect:/npcs";  
     } 
@@ -49,6 +51,7 @@ public class NpcTestController {
     @RequestMapping(value = "/npcs/remove/{id}")
     public String removeNpc(@PathVariable("id") Integer id){
         npcService.delete(id);
+        logger.info("Npc with id = " + id + ", deleted");
         return "redirect:/npcs";
     }
     
@@ -56,6 +59,7 @@ public class NpcTestController {
     public String editNpc(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("npcs", findNpcs());
         model.addAttribute("one_npc", findNpc(id));
+        logger.info("Npc with id = " + id + ", edited");
         return "test/npcs";
     }
     

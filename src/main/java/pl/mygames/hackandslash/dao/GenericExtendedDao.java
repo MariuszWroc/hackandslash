@@ -64,31 +64,37 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @Override
     public void flushSession() {
         getSession().flush();
+        logger.info("flush");
     }
 
     @Override
     public void clearSession() {
         getSession().clear();
+        logger.info("clear");
     }
 
     @Override
     public void refresh(T entity) {
         getSession().refresh(entity);
+        logger.info("refresh");
     }
 
     @Override
     public void add(T entity) {
         getSession().save(entity);
+        logger.info("save " + entity.getClass().getSimpleName());
     }
 
     @Override
     public void merge(T entity) {
         getSession().merge(entity);
+        logger.info("merge " + entity.getClass().getSimpleName());
     }
 
     @Override
     public void delete(T entity) {
         getSession().delete(entity);
+        logger.info("delete " + entity.getClass().getSimpleName());
     }
     
     @Override
@@ -102,11 +108,13 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @Override
     public void update(T entity) {
         getSession().update(entity);
+        logger.info("update " + entity.getClass().getSimpleName());
     }
 
     @Override
     public void saveOrUpdate(T entity) {
         getSession().saveOrUpdate(entity);
+        logger.info("saveOrUpdate " + entity.getClass().getSimpleName());
     }
     
     @SuppressWarnings("unchecked")
@@ -128,12 +136,14 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> findByQuery(String namedQuery) {
+        logger.info("Find by query: " + namedQuery);
         return getSession().getNamedQuery(namedQuery).list();
     }
     
     @SuppressWarnings("unchecked")
 	@Override
     public List<T> findByQuery(String namedQuery, Integer id) {
+        logger.info("Find by query: " + namedQuery + ", id = " + id);
 		return getSession().getNamedQuery(namedQuery).setInteger("id", id).list();
     }
     
@@ -144,11 +154,13 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> findAll() {
+        logger.info("Find all by:criteria");
         return getSession().createCriteria(type).list();
     }
     
     @Override
     public Integer count() {
+        logger.info("count");
         Integer count = (Integer)getSession().createCriteria(type)
                 .setProjection(Projections.rowCount())
                 .uniqueResult();

@@ -40,8 +40,10 @@ public class EquipmentTestController {
         if (equipment.getId() == null) {
         	equipment.setId(keyValue);
         	equipmentService.add(equipment);
+            logger.info("Equipment with id = " + keyValue + ", added");
         } else {
         	equipmentService.update(equipment);
+            logger.info("Equipment with id = " + equipment.getId() + ", updated");
         } 
         return "redirect:/equipments";  
     } 
@@ -49,6 +51,7 @@ public class EquipmentTestController {
     @RequestMapping(value = "/equipments/remove/{id}")
     public String removeEquipment(@PathVariable("id") Integer id){
         equipmentService.delete(id);
+        logger.info("Equipment with id = " + id + ", deleted");
         return "redirect:/equipments";
     }
     
@@ -56,6 +59,7 @@ public class EquipmentTestController {
     public String editEquipment(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("equipments", findEquipments());
         model.addAttribute("one_equipment", findEquipment(id));
+        logger.info("Equipment with id = " + id + ", edited");
         return "test/equipments";
     }
     

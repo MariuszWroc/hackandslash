@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
-    public TestController() {
-    	logger.info("Logger initialization in TestController!");
-	}
-
+    
     /* This method will list all existing tests.
      */
     @RequestMapping(value = {"/tests"}, method = RequestMethod.GET)

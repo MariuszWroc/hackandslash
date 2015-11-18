@@ -44,8 +44,10 @@ public class RoleTestController {
         if (role.getId() == null) {
         	role.setId(keyValue);
             roleService.add(role);
+            logger.info("Place with id = " + keyValue + ", added");
         } else {
             roleService.update(role);
+            logger.info("Place with id = " + keyValue + ", updated");
         } 
         return "redirect:/roles";  
     } 
@@ -53,6 +55,7 @@ public class RoleTestController {
     @RequestMapping(value = "/roles/remove/{id}")
     public String removeRole(@PathVariable("id") Integer id){
         roleService.delete(id);
+        logger.info("Place with id = " + id + ", deleted");
         return "redirect:/roles";
     }
     
@@ -60,6 +63,7 @@ public class RoleTestController {
     public String editRole(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("roles", findRoles());
         model.addAttribute("one_role", findRole(id));
+        logger.info("Place with id = " + id + ", edited");
         return "test/roles";
     }
     

@@ -40,8 +40,10 @@ public class JournalTestController {
 	        if (journal.getId() == null) {
 	        	journal.setId(keyValue);
 	        	journalService.add(journal);
+	            logger.info("Journal with id = " + keyValue + ", added");
 	        } else {
 	        	journalService.update(journal);
+	            logger.info("Journal with id = " + journal.getId() + ", updated");
 	        } 
 	        return "redirect:/journals";  
 	    }
@@ -49,6 +51,7 @@ public class JournalTestController {
 	    @RequestMapping(value = "/journals/remove/{id}")
 	    public String removeJournal(@PathVariable("id") Integer id){
 	        journalService.delete(id);
+	        logger.info("Journal with id = " + id + ", deleted");
 	        return "redirect:/journals";
 	    }
 	    
@@ -56,6 +59,7 @@ public class JournalTestController {
 	    public String editJournal(@PathVariable("id") Integer id, ModelMap model){
 	        model.addAttribute("journals", findJournals());
 	        model.addAttribute("one_journal", findJournal(id));
+	        logger.info("Journal with id = " + id + ", edited");
 	        return "test/journals";
 	    }
 	    

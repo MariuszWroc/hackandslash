@@ -39,8 +39,10 @@ public class CharacterTestController {
         if (character.getId() == null) {
         	character.setId(keyValue);
         	characterService.add(character);
+            logger.info("Character with id = " + keyValue + ", added");
         } else {
         	characterService.update(character);
+            logger.info("Character with id = " + character.getId() + ", updated");
         } 
         return "redirect:/characters";  
     } 
@@ -48,6 +50,7 @@ public class CharacterTestController {
     @RequestMapping(value = "/characters/remove/{id}")
     public String removeCharacter(@PathVariable("id") Integer id){      
         characterService.delete(id);
+        logger.info("Character with id = " + id + ", deleted");
         return "redirect:/characters";
     }
     
@@ -55,6 +58,7 @@ public class CharacterTestController {
     public String editCharacter(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("characters", findCharacters());
         model.addAttribute("one_character", findCharacter(id));
+        logger.info("Character with id = " + id + ", edited");
         return "test/characters";
     }
     

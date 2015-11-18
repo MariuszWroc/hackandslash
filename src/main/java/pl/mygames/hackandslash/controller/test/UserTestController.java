@@ -1,9 +1,7 @@
 package pl.mygames.hackandslash.controller.test;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
-import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -45,8 +42,10 @@ public class UserTestController {
         if (user.getId() == null) {
         	user.setId(keyValue);
             userService.add(user);
+            logger.info("Place with id = " + keyValue + ", added");
         } else {
         	userService.update(user);
+            logger.info("Place with id = " + user.getId() + ", updated");
         } 
         return "redirect:/users";  
     } 
@@ -54,6 +53,7 @@ public class UserTestController {
     @RequestMapping(value = "/users/remove/{id}")
     public String removeUser(@PathVariable("id") Integer id){
         userService.delete(id);
+        logger.info("Place with id = " + id + ", deleted");
         return "redirect:/users";
     }
     
@@ -61,6 +61,7 @@ public class UserTestController {
     public String editUser(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("users", findUsers());
         model.addAttribute("one_user", findUser(id));
+        logger.info("Place with id = " + id + ", edited");
         return "test/users";
     }
     

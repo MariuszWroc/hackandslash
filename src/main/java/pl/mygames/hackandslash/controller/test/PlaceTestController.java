@@ -40,8 +40,10 @@ public class PlaceTestController {
         if (place.getId() == null) {
         	place.setId(keyValue);
         	placeService.add(place);
+            logger.info("Place with id = " + keyValue + ", deleted");
         } else {
         	placeService.update(place);
+            logger.info("Place with id = " + place.getId() + ", deleted");
         } 
         return "redirect:/places";  
     } 
@@ -49,6 +51,7 @@ public class PlaceTestController {
     @RequestMapping(value = "/places/remove/{id}")
     public String removePlace(@PathVariable("id") Integer id){
         placeService.delete(id);
+        logger.info("Place with id = " + id + ", deleted");
         return "redirect:/places";
     }
     
@@ -56,6 +59,7 @@ public class PlaceTestController {
     public String editPlace(@PathVariable("id") Integer id, ModelMap model){
         model.addAttribute("places", findPlaces());
         model.addAttribute("one_place", findPlace(id));
+        logger.info("Place with id = " + id + ", edited");
         return "test/places";
     }
     

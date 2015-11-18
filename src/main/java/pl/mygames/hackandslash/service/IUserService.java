@@ -9,4 +9,5 @@ public interface IUserService {
     void update(GameUser user);
     List<GameUser> findById(Integer id);
     List<GameUser> findAll();
+	void delete(Integer id);
 }

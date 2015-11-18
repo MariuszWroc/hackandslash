@@ -28,10 +28,17 @@ public class QuestService implements IQuestService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Quest quest) {
         dao.delete(quest);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)

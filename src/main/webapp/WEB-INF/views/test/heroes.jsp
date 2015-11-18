@@ -16,6 +16,7 @@
         <title>Show heroes</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of heroes</h2>  
 	        <table>
@@ -27,21 +28,10 @@
 	                    <td>${hero.id}</td>
 	                    <td>${hero.activated}</td>
 	                    <td>${hero.money}</td>
+	                    <td><a href="<c:url value='/heroes/edit/${hero.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/heroes/remove/${hero.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One hero</h2>
-	        <table>
-	            <tr>
-	                <td>id</td><td>activated</td><td>money</td>   
-	            </tr>
-	            <tr>
-	                <td>${one_hero.id}</td>
-	                <td>${one_hero.activated}</td>
-	                <td>${one_hero.money}</td>
-	            </tr>
 	        </table>
         </div>
         <div>
@@ -74,10 +64,22 @@
 	                    </td> 
 	                </tr> 
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_hero.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_hero.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

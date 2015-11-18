@@ -9,4 +9,5 @@ public interface IHeroService {
     void update(Hero hero);
     List<Hero> findById(Integer id);	
     List<Hero> findAll();
+	void delete(Integer id);
 }

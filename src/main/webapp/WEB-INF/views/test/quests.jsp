@@ -16,30 +16,24 @@
         <title>Show quests</title>
     </head>
     <body>
-        <h2>List of quests</h2>  
-        <table>
-            <tr>
-                <td>Id</td><td>description</td><td>target</td>
-            </tr>
-            <c:forEach items="${quests}" var="quest">
-                <tr>
-                    <td>${quest.id}</td>
-                    <td>${quest.description}</td>
-                    <td>${quest.target}</td>
-                </tr>
-            </c:forEach>
-        </table>
-        <h2>One quest</h2>
-        <table>
-            <tr>
-                <td>Id</td><td>description</td><td>target</td>
-            </tr>
-            <tr>
-                <td>${one_quest.id}</td>
-                <td>${one_quest.description}</td>
-                <td>${one_quest.target}</td>
-            </tr>
-        </table>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+        <div>
+	        <h2>List of quests</h2>  
+	        <table>
+	            <tr>
+	                <td>Id</td><td>description</td><td>target</td>
+	            </tr>
+	            <c:forEach items="${quests}" var="quest">
+	                <tr>
+	                    <td>${quest.id}</td>
+	                    <td>${quest.description}</td>
+	                    <td>${quest.target}</td>
+	                    <td><a href="<c:url value='/quests/edit/${quest.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/quests/remove/${quest.id}' />">Delete</a></td>
+	                </tr>
+	            </c:forEach>
+	        </table>
+		</div>
         <div>
         	<h2>Add/Edit quest</h2>  
 	        <c:url var="addAction" value="/quests/add" ></c:url>
@@ -70,10 +64,22 @@
 	                    </td> 
 	                </tr> 
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_quest.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_quest.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>   
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

@@ -16,6 +16,7 @@
         <title>Show items</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of items</h2>  
 	        <table>
@@ -41,37 +42,12 @@
 	                    <td>${item.addIntelligence}</td>
 	                    <td>${item.addCharisma}</td>
 	                    <td>${item.amount}</td>
+	                    <td><a href="<c:url value='/items/edit/${item.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/items/remove/${item.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
 	    </div>
-	    <div>
-	        <h2>One item</h2>
-	        <table>
-	            <tr>
-	                <td>Id</td><td>name</td><td>type</td><td>wage</td>
-	                <td>attack</td><td>defend</td><td>magic</td><td>addHealth</td>
-	                <td>addStrength</td><td>addDexterity</td><td>addConstitution</td>
-	                <td>addIntelligence</td><td>addCharisma</td><td>amount</td>
-	            </tr>
-	            <tr>
-	                <td>${one_item.id}</td>
-	                <td>${one_item.name}</td>
-	                <td>${one_item.category}</td>
-	                <td>${one_item.wage}</td>
-	                <td>${one_item.attack}</td>
-	                <td>${one_item.defend}</td>
-	                <td>${one_item.magic}</td>
-	                <td>${one_item.addHealth}</td>
-	                <td>${one_item.addStrength}</td>
-	                <td>${one_item.addDexterity}</td>
-	                <td>${one_item.addConstitution}</td>
-	                <td>${one_item.addIntelligence}</td>
-	                <td>${one_item.addCharisma}</td>
-	                <td>${one_item.amount}</td>
-	            </tr>
-	        </table>
-        </div>
         <div>
         <h2>Add/Edit item</h2>  
 	        <c:url var="addAction" value="/items/add" ></c:url>
@@ -190,10 +166,22 @@
 	                    </td> 
 	                </tr>
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_item.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_item.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

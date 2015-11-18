@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.service.util;
+package pl.mygames.hackandslash.controller.util;
 
 public class Autoincrementation {
 	
@@ -7,7 +7,7 @@ public class Autoincrementation {
 
 	public static Integer getValue(Integer actualValue) {
 		if (actualValue != null) {
-			return actualValue++;
+			return ++actualValue;
 		} else {
 			return actualValue = 1;
 		}

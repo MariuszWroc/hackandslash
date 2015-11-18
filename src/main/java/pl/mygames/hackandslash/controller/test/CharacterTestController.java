@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.service.ICharacterService;
@@ -21,26 +23,40 @@ public class CharacterTestController {
     private static final Logger logger = LoggerFactory.getLogger(CharacterTestController.class);
 	@Autowired
     private ICharacterService characterService;
+	private Integer keyValue;
     
 	@RequestMapping(value = {"/characters"}, method = RequestMethod.GET)
     public String getCharacters(ModelMap model) {
-
         List<GameCharacter> characters = findCharacters();
-        GameCharacter one_character = findCharacter(ProjectConstants.TEST_ID.getValue());
+        keyValue = Autoincrementation.getValue(characters.size());
        	model.addAttribute("characters", characters);
-       	model.addAttribute("one_character", one_character);
+       	model.addAttribute("one_character", new GameCharacter());
         return "test/characters";
     }
 	
     @RequestMapping(value = "/characters/add", method = RequestMethod.POST)  
     public String addCharacter(@ModelAttribute("one_character")GameCharacter character) {
-        if (character.getId() == 0) {
+        if (character.getId() == null) {
+        	character.setId(keyValue);
         	characterService.add(character);
         } else {
         	characterService.update(character);
         } 
         return "redirect:/characters";  
     } 
+    
+    @RequestMapping(value = "/characters/remove/{id}")
+    public String removeCharacter(@PathVariable("id") Integer id){      
+        characterService.delete(id);
+        return "redirect:/characters";
+    }
+    
+    @RequestMapping(value = "/characters/edit/{id}")
+    public String editCharacter(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("characters", findCharacters());
+        model.addAttribute("one_character", findCharacter(id));
+        return "test/characters";
+    }
     
     /*
      * This method will list all existing characters.

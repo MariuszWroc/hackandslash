@@ -24,10 +24,17 @@ public class JournalService implements IJournalService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Journal journal) {
         dao.delete(journal);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)

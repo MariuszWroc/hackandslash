@@ -33,6 +33,13 @@ public class UserService implements IUserService {
     public void delete(GameUser user) {
         dao.delete(user);
     }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
+    }
 
     @Transactional(readOnly = false)
     @Override

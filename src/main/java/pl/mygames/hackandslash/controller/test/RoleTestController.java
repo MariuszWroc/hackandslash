@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
@@ -27,19 +28,21 @@ public class RoleTestController {
     private static final Logger logger = LoggerFactory.getLogger(RoleTestController.class);
 	@Autowired
     private IRoleService roleService;
+	private Integer keyValue;
     
 	@RequestMapping(value = {"/roles"}, method = RequestMethod.GET)
     public String getRoles(ModelMap model) {
         List<GameRole> roles = findRoles();
-        GameRole one_role = findRole(ProjectConstants.TEST_ID.getValue());
+        keyValue = Autoincrementation.getValue(roles.size());
         model.addAttribute("roles", roles);
-        model.addAttribute("one_role", one_role);
+        model.addAttribute("one_role", new GameRole());
         return "test/roles";
     }
 
     @RequestMapping(value = "/roles/add", method = RequestMethod.POST)  
-    public String addRole(@ModelAttribute("mappedroles")GameRole role) {
-        if (role.getId() == 0) {
+    public String addRole(@ModelAttribute("one_role")GameRole role) {
+        if (role.getId() == null) {
+        	role.setId(keyValue);
             roleService.add(role);
         } else {
             roleService.update(role);
@@ -47,11 +50,17 @@ public class RoleTestController {
         return "redirect:/roles";  
     } 
     
-    @RequestMapping("/remove/{id}")
-    public String removePerson(@PathVariable("id") Integer id){
-         
-        this.roleService.delete(id);
-        return "redirect:/persons";
+    @RequestMapping(value = "/roles/remove/{id}")
+    public String removeRole(@PathVariable("id") Integer id){
+        roleService.delete(id);
+        return "redirect:/roles";
+    }
+    
+    @RequestMapping(value = "/roles/edit/{id}")
+    public String editRole(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("roles", findRoles());
+        model.addAttribute("one_role", findRole(id));
+        return "test/roles";
     }
     
     /*

@@ -24,10 +24,17 @@ public class ItemService implements IItemService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Item item) {
         dao.delete(item);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)

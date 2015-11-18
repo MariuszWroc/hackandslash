@@ -24,10 +24,17 @@ public class HeroService implements IHeroService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Hero hero) {
         dao.delete(hero);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)

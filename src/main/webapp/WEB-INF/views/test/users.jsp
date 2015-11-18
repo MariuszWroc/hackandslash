@@ -16,6 +16,7 @@
         <title>Show users</title>
     </head>
     <body>
+    	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of users</h2>  
 	        <table>
@@ -34,28 +35,10 @@
 	                    <td>${user.password}</td>
 	                    <td>${user.gender}</td>
 	                    <td>${user.activated}</td>
+	                    <td><a href="<c:url value='/users/edit/${user.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/users/remove/${user.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One user</h2>
-	        <table>
-	            <tr>
-	                <td>Id</td><td>First name</td><td>Last name</td>
-	                <td>Login</td><td>Age</td><td>Password</td>
-	                <td>Gender</td><td>Activated</td>
-	            </tr>
-	            <tr>
-	                <td>${one_user.id}</td>
-	                <td>${one_user.firstname}</td>
-	                <td>${one_user.lastname}</td>
-	                <td>${one_user.login}</td>
-	                <td>${one_user.age}</td>
-	                <td>${one_user.password}</td>
-	                <td>${one_user.gender}</td>
-	                <td>${one_user.activated}</td>
-	            </tr>
 	        </table>
         </div>
         <div>
@@ -128,10 +111,22 @@
 	                    </td> 
 	                </tr>
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_user.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_user.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>    
 	                </tr>  
 	            </table>   
 	        </form:form>   
         </div>
+		<div>
+			<p>
+				<a href="${contextPath}/tests">powrót</a>
+			</p>
+		</div>
     </body>
 </html>

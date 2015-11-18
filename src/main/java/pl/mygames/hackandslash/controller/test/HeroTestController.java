@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Hero;
@@ -22,25 +24,40 @@ public class HeroTestController {
     private static final Logger logger = LoggerFactory.getLogger(HeroTestController.class);
 	@Autowired
     private IHeroService heroService;
+	private Integer keyValue;
 
 	@RequestMapping(value = {"/heroes"}, method = RequestMethod.GET)
     public String getHeroes(ModelMap model) {
         List<Hero> heroes = findHeroes();
-        Hero one_hero = findHero(ProjectConstants.TEST_ID.getValue());
+        keyValue = Autoincrementation.getValue(heroes.size());
     	model.addAttribute("heroes", heroes);
-    	model.addAttribute("one_hero", one_hero);
+    	model.addAttribute("one_hero", new Hero());
         return "test/heroes";
     }
 	
     @RequestMapping(value = "/heroes/add", method = RequestMethod.POST)  
     public String addHero(@ModelAttribute("one_hero")Hero hero) {
-        if (hero.getId() == 0) {
+        if (hero.getId() == null) {
+        	hero.setId(keyValue);
         	heroService.add(hero);
         } else {
         	heroService.update(hero);
         } 
         return "redirect:/heroes";  
     }  
+    
+    @RequestMapping(value = "/heroes/remove/{id}")
+    public String removeHero(@PathVariable("id") Integer id){
+        heroService.delete(id);
+        return "redirect:/heroes";
+    }
+    
+    @RequestMapping(value = "/heroes/edit/{id}")
+    public String editHero(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("heroes", findHeroes());
+        model.addAttribute("one_hero", findHero(id));
+        return "test/heroes";
+    }
     
     /*
      * This method will list all existing heroes.

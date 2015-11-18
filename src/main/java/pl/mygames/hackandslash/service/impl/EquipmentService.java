@@ -25,10 +25,17 @@ public class EquipmentService implements IEquipmentService {
     }
 
     @Transactional(readOnly = false)
-    @Secured("ROLE_ADMIN")
+//    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Equipment equipment) {
         dao.delete(equipment);
+    }
+    
+    @Transactional(readOnly = false)
+//  @Secured("ROLE_ADMIN")
+    @Override
+    public void delete(Integer id) {
+    	dao.delete(id);
     }
 
     @Transactional(readOnly = false)

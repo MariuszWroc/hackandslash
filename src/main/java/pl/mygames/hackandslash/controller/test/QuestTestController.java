@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Quest;
@@ -22,30 +24,45 @@ public class QuestTestController {
     private static final Logger logger = LoggerFactory.getLogger(QuestTestController.class);
 	@Autowired
     private IQuestService questService;
+	private Integer keyValue;
     
 	@RequestMapping(value = {"/quests"}, method = RequestMethod.GET)
     public String getQuests(ModelMap model) {
-    	List<Quest> quests = findQuests(model);
-    	Quest one_quest = findQuest(ProjectConstants.TEST_ID.getValue());
+    	List<Quest> quests = findQuests();
+    	keyValue = Autoincrementation.getValue(quests.size());
     	model.addAttribute("quests", quests);
-    	model.addAttribute("one_quest", one_quest);
+    	model.addAttribute("one_quest", new Quest());
         return "test/quests";
     }
 	
     @RequestMapping(value = "/quests/add", method = RequestMethod.POST)  
     public String addQuest(@ModelAttribute("one_quest")Quest quest) {
-        if (quest.getId() == 0) {
+        if (quest.getId() == null) {
+        	quest.setId(keyValue);
         	questService.add(quest);
         } else {
         	questService.update(quest);
         } 
         return "redirect:/quests";  
     } 
+    
+    @RequestMapping(value = "/quests/remove/{id}")
+    public String removeQuest(@PathVariable("id") Integer id){
+        questService.delete(id);
+        return "redirect:/quests";
+    }
+    
+    @RequestMapping(value = "/quests/edit/{id}")
+    public String editQuest(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("quests", findQuests());
+        model.addAttribute("one_quest", findQuest(id));
+        return "test/quests";
+    }
 
     /*
      * This method will list all existing quests.
      */
-	private List<Quest> findQuests(ModelMap model) {
+	private List<Quest> findQuests() {
 		List<Quest> quests;
 		if(questService.findAll().isEmpty()) {
         	logger.info("Quests list is empty");

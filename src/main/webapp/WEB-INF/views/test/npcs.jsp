@@ -16,6 +16,7 @@
         <title>Show npcs</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of npcs</h2>  
 	        <table>
@@ -26,20 +27,10 @@
 	                <tr>
 	                    <td>${npc.id}</td>
 	                    <td>${npc.behaviour}</td>
+	                    <td><a href="<c:url value='/npcs/edit/${npc.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/npcs/remove/${npc.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One npc</h2>
-	        <table>
-	            <tr>
-	                <td>Id</td><td>behaviour</td>
-	            </tr>
-	            <tr>
-	                <td>${one_npc.id}</td>
-	                <td>${one_npc.behaviour}</td>
-	            </tr>
 	        </table>
         </div>
         <div>
@@ -64,10 +55,22 @@
 	                    </td> 
 	                </tr>  
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_npc.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_npc.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

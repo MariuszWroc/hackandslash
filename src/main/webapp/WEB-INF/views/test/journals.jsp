@@ -16,6 +16,7 @@
         <title>Show journals</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	    	<h2>List of journals</h2>  
 	        <table>
@@ -27,23 +28,12 @@
 	                    <td>${journal.id}</td>
 	                    <td>${journal.passed}</td>
 	                    <td>${journal.startDate}</td>
+	                    <td><a href="<c:url value='/journals/edit/${journal.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/journals/remove/${journal.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
     	</div>
-        <div>
-            <h2>One journal</h2>
-	        <table>
-	            <tr>
-	                <td>id</td><td>passed</td><td>start date</td>
-	            </tr>
-	            <tr>
-	                <td>${one_journal.id}</td>
-	                <td>${one_journal.passed}</td>
-	                <td>${one_journal.startDate}</td>
-	            </tr>
-	        </table>
-        </div>
         <div>
         	<h2>Add/Edit journal</h2>  
 	        <c:url var="addAction" value="/journals/add" ></c:url>
@@ -74,10 +64,22 @@
 	                    </td> 
 	                </tr> 
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_journal.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_journal.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

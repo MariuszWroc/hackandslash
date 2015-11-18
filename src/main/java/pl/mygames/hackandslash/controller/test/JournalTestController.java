@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Journal;
@@ -22,25 +24,40 @@ public class JournalTestController {
     private static final Logger logger = LoggerFactory.getLogger(JournalTestController.class);
 	@Autowired
     private IJournalService journalService;
+	private Integer keyValue;
     
 	  @RequestMapping(value = {"/journals"}, method = RequestMethod.GET)
 	    public String getJournals(ModelMap model) {
 	        List<Journal> journals = findJournals();
-	        Journal one_journal = findJournal(ProjectConstants.TEST_ID.getValue());
+	        keyValue = Autoincrementation.getValue(journals.size());
 	    	model.addAttribute("journals", journals);
-	    	model.addAttribute("one_journal", one_journal);
+	    	model.addAttribute("one_journal", new Journal());
 	        return "test/journals";
 	    }
 	  
 	    @RequestMapping(value = "/journals/add", method = RequestMethod.POST)  
 	    public String addJournal(@ModelAttribute("one_journal")Journal journal) {
-	        if (journal.getId() == 0) {
+	        if (journal.getId() == null) {
+	        	journal.setId(keyValue);
 	        	journalService.add(journal);
 	        } else {
 	        	journalService.update(journal);
 	        } 
 	        return "redirect:/journals";  
-	    } 
+	    }
+	    
+	    @RequestMapping(value = "/journals/remove/{id}")
+	    public String removeJournal(@PathVariable("id") Integer id){
+	        journalService.delete(id);
+	        return "redirect:/journals";
+	    }
+	    
+	    @RequestMapping(value = "/journals/edit/{id}")
+	    public String editJournal(@PathVariable("id") Integer id, ModelMap model){
+	        model.addAttribute("journals", findJournals());
+	        model.addAttribute("one_journal", findJournal(id));
+	        return "test/journals";
+	    }
 	    
 	    /*
 	     * This method will list all existing journals.

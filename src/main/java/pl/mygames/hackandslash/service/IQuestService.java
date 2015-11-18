@@ -10,4 +10,5 @@ public interface IQuestService {
     void update(Quest quest);
     List<Quest> findById(Integer id);
     List<Quest> findAll();
+	void delete(Integer id);
 }

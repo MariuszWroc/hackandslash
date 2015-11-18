@@ -9,4 +9,5 @@ public interface IItemService {
     void update(Item item);
     List<Item> findById(Integer id);	
     List<Item> findAll();
+	void delete(Integer id);
 }

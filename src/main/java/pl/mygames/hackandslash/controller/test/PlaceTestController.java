@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Place;
@@ -22,25 +24,40 @@ public class PlaceTestController {
     private static final Logger logger = LoggerFactory.getLogger(PlaceTestController.class);
 	@Autowired
     private IPlaceService placeService;
+	private Integer keyValue;
     
 	@RequestMapping(value = {"/places"}, method = RequestMethod.GET)
     public String getPlaces(ModelMap model) {
     	List<Place> places = findPlaces();
-    	Place one_place = findPlace(ProjectConstants.TEST_ID.getValue());
+    	keyValue = Autoincrementation.getValue(places.size());
     	model.addAttribute("places", places);
-    	model.addAttribute("one_place", one_place);
+    	model.addAttribute("one_place", new Place());
         return "test/places";
     }
 	
     @RequestMapping(value = "/places/add", method = RequestMethod.POST)  
     public String addPlace(@ModelAttribute("one_place")Place place) {
-        if (place.getId() == 0) {
+        if (place.getId() == null) {
+        	place.setId(keyValue);
         	placeService.add(place);
         } else {
         	placeService.update(place);
         } 
         return "redirect:/places";  
     } 
+    
+    @RequestMapping(value = "/places/remove/{id}")
+    public String removePlace(@PathVariable("id") Integer id){
+        placeService.delete(id);
+        return "redirect:/places";
+    }
+    
+    @RequestMapping(value = "/places/edit/{id}")
+    public String editPlace(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("places", findPlaces());
+        model.addAttribute("one_place", findPlace(id));
+        return "test/places";
+    }
     
     /*
      * This method will list all existing places.

@@ -16,6 +16,7 @@
         <title>Show places</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of places</h2>  
 	        <table>
@@ -27,21 +28,10 @@
 	                    <td>${place.id}</td>
 	                    <td>${place.latitude}</td>
 	                    <td>${place.longitude}</td>
+	                    <td><a href="<c:url value='/places/edit/${place.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/places/remove/${place.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One place</h2>
-	        <table>     
-	            <tr>
-	                <td>Id</td><td>latitude</td><td>longitude</td>
-	            </tr>
-	            <tr>
-	                <td>${one_place.id}</td>
-	                <td>${one_place.latitude}</td>
-	                <td>${one_place.longitude}</td>
-	            </tr>
 	        </table>
         </div>
          <div>
@@ -74,10 +64,22 @@
 	                    </td> 
 	                </tr> 
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_place.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_place.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

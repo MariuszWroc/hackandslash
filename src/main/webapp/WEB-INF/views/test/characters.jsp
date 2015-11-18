@@ -16,6 +16,7 @@
         <title>Show characters</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of characters</h2>  
 	        <table>
@@ -41,35 +42,10 @@
 	                    <td>${character.charisma}</td>
 	                    <td>${character.baseHP}</td>
 	                    <td>${character.experience}</td>
+	                    <td><a href="<c:url value='/characters/edit/${character.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/characters/remove/${character.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One character</h2>
-	        <table>
-	                <tr>
-	                    <td>Id</td><td>first name</td><td>last name</td><td>gender</td>
-	                    <td>age</td><td>race</td><td>profession</td><td>strength</td>
-	                    <td>dexterity</td><td>constitution</td><td>intelligence</td>
-	                    <td>charisma</td><td>baseHP</td><td>experience</td>
-	                </tr>
-	                <tr>
-	                    <td>${one_character.id}</td>
-	                    <td>${one_character.firstname}</td>
-	                    <td>${one_character.lastname}</td>
-	                    <td>${one_character.gender}</td>
-	                    <td>${one_character.age}</td>
-	                    <td>${one_character.race}</td>
-	                    <td>${one_character.profession}</td>
-	                    <td>${one_character.strength}</td>
-	                    <td>${one_character.dexterity}</td>
-	                    <td>${one_character.constitution}</td>
-	                    <td>${one_character.intelligence}</td>
-	                    <td>${one_character.charisma}</td>
-	                    <td>${one_character.baseHP}</td>
-	                    <td>${one_character.experience}</td>
-	                </tr>
 	        </table>
         </div>
         <div>
@@ -198,10 +174,22 @@
 	                    </td> 
 	                </tr> 
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_character.id}">
+	                    		<input type="submit" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_character.id}">
+	                    		<input type="submit" value="Add"/>
+	                    	</c:if>
+	                    </td>   
 	                </tr>  
 	            </table>   
 	        </form:form>                    
-    </div>
+    	</div>
+    	<div>
+			<p>
+				<a href="${contextPath}/tests">powrót</a>
+			</p>
+		</div>
     </body>
 </html>

@@ -9,4 +9,5 @@ public interface IPlaceService {
     void update(Place place);
     List<Place> findById(Integer id);
     List<Place> findAll();
+	void delete(Integer id);
 }

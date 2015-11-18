@@ -9,4 +9,5 @@ public interface INpcService {
     void update(Npc npc);
     List<Npc> findById(Integer id);	
     List<Npc> findAll();
+	void delete(Integer id);
 }

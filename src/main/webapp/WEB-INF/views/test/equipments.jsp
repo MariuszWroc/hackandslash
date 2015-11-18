@@ -15,6 +15,7 @@
         <title>Show equipments</title>
     </head>
     <body>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
 	        <h2>List of equipments</h2>  
 	        <table>
@@ -25,20 +26,10 @@
 	                <tr>
 	                    <td>${equipment.id}</td>
 	                    <td>${equipment.inPlace}</td>
+	                    <td><a href="<c:url value='/equipments/edit/${equipment.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/equipments/remove/${equipment.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
-	        </table>
-        </div>
-        <div>
-	        <h2>One equipment</h2>
-	        <table>
-	            <tr>
-	                <td>Id</td><td>In place</td>
-	            </tr>
-	            <tr>
-	                <td>${one_equipment.id}</td>
-	                <td>${one_equipment.inPlace}</td>
-	            </tr>
 	        </table>
         </div>
         <div>
@@ -63,10 +54,22 @@
 	                    </td> 
 	                </tr>   
 	                <tr>  
-	                    <td colspan="2"><input type="submit" value="Submit"/></td>  
+                    <td colspan="2">
+                    	<c:if test="${!empty one_equipment.id}">
+                    		<input type="submit" value="Edit"/>
+                    	</c:if>
+                    	<c:if test="${empty one_equipment.id}">
+                    		<input type="submit" value="Add"/>
+                    	</c:if>
+                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form>
         </div>
+        	<div>
+				<p>
+					<a href="${contextPath}/tests">powrót</a>
+				</p>
+			</div>
     </body>
 </html>

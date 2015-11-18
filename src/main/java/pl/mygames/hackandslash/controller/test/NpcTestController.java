@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Npc;
@@ -22,19 +24,21 @@ public class NpcTestController {
     private static final Logger logger = LoggerFactory.getLogger(NpcTestController.class);
 	@Autowired
     private INpcService npcService;
+	private Integer keyValue;
 	
 	@RequestMapping(value = {"/npcs"}, method = RequestMethod.GET)
     public String getNpcs(ModelMap model) {
-        List<Npc> npcs = findNpcs(model);
-        Npc one_npc = findNpc(ProjectConstants.TEST_ID.getValue());
+        List<Npc> npcs = findNpcs();
+        keyValue = Autoincrementation.getValue(npcs.size());
     	model.addAttribute("npcs", npcs);
-    	model.addAttribute("one_npc", one_npc);
+    	model.addAttribute("one_npc", new Npc());
         return "test/npcs";
     }
 	
     @RequestMapping(value = "/npcs/add", method = RequestMethod.POST)  
     public String addNpc(@ModelAttribute("one_npc")Npc npc) {
-        if (npc.getId() == 0) {
+        if (npc.getId() == null) {
+        	npc.setId(keyValue);
         	npcService.add(npc);
         } else {
         	npcService.update(npc);
@@ -42,10 +46,23 @@ public class NpcTestController {
         return "redirect:/npcs";  
     } 
     
+    @RequestMapping(value = "/npcs/remove/{id}")
+    public String removeNpc(@PathVariable("id") Integer id){
+        npcService.delete(id);
+        return "redirect:/npcs";
+    }
+    
+    @RequestMapping(value = "/npcs/edit/{id}")
+    public String editNpc(@PathVariable("id") Integer id, ModelMap model){
+        model.addAttribute("npcs", findNpcs());
+        model.addAttribute("one_npc", findNpc(id));
+        return "test/npcs";
+    }
+    
     /*
      * This method will list all existing npcs.
      */
-	private List<Npc> findNpcs(ModelMap model) {
+	private List<Npc> findNpcs() {
 		List<Npc> npcs;
 		if(npcService.findAll().isEmpty()) {
         	logger.info("Npcs list is empty");

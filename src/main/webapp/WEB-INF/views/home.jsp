@@ -82,7 +82,7 @@
                 $scope.doRegister = function (){
                     $http.get('/hackandslash/userList.json').success(function(res) {
                         console.log('getUsers',res);
-                        $scope.user.id = res.length;
+                        $scope.user.id = res+1;
                         $scope.user.heroesIds.push(0);
                         console.log('adding',$scope.user);
                         $http.post('/hackandslash/addUser', $scope.user).success(function() {

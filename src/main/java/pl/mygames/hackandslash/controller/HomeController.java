@@ -71,7 +71,7 @@ public class HomeController {
            
            
            @RequestMapping(value = {"/userList.json"}, method = RequestMethod.GET)
-            public @ResponseBody List<GameUser> getUserList() {
-                return userService.findAll();
+            public @ResponseBody int getUserList() {
+                return userService.findAll().size();
             }
 }

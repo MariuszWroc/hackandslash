@@ -40,7 +40,7 @@ public class RegisterService implements IRegisterService {
         GameUser user = new GameUser();
         List<GameRole> findById = roleService.findById(1);
 //        GameRole role = roleDao.findById(registerDTO.getRoleId());
-        user.setId(3);
+        user.setId(registerDTO.getId());
         user.setAge(registerDTO.getAge());
         user.setFirstname(registerDTO.getFirstname());
         user.setLastname(registerDTO.getLastname());

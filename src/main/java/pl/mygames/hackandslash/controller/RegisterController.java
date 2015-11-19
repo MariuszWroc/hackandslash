@@ -40,7 +40,7 @@ public class RegisterController {
 			return "redirect:/failed";
 		} else {
 			logger.info("User values is : " + register.getLogin() + " " + register.getPassword());
-			registerService.add(register);
+//			registerService.add(register);
 			return "redirect:/success";
 		}
 	}

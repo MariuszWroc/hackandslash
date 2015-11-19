@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.mygames.hackandslash.dao.*;
 import pl.mygames.hackandslash.dto.RegisterDTO;
+import pl.mygames.hackandslash.dto.util.Rolename;
 import pl.mygames.hackandslash.model.*;
 import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IRoleService;
@@ -38,7 +39,9 @@ public class RegisterService implements IRegisterService {
 	@Transactional(readOnly = false)
     public void add(RegisterDTO registerDTO) {
         GameUser user = new GameUser();
-        List<GameRole> findById = roleService.findById(1);
+        Integer idRole = Rolename.USER.getValue();
+//		List<GameRole> findById = roleService.findById(idRole);
+		List<GameRole> findById = roleService.findById(1);
 //        GameRole role = roleDao.findById(registerDTO.getRoleId());
         user.setId(registerDTO.getId());
         user.setAge(registerDTO.getAge());
@@ -49,6 +52,9 @@ public class RegisterService implements IRegisterService {
         user.setPassword(registerDTO.getPassword());
         user.setActivated(0);
         user.setHeroList(null);
+//        while(findById.iterator().hasNext()) {
+//            user.setGameRole(findById.iterator().next());	
+//        }
         user.setGameRole(findById.get(0));
         
         userDao.add(user);

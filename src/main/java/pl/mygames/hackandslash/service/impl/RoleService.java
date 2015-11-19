@@ -31,7 +31,7 @@ public class RoleService implements IRoleService {
     }
 
     @Transactional(readOnly = false)
-//    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(GameRole role) {
         dao.delete(role);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
@@ -36,12 +37,12 @@ public class NpcTestController {
     }
 	
     @RequestMapping(value = "/npcs/add", method = RequestMethod.POST)  
-    public String addNpc(@ModelAttribute("one_npc")Npc npc) {
-        if (npc.getId() == null) {
+    public String addNpc(@ModelAttribute("one_npc")Npc npc, @RequestParam String action) {
+        if ((npc.getId() == null) && (action.equals("Add"))) {
         	npc.setId(keyValue);
         	npcService.add(npc);
 	        logger.info("Npc with id = " + keyValue + ", added");
-        } else {
+        } else if (action.equals("Edit")){
         	npcService.update(npc);
 	        logger.info("Npc with id = " + npc.getId() + ", updated");
         } 

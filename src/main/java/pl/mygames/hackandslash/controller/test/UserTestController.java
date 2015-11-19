@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.model.GameUser;
@@ -38,17 +39,18 @@ public class UserTestController {
 	}
 	
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)  
-    public String addUser(@ModelAttribute("one_user")GameUser user) {
-        if (user.getId() == null) {
+    public String addUser(@ModelAttribute("one_user")GameUser user, @RequestParam String action) {
+        if ((user.getId() != null) && (action.equals("Add"))) {
         	user.setId(keyValue);
             userService.add(user);
             logger.info("Place with id = " + keyValue + ", added");
-        } else {
+        } else if (action.equals("Edit")) {
         	userService.update(user);
             logger.info("Place with id = " + user.getId() + ", updated");
         } 
+        
         return "redirect:/users";  
-    } 
+    }  
 
     @RequestMapping(value = "/users/remove/{id}")
     public String removeUser(@PathVariable("id") Integer id){

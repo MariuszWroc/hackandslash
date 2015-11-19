@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
@@ -36,12 +37,12 @@ public class EquipmentTestController {
     }
 	
     @RequestMapping(value = "/equipments/add", method = RequestMethod.POST)  
-    public String addEquipment(@ModelAttribute("one_equipment")Equipment equipment) {
+    public String addEquipment(@ModelAttribute("one_equipment")Equipment equipment, @RequestParam String action) {
         if (equipment.getId() == null) {
         	equipment.setId(keyValue);
         	equipmentService.add(equipment);
             logger.info("Equipment with id = " + keyValue + ", added");
-        } else {
+        } else if (action.equals("Edit")){
         	equipmentService.update(equipment);
             logger.info("Equipment with id = " + equipment.getId() + ", updated");
         } 

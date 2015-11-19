@@ -24,7 +24,7 @@ public class JournalService implements IJournalService {
     }
 
     @Transactional(readOnly = false)
-//    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Journal journal) {
         dao.delete(journal);
@@ -40,7 +40,7 @@ public class JournalService implements IJournalService {
     @Transactional(readOnly = false)
     @Override
     public void update(Journal journal) {
-	dao.update(journal);
+    	dao.update(journal);
     }
 
     @Override

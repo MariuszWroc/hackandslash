@@ -44,7 +44,7 @@
         <div>
 	        <h2>Add/Edit user</h2>  
 	        <c:url var="addAction" value="/users/add" ></c:url>
-	        <form:form method="POST" action="${addAction}" commandName="one_user">  
+	        <form:form id="registerForm" method="POST" action="${addAction}" commandName="one_user">  
 	            <table>  
 	                <tr>  
 	                    <td>
@@ -113,11 +113,12 @@
 	                <tr>  
 	                    <td colspan="2">
 	                    	<c:if test="${!empty one_user.id}">
-	                    		<input type="submit" value="Edit"/>
+	                    		<input type="submit" name="action" value="Edit"/>
 	                    	</c:if>
 	                    	<c:if test="${empty one_user.id}">
-	                    		<input type="submit" value="Add"/>
+	                    		<input type="submit" name="action" value="Add"/>
 	                    	</c:if>
+	                    	<input type="submit" name="action" value="Clear" />
 	                    </td>    
 	                </tr>  
 	            </table>   

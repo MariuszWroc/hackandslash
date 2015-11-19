@@ -54,14 +54,15 @@
 	                    </td> 
 	                </tr>   
 	                <tr>  
-                    <td colspan="2">
-                    	<c:if test="${!empty one_equipment.id}">
-                    		<input type="submit" value="Edit"/>
-                    	</c:if>
-                    	<c:if test="${empty one_equipment.id}">
-                    		<input type="submit" value="Add"/>
-                    	</c:if>
-                    </td>  
+	                    <td colspan="2">
+	                    	<c:if test="${!empty one_equipment.id}">
+	                    		<input type="submit" name="action" value="Edit"/>
+	                    	</c:if>
+	                    	<c:if test="${empty one_equipment.id}">
+	                    		<input type="submit" name="action" value="Add"/>
+	                    	</c:if>
+	                    	<input type="submit" name="action" value="Clear" />
+	                    </td> 
 	                </tr>  
 	            </table>   
 	        </form:form>

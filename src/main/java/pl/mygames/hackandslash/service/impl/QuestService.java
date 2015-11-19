@@ -28,7 +28,7 @@ public class QuestService implements IQuestService {
     }
 
     @Transactional(readOnly = false)
-//    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Quest quest) {
         dao.delete(quest);

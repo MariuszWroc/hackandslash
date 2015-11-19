@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.service;
 
 import java.util.List;
+
 import pl.mygames.hackandslash.model.GameUser;
 
 public interface IUserService {
@@ -10,4 +11,5 @@ public interface IUserService {
     List<GameUser> findById(Integer id);
     List<GameUser> findAll();
 	void delete(Integer id);
+	List<GameUser> findByLogin(String login);
 }

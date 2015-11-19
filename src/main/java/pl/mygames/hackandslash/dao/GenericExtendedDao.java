@@ -10,9 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import javax.management.Query;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -21,8 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
-
-import pl.mygames.hackandslash.controller.test.UserTestController;
 
 /**
  *
@@ -58,7 +54,7 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     public GenericExtendedDao() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
-        type = (Class) pt.getActualTypeArguments()[0];
+        type = (Class<T>) pt.getActualTypeArguments()[0];
     }
 
     @Override
@@ -142,9 +138,16 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     
     @SuppressWarnings("unchecked")
 	@Override
-    public List<T> findByQuery(String namedQuery, Integer id) {
-        logger.info("Find by query: " + namedQuery + ", id = " + id);
-		return getSession().getNamedQuery(namedQuery).setInteger("id", id).list();
+    public List<T> findByQuery(String namedQuery, Integer number) {
+        logger.info("Find by query: " + namedQuery + ", id = " + number);
+		return getSession().getNamedQuery(namedQuery).setInteger("id", number).list();
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<T> findByQuery(String namedQuery, String string) {
+        logger.info("Find by query: " + namedQuery + ", string = " + string);
+		return getSession().getNamedQuery(namedQuery).setString("string", string).list();
     }
     
      /**

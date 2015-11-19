@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.controller.util.ProjectConstants;
@@ -40,12 +41,12 @@ public class RoleTestController {
     }
 
     @RequestMapping(value = "/roles/add", method = RequestMethod.POST)  
-    public String addRole(@ModelAttribute("one_role")GameRole role) {
-        if (role.getId() == null) {
+    public String addRole(@ModelAttribute("one_role")GameRole role, @RequestParam String action) {
+        if ((action.equals("Add")) && (action.equals("Add"))) {
         	role.setId(keyValue);
             roleService.add(role);
             logger.info("Place with id = " + keyValue + ", added");
-        } else {
+        } else if (action.equals("Edit")) {
             roleService.update(role);
             logger.info("Place with id = " + keyValue + ", updated");
         } 

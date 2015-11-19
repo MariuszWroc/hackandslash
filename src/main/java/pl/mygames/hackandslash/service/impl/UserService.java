@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.UserDao;
+import pl.mygames.hackandslash.dto.util.Rolename;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.service.IRoleService;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Service
@@ -16,6 +19,9 @@ public class UserService implements IUserService {
     
     @Autowired
     private UserDao dao;
+    
+    @Autowired
+    private IRoleService roleService;
 
     public void setUserDao(UserDao dao) {
         this.dao = dao;
@@ -24,6 +30,7 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public void add(GameUser user) {
+    	setDefaultRole(user);
         dao.add(user);
     }
 
@@ -44,7 +51,21 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public void update(GameUser user) {
-	dao.update(user);
+    	setDefaultRole(user);
+    	dao.update(user);
+    }
+
+	private void setDefaultRole(GameUser user) {
+		Integer idRole = Rolename.USER.getValue();
+		List<GameRole> gameRole = roleService.findById(idRole);
+        if(gameRole.iterator().hasNext()) {
+        	user.setGameRole(gameRole.iterator().next());	
+        }
+	}
+	
+    @Override
+    public List<GameUser> findByLogin(String login) {
+        return dao.findByQuery("GameUser.findByLogin", login);
     }
 
     @Override

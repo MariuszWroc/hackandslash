@@ -7,8 +7,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.controller.test.TestController;
-import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.dao.RoleDao;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;

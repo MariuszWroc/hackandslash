@@ -40,8 +40,7 @@ public class RegisterService implements IRegisterService {
     public void add(RegisterDTO registerDTO) {
         GameUser user = new GameUser();
         Integer idRole = Rolename.USER.getValue();
-//		List<GameRole> findById = roleService.findById(idRole);
-		List<GameRole> findById = roleService.findById(1);
+		List<GameRole> findById = roleService.findById(idRole);
 //        GameRole role = roleDao.findById(registerDTO.getRoleId());
         user.setId(registerDTO.getId());
         user.setAge(registerDTO.getAge());
@@ -52,11 +51,16 @@ public class RegisterService implements IRegisterService {
         user.setPassword(registerDTO.getPassword());
         user.setActivated(0);
         user.setHeroList(null);
-//        while(findById.iterator().hasNext()) {
-//            user.setGameRole(findById.iterator().next());	
-//        }
-        user.setGameRole(findById.get(0));
+        if(findById.iterator().hasNext()) {
+            user.setGameRole(findById.iterator().next());	
+        }
         
         userDao.add(user);
     }
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+    
+    
 }

@@ -5,10 +5,10 @@
  */
 package pl.mygames.hackandslash.model;
 
-import java.util.Date;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import org.joda.time.LocalDateTime;
 
 /**
  *
@@ -32,8 +32,7 @@ public class Journal extends AbstractEntity {
     private Hero hero;
     @Basic(optional = false)
     private Integer passed;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDate;
+    private LocalDateTime  startDate;
 
     public Journal() {
     }
@@ -73,14 +72,13 @@ public class Journal extends AbstractEntity {
 
 	public void setPassed(Integer passed) {
 		this.passed = passed;
+	}
+
+	public LocalDateTime getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDateTime startDate) {
+		this.startDate = startDate;
 	} 
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-    
 }

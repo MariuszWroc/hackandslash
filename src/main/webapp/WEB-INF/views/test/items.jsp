@@ -166,14 +166,15 @@
 	                    </td> 
 	                </tr>
 	                <tr>  
-	                    <td colspan="2">
+		            	<td colspan="2">
 	                    	<c:if test="${!empty one_item.id}">
-	                    		<input type="submit" value="Edit"/>
+	                    		<input type="submit" name="action" value="Edit"/>
 	                    	</c:if>
 	                    	<c:if test="${empty one_item.id}">
-	                    		<input type="submit" value="Add"/>
+	                    		<input type="submit" name="action" value="Add"/>
 	                    	</c:if>
-	                    </td>  
+	                    	<input type="submit" name="action" value="Clear" />
+	                    </td> 
 	                </tr>  
 	            </table>   
 	        </form:form> 

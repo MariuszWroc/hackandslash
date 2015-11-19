@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.EquipmentDao;
 import pl.mygames.hackandslash.model.Equipment;
-import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
 @Service
@@ -25,7 +24,7 @@ public class EquipmentService implements IEquipmentService {
     }
 
     @Transactional(readOnly = false)
-//    @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Equipment equipment) {
         dao.delete(equipment);

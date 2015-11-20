@@ -56,7 +56,7 @@ public class UserService implements IUserService {
     }
 
 	private void setDefaultRole(GameUser user) {
-		Integer idRole = Rolename.USER.getValue();
+		Integer idRole = Rolename.USER.getId();
 		List<GameRole> gameRole = roleService.findById(idRole);
         if(gameRole.iterator().hasNext()) {
         	user.setGameRole(gameRole.iterator().next());	

@@ -5,16 +5,16 @@ public enum Behaviour {
 	Ally(2, "Dobry"),
 	Neutral(3, "Neutralny");
 	
-	private final int value;
+	private final int id;
 	private final String name;
 
-	private Behaviour(int value, String name) {
-		this.value = value;
+	private Behaviour(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
-	public int getValue() {
-		return value;
+	public int getId() {
+		return id;
 	}
 	
 	public String getName() {

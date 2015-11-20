@@ -4,18 +4,18 @@ public enum Gender {
 	Male(1, "Mężczyzna"),
 	Female(2, "Kobieta");
 	
-	private final int value;
+	private final int id;
 	private final String name;
 
-	private Gender(int value, String name) {
-		this.value = value;
+	private Gender(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
-	public int getValue() {
-		return value;
+	public int getId() {
+		return id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

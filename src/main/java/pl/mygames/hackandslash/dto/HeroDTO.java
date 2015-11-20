@@ -27,6 +27,8 @@ public class HeroDTO implements Serializable{
     private Integer constitution;
     private Integer intelligence;
     private Integer charisma;
+    private Integer baseHP;
+    private Integer experience;
 
     public Integer getId() {
         return id;
@@ -131,6 +133,21 @@ public class HeroDTO implements Serializable{
     public void setCharisma(Integer charisma) {
         this.charisma = charisma;
     }
-    
-    
+
+	public Integer getBaseHP() {
+		return baseHP;
+	}
+
+	public void setBaseHP(Integer baseHP) {
+		this.baseHP = baseHP;
+	}
+
+	public Integer getExperience() {
+		return experience;
+	}
+
+	public void setExperience(Integer experience) {
+		this.experience = experience;
+	}
+	
 }

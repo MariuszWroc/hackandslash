@@ -17,7 +17,8 @@ import org.joda.time.LocalDateTime;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Journal.findAll", query = "SELECT j FROM Journal j"),
-    @NamedQuery(name = "Journal.findById", query = "SELECT j FROM Journal j WHERE j.id = :id")})
+    @NamedQuery(name = "Journal.findById", query = "SELECT j FROM Journal j WHERE j.id = :id"),
+    @NamedQuery(name = "Journal.findByHeroId", query = "SELECT j FROM Journal j WHERE j.hero = :hero")})
 public class Journal extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     @Id

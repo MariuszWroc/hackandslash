@@ -1,23 +1,29 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum Dice {
-	Dice1(1, "1D4"),
-	Dice2(2, "1D6"),
-	Dice3(3, "1D8");
+	DICE1D4(1, 1, 4),
+	DICE1D6(2, 1, 6),
+	DICE1D8(3, 1, 8);
 	
-	private final int value;
-	private final String name;
+	private final int id;
+	private final int numberOfDiceThrow;
+	private final int rolledValue;
 
-	private Dice(int value, String name) {
-		this.value = value;
-		this.name = name;
-	}
-
-	public int getValue() {
-		return value;
+	private Dice(int id, int numberOfDiceThrow, int rolledValue) {
+		this.id = id;
+		this.numberOfDiceThrow = numberOfDiceThrow;
+		this.rolledValue = rolledValue;
 	}
 	
-	public String getName() {
-		return name;
+	public int getId() {
+		return id;
+	}
+
+	public int getNumberOfDiceThrow() {
+		return numberOfDiceThrow;
+	}
+
+	public int getRolledValue() {
+		return rolledValue;
 	}
 }

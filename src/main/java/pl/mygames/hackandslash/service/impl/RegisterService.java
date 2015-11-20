@@ -39,7 +39,7 @@ public class RegisterService implements IRegisterService {
 	@Transactional(readOnly = false)
     public void add(RegisterDTO registerDTO) {
         GameUser user = new GameUser();
-        Integer idRole = Rolename.USER.getValue();
+        Integer idRole = Rolename.USER.getId();
 		List<GameRole> findById = roleService.findById(idRole);
 //        GameRole role = roleDao.findById(registerDTO.getRoleId());
         user.setId(registerDTO.getId());

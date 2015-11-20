@@ -13,16 +13,16 @@ public enum Race {
 	Gnoll(9, "Gnolle");
 	
 	
-	private final int value;
+	private final int id;
 	private final String name;
 
 	private Race(int value, String name) {
-		this.value = value;
+		this.id = value;
 		this.name = name;
 	}
 
-	public int getValue() {
-		return value;
+	public int getId() {
+		return id;
 	}
 	
 	public String getName() {

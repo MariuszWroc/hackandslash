@@ -3,16 +3,16 @@ package pl.mygames.hackandslash.dto.util;
 public enum StartingPoint {
 	CITY(1, "Miasto - Stolica");
 	
-	private final int value;
+	private final int id;
 	private final String name;
 
-	private StartingPoint(int value, String name) {
-		this.value = value;
+	private StartingPoint(int id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 
-	public int getValue() {
-		return value;
+	public int getId() {
+		return id;
 	}
 	
 	public String getName() {

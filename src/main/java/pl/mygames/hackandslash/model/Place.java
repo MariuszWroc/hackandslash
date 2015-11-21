@@ -31,6 +31,9 @@ public class Place extends AbstractEntity {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private Integer longitude;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    private Integer radius;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "place", fetch = FetchType.LAZY)
     private List<Hero> heroList;
 
@@ -73,4 +76,13 @@ public class Place extends AbstractEntity {
     public void setHeroList(List<Hero> heroList) {
         this.heroList = heroList;
     }
+
+    public Integer getRadius() {
+        return radius;
+    }
+
+    public void setRadius(Integer radius) {
+        this.radius = radius;
+    }
+    
 }

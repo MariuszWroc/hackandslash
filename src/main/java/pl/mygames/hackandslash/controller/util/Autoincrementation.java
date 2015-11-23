@@ -12,5 +12,4 @@ public class Autoincrementation {
 			return actualValue = 1;
 		}
 	}
-
 }

@@ -26,7 +26,10 @@
         <a href="${contextPath}/npcs">npcs</a><br/>
         <a href="${contextPath}/places">places</a><br/>
         <a href="${contextPath}/quests">quests</a>
-        <a href="${contextPath}/create_hero">quests</a>
+        <h2>Testing registration and login procedure</h2>
+        <a href="${contextPath}/registerTest">register user</a><br/>
+        <a href="${contextPath}/login">login</a><br/>
+        <a href="${contextPath}/create_hero">create Hero</a>
         <p>Problemy z encjami<br/>>
         npc -- obiekt transferowy<br/>
 		journal -- rozwiązanie: standardowy zestaw questów dla rasy<br/>

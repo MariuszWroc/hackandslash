@@ -12,4 +12,5 @@ public interface IUserService {
     List<GameUser> findAll();
 	void delete(Integer id);
 	List<GameUser> findByLogin(String login);
+	Integer generateId();
 }

@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  *
  * @author mariusz
@@ -28,7 +30,7 @@ public class GameUser extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @Column(nullable = false)
     private Integer id;
     @Size(max = 45)
     private String firstname;
@@ -36,15 +38,18 @@ public class GameUser extends AbstractEntity {
     private String lastname;
     private Integer age;
     private Integer gender;
+    @NotBlank
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String login;
+    @NotBlank
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
+    @Size(min = 3)
     private String password;
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer activated;
+    private Boolean activated;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameUser", fetch = FetchType.LAZY)
     private List<Hero> heroList;
     @JoinColumn(name = "GameRole_id", referencedColumnName = "id", nullable = false)
@@ -121,15 +126,15 @@ public class GameUser extends AbstractEntity {
         this.password = password;
     }
 
-    public Integer getActivated() {
-        return activated;
-    }
+    public Boolean getActivated() {
+		return activated;
+	}
 
-    public void setActivated(Integer activated) {
-        this.activated = activated;
-    }
+	public void setActivated(Boolean activated) {
+		this.activated = activated;
+	}
 
-    public List<Hero> getHeroList() {
+	public List<Hero> getHeroList() {
         return heroList;
     }
 

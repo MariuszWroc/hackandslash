@@ -49,7 +49,7 @@ public class RegisterService implements IRegisterService {
         user.setGender(registerDTO.getGender());
         user.setLogin(registerDTO.getLogin());
         user.setPassword(registerDTO.getPassword());
-        user.setActivated(0);
+        user.setActivated(Boolean.FALSE);
         user.setHeroList(null);
         if(findById.iterator().hasNext()) {
             user.setGameRole(findById.iterator().next());	

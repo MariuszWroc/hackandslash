@@ -157,18 +157,18 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     @SuppressWarnings("unchecked")
     @Override
     public List<T> findAll() {
-        logger.info("Find all by:criteria");
+        logger.info("Find all by criteria");
         return getSession().createCriteria(type).list();
     }
     
     @Override
-    public Integer count() {
+    public Long count() {
         logger.info("count");
-        Integer count = (Integer)getSession().createCriteria(type)
+        Long count = (Long) getSession().createCriteria(type)
                 .setProjection(Projections.rowCount())
                 .uniqueResult();
         if(count == null) {
-            return (Integer)0;
+            return 0L;
         }
         else {
             return count;
@@ -177,6 +177,6 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     
     @Override
     public Integer generateId() {
-	return count() + 1;
+    	return count().intValue() + 1;
     }
 }

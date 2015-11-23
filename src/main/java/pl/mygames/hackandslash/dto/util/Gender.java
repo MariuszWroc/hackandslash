@@ -1,8 +1,8 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum Gender {
-	Male(1, "Mężczyzna"),
-	Female(2, "Kobieta");
+	MALE(1, "Mężczyzna"),
+	FEMALE(2, "Kobieta");
 	
 	private final int id;
 	private final String name;

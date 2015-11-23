@@ -30,6 +30,9 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public void add(GameUser user) {
+    	user.setId(generateId());
+    	user.setActivated(Boolean.TRUE);
+    	System.out.println("USER SERVICE " + user.getLogin().length());
     	setDefaultRole(user);
         dao.add(user);
     }
@@ -61,6 +64,11 @@ public class UserService implements IUserService {
         if(gameRole.iterator().hasNext()) {
         	user.setGameRole(gameRole.iterator().next());	
         }
+	}
+	
+    @Override
+	public Integer generateId() {
+		return dao.generateId();
 	}
 	
     @Override

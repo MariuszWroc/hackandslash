@@ -37,7 +37,7 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
 
     T findById(PK id) throws EmptyResultDataAccessException;
 
-    Integer count() throws EmptyResultDataAccessException; 
+    Long count() throws EmptyResultDataAccessException; 
     
     Integer generateId();
 

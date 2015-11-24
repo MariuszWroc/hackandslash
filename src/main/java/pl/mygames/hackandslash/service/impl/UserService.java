@@ -32,7 +32,6 @@ public class UserService implements IUserService {
     public void add(GameUser user) {
     	user.setId(generateId());
     	user.setActivated(Boolean.TRUE);
-    	System.out.println("USER SERVICE " + user.getLogin().length());
     	setDefaultRole(user);
         dao.add(user);
     }

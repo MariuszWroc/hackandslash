@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +22,7 @@ import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
+@SessionAttributes("genderEnum")
 public class RegisterTestController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterTestController.class); 
 	
@@ -44,7 +44,6 @@ public class RegisterTestController {
             if (savingSuccess) {
     			logger.info("User with id = " + user.getId() + ", added");
             } else {
-            	// TODO: poprawic, wlasny message/walidator
             	redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
             }
 

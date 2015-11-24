@@ -1,7 +1,6 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum Profession {
-	Other(0, "Inna", 10),
 	Mage(1, "Mag", 150),
 	Warrior(2, "Wojownik", 100),
 	Hunter(3, "Łowca", 120),

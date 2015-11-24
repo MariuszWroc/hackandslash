@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class HeroDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private Integer activated;
+    private Boolean activated;
     private String firstname;
     private String lastname;
     private Integer gender;
@@ -38,11 +38,11 @@ public class HeroDTO implements Serializable{
         this.id = id;
     }
 
-    public Integer getActivated() {
+    public Boolean getActivated() {
         return activated;
     }
 
-    public void setActivated(Integer activated) {
+    public void setActivated(Boolean activated) {
         this.activated = activated;
     }
 

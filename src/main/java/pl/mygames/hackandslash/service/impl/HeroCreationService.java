@@ -16,7 +16,7 @@ import pl.mygames.hackandslash.service.*;
 
 @Service
 @Transactional(readOnly = true)
-public class HeroCreationService {
+public class HeroCreationService implements IHeroCreationService {
 	private static final int NO = 0;
 	private static final int YES = 1;
 	private static final Integer START_EXPERIENCE = 1;
@@ -36,6 +36,10 @@ public class HeroCreationService {
 	@Autowired
 	private IPlaceService placeService;
 	
+	/* (non-Javadoc)
+	 * @see pl.mygames.hackandslash.service.impl.IHeroCreationService#add(pl.mygames.hackandslash.dto.HeroDTO)
+	 */
+	@Override
 	@Transactional(readOnly = false)
 	public void add(HeroDTO heroDTO) {
     	Hero hero = new Hero();

@@ -1,7 +1,6 @@
 package pl.mygames.hackandslash.dto.util;
 
 public enum Race {
-	Animal(0, "Zwierzę"),
 	Human(1, "Człowiek"),
 	Elf(2, "Elf"),
 	Ork(3, "Ork"),

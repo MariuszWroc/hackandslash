@@ -6,6 +6,7 @@
 package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
+import pl.mygames.hackandslash.model.GameUser;
 
 /**
  *
@@ -15,6 +16,16 @@ public class LoginDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private String login;
     private String password;
+    
+    
+    public LoginDTO(){
+        
+    }
+    
+    public LoginDTO(GameUser user){
+        login = user.getLogin();
+        password = user.getPassword();
+    }
 
     public String getLogin() {
         return login;

@@ -145,9 +145,9 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     
     @SuppressWarnings("unchecked")
 	@Override
-    public List<T> findByQuery(String namedQuery, String string) {
-        logger.info("Find by query: " + namedQuery + ", string = " + string);
-		return getSession().getNamedQuery(namedQuery).setString("string", string).list();
+    public List<T> findByQuery(String namedQuery, String paramName, String paramValue) {
+        logger.info("Find by query: " + namedQuery + ", where + " + paramName + " = " + paramValue);
+		return getSession().getNamedQuery(namedQuery).setString(paramName, paramValue).list();
     }
     
      /**

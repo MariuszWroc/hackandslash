@@ -13,12 +13,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import pl.mygames.hackandslash.dto.util.Gender;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
+@SessionAttributes("genderEnum")
 public class RegisterTestController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterTestController.class); 
 	
@@ -34,10 +38,15 @@ public class RegisterTestController {
     }
     
     @RequestMapping(value = "/registerTest/add", method = RequestMethod.POST)  
-    public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result) {
-		if (!result.hasErrors()) {
-            userService.add(user);
-			logger.info("User with id = " + user.getId() + ", added");
+    public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result, RedirectAttributes redirectAttributes) {
+		if (!result.hasErrors() ) {
+            Boolean savingSuccess = userService.add(user);
+            if (savingSuccess) {
+    			logger.info("User with id = " + user.getId() + ", added");
+            } else {
+            	redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
+            }
+
 		} else {
 			logger.info("Validation failed. Error in field " + result.getFieldError());
 			return "test/procedures/registerTest";

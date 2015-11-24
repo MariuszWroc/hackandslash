@@ -42,10 +42,9 @@ public class GameUser extends AbstractEntity {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String login;
-    @NotBlank
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    @Size(min = 3)
+    @Size(min = 3, max = 45)
     private String password;
     @Basic(optional = false)
     @Column(nullable = false)

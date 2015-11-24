@@ -1,6 +1,9 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
@@ -16,7 +19,8 @@ import pl.mygames.hackandslash.service.IUserService;
 @Service
 @Transactional(readOnly = true)
 public class UserService implements IUserService {
-    
+	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+	
     @Autowired
     private UserDao dao;
     
@@ -29,11 +33,18 @@ public class UserService implements IUserService {
 
     @Transactional(readOnly = false)
     @Override
-    public void add(GameUser user) {
-    	user.setId(generateId());
-    	user.setActivated(Boolean.TRUE);
-    	setDefaultRole(user);
-        dao.add(user);
+    public Boolean add(GameUser user) {
+    	if(!isUserExist(user.getLogin())) {
+        	user.setId(generateId());
+        	user.setActivated(Boolean.TRUE);
+        	setDefaultRole(user);
+            dao.add(user);
+            return true;
+    	} else {
+    		logger.info("User already exist.");
+    		return false;
+    	}
+
     }
 
     @Transactional(readOnly = false)
@@ -72,7 +83,7 @@ public class UserService implements IUserService {
 	
     @Override
     public List<GameUser> findByLogin(String login) {
-        return dao.findByQuery("GameUser.findByLogin", login);
+        return dao.findByQuery("GameUser.findByLogin", "login", login);
     }
 
     @Override
@@ -83,6 +94,14 @@ public class UserService implements IUserService {
     @Override
     public List<GameUser> findAll() {
         return dao.findByQuery("GameUser.findAll");
+    }
+    
+    private Boolean isUserExist(String login) {
+    	if (findByLogin(login).isEmpty()) {
+    		return false;
+    	} else {
+    		return true;
+    	}
     }
 
 }

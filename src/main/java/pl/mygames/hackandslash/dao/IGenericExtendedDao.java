@@ -49,6 +49,6 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
 
 	List<T> findByQuery(String namedQuery, Integer id);
 
-	List<T> findByQuery(String namedQuery, String string);
+	List<T> findByQuery(String namedQuery, String paramName, String paramValue);
 
 }

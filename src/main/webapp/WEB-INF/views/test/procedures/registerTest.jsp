@@ -15,9 +15,9 @@
 <title>Insert user (register)</title>
 <style>
 .error {
-    color: #ff0000;
-    font-style: italic;
-    font-weight: bold;
+	color: #000;
+	background-color: #ffEEEE;
+	border: 1px solid #ff0000;
 }
 </style>
 </head>
@@ -28,7 +28,7 @@
         <div align="center">
 	        <h2>Register user</h2>  
 	        <c:url var="addAction" value="/registerTest/add" ></c:url>
-	        <form:form id="registerForm" method="POST" action="${addAction}" commandName="user">  
+	        <form:form id="registerForm" method="POST" action="${addAction}" commandName="user">
 	            <table>
 	            	<tr>
 	                    <td>
@@ -38,7 +38,7 @@
 	                        <form:input path="login" />
 	                    </td> 
 	                    <td>
-	                    	<form:errors path="login" cssclass="error"/>
+	                    	<form:errors path="login" cssClass="error" />
 	                    </td>
 	                </tr>  
 	                <tr>
@@ -49,7 +49,7 @@
 	                        <form:input path="password"  type="password"/>
 	                    </td> 
 	                    <td>
-	                    	<form:errors path="password" cssclass="error"/>
+	                    	<form:errors path="password" cssClass="error"/>
 	                    </td>
 	                </tr>    
 	                <tr>

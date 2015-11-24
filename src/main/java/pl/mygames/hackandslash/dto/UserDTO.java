@@ -6,6 +6,7 @@
 package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
+import pl.mygames.hackandslash.model.GameUser;
 
 /**
  *
@@ -18,6 +19,19 @@ public class UserDTO extends LoginDTO implements Serializable{
     private String lastname;
     private Integer age;
     private Integer gender;
+    
+    public UserDTO(){
+        super();
+    }
+    
+    public UserDTO(GameUser user){
+        super(user);
+        id = user.getId();
+        firstname = user.getFirstname();
+        lastname = user.getLastname();
+        age = user.getAge();
+        gender = user.getGender();
+    }
 
     public Integer getId() {
         return id;

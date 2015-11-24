@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -68,10 +69,4 @@ public class HomeController {
            public @ResponseBody void addUser(@RequestBody RegisterDTO user) {    
                registerService.add(user);
            }
-           
-           
-           @RequestMapping(value = {"/userList.json"}, method = RequestMethod.GET)
-            public @ResponseBody int getUserList() {
-                return userService.findAll().size();
-            }
 }

@@ -7,6 +7,7 @@ package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
 import java.util.List;
+import pl.mygames.hackandslash.model.GameUser;
 
 
 /**
@@ -18,6 +19,16 @@ public class RegisterDTO extends UserDTO implements Serializable{
     private Integer activated;
     private Integer roleId;
     private List<Integer> heroesIds;
+    
+    public RegisterDTO(){
+        super();
+    }
+    
+    public RegisterDTO(GameUser user){
+        super(user);
+        activated = 0;
+        roleId = 0;
+    }
 
     public Integer getActivated() {
         return activated;

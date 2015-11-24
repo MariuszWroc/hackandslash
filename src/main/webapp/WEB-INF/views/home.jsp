@@ -67,34 +67,28 @@
         }]);
         app.controller('registerController', ['$scope', '$http', function($scope, $http){
                 $scope.user ={
-                            id : 0,
-                            firstname : 'firstname',
-                            lastname : 'lastname',
-                            age : 26,
-                            gender : 0,
-                            login : 'login',
-                            password : 'password',
-                            activated: 0,
-                            roleId : 0,
+                            firstname : '',
+                            lastname : '',
+                            login : '',
+                            password : '',
                             heroesIds : [],
                             };
                             
                 $scope.doRegister = function (){
-                    $http.get('/hackandslash/userList.json').success(function(res) {
+                    $http.get('/hackandslash/register/userList.json').success(function(res) {
                         console.log('getUsers',res);
-                        $scope.user.id = res+1;
+                        $scope.user.id = res + 1;
                         $scope.user.heroesIds.push(0);
                         console.log('adding',$scope.user);
                         $http.post('/hackandslash/addUser', $scope.user).success(function() {
-                            console.log('success');
+                            alert('registration successfull\n\
+                                   You can now play the game');
                         }).error(function(error) {
                             console.log(error);
                         });
                     }).error(function(error) {
                         alert(error);
-                    });
-                    
-                    
+                    }); 
                 };
         }]);
     </script>

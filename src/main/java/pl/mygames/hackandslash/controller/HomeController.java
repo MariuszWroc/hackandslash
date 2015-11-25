@@ -1,9 +1,7 @@
 package pl.mygames.hackandslash.controller;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.dto.util.Gender;
 import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -58,6 +56,8 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+                
+                model.addAttribute("genderEnum", Gender.values());
 		
 		return "home";
 	}

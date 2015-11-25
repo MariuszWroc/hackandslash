@@ -1,9 +1,9 @@
 package pl.mygames.hackandslash.controller;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import pl.mygames.hackandslash.dto.GenderWorkAround;
 
 import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.dto.util.Gender;
 import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -57,7 +58,16 @@ public class RegisterController {
 	}
         
         @RequestMapping(value = {"/userList.json"}, method = RequestMethod.GET)
-            public @ResponseBody int getUserList() {
-                return userService.findAll().size();
+        public @ResponseBody int getUserList() {
+            return userService.findAll().size();
+        }
+        
+        @RequestMapping(value = {"/genderList"}, method = RequestMethod.GET)
+        public @ResponseBody List<GenderWorkAround> getGenderList(ModelMap model) {
+            List<GenderWorkAround> list = new ArrayList<>();
+            for(Gender g:Gender.values()){
+               list.add(new GenderWorkAround(g));
             }
+            return list;
+        }
 }

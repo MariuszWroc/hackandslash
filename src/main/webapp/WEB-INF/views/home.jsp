@@ -10,6 +10,12 @@
 		  font-weight: inherit;
 		  margin: inherit;
 		}
+        
+        .error {
+            color: #ff0000;
+            font-style: italic;
+            font-weight: bold;
+        }
     </style>
     <meta name="viewport" content="initial-scale=1" />
   </head>
@@ -28,13 +34,67 @@
         </md-sidenav>
         <div ng-show="isRegister" ng-controller="registerController" flex id="content">
         	<ng-include src="userRegistration.html"></ng-include>  <!--i intend to use something like this to cycle through pages-->
-            <md-content layout="column" flex class="md-padding"> 
-                firstname <input type="text" ng-model="user.firstname"/>
-                lastname    <input type="text" ng-model="user.lastname"/>
-                age         <input type="number" ng-model="user.age"/>
-                login       <input type="text" ng-model="user.login"/>
-                password    <input type="password" ng-model="user.password"/>
-                <md-button ng-click="doRegister()">Register</md-button>
+            <md-content layout="column" flex class="md-padding">
+                <form name="registration" ng-submit="doRegister()" novalidate> <!-- ng-submit="doRegister()"-->
+                    <table>
+	            	<tr>
+	                    <td>
+                                <label>Firstname:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.firstname"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Lastname:</label>
+                            </td>
+                            <td>
+                               <input type="text" ng-model="user.lastname"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Age:</label>
+                            </td>
+                            <td>
+                                <input type="number" ng-model="user.age"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Gender:</label>
+                            </td>
+                            <td>
+                                <md-input-container style="margin-right: 10px;">
+                                    <md-select ng-model="user.gender">
+                                        <md-option ng-repeat="gender in genders" value="{{gender.id}}">{{gender.name}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Login:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.login"/>
+                                <label ng-show="errors.login" class="error">{{errors.login}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Password:</label>
+                            </td>
+                            <td>
+                                <input type="password" ng-model="user.password"/>
+                                <label ng-show="errors.password" class="error">{{errors.password}}</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <md-button class="md-raised" type="submit">Register</md-button>
+                    <md-button class="md-raised" type="button" ng-click="clear()">Clear</md-button>
+                </form>
             </md-content>
         </div>
     </div>
@@ -70,25 +130,59 @@
                             firstname : '',
                             lastname : '',
                             login : '',
-                            password : '',
-                            heroesIds : [],
+                            password : ''
                             };
-                            
-                $scope.doRegister = function (){
-                    $http.get('/hackandslash/register/userList.json').success(function(res) {
-                        console.log('getUsers',res);
-                        $scope.user.id = res + 1;
-                        $scope.user.heroesIds.push(0);
-                        console.log('adding',$scope.user);
-                        $http.post('/hackandslash/addUser', $scope.user).success(function() {
-                            alert('registration successfull\n\
-                                   You can now play the game');
-                        }).error(function(error) {
-                            console.log(error);
-                        });
+                $scope.errors = {
+                    'login': '',
+                    'password': ''
+                };
+                
+                $scope.genders = [];
+                
+                $http.get('/hackandslash/register/genderList')
+                    .success(function(res) {
+                        $scope.genders = res;
                     }).error(function(error) {
                         alert(error);
                     }); 
+                            
+                $scope.doRegister = function (){
+                    $scope.errors = {
+                        'login': '',
+                        'password': ''
+                    };
+                    console.log('adding',$scope.user);
+                    $http.post('/hackandslash/registerTest/addAngu', $scope.user).success(function(response) {//registerTest/add
+                        if(response.length>0) {
+                            angular.forEach(response, function(val){
+                               if(val.field==='login'){
+                                   $scope.errors.login = val.defaultMessage;
+                               }
+                               if(val.field==='password'){
+                                   $scope.errors.password = val.defaultMessage;
+                               }
+                            });
+                        } else {
+                            alert('registration successfull\n\
+                                   You can now play the game');
+                        }
+                    }).error(function(error) {
+                        console.log(error);
+                    });
+                };
+                
+                $scope.clear = function(){
+                    $scope.user ={
+                            firstname : '',
+                            lastname : '',
+                            login : '',
+                            password : '',
+                            heroesIds : []
+                            };
+                    $scope.errors = {
+                        'login': '',
+                        'password': ''
+                    };
                 };
         }]);
     </script>

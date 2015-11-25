@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.dto.util;
+package pl.mygames.hackandslash.dto.util.general;
 
 public enum StartingPoint {
 	CITY(1, "Miasto - Stolica");

@@ -7,6 +7,9 @@ package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
 
+import pl.mygames.hackandslash.dto.util.general.Dice;
+import pl.mygames.hackandslash.service.impl.logic.Rules;
+
 
 /**
  *
@@ -29,8 +32,13 @@ public class HeroDTO implements Serializable{
     private Integer charisma;
     private Integer baseHP;
     private Integer experience;
+    private Integer startingPoints;
 
-    public Integer getId() {
+    public HeroDTO() {
+		this.startingPoints = Rules.diceRoller(Dice.DICE1D8.getNumberOfDiceThrow(), Dice.DICE1D8.getSideNumber());
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -148,6 +156,14 @@ public class HeroDTO implements Serializable{
 
 	public void setExperience(Integer experience) {
 		this.experience = experience;
+	}
+
+	public Integer getStartingPoints() {
+		return startingPoints;
+	}
+
+	public void setStartingPoints(Integer startingPoints) {
+		this.startingPoints = startingPoints;
 	}
 	
 }

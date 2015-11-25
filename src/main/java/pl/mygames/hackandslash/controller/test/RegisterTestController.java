@@ -17,7 +17,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pl.mygames.hackandslash.dto.util.Gender;
+import pl.mygames.hackandslash.dto.util.general.Gender;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 

@@ -1,6 +1,6 @@
-package pl.mygames.hackandslash.dto.util;
+package pl.mygames.hackandslash.dto.util.user;
 
-public enum Profession {
+public enum UserProfession {
 	Mage(1, "Mag", 150),
 	Warrior(2, "Wojownik", 100),
 	Hunter(3, "Łowca", 120),
@@ -11,7 +11,7 @@ public enum Profession {
 	private final int money;
 	private final String name;
 
-	private Profession(int id, String name, int money) {
+	private UserProfession(int id, String name, int money) {
 		this.id = id;
 		this.name = name;
 		this.money = money;

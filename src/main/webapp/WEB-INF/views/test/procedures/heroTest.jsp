@@ -128,6 +128,14 @@
 							<form:input path="charisma"/>
 	        			</td>
 	        		</tr>
+	        		<tr>
+	        			<td>
+	        				<form:label path="startingPoints"><spring:message text="Attributes points"/></form:label>
+	        		    </td>
+	        			<td>
+							<form:input path="startingPoints"/>
+	        			</td>
+	        		</tr>
 	        		<tr>  
 	                    <td colspan="2">
 	                    	<input type="submit" value="Add"/>

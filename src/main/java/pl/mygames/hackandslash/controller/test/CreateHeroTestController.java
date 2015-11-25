@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.*;
+import pl.mygames.hackandslash.dto.util.general.*;
+import pl.mygames.hackandslash.dto.util.user.UserProfession;
+import pl.mygames.hackandslash.dto.util.user.UserRace;
 import pl.mygames.hackandslash.service.IHeroCreationService;
+import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Controller
 @SessionAttributes("genderEnum")
@@ -26,8 +30,8 @@ public class CreateHeroTestController {
 	public String showHero(ModelMap model) {
 		model.addAttribute("hero", new HeroDTO());
 		model.addAttribute("genderEnum", Gender.values());
-		model.addAttribute("professionEnum", Profession.values());
-		model.addAttribute("raceEnum", Race.values());
+		model.addAttribute("professionEnum", UserProfession.values());
+		model.addAttribute("raceEnum", UserRace.values());
 		logger.info("hero view");
 		return "test/procedures/heroTest";
 	}

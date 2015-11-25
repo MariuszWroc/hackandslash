@@ -28,6 +28,7 @@
 	                    <td>${place.id}</td>
 	                    <td>${place.latitude}</td>
 	                    <td>${place.longitude}</td>
+	                    <td>${place.radius}</td>
 	                    <td><a href="<c:url value='/places/edit/${place.id}' />">Edit</a></td>
 						<td><a href="<c:url value='/places/remove/${place.id}' />">Delete</a></td>
 	                </tr>
@@ -61,6 +62,14 @@
 	                    </td>
 	                    <td>
 	                        <form:input path="longitude" />
+	                    </td> 
+	                </tr> 
+	                <tr>
+	                    <td>
+	                        <form:label path="radius"><spring:message text="Radius"/></form:label>
+	                    </td>
+	                    <td>
+	                        <form:input path="radius" />
 	                    </td> 
 	                </tr> 
 	                <tr>  

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.UserDao;
-import pl.mygames.hackandslash.dto.util.Rolename;
+import pl.mygames.hackandslash.dto.util.general.Rolename;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IRoleService;

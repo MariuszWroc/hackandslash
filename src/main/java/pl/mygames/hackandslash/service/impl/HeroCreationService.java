@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.HeroDao;
 import pl.mygames.hackandslash.dto.*;
-import pl.mygames.hackandslash.dto.util.Profession;
-import pl.mygames.hackandslash.dto.util.StartingPoint;
+import pl.mygames.hackandslash.dto.util.general.StartingPoint;
+import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.model.*;
 import pl.mygames.hackandslash.service.*;
 
@@ -48,7 +48,7 @@ public class HeroCreationService implements IHeroCreationService {
     	Integer idPlace = StartingPoint.CITY.getId();
 		List<Place> place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
-		hero.setId(heroDTO.getId());
+		setDefaultId(heroDTO, hero);
 		hero.setActivated(YES);			
 		hero.setMoney(chooseMoney());
 		if (place.iterator().hasNext()) {
@@ -63,10 +63,24 @@ public class HeroCreationService implements IHeroCreationService {
     	dao.add(hero);
 	}
 	
+    @Override
+	public Integer generateId() {
+		return dao.generateId();
+	}
+
+	private void setDefaultId(HeroDTO heroDTO, Hero hero) {
+		Integer id = heroDTO.getId();
+		if (id == null) {
+			hero.setId(dao.generateId());
+		} else {
+			hero.setId(id);
+		}
+	}
+	
 	private void addCharacter(GameCharacter character, HeroDTO heroDTO) {
 		character.setId(characterService.findAll().size()+1);
 		character.setAge(heroDTO.getAge());
-		character.setBaseHP(generateHP(heroDTO.getConstitution()));
+		character.setBaseHP(calculateHP(heroDTO.getConstitution()));
 		character.setCharisma(heroDTO.getCharisma());
 		character.setConstitution(heroDTO.getConstitution());
 		character.setDexterity(heroDTO.getDexterity());
@@ -115,8 +129,8 @@ public class HeroCreationService implements IHeroCreationService {
 		return weapon;
 	}
 
-	private Integer generateHP(Integer constitution) {
-		int baseHP = 1; 
+	private Integer calculateHP(Integer constitution) {
+		int baseHP = 10; 
 		if (constitution>0) {
 			//TODO: Logic for create baseHP for constitution
 		}
@@ -124,6 +138,6 @@ public class HeroCreationService implements IHeroCreationService {
 	}
 
 	private int chooseMoney() {
-		return Profession.Warrior.getMoney();
+		return UserProfession.Warrior.getMoney();
 	}
 }

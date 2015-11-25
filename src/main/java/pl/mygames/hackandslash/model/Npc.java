@@ -23,7 +23,7 @@ public class Npc extends AbstractEntity {
     @Basic(optional = false)
     @NotNull
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 1)
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer behaviour;

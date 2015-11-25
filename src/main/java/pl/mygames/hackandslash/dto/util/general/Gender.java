@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.dto.util;
+package pl.mygames.hackandslash.dto.util.general;
 
 public enum Gender {
 	MALE(1, "Mężczyzna"),

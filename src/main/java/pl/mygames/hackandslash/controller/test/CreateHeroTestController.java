@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import pl.mygames.hackandslash.controller.util.GuiEnums;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.*;
 import pl.mygames.hackandslash.dto.util.general.*;
@@ -32,7 +33,10 @@ public class CreateHeroTestController {
 		model.addAttribute("genderEnum", Gender.values());
 		model.addAttribute("professionEnum", UserProfession.values());
 		model.addAttribute("raceEnum", UserRace.values());
-		logger.info("hero view");
+		model.addAttribute("max", GuiEnums.MAX_ATTRIBUTE.getAttribute());
+		model.addAttribute("min", GuiEnums.MIN_ATTRIBUTE.getAttribute());
+		model.addAttribute("value", GuiEnums.VALUE_ATTRIBUTE.getAttribute());
+		logger.info("Hero view");
 		return "test/procedures/heroTest";
 	}
 	

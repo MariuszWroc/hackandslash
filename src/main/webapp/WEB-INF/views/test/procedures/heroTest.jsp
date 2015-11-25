@@ -62,7 +62,7 @@
 	                        <form:label path="age"><spring:message text="Age"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="age" />
+	                        <form:input path="age" type="number"/>
 	                    </td>
 	                    <td>
 	                    	<form:errors path="age" cssclass="error"/>
@@ -93,7 +93,7 @@
 	        				<form:label path="strength"><spring:message text="Strength"/></form:label>
 	        			</td>
 						<td>
-							<form:input path="strength"/>
+							<form:input path="strength" type="number" value="${value}" min = "${min}" max = "${max}"/>
 	        			</td>
 	        		</tr>
 	        		<tr>
@@ -101,7 +101,7 @@
 	        				<form:label path="dexterity"><spring:message text="Dexterity"/></form:label>
 	        			</td>
 						<td>
-							<form:input path="dexterity"/>
+							<form:input path="dexterity" type="number" value="${value}" min = "${min}" max = "${max}"/>
 	        			</td>
 	        		</tr>
 	        		<tr>
@@ -109,7 +109,7 @@
 	        				<form:label path="constitution"><spring:message text="Constitution"/></form:label>
 	        			</td>
 						<td>
-							<form:input path="constitution"/>
+							<form:input path="constitution" type="number" value="${value}" min = "${min}" max = "${max}"/>
 	        			</td>
 	        		</tr>
 	        		<tr>
@@ -117,7 +117,7 @@
 	        				<form:label path="intelligence"><spring:message text="Intelligence"/></form:label>
 	        			</td>
 						<td>
-							<form:input path="intelligence"/>
+							<form:input path="intelligence" type="number" value="${value}" min = "${min}" max = "${max}"/>
 	        			</td>
 	        		</tr>
 	        		<tr>
@@ -125,7 +125,7 @@
 	        				<form:label path="charisma"><spring:message text="Charisma"/></form:label>
 	        			</td>
 						<td>
-							<form:input path="charisma"/>
+							<form:input path="charisma" type="number" value="${value}" min = "${min}" max = "${max}"/>
 	        			</td>
 	        		</tr>
 	        		<tr>
@@ -133,8 +133,12 @@
 	        				<form:label path="startingPoints"><spring:message text="Attributes points"/></form:label>
 	        		    </td>
 	        			<td>
-							<form:input path="startingPoints"/>
+							<form:input path="startingPoints" readonly="true"/>
 	        			</td>
+	        			<td>
+	        				 <input type="submit" value="Roll again"/>
+	        			</td>
+
 	        		</tr>
 	        		<tr>  
 	                    <td colspan="2">

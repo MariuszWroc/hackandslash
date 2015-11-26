@@ -5,7 +5,7 @@
  */
 package pl.mygames.hackandslash.dto;
 
-import pl.mygames.hackandslash.dto.util.Gender;
+import pl.mygames.hackandslash.dto.util.general.Gender;
 
 /**
  *

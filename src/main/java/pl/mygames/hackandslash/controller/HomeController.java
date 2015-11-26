@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.dto.util.Gender;
+import pl.mygames.hackandslash.dto.util.general.Gender;
 import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IUserService;
 

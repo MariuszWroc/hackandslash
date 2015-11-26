@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.mygames.hackandslash.dto.GenderWorkAround;
 
 import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.dto.util.Gender;
+import pl.mygames.hackandslash.dto.util.general.Gender;
 import pl.mygames.hackandslash.service.IRegisterService;
 import pl.mygames.hackandslash.service.IUserService;
 

@@ -1,5 +1,8 @@
 package pl.mygames.hackandslash.service.impl.logic;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import pl.mygames.hackandslash.service.util.RandomValue;
 
 public class Rules {
@@ -11,5 +14,17 @@ public class Rules {
 		}
 		
 		return value;
+	}
+	
+	public static Map<String, Integer> getProfessionAttributes(Integer idProfession) {
+		Map<String, Integer> attibutes = new HashMap<>();
+		attibutes.put("min", 3);
+		attibutes.put("max", 10);
+		
+		return attibutes;
+	}
+	
+	public static Integer [] getAllowedProffession(Integer idRace) {
+		return null;
 	}
 }

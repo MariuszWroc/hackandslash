@@ -7,6 +7,10 @@ package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import pl.mygames.hackandslash.dto.util.general.Dice;
 import pl.mygames.hackandslash.service.impl.logic.Rules;
 
@@ -19,16 +23,26 @@ public class HeroDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private Integer id;
     private Boolean activated;
+    @NotBlank
     private String firstname;
     private String lastname;
+    @NotNull
     private Integer gender;
+    @NotNull
     private Integer age;
+    @NotNull
     private Integer race;
+    @NotNull
     private Integer profession;
+    @NotNull
     private Integer strength;
+    @NotNull
     private Integer dexterity;
+    @NotNull
     private Integer constitution;
+    @NotNull
     private Integer intelligence;
+    @NotNull
     private Integer charisma;
     private Integer baseHP;
     private Integer experience;

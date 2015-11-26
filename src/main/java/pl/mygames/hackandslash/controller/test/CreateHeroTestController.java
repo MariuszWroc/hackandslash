@@ -20,7 +20,7 @@ import pl.mygames.hackandslash.service.IHeroCreationService;
 import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Controller
-@SessionAttributes("genderEnum")
+@SessionAttributes({"hero", "genderEnum", "raceEnum", "professionEnum", "min", "max"})
 public class CreateHeroTestController {
 	private static final Logger logger = LoggerFactory.getLogger(CreateHeroTestController.class); 
 	
@@ -31,8 +31,8 @@ public class CreateHeroTestController {
 	public String showHero(ModelMap model) {
 		model.addAttribute("hero", new HeroDTO());
 		model.addAttribute("genderEnum", Gender.values());
-		model.addAttribute("professionEnum", UserProfession.values());
 		model.addAttribute("raceEnum", UserRace.values());
+		model.addAttribute("professionEnum", UserProfession.values());
 		model.addAttribute("max", GuiEnums.MAX_ATTRIBUTE.getAttribute());
 		model.addAttribute("min", GuiEnums.MIN_ATTRIBUTE.getAttribute());
 		model.addAttribute("value", GuiEnums.VALUE_ATTRIBUTE.getAttribute());
@@ -45,11 +45,10 @@ public class CreateHeroTestController {
 		if (!result.hasErrors()) {
 			heroCreationService.add(hero);
 			logger.info("Hero with id " + hero.getId() + " added");
+			return "redirect:/characters";
 		} else {
-			logger.info("Validation failed. Error in field " + result.getFieldError());
+			logger.info("Validation failed. " + result.getFieldError());
+			return "test/procedures/heroTest";
 		}
-		return "redirect:/heroTest";
 	}
-	
-	
 }

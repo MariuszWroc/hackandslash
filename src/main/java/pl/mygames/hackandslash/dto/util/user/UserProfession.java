@@ -8,8 +8,8 @@ public enum UserProfession {
 	
 	
 	private final int id;
-	private final int money;
 	private final String name;
+	private final int money;
 
 	private UserProfession(int id, String name, int money) {
 		this.id = id;
@@ -28,4 +28,6 @@ public enum UserProfession {
 	public int getId() {
 		return id;
 	}
+	
 }
+

@@ -9,7 +9,10 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -24,7 +27,6 @@ import org.hibernate.validator.constraints.NotBlank;
     @NamedQuery(name = "GameUser.findByAge", query = "SELECT g FROM GameUser g WHERE g.age = :age"),
     @NamedQuery(name = "GameUser.findByGender", query = "SELECT g FROM GameUser g WHERE g.gender = :gender"),
     @NamedQuery(name = "GameUser.findByLogin", query = "SELECT g FROM GameUser g WHERE g.login = :login"),
-    @NamedQuery(name = "GameUser.findByPassword", query = "SELECT g FROM GameUser g WHERE g.password = :password"),
     @NamedQuery(name = "GameUser.findByActivated", query = "SELECT g FROM GameUser g WHERE g.activated = :activated")})
 public class GameUser extends AbstractEntity {
     private static final long serialVersionUID = 1L;
@@ -46,6 +48,10 @@ public class GameUser extends AbstractEntity {
     @Column(nullable = false, length = 45)
     @Size(min = 3, max = 45)
     private String password;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 45)
+    @Email
+    private String email;
     @Basic(optional = false)
     @Column(nullable = false)
     private Boolean activated;
@@ -148,4 +154,12 @@ public class GameUser extends AbstractEntity {
     public void setGameRole(GameRole gameRole) {
         this.gameRole = gameRole;
     }
+    
+    public String getEmail() {
+		return email;
+	}
+    
+    public void setEmail(String email) {
+		this.email = email;
+	}
 }

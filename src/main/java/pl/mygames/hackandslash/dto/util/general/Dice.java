@@ -3,7 +3,8 @@ package pl.mygames.hackandslash.dto.util.general;
 public enum Dice {
 	DICE1D4(1, 4),
 	DICE1D6(1, 6),
-	DICE1D8(1, 8);
+	DICE1D8(1, 8),
+	DICE3D6(3, 6);
 	
 	private final int numberOfDiceThrow;
 	private final int sideNumber;

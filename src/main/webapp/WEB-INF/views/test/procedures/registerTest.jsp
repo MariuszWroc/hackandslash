@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session = "true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +52,17 @@
 	                    <td>
 	                    	<form:errors path="password" cssClass="error"/>
 	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>
+	                        <form:label path="email" ><spring:message text="E-mail"/></form:label>
+	                    </td>
+	                    <td>
+	                        <form:input path="email" type="email"/>
+	                    </td>
+	                    <td>
+	                    	<form:errors path="email" cssClass="error"/>
+	                    </td> 
 	                </tr>    
 	                <tr>
 	                    <td>
@@ -73,9 +85,10 @@
 	                        <form:label path="gender"><spring:message text="Gender"/></form:label>
 	                    </td>
 						<td>
-							<form:select path="gender">
+							<form:select path="gender" >
+								<form:option value=""/>
 								<form:options items="${genderEnum}" itemLabel="name"
-									itemValue="id" />
+									itemValue="id"/>
 							</form:select>
 						</td>
 	                </tr>
@@ -86,9 +99,6 @@
 	                    <td>
 	                        <form:input path="age" />
 	                    </td>
-	                    <td>
-	                    	<form:errors path="age" cssclass="error"/>
-	                    </td> 
 	                </tr>
 	                <tr>  
 	                    <td colspan="2">

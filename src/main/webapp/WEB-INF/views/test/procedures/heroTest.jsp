@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 </head>
 <title>Hero creator</title>
 </head>
-<body>
+<body onload="hideRow('profession_row');hideRow('attributes_row')"> <script>window.onload = hideRow('profession_row');</script>
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
         <div align="center">
         	<h2>Hero creator</h2>  
@@ -31,12 +32,18 @@
 	        <form:form id="heroForm" method="POST" action="${addAction}" commandName="hero">
 	        	<table>
 	        		<tr>
+	        		<td>
+	        		<table>
+	        			<tr>
 	                    <td>
 	                        <form:label path="firstname" ><spring:message text="First name"/></form:label>
 	                    </td>
 	                    <td>
 	                        <form:input path="firstname" />
-	                    </td> 
+	                    </td>
+	                    <td>
+	                    	<form:errors path="firstname" cssclass="error"/>
+	                    </td>  
 	                </tr> 
 	                <tr>
 	                    <td>
@@ -52,6 +59,7 @@
 	                    </td>
 						<td>
 							<form:select path="gender">
+								<form:option value=""/>
 								<form:options items="${genderEnum}" itemLabel="name"
 									itemValue="id" />
 							</form:select>
@@ -73,68 +81,74 @@
 	        				<form:label path="race"><spring:message text="Race"/></form:label>
 	        			</td>
 						<td>
-							<form:select path="race">
+							<form:select id="raceCombobox" path="race" onchange="showRow('profession_row')">
+								<form:option value=""/>
 								<form:options items="${raceEnum}" itemLabel="name" itemValue="id" />
-							</form:select>	
+							</form:select >	
 	        			</td>
 	        		</tr>
+		        	<tr id="profession_row">
+		        			<td>
+		        				<form:label path="profession"><spring:message text="Profession"/></form:label>
+		        			</td>
+							<td>
+								<form:select path="profession" onchange="showRow('attributes_row')">
+									<form:option value=""/>
+									<form:options items="${professionEnum}" itemLabel="name" itemValue="id" />
+								</form:select>
+		        			</td>
+		        	</tr>
+		        	</table>
+		        	<table  id="attributes_row">
+		        		<tr>
+		        			<td>
+		        				<form:label path="strength"><spring:message text="Strength"/></form:label>
+		        			</td>
+							<td>
+								<form:input path="strength" type="number" value="${value}" min = "${min}" max = "${max}"/>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<form:label path="dexterity"><spring:message text="Dexterity"/></form:label>
+		        			</td>
+							<td>
+								<form:input path="dexterity" type="number" value="${value}" min = "${min}" max = "${max}"/>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<form:label path="constitution"><spring:message text="Constitution"/></form:label>
+		        			</td>
+							<td>
+								<form:input path="constitution" type="number" value="${value}" min = "${min}" max = "${max}"/>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<form:label path="intelligence"><spring:message text="Intelligence"/></form:label>
+		        			</td>
+							<td>
+								<form:input path="intelligence" type="number" value="${value}" min = "${min}" max = "${max}"/>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<form:label path="charisma"><spring:message text="Charisma"/></form:label>
+		        			</td>
+							<td>
+								<form:input path="charisma" type="number" value="${value}" min = "${min}" max = "${max}"/>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<form:label path="startingPoints"><spring:message text="Attributes points"/></form:label>
+		        		    </td>
+		        			<td>
+								<form:input path="startingPoints" readonly="true" disabled="true"/>
+		        			</td>
+		        		</tr>
 	        		<tr>
-	        			<td>
-	        				<form:label path="profession"><spring:message text="Profession"/></form:label>
-	        			</td>
-						<td>
-							<form:select path="profession">
-								<form:options items="${professionEnum}" itemLabel="name" itemValue="id" />
-							</form:select>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="strength"><spring:message text="Strength"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="strength" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="dexterity"><spring:message text="Dexterity"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="dexterity" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="constitution"><spring:message text="Constitution"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="constitution" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="intelligence"><spring:message text="Intelligence"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="intelligence" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="charisma"><spring:message text="Charisma"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="charisma" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
-	        				<form:label path="startingPoints"><spring:message text="Attributes points"/></form:label>
-	        		    </td>
-	        			<td>
-							<form:input path="startingPoints" readonly="true"/>
-	        			</td>
 	        			<td>
 	        				 <input type="submit" value="Roll again"/>
 	        			</td>
@@ -147,8 +161,23 @@
 	                    </td>    
 	                </tr>
 	        	</table>
+	        		        		</td>
+	        		        		</tr>
+	        	</table>
 	        </form:form>
         </div>
-
+		<div align="left">
+			<p>
+				<a href="${contextPath}/tests">powrót</a>
+			</p>
+		</div>
+		<script>
+			function showRow(rowId) {
+			    document.getElementById(rowId).style.display = "";
+			}
+			function hideRow(rowId) {
+			    document.getElementById(rowId).style.display = "none";
+			}
+		</script>
 </body>
 </html>

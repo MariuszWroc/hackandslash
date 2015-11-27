@@ -1,10 +1,10 @@
 package pl.mygames.hackandslash.dto.util.user;
 
 public enum UserProfession {
-	Mage(1, "Mag", 150),
-	Warrior(2, "Wojownik", 100),
-	Hunter(3, "Łowca", 120),
-	Thief(4, "Złodziej", 140);
+	MAGE(1, "Mag", 150),
+	WARRIOR(2, "Wojownik", 100),
+	HUNTER(3, "Łowca", 120),
+	THIEF(4, "Złodziej", 140);
 	
 	
 	private final int id;

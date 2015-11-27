@@ -29,6 +29,7 @@ public class CreateHeroTestController {
 	
 	@RequestMapping(value = "/heroTest", method = RequestMethod.GET)
 	public String showHero(ModelMap model) {
+		System.out.println("user " + UserProfession.valueOf("THIEF")); 
 		model.addAttribute("hero", new HeroDTO());
 		model.addAttribute("genderEnum", Gender.values());
 		model.addAttribute("raceEnum", UserRace.values());

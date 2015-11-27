@@ -1,10 +1,18 @@
 package pl.mygames.hackandslash.dto.util.user;
 
 public enum UserRace {
-	HUMAN(1, "Człowiek", new int [] {1, 2, 3, 4}, 3, 3, 3, 3, 3, 18, 18, 18, 18, 18),
-	ELF(2, "Elf", new int [] {1, 2, 3, 4}, 3, 7, 6, 8, 8, 18, 19, 17, 18, 18),
-	DWARF(3, "Krasnolud", new int [] {1, 2, 3, 4}, 8, 3, 12, 3, 1, 18, 17, 19, 18, 16),
-	HALFLING(4, "Niziołek", new int [] {4}, 6, 8, 10, 6, 3, 17, 19, 18, 18, 18);
+	HUMAN(1, "Człowiek", new int [] {
+			UserProfession.MAGE.getId(), UserProfession.WARRIOR.getId(), UserProfession.HUNTER.getId() , UserProfession.THIEF.getId()},
+			3, 3, 3, 3, 3, 18, 18, 18, 18, 18),
+	ELF(2, "Elf", new int [] {
+			UserProfession.MAGE.getId(), UserProfession.WARRIOR.getId(), UserProfession.HUNTER.getId(), UserProfession.THIEF.getId()},
+			3, 7, 6, 8, 8, 18, 19, 17, 18, 18),
+	DWARF(3, "Krasnolud", new int [] {
+			UserProfession.WARRIOR.getId(), UserProfession.HUNTER.getId(), UserProfession.THIEF.getId()},
+			8, 3, 12, 3, 1, 18, 17, 19, 18, 16),
+	HALFLING(4, "Niziołek", new int [] {
+			UserProfession.WARRIOR.getId(), UserProfession.HUNTER.getId(), UserProfession.THIEF.getId()},
+			6, 8, 10, 6, 3, 17, 19, 18, 18, 18);
 	
 	private final int id;
 	private final String name;

@@ -138,6 +138,6 @@ public class HeroCreationService implements IHeroCreationService {
 	}
 
 	private int chooseMoney() {
-		return UserProfession.Warrior.getMoney();
+		return UserProfession.WARRIOR.getMoney();
 	}
 }

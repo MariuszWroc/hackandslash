@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import pl.mygames.hackandslash.controller.test.NpcTestController;
 
 public final class RandomValue {
-    private static final Logger logger = LoggerFactory.getLogger(NpcTestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RandomValue.class);
 	
 	public static int randomInteger(int start, int end) {
 		Random random = new Random();

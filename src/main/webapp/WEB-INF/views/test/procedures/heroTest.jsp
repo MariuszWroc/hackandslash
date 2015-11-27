@@ -70,7 +70,7 @@
 	                        <form:label path="age"><spring:message text="Age"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="age" type="number"/>
+	                        <form:input path="age" type="number" min = "1" />
 	                    </td>
 	                    <td>
 	                    	<form:errors path="age" cssclass="error"/>

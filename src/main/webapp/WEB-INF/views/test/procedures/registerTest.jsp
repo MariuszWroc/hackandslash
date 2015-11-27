@@ -97,13 +97,13 @@
 	                        <form:label path="age"><spring:message text="Age"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="age" />
+	                        <form:input path="age" type="number"  min = "1"/>
 	                    </td>
 	                </tr>
 	                <tr>  
 	                    <td colspan="2">
 	                    	<input type="submit" value="Add"/>
-	                    	<input type="reset" value="Clear" />
+	                    	<input type="reset" value="Clear"/>
 	                    </td>    
 	                </tr>  
 	            </table>   

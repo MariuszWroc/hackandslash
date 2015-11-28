@@ -59,8 +59,8 @@ public class GameCharacter extends AbstractEntity {
     private Integer experience;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Npc> npcList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
-    private List<Hero> heroList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
+    private Hero hero;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Equipment> equipmentList;
 
@@ -176,12 +176,12 @@ public class GameCharacter extends AbstractEntity {
         this.npcList = npcList;
     }
 
-    public List<Hero> getHeroList() {
-        return heroList;
+    public Hero getHero() {
+        return hero;
     }
 
-    public void setHeroList(List<Hero> heroList) {
-        this.heroList = heroList;
+    public void setHero(Hero hero) {
+        this.hero = hero;
     }
 
 	public List<Equipment> getEquipmentList() {

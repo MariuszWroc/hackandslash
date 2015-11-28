@@ -10,4 +10,5 @@ public interface ICharacterService {
     List<GameCharacter> findById(Integer id);
     List<GameCharacter> findAll();
 	void delete(Integer id);
+        List<GameCharacter> findByName(String characterName);
 }

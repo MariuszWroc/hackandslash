@@ -29,7 +29,7 @@ public class Hero extends AbstractEntity {
     @Column(nullable = false)
     private Integer activated;
     @JoinColumn(name = "GameCharacter_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     private GameCharacter gameCharacter;
     @JoinColumn(name = "GameUser_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

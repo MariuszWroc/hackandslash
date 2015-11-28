@@ -56,5 +56,9 @@ public class CharacterService implements ICharacterService {
     public List<GameCharacter> findAll() {
         return dao.findByQuery("GameCharacter.findAll");
     }
-
+    
+    @Override
+    public List<GameCharacter> findByName(String characterName) {
+        return dao.findByQuery("GameCharacter.findByFirstname", "firstname", characterName);
+    }
 }

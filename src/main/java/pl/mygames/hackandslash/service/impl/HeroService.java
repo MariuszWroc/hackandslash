@@ -7,7 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.HeroDao;
+import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.model.GameCharacter;
+import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.model.Hero;
+import pl.mygames.hackandslash.service.ICharacterService;
 import pl.mygames.hackandslash.service.IHeroService;
 
 @Service
@@ -16,6 +20,9 @@ public class HeroService implements IHeroService {
 
     @Autowired
     private HeroDao dao;
+    
+    @Autowired
+    private ICharacterService characterService;
 
     @Transactional(readOnly = false)
     @Override
@@ -41,6 +48,13 @@ public class HeroService implements IHeroService {
     @Override
     public void update(Hero hero) {
 	dao.update(hero);
+    }
+    
+    @Override
+    public HeroDTO getHeroDTO(String heroName) {
+        
+        List<GameCharacter> characters = characterService.findByName(heroName);
+        return null;
     }
 
     @Override

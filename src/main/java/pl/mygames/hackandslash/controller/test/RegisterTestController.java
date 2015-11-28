@@ -40,18 +40,18 @@ public class RegisterTestController {
     
     @RequestMapping(value = "/registerTest/add", method = RequestMethod.POST)  
     public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result, RedirectAttributes redirectAttributes) {
-		if (!result.hasErrors() ) {
-            Boolean savingSuccess = userService.add(user);
-            if (savingSuccess) {
-    			logger.info("User with id = " + user.getId() + ", added");
+            if (!result.hasErrors() ) {
+                Boolean savingSuccess = userService.add(user);
+                if (savingSuccess) {
+                            logger.info("User with id = " + user.getId() + ", added");
+                } else {
+
+                    redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
+                }
+
             } else {
             	redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
             }
-
-		} else {
-			logger.info("Validation failed. Error in field " + result.getFieldError());
-			return "test/procedures/registerTest";
-		}
 		
         return "redirect:/registerTest";  
     }

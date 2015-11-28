@@ -108,12 +108,26 @@
                                 login : '',
                                 password : ''
                                 };
+                    $scope.userDetail ={
+                                firstname : '',
+                                lastname : '',
+                                login : '',
+                                password : ''
+                                };
                     $scope.errors = {
                         'login': '',
                         'password': ''
                     };
 
                     $scope.genders = [];
+                    
+                    $http.get('/hackandslash/users/'+'jbednarczyk')
+                        .success(function(res){
+                             $scope.userDetail = res;   
+                        })
+                        .error(function(error){
+                            console.log(error);
+                        })
 
                     $http.get('/hackandslash/register/genderList')
                         .success(function(res) {

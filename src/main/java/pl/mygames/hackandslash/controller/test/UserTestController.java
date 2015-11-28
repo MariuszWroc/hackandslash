@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
+import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -65,6 +67,11 @@ public class UserTestController {
         model.addAttribute("one_user", findUser(id));
         logger.info("Place with id = " + id + ", edited");
         return "test/users";
+    }
+    
+    @RequestMapping(value = "/users/{login}")
+    public @ResponseBody UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model){
+        return userService.getUserDTO(login);
     }
     
 	/*

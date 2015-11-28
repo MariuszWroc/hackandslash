@@ -16,12 +16,12 @@
               <th>Gender</th>
             </tr>
             <tr>
-              <td>user.firstname</td>
-              <td>user.lastname</td>
-              <td>user.login</td>
-              <td>user.password</td>
-              <td>user.age</td>
-              <td>user.gender</td>
+              <td>{{userDetail.firstname}}</td>
+              <td>{{userDetail.lastname}}</td>
+              <td>{{userDetail.login}}</td>
+              <td>{{userDetail.password}}</td>
+              <td>{{userDetail.age}}</td>
+              <td>{{userDetail.gender}}</td>
             </tr>
         </table>
     </md-content>  

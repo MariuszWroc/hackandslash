@@ -61,6 +61,21 @@ public class HomeController {
 		
 		return "home";
 	}
+        
+        @RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register() {
+            return "register";
+	}
+        
+        @RequestMapping(value = "/user", method = RequestMethod.GET)
+	public String user() {
+            return "userDetails";
+	}
+        
+        @RequestMapping(value = "/hero", method = RequestMethod.GET)
+	public String hero() {
+            return "heroDetails";
+	}
            
            /*
             * This method will add a user.

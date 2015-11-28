@@ -1,56 +1,76 @@
-<%-- 
-    Document   : register
-    Created on : Oct 31, 2015, 12:41:58 PM
-    Author     : mariusz
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert user (register)</title>
-</head>
-<title>Registration</title>
-</head>
-<body>
-	<div align="center">
-	        <c:url var="addAction" value="/register/add" ></c:url>
-	        <form:form method="POST" action="${addAction}" commandName="registerDTO">
-			<table>
-				<tr>
-					<td colspan="2" align="center"><h2>Registration</h2></td>
-				</tr>
-				<tr>
-					<td><form:label path="login">
-							<spring:message text="Login" />
-						</form:label></td>
-					<td><form:input path="login" /></td>
-				</tr>
-				<tr>
-					<td><form:label path="password">
-							<spring:message text="Password" />
-						</form:label></td>
-					<td><form:input path="password" /></td>
-				</tr>
-				<tr>
-					<td><form:label path="id">
-							<spring:message text="User Role" />
-						</form:label></td>
-					<td><form:select path="id">
-							<form:options items="${roles}" itemLabel="rolename"
-								itemValue="id" />
-						</form:select></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Register" /></td>
-				</tr>
-			</table>
-		</form:form>
-	</div>
-</body>
-</html>
+<div  ng-controller="registerController" flex id="content">
+            <md-content layout="column" flex class="md-padding">
+                <form name="registration" ng-submit="doRegister()" novalidate> <!-- ng-submit="doRegister()"-->
+                    <table>
+	            	<tr>
+	                    <td>
+                                <label>Firstname:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.firstname"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Lastname:</label>
+                            </td>
+                            <td>
+                               <input type="text" ng-model="user.lastname"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Age:</label>
+                            </td>
+                            <td>
+                                <input type="number" ng-model="user.age"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Gender:</label>
+                            </td>
+                            <td>
+                                <md-input-container style="margin-right: 10px;">
+                                    <md-select ng-model="user.gender">
+                                        <md-option ng-repeat="gender in genders" value="{{gender.id}}">{{gender.name}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Email:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.email"/>
+                                <label ng-show="errors.email" class="error">{{errors.email}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Login:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.login"/>
+                                <label ng-show="errors.login" class="error">{{errors.login}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Password:</label>
+                            </td>
+                            <td>
+                                <input type="password" ng-model="user.password"/>
+                                <label ng-show="errors.password" class="error">{{errors.password}}</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <md-button class="md-raised" type="submit">Register</md-button>
+                    <md-button class="md-raised" type="button" ng-click="clear()">Clear</md-button>
+                </form>
+            </md-content>
+        </div>
+<script>
+    
+</script>

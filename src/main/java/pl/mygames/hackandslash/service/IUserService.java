@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.service;
 
 import java.util.List;
+import pl.mygames.hackandslash.dto.UserDTO;
 
 import pl.mygames.hackandslash.model.GameUser;
 
@@ -13,4 +14,5 @@ public interface IUserService {
 	void delete(Integer id);
 	List<GameUser> findByLogin(String login);
 	Integer generateId();
+        UserDTO getUserDTO(String login);
 }

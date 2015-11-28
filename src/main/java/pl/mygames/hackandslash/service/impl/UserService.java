@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.UserDao;
+import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.dto.util.general.Rolename;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
@@ -80,6 +81,16 @@ public class UserService implements IUserService {
 	public Integer generateId() {
 		return dao.generateId();
 	}
+        
+    @Override
+    public UserDTO getUserDTO(String login) {
+        List<GameUser> gameUsers = findByLogin(login);
+        if(gameUsers.iterator().hasNext()) {
+           return new UserDTO(gameUsers.iterator().next());
+        } else {
+           return new UserDTO(); 
+        }
+    }
 	
     @Override
     public List<GameUser> findByLogin(String login) {

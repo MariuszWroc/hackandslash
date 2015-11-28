@@ -33,6 +33,8 @@ public class UserDTO extends LoginDTO implements Serializable{
         lastname = user.getLastname();
         age = user.getAge();
         gender = user.getGender();
+        email = user.getEmail();
+        activated = user.getActivated();
     }
 
     public Integer getId() {

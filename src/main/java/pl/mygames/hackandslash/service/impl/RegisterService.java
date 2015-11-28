@@ -22,6 +22,7 @@ import pl.mygames.hackandslash.service.IRoleService;
  * @author mariusz
  */
 
+@Deprecated
 @Service
 @Transactional(readOnly = true)
 public class RegisterService implements IRegisterService {

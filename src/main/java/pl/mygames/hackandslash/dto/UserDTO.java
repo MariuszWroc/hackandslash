@@ -19,6 +19,8 @@ public class UserDTO extends LoginDTO implements Serializable{
     private String lastname;
     private Integer age;
     private Integer gender;
+    private String email;
+    private Boolean activated;
     
     public UserDTO(){
         super();
@@ -71,6 +73,22 @@ public class UserDTO extends LoginDTO implements Serializable{
 
     public void setGender(Integer gender) {
         this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getActivated() {
+        return activated;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
     
     

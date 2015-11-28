@@ -14,6 +14,7 @@ import pl.mygames.hackandslash.model.GameUser;
  *
  * @author mariusz
  */
+@Deprecated
 public class RegisterDTO extends UserDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private Integer activated;
@@ -28,10 +29,6 @@ public class RegisterDTO extends UserDTO implements Serializable{
         super(user);
         activated = 0;
         roleId = 0;
-    }
-
-    public Integer getActivated() {
-        return activated;
     }
 
     public void setActivated(Integer activated) {

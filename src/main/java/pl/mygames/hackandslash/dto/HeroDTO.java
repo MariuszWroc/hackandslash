@@ -49,7 +49,7 @@ public class HeroDTO implements Serializable{
     private Integer startingPoints;
 
     public HeroDTO() {
-		this.startingPoints = Rules.diceRoller(Dice.DICE1D8.getNumberOfDiceThrow(), Dice.DICE1D8.getSideNumber());
+		this.startingPoints = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 	}
 
 	public Integer getId() {

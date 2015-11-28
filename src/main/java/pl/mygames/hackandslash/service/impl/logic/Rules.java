@@ -20,15 +20,14 @@ public class Rules {
 		return value;
 	}
 	
-	public static Map<String, Map<String, Integer>> getCharacterAttributes(Integer idProfession, Integer idRace) {
-		Map<String, Map<String, Integer>> generalAttibutesMap = new HashMap<>();
+	public static Map<String, Integer> getCharacterAttributes(Integer idProfession, Integer idRace) {
+		Map<String, Integer> generalAttibutesMap = new HashMap<>();
 		
 		int minStrengthByRace = 3;
 		int minStrengthByProfession = 3;
 		int maxStrengthByRace = 3;
 		int maxStrengthByProfession = 3;
-		int minStrength = determineAttribute("minStrength", minStrengthByRace, minStrengthByProfession);
-		int maxStrength  = determineAttribute("maxStrength", maxStrengthByRace, maxStrengthByProfession);
+
 		
 		int minDexterityByRace = 3;
 		int minDexterityByProfession = 3;
@@ -46,23 +45,29 @@ public class Rules {
 		int maxConstitutionByProfession = 3;
 		int maxConstitutionByRace = 3;
 		int maxCharismaByProfession = 3;
-		int maxnCharismaByRace = 3;
+		int maxCharismaByRace = 3;
 		
-		
-		int minDexterity  = determineAttribute("minDexterity", minIntelligenceByProfession, minIntelligenceByRace);
-		int maxDexterity  = determineAttribute("maxDexterity", minConstitutionByProfession, minConstitutionByRace);
-		int minConstitution  = determineAttribute("minIntelligence", minCharismaByProfession, minCharismaByRace);
-		int maxConstitution  = determineAttribute("maxIntelligence", maxStrengthByProfession, maxStrengthByRace);
-		int minCharisma  = determineAttribute("minConstitution", maxDexterityByProfession, maxDexterityByRace);
-		int maxCharisma  = determineAttribute("maxConstitution", maxIntelligenceByProfession, maxIntelligenceByRace);
-		int minIntelligence  = determineAttribute("minCharisma", maxConstitutionByProfession, maxConstitutionByRace);
-		int maxIntelligence  = determineAttribute("maxCharisma", maxCharismaByProfession, maxnCharismaByRace);
+		int minStrength = determineAttribute("minStrength", minStrengthByProfession, minStrengthByRace);
+		int maxStrength  = determineAttribute("maxStrength", maxStrengthByProfession, maxStrengthByRace);
+		int minDexterity  = determineAttribute("minDexterity", minDexterityByProfession, minDexterityByRace);
+		int maxDexterity  = determineAttribute("maxDexterity", maxDexterityByProfession, maxDexterityByRace);
+		int minConstitution  = determineAttribute("minIntelligence", minIntelligenceByProfession, minCharismaByRace);
+		int maxConstitution  = determineAttribute("maxIntelligence", minIntelligenceByProfession, maxStrengthByRace);
+		int minCharisma  = determineAttribute("minConstitution", minConstitutionByProfession, minConstitutionByProfession);
+		int maxCharisma  = determineAttribute("maxConstitution", minConstitutionByProfession, minConstitutionByProfession);
+		int minIntelligence  = determineAttribute("minCharisma", minCharismaByProfession, minCharismaByRace);
+		int maxIntelligence  = determineAttribute("maxCharisma", maxCharismaByProfession, maxCharismaByRace);
 
-		generalAttibutesMap.put("Strength", determineSpecificAttributes("Strength", idProfession, idRace));
-		generalAttibutesMap.put("Dexterity", determineSpecificAttributes("Dexterity", idProfession, idRace));
-		generalAttibutesMap.put("Intelligence", determineSpecificAttributes("Intelligence", idProfession, idRace));
-		generalAttibutesMap.put("Constitution", determineSpecificAttributes("Constitution", idProfession, idRace));
-		generalAttibutesMap.put("Charisma", determineSpecificAttributes("Charisma", idProfession, idRace));
+		generalAttibutesMap.put("minStrength", minStrength);
+		generalAttibutesMap.put("maxStrength", maxStrength);
+		generalAttibutesMap.put("minDexterity", minDexterity);
+		generalAttibutesMap.put("maxDexterity", maxDexterity);
+		generalAttibutesMap.put("minConstitution", minConstitution);
+                generalAttibutesMap.put("maxConstitution", maxConstitution);
+		generalAttibutesMap.put("minCharisma", minCharisma);
+		generalAttibutesMap.put("maxCharisma", maxCharisma);
+		generalAttibutesMap.put("minIntelligence", minIntelligence);
+		generalAttibutesMap.put("maxIntelligence", maxIntelligence);
 		
 		return generalAttibutesMap;
 	}
@@ -115,14 +120,15 @@ public class Rules {
 	}
 
 	private static int checkMinOrMax(String prefix, int professionValue, int raceValue) {
-		if(prefix.equals("min")) {
-			return checkWhichIsBigger(professionValue, raceValue);
-		} else if (prefix.equals("max")) {
-			return checkWhichIsSmaller(professionValue, raceValue);
-		} else {
-			logger.error("Attribute name have a wrong prefix. Check if name start from 'max' or 'min'. ");
-			return 0;
-		}
+        switch (prefix) {
+            case "min":
+                return checkWhichIsBigger(professionValue, raceValue);
+            case "max":
+                return checkWhichIsSmaller(professionValue, raceValue);
+            default:
+                logger.error("Attribute name have a wrong prefix. Check if name start from 'max' or 'min'. ");
+                return 0;
+        }
 	}
 
 	private static int checkWhichIsBigger(int firstValue, int secondValue) {

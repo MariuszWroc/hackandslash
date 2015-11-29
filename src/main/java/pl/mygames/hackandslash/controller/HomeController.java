@@ -76,6 +76,16 @@ public class HomeController {
 	public String hero() {
             return "heroDetails";
 	}
+        
+        @RequestMapping(value = "/heroAdd", method = RequestMethod.GET)
+	public String heroAdd() {
+            return "createHero";
+	}
+        
+        @RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	public String getLogin() {
+            return "login";
+	}
            
            /*
             * This method will add a user.

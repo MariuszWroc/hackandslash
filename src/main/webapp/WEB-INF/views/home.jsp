@@ -32,17 +32,20 @@
     <div layout="row" flex>
         <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
           <md-button ng-click="register()">Register</md-button>
-          <md-button ng-click="">Login</md-button>
+          <md-button ng-click="login()">Login</md-button>
           <md-button ng-click="">About us</md-button>
           <md-button ng-click="">Email support</md-button>
           <md-button ng-click="">Screens</md-button>
           <md-button ng-click="">About the Game</md-button>
           <md-button ng-click="user()">UserTest</md-button>
           <md-button ng-click="hero()">HeroTest</md-button>
+          <md-button ng-click="heroAdd()">HeroAddTest</md-button>
         </md-sidenav>
         <ng-include ng-show="isRegister" src='"/hackandslash/register"'></ng-include>  <!--i intend to use something like this to cycle through pages-->
         <ng-include ng-show="isUser" src='"/hackandslash/user"'></ng-include>
         <ng-include ng-show="isHero" src='"/hackandslash/hero"'></ng-include>
+        <ng-include ng-show="isHeroAdd" src='"/hackandslash/heroAdd"'></ng-include>
+        <ng-include ng-show="isLogin" src='"/hackandslash/loginForm"'></ng-include>
     </div>
             <!--     Angular Material Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -56,7 +59,7 @@
         angular.module('StarterApp', ['ngMaterial']);
 
         angular.module('StarterApp').controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-                $scope.isRegister = false;
+          $scope.isRegister = false;
           $scope.toggleSidenav = function(menuId) {
             $mdSidenav(menuId).toggle();
           };
@@ -64,6 +67,8 @@
           $scope.hero = function(){
             $scope.isRegister = false;
             $scope.isUser = false;
+            $scope.isHeroAdd = false;
+            $scope.isLogin = false;
             if(!$scope.isHero){
                 $scope.isHero = true;   
             } else {
@@ -72,9 +77,24 @@
             $mdSidenav('left').toggle();
           }
           
+          $scope.login = function(){
+              $scope.isRegister = false;
+              $scope.isUser = false;
+              $scope.isHero = false;
+              $scope.isHeroAdd = false;
+              if(!$scope.isLogin){
+                $scope.isLogin = true;   
+            } else {
+                $scope.isLogin = false;
+            }
+            $mdSidenav('left').toggle();
+          };
+          
           $scope.user = function(){
             $scope.isRegister = false;
             $scope.isHero = false;
+            $scope.isHeroAdd = false;
+            $scope.isLogin = false;
             if(!$scope.isUser){
                 $scope.isUser = true;   
             } else {
@@ -86,6 +106,8 @@
           $scope.register = function() {
             $scope.isUser = false;
             $scope.isHero = false;
+            $scope.isHeroAdd = false;
+            $scope.isLogin = false;
             if(!$scope.isRegister){
                 $scope.isRegister = true;  
             } else {
@@ -93,11 +115,26 @@
             }
             $mdSidenav('left').toggle();
           };
+          
+          $scope.heroAdd = function(){
+              $scope.isRegister = false;
+              $scope.isUser = false;
+              $scope.isHero = false;
+              $scope.isLogin = false;
+              if(!$scope.isHeroAdd){
+                $scope.isHeroAdd = true;  
+            } else {
+                $scope.isHeroAdd = false;
+            }
+            $mdSidenav('left').toggle();
+          }
           // needs rebuilding to clear other bools then the one in parameter
           function clear(){
               $scope.isRegister = false;
               $scope.isUser = false;
               $scope.isHero = false;
+              $scope.isHeroAdd = false;
+              $scope.isLogin = false;
           }
 
         }]);
@@ -178,6 +215,36 @@
                         };
                     };
             }]);
+    
+        angular.module('StarterApp').controller('heroController', ['$scope', '$http', function($scope, $http){
+            $scope.heroDetail = {}   
+            $http.get('/hackandslash/hero/details')
+            .success(function(response){
+                $scope.heroDetail = response;
+            })
+            .error(function(error){
+                console.log(error);
+            });
+        }]);
+        angular.module('StarterApp').controller('loginController', ['$scope', '$http', function($scope, $http){
+                $scope.user = {}   
+                $http.post('/hackandslash/user/login', $scope.user)
+                .success(function(response){
+                    if(response.length>0) {
+                        angular.forEach(response, function(val){                                    
+                           if(val.field==='login'){
+                               $scope.errors.login = val.defaultMessage;
+                           }
+                           if(val.field==='password'){
+                               $scope.errors.password = val.defaultMessage;
+                           }
+                        });
+                    }
+                })
+                .error(function(error){
+                    console.log(error);
+                });
+        }]);
     </script>
   </body>
 </html>

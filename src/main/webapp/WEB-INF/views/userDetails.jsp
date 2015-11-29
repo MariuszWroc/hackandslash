@@ -8,19 +8,27 @@
     <md-content layout="column" flex class="md-padding">
         <table style="width:100%">
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th> 
-              <th>Login</th>
-              <th>Password</th>
-              <th>Age</th> 
-              <th>Gender</th>
+              <td>Firstname</td>
+              <td>{{userDetail.firstname}}</td>
             </tr>
             <tr>
-              <td>{{userDetail.firstname}}</td>
+              <td>Lastname</td>
               <td>{{userDetail.lastname}}</td>
+            </tr>
+            <tr>
+              <td>Login</td>
               <td>{{userDetail.login}}</td>
+            </tr>
+            <tr>
+              <td>Password</td>
               <td>{{userDetail.password}}</td>
+            </tr>
+            <tr>
+              <td>Age</td>
               <td>{{userDetail.age}}</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
               <td>{{userDetail.gender}}</td>
             </tr>
         </table>

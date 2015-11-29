@@ -71,6 +71,3 @@
                 </form>
             </md-content>
         </div>
-<script>
-    
-</script>

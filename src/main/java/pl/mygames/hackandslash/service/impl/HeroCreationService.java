@@ -49,7 +49,7 @@ public class HeroCreationService implements IHeroCreationService {
 		List<Place> place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
 		setDefaultId(heroDTO, hero);
-		hero.setActivated(YES);			
+		hero.setActivated(YES);
 		hero.setMoney(chooseMoney());
 		if (place.iterator().hasNext()) {
 			hero.setPlace(place.iterator().next());			

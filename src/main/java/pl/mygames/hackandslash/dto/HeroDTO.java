@@ -49,6 +49,16 @@ public class HeroDTO implements Serializable{
     private Integer startingPoints;
 
     public HeroDTO() {
+            this.age = 20;
+            this.charisma = 10;
+            this.constitution = 12;
+            this.dexterity = 14;
+            this.firstname = "Jacek";
+            this.gender = 1;
+            this.intelligence = 18;
+            this.profession = 1;
+            this.race = 2;
+            this.strength = 10;
 		this.startingPoints = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 	}
 

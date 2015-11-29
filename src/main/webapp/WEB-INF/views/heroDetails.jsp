@@ -1,17 +1,108 @@
 <%-- 
-    Document   : heroDetails
-    Created on : Nov 28, 2015, 10:30:59 PM
+    Document   : ShowUsers
+    Created on : Nov 28, 2015, 8:13:58 PM
     Author     : Jaca
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<div ng-controller="heroController" flex id="content">
+    <md-content layout="column" flex class="md-padding">
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <label>Firstname:</label>
+                </td>
+                <td>
+                    {{heroDetail.firstname}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Lastname:</label>
+                </td>
+                <td>
+                    {{heroDetail.lastname}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Gender:</label>
+                </td>
+                <td>
+                    {{heroDetail.gender}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Age:</label>
+                </td>
+                <td>
+                    {{heroDetail.age}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Race:</label>
+                </td>
+                <td>
+                    {{heroDetail.race}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Profession:</label>
+                </td>
+                <td>
+                    {{heroDetail.profession}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Strength:</label>
+                </td>
+                <td>
+                    {{heroDetail.strength}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Dexterity:</label>
+                </td>
+                <td>
+                    {{heroDetail.dexterity}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Constitution:</label>
+                </td>
+                <td>
+                    {{heroDetail.constitution}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Intelligance:</label>
+                </td>
+                <td>
+                    {{heroDetail.intelligence}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Charisma:</label>
+                </td>
+                <td>
+                    {{heroDetail.charisma}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>BaseHp:</label>
+                </td>
+                <td>
+                    {{heroDetail.baseHP}}
+                </td>
+            </tr>
+        </table>
+    </md-content>  
+</div>

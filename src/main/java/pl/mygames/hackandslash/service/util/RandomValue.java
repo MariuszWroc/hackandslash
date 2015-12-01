@@ -5,8 +5,6 @@ import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pl.mygames.hackandslash.controller.test.NpcTestController;
-
 public final class RandomValue {
     private static final Logger logger = LoggerFactory.getLogger(RandomValue.class);
 	

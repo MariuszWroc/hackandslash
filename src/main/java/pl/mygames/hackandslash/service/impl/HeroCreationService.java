@@ -93,6 +93,7 @@ public class HeroCreationService implements IHeroCreationService {
 		characterService.add(character);
 	}
 
+	// TODO: dokończyć
 	private List<Equipment> addEquipment(GameCharacter character) {
 
 		Item sword = null;

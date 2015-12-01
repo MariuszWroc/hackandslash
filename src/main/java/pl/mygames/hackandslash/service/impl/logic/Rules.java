@@ -5,11 +5,16 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import pl.mygames.hackandslash.dto.AttributeDTO;
+import pl.mygames.hackandslash.dto.DefaultAttributesDTO;
+import pl.mygames.hackandslash.dto.util.general.Dice;
+import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
 import pl.mygames.hackandslash.service.util.RandomValue;
 
 public class Rules {
     private static final Logger logger = LoggerFactory.getLogger(Rules.class);
+    private static Map<String, DefaultAttributesDTO> allAttributes = populateDefaultAttributes();
     
 	public static int diceRoller(int diceNumber, int sideNumber) {
 		int value = 0;
@@ -20,127 +25,125 @@ public class Rules {
 		return value;
 	}
 	
-	public static Map<String, Integer> getCharacterAttributes(Integer idProfession, Integer idRace) {
-		Map<String, Integer> generalAttibutesMap = new HashMap<>();
+	public static Map<String, DefaultAttributesDTO> populateDefaultAttributes() {
+		Map<String, DefaultAttributesDTO> allAttributes = new HashMap<>();
 		
-		int minStrengthByRace = 3;
-		int minStrengthByProfession = 3;
-		int maxStrengthByRace = 3;
-		int maxStrengthByProfession = 3;
+		DefaultAttributesDTO elfAttributes = new DefaultAttributesDTO(UserRace.ELF.getMinStrength(),
+				UserRace.ELF.getMinDexterity(), UserRace.ELF.getMinIntelligence(), UserRace.ELF.getMinConstitution(),
+				UserRace.ELF.getMinCharisma(), UserRace.ELF.getMaxStrength(), UserRace.ELF.getMaxDexterity(),
+				UserRace.ELF.getMaxIntelligence(), UserRace.ELF.getMaxConstitution(), UserRace.ELF.getMaxCharisma());
 
-		
-		int minDexterityByRace = 3;
-		int minDexterityByProfession = 3;
-		int minIntelligenceByProfession = 3;
-		int minIntelligenceByRace = 3;
-		int minConstitutionByProfession = 3;
-		int minConstitutionByRace = 3;
-		int minCharismaByProfession = 3;
-		int minCharismaByRace = 3;
+		DefaultAttributesDTO dwarfAttributes = new DefaultAttributesDTO(UserRace.DWARF.getMinStrength(),
+				UserRace.DWARF.getMinDexterity(), UserRace.DWARF.getMinIntelligence(), UserRace.DWARF.getMinConstitution(),
+				UserRace.DWARF.getMinCharisma(), UserRace.DWARF.getMaxStrength(), UserRace.DWARF.getMaxDexterity(),
+				UserRace.DWARF.getMaxIntelligence(), UserRace.DWARF.getMaxConstitution(), UserRace.DWARF.getMaxCharisma());
 
-		int maxDexterityByRace = 3;
-		int maxDexterityByProfession = 3;
-		int maxIntelligenceByProfession = 3;
-		int maxIntelligenceByRace = 3;
-		int maxConstitutionByProfession = 3;
-		int maxConstitutionByRace = 3;
-		int maxCharismaByProfession = 3;
-		int maxCharismaByRace = 3;
-		
-		int minStrength = determineAttribute("minStrength", minStrengthByProfession, minStrengthByRace);
-		int maxStrength  = determineAttribute("maxStrength", maxStrengthByProfession, maxStrengthByRace);
-		int minDexterity  = determineAttribute("minDexterity", minDexterityByProfession, minDexterityByRace);
-		int maxDexterity  = determineAttribute("maxDexterity", maxDexterityByProfession, maxDexterityByRace);
-		int minConstitution  = determineAttribute("minIntelligence", minIntelligenceByProfession, minCharismaByRace);
-		int maxConstitution  = determineAttribute("maxIntelligence", minIntelligenceByProfession, maxStrengthByRace);
-		int minCharisma  = determineAttribute("minConstitution", minConstitutionByProfession, minConstitutionByProfession);
-		int maxCharisma  = determineAttribute("maxConstitution", minConstitutionByProfession, minConstitutionByProfession);
-		int minIntelligence  = determineAttribute("minCharisma", minCharismaByProfession, minCharismaByRace);
-		int maxIntelligence  = determineAttribute("maxCharisma", maxCharismaByProfession, maxCharismaByRace);
+		DefaultAttributesDTO humanAttributes = new DefaultAttributesDTO(UserRace.HUMAN.getMinStrength(),
+				UserRace.HUMAN.getMinDexterity(), UserRace.HUMAN.getMinIntelligence(), UserRace.HUMAN.getMinConstitution(),
+				UserRace.HUMAN.getMinCharisma(), UserRace.HUMAN.getMaxStrength(), UserRace.HUMAN.getMaxDexterity(),
+				UserRace.HUMAN.getMaxIntelligence(), UserRace.HUMAN.getMaxConstitution(), UserRace.HUMAN.getMaxCharisma());
 
-		generalAttibutesMap.put("minStrength", minStrength);
-		generalAttibutesMap.put("maxStrength", maxStrength);
-		generalAttibutesMap.put("minDexterity", minDexterity);
-		generalAttibutesMap.put("maxDexterity", maxDexterity);
-		generalAttibutesMap.put("minConstitution", minConstitution);
-                generalAttibutesMap.put("maxConstitution", maxConstitution);
-		generalAttibutesMap.put("minCharisma", minCharisma);
-		generalAttibutesMap.put("maxCharisma", maxCharisma);
-		generalAttibutesMap.put("minIntelligence", minIntelligence);
-		generalAttibutesMap.put("maxIntelligence", maxIntelligence);
+		DefaultAttributesDTO halflingAttributes = new DefaultAttributesDTO(UserRace.HALFLING.getMinStrength(),
+				UserRace.HALFLING.getMinDexterity(), UserRace.HALFLING.getMinIntelligence(), UserRace.HALFLING.getMinConstitution(),
+				UserRace.HALFLING.getMinCharisma(), UserRace.HALFLING.getMaxStrength(), UserRace.HALFLING.getMaxDexterity(),
+				UserRace.HALFLING.getMaxIntelligence(), UserRace.HALFLING.getMaxConstitution(), UserRace.HALFLING.getMaxCharisma());
 		
-		return generalAttibutesMap;
-	}
+		DefaultAttributesDTO warriorAttributes = new DefaultAttributesDTO(UserProfession.WARRIOR.getMinStrength(),
+				UserProfession.WARRIOR.getMinDexterity(), UserProfession.WARRIOR.getMinIntelligence(), UserProfession.WARRIOR.getMinConstitution(),
+				UserProfession.WARRIOR.getMinCharisma());
 
-	private static Map<String, Integer> determineSpecificAttributes(String attributeName, int idProfession, int idRace) {
-		Map<String, Integer> map = new HashMap<>();
-		int minValue = findMinValue(attributeName, idProfession, idRace);
-		int maxValue = findMaxValue(attributeName, idProfession, idRace);
-		map.put("minValue", minValue);
-		map.put("maxValue", maxValue);
-		map.put("generatedValue", generateValue(attributeName, minValue, maxValue));
+		DefaultAttributesDTO hunterAttributes = new DefaultAttributesDTO(UserProfession.HUNTER.getMinStrength(),
+				UserProfession.HUNTER.getMinDexterity(), UserProfession.HUNTER.getMinIntelligence(), UserProfession.HUNTER.getMinConstitution(),
+				UserProfession.HUNTER.getMinCharisma());
+
+		DefaultAttributesDTO thiefAttributes = new DefaultAttributesDTO(UserProfession.THIEF.getMinStrength(),
+				UserProfession.THIEF.getMinDexterity(), UserProfession.THIEF.getMinIntelligence(), UserProfession.THIEF.getMinConstitution(),
+				UserProfession.THIEF.getMinCharisma());
+
+		DefaultAttributesDTO mageAttributes = new DefaultAttributesDTO(UserProfession.MAGE.getMinStrength(),
+				UserProfession.MAGE.getMinDexterity(), UserProfession.MAGE.getMinIntelligence(), UserProfession.MAGE.getMinConstitution(),
+				UserProfession.MAGE.getMinCharisma());
 		
-		return map;
+		allAttributes.put("ELF", elfAttributes);
+		allAttributes.put("DWARF", dwarfAttributes);
+		allAttributes.put("HUMAN", humanAttributes);
+		allAttributes.put("HALFLING", halflingAttributes);
+		allAttributes.put("WARRIOR", warriorAttributes);
+		allAttributes.put("HUNTER", hunterAttributes);
+		allAttributes.put("THIEF", thiefAttributes);
+		allAttributes.put("MAGE", mageAttributes);
+		
+		return allAttributes;
 	}
 	
-	private static int findMinValue(String attributeName, int idProfession, int idRace) {
-		return 0;
+	public static AttributeDTO createMinimumAttributes(DefaultAttributesDTO race, DefaultAttributesDTO profession) {
+		int minStrength = drawAttribute("minStrength", race.getMinStrength(), profession.getMinStrength());
+		int minDexterity  = drawAttribute("minDexterity", race.getMinDexterity(), profession.getMinDexterity());
+		int minIntelligence  = drawAttribute("minIntelligence", race.getMinIntelligence(), profession.getMinIntelligence());
+		int minConstitution  = drawAttribute("minConstitution", race.getMinConstitution(), profession.getMinConstitution());
+		int minCharisma  = drawAttribute("minCharisma", race.getMinCharisma(), profession.getMinCharisma());
 		
+		AttributeDTO minAttributes = new AttributeDTO(minStrength, minDexterity, minConstitution, minCharisma, minIntelligence);
+		
+		return minAttributes;
 	}
 	
-	private static int findMaxValue(String attributeName, int idProfession, int idRace) {
-		return 0;
+	public static AttributeDTO createMaximumAttributes(DefaultAttributesDTO race) {
+		int maxStrength  = race.getMaxStrength();
+		int maxDexterity  = race.getMaxDexterity();
+		int maxConstitution  = race.getMaxIntelligence();
+		int maxCharisma  = race.getMaxConstitution();
+		int maxIntelligence  = race.getMaxCharisma();
+
+		AttributeDTO maxAttributes = new AttributeDTO(maxStrength, maxDexterity, maxConstitution, maxCharisma, maxIntelligence);
 		
+		return maxAttributes;
 	}
 	
-	private static int generateValue(String attributeName, int idProfession, int idRace) {
-		return 0;
+	public static AttributeDTO getDrawedAttributes(AttributeDTO minAttributes, AttributeDTO maxAttributes) {
+		int strength  = generateAttribute(minAttributes.getStrength(), maxAttributes.getStrength());
+		int dexterity  = generateAttribute(minAttributes.getDexterity(), maxAttributes.getDexterity());
+		int constitution  = generateAttribute(minAttributes.getIntelligence(), maxAttributes.getIntelligence());
+		int charisma  = generateAttribute(minAttributes.getConstitution(), maxAttributes.getConstitution());
+		int intelligence  = generateAttribute(minAttributes.getCharisma(), maxAttributes.getCharisma());
+
+		AttributeDTO drawedAttributes = new AttributeDTO(strength, dexterity, constitution, charisma, intelligence);
 		
+		return drawedAttributes;
 	}
 
-	private static int determineAttribute(String attributeName, int professionValue, int raceValue) {
-		int attributeValue = 0;
-		String prefix = attributeName.substring(0, 3);
-		String body = attributeName.substring(4); 
-		switch (body) {
-			case "Strength" : attributeValue = checkMinOrMax(prefix, professionValue, raceValue);
-			break;
-			case "Dexterity" : attributeValue = checkMinOrMax(prefix, professionValue, raceValue);
-			break;
-			case "Intelligence" : attributeValue = checkMinOrMax(prefix, professionValue, raceValue);
-			break;
-			case "Constitution" : attributeValue = checkMinOrMax(prefix, professionValue, raceValue);
-			break;
-			case "Charisma" : attributeValue = checkMinOrMax(prefix, professionValue, raceValue);
-			break;
-			default: break;
+	public static int generateAttribute(int min, int max) {
+		int rolledValue = diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
+		while ((min > rolledValue) || (max < rolledValue)) {
+			rolledValue = diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 		}
-		
-		return attributeValue;
+		return rolledValue;
 	}
 
-	private static int checkMinOrMax(String prefix, int professionValue, int raceValue) {
-        switch (prefix) {
-            case "min":
-                return checkWhichIsBigger(professionValue, raceValue);
-            case "max":
-                return checkWhichIsSmaller(professionValue, raceValue);
-            default:
-                logger.error("Attribute name have a wrong prefix. Check if name start from 'max' or 'min'. ");
-                return 0;
-        }
+	private static int drawAttribute(String attributeName, int raceValue, int professionValue) {
+		String prefix = attributeName.substring(0, 3);
+		String body = attributeName.substring(3); 
+		logger.info("Attribute name " + attributeName + " ,professionValue " + professionValue + " ,raceValue " +  raceValue + " ,prefix " + prefix + " ,body " + body);
+		switch (body) {
+			case "Strength" : 
+				return checkWhichIsBigger(raceValue, professionValue);
+			case "Dexterity" :
+				return checkWhichIsBigger(raceValue, professionValue);
+			case "Intelligence" :
+				return checkWhichIsBigger(raceValue, professionValue);
+			case "Constitution" : 
+				return checkWhichIsBigger(raceValue, professionValue);
+			case "Charisma" : 
+				return checkWhichIsBigger(raceValue, professionValue);
+			default:
+				logger.error("Attribute name have wrong name. There is no such attribute.");
+				return 0;
+		}
+
 	}
 
 	private static int checkWhichIsBigger(int firstValue, int secondValue) {
 		if (firstValue > secondValue) {
-			return firstValue;
-		} else {
-			return secondValue;
-		}
-	}
-	
-	private static int checkWhichIsSmaller(int firstValue, int secondValue) {
-		if (firstValue < secondValue) {
 			return firstValue;
 		} else {
 			return secondValue;
@@ -165,5 +168,13 @@ public class Rules {
 		}
 
 		return professionAccess;
+	}
+
+	public static Map<String, DefaultAttributesDTO> getAllAttributes() {
+		return allAttributes;
+	}
+
+	public static void setAllAttributes(Map<String, DefaultAttributesDTO> allAttributes) {
+		Rules.allAttributes = allAttributes;
 	}
 }

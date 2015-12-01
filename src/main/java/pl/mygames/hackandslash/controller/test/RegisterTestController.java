@@ -4,6 +4,7 @@ package pl.mygames.hackandslash.controller.test;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -12,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 

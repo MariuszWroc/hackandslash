@@ -10,4 +10,5 @@ public interface IItemService {
     List<Item> findById(Integer id);	
     List<Item> findAll();
 	void delete(Integer id);
+	List<Item> findByName(String name);
 }

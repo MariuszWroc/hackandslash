@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sun.jndi.url.iiopname.iiopnameURLContextFactory;
+
 import pl.mygames.hackandslash.dao.HeroDao;
 import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.general.StartingPoint;
@@ -28,6 +30,9 @@ public class HeroCreationService implements IHeroCreationService {
 	private IEquipmentService equipmentService;
 	
 	@Autowired
+	private IItemService itemService;
+	
+	@Autowired
 	private ICharacterService characterService;
 	
 	@Autowired
@@ -41,10 +46,9 @@ public class HeroCreationService implements IHeroCreationService {
 	 */
 	@Override
 	@Transactional(readOnly = false)
-	public void add(HeroDTO heroDTO) {
+	public void add(HeroDTO heroDTO, String login) {
     	Hero hero = new Hero();
 		GameCharacter character = new GameCharacter();
-    	String login = "mczarny";
     	Integer idPlace = StartingPoint.CITY.getId();
 		List<Place> place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
@@ -61,6 +65,8 @@ public class HeroCreationService implements IHeroCreationService {
 		addCharacter(character, heroDTO);
 		
     	dao.add(hero);
+    	
+    	addBasicEquipment(character);
 	}
 	
     @Override
@@ -94,15 +100,23 @@ public class HeroCreationService implements IHeroCreationService {
 	}
 
 	// TODO: dokończyć
-	private List<Equipment> addEquipment(GameCharacter character) {
-
-		Item sword = null;
+	private List<Equipment> addBasicEquipment(GameCharacter character) {
+		Item staff = null;
 		Item potion = null;
-		Equipment rightHand = setBasicWeapon(sword, character);
-		Equipment backpackplace = setBasicItem(potion, character);
+		
+		if (itemService.findByName("Staff").iterator().hasNext()) {
+			staff = itemService.findByName("Staff").iterator().next();
+		}
+		if (itemService.findByName("Potion of healing").iterator().hasNext()) {
+			potion = itemService.findByName("Potion of healing").iterator().next();
+		}
+		
+		Equipment staffEquiped = setBasicWeapon(staff, character);
+		Equipment potionEquiped = setBasicItem(potion, character);
+		
 		List<Equipment> equipments = new ArrayList<>();
-		equipments.add(rightHand);
-		equipments.add(backpackplace);
+		equipments.add(staffEquiped);
+		equipments.add(potionEquiped);
 		
 		return equipments;
 		
@@ -141,4 +155,5 @@ public class HeroCreationService implements IHeroCreationService {
 	private int chooseMoney() {
 		return UserProfession.WARRIOR.getMoney();
 	}
+
 }

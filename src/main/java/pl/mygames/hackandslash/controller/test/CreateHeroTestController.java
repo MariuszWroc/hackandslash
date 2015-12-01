@@ -64,7 +64,8 @@ public class CreateHeroTestController {
 	@RequestMapping(value="/heroTest/add", method = RequestMethod.POST)
 	public String addHero(@ModelAttribute("hero") @Valid HeroDTO hero, BindingResult result) {
 		if (!result.hasErrors()) {
-			heroCreationService.add(hero);
+			String loggedUser = "mczarny";
+			heroCreationService.add(hero, loggedUser);
 			logger.info("Hero with id " + hero.getId() + " added");
 			return "redirect:/characters";
 		} else {

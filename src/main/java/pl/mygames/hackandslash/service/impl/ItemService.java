@@ -52,6 +52,11 @@ public class ItemService implements IItemService {
     public List<Item> findAll() {
         return dao.findByQuery("Item.findAll");
     }
+    
+    @Override
+    public List<Item> findByName(String name) {
+        return dao.findByQuery("Item.findByName", "name", name);
+    }
 
     public void setDao(ItemDao dao) {
         this.dao = dao;

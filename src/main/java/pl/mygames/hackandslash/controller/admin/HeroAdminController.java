@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IHeroService;
 
 @Controller
-public class HeroTestController {
-    private static final Logger logger = LoggerFactory.getLogger(HeroTestController.class);
+public class HeroAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(HeroAdminController.class);
 	@Autowired
     private IHeroService heroService;
 	private Integer keyValue;

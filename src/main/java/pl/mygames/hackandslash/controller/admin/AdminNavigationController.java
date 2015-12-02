@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author mariusz
  */
 @Controller
-public class TestController {
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+public class AdminNavigationController {
+    private static final Logger logger = LoggerFactory.getLogger(AdminNavigationController.class);
     
     /* This method will list all existing tests.
      */

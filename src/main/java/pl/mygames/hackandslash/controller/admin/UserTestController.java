@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;

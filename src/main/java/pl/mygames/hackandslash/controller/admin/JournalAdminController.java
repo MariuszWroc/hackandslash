@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.Journal;
 import pl.mygames.hackandslash.service.IJournalService;
 
 @Controller
-public class JournalTestController {
-    private static final Logger logger = LoggerFactory.getLogger(JournalTestController.class);
+public class JournalAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(JournalAdminController.class);
 	@Autowired
     private IJournalService journalService;
 	private Integer keyValue;

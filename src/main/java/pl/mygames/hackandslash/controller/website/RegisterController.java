@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller;
+package pl.mygames.hackandslash.controller.website;
 
 
 

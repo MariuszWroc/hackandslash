@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 
 
@@ -23,8 +23,8 @@ import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
 @SessionAttributes("genderEnum")
-public class RegisterTestController {
-	private static final Logger logger = LoggerFactory.getLogger(RegisterTestController.class); 
+public class RegisterAdminController {
+	private static final Logger logger = LoggerFactory.getLogger(RegisterAdminController.class); 
 	
 	@Autowired
     private IUserService userService;

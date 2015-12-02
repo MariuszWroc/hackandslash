@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
 
 @Controller
-public class RoleTestController {
-    private static final Logger logger = LoggerFactory.getLogger(RoleTestController.class);
+public class RoleAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(RoleAdminController.class);
 	@Autowired
     private IRoleService roleService;
 	private Integer keyValue;

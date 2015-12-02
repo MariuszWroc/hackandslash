@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.Map;
 
@@ -21,8 +21,8 @@ import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Controller
 @SessionAttributes({"hero", "genderEnum", "raceEnum", "professionEnum", "min", "max"})
-public class CreateHeroTestController {
-	private static final Logger logger = LoggerFactory.getLogger(CreateHeroTestController.class); 
+public class CreateHeroAdminController {
+	private static final Logger logger = LoggerFactory.getLogger(CreateHeroAdminController.class); 
 	
 	@Autowired
 	private IHeroCreationService heroCreationService;

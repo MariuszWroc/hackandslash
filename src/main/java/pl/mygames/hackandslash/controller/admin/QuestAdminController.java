@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
 @Controller
-public class QuestTestController {
-    private static final Logger logger = LoggerFactory.getLogger(QuestTestController.class);
+public class QuestAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(QuestAdminController.class);
 	@Autowired
     private IQuestService questService;
 	private Integer keyValue;

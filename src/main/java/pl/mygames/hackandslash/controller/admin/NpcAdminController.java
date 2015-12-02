@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.Npc;
 import pl.mygames.hackandslash.service.INpcService;
 
 @Controller
-public class NpcTestController {
-    private static final Logger logger = LoggerFactory.getLogger(NpcTestController.class);
+public class NpcAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(NpcAdminController.class);
 	@Autowired
     private INpcService npcService;
 	private Integer keyValue;

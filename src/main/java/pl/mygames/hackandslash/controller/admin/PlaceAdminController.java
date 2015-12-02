@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.test;
+package pl.mygames.hackandslash.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 
 @Controller
-public class PlaceTestController {
-    private static final Logger logger = LoggerFactory.getLogger(PlaceTestController.class);
+public class PlaceAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(PlaceAdminController.class);
 	@Autowired
     private IPlaceService placeService;
 	private Integer keyValue;

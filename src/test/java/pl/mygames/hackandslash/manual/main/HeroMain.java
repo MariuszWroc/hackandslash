@@ -1,11 +1,16 @@
 package pl.mygames.hackandslash.manual.main;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.service.impl.HeroCreationService;
 
-public class AddHero {
-
-	public static void main(String[] args) {
+public class HeroMain {
+	private static final Logger logger = LoggerFactory.getLogger(HeroMain.class);
+	
+	public static void testAddHero() {
+		logger.info("Testing add Hero");
 		HeroCreationService creationService = new HeroCreationService();
 		HeroDTO heroDTO = new HeroDTO();
 		heroDTO.setAge(26);
@@ -19,9 +24,9 @@ public class AddHero {
 		heroDTO.setIntelligence(10);
 		heroDTO.setCharisma(8);
 		String login = "mczarny";
-		creationService.add(heroDTO, login);
+//		creationService.add(heroDTO, login);
 		
-		System.out.println("OK");
+		logger.info("OK");
 	}
 
 }

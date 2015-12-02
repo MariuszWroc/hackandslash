@@ -201,7 +201,11 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-jersey</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -227,11 +231,6 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 		    </plugin>
-			<!-- Spring Boot Maven -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
 		    <plugin>
 		                <groupId>org.apache.maven.plugins</groupId>
 		                <artifactId>maven-dependency-plugin</artifactId>

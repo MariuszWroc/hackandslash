@@ -1,32 +1,59 @@
 package pl.mygames.hackandslash.controller.website;
 
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import pl.mygames.hackandslash.controller.admin.EquipmentAdminController;
+import pl.mygames.hackandslash.controller.util.Autoincrementation;
+import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.model.GameUser;
+import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
 public class LoginController {
-
-	@RequestMapping("login")
-	public ModelAndView getLoginForm(@RequestParam(required = false) String authfailed, String logout, String denied) {
-		String message = "";
-		if (authfailed != null) {
-			message = "Invalid username of password, try again !";
-		} else if (logout != null) {
-			message = "Logged Out successfully, login again to continue !";
-		} else if (denied != null) {
-			message = "Access denied for this user !";
-		}
-		return new ModelAndView("login", "message", message);
+    private static final Logger logger = LoggerFactory.getLogger(EquipmentAdminController.class);
+    @Autowired
+    IUserService userService;
+    
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getUsers(ModelMap model) {
+		GameUser user = new GameUser();
+		model.addAttribute("user", new HeroDTO());
+		logger.info("Login view");
+	    return "test/login";
 	}
 
-	@RequestMapping("user")
+	@RequestMapping(value = {"/loginProcessing"}, method = RequestMethod.POST)
+	public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result) {
+		if (!result.hasErrors()) {
+			if (userService.findByLogin(user.getLogin()).isEmpty()) {
+				userService.add(user);
+				logger.info("No user login found in database.");
+			} else {
+				logger.info("Login was used by someone else.");
+			}
+			return "redirect:/success";
+		} else {
+			logger.info("Validation failed. " + result.getFieldError());
+			return "test/login";
+		} 
+	}
+	
+	@RequestMapping("/user")
 	public String geUserPage() {
 		return "user";
 	}
 
-	@RequestMapping("admin")
+	@RequestMapping("/admin")
 	public String geAdminPage() {
 		return "admin";
 	}

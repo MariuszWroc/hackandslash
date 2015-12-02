@@ -12,12 +12,12 @@
                 <intercept-url pattern="/Pages/UserPages/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
                 <form-login 
                     login-processing-url="/j_spring_security_check" 
-                    login-page="/login.xhtml" 
-                    default-target-url="/after.xhtml"
-                    authentication-failure-url="/loginfail.xhtml" 
+                    login-page="/login" 
+                    default-target-url="/user"
+                    authentication-failure-url="/login?authfailed" 
                     username-parameter="username"
                     password-parameter="password" />
-                <logout delete-cookies="true" logout-success-url="/index.xhtml" invalidate-session="true" />
+                <logout delete-cookies="true" logout-success-url="/login?logout" invalidate-session="true" />
 
                 <!-- disable csrf protection -->
                 <!--<csrf disabled="true"/>-->

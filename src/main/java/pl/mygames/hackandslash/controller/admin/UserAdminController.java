@@ -16,8 +16,8 @@ import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
-public class UserTestController {
-    private static final Logger logger = LoggerFactory.getLogger(UserTestController.class);
+public class UserAdminController {
+    private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
     
 	@Autowired
 	private IUserService userService;

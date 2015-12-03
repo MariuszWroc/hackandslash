@@ -24,15 +24,14 @@ public class LoginController {
     @Autowired
     IUserService userService;
     
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/logintest", method = RequestMethod.GET)
 	public String getUsers(ModelMap model) {
-		GameUser user = new GameUser();
-		model.addAttribute("user", new HeroDTO());
+		model.addAttribute("user", new GameUser());
 		logger.info("Login view");
 	    return "test/login";
 	}
 
-	@RequestMapping(value = {"/loginProcessing"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/loginTestProcessing"}, method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result) {
 		if (!result.hasErrors()) {
 			if (userService.findByLogin(user.getLogin()).isEmpty()) {
@@ -48,12 +47,12 @@ public class LoginController {
 		} 
 	}
 	
-	@RequestMapping("/user")
+	@RequestMapping("/userTest")
 	public String geUserPage() {
 		return "user";
 	}
 
-	@RequestMapping("/admin")
+	@RequestMapping("/adminTest")
 	public String geAdminPage() {
 		return "admin";
 	}

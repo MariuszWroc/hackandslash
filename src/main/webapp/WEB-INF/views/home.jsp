@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html lang="en" ng-app="StarterApp">
@@ -33,10 +34,10 @@
         <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
           <md-button ng-click="register()">Register</md-button>
           <md-button ng-click="login()">Login</md-button>
-          <md-button ng-click="">About us</md-button>
-          <md-button ng-click="">Email support</md-button>
-          <md-button ng-click="">Screens</md-button>
-          <md-button ng-click="">About the Game</md-button>
+          <md-button ng-click="makers()">About us</md-button>
+          <md-button ng-click="email()">Email support</md-button>
+          <md-button ng-click="screens()">Screens</md-button>
+          <md-button ng-click="about()">About the Game</md-button>
           <md-button ng-click="user()">UserTest</md-button>
           <md-button ng-click="hero()">HeroTest</md-button>
           <md-button ng-click="heroAdd()">HeroAddTest</md-button>
@@ -51,8 +52,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+    <script src="<c:url value='/static/js/app.js' />"></script>
+    <script src="<c:url value='/static/js/service/user_service.js' />"></script>
+    <script src="<c:url value='/static/js/controller/user_controller.js' />"></script>
 <!--     this is from homeController.js it needs to be added so that the server will serve it via src="homeControlle.js"
                      it procs a http GET request              src="homeControlle.js" -->
         <script>    

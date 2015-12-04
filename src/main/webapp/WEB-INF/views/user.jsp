@@ -8,7 +8,7 @@
     <md-content layout="column" flex class="md-padding">
         <table style="width:100%">
             <tr>
-              <td>Firstname</td>
+              <td>Firstnamea</td>
               <td>{{userDetail.firstname}}</td>
             </tr>
             <tr>

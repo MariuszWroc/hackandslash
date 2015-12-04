@@ -44,4 +44,5 @@ public class NavigationController {
 	public String getCreateHero() {
 	        return "createHero";
 	}
+    
 }

@@ -1,6 +1,6 @@
 <div  ng-controller="registerController" flex id="content">
             <md-content layout="column" flex class="md-padding">
-                <form name="registration" ng-submit="doRegister()" novalidate> <!-- ng-submit="doRegister()"-->
+                <form name="registration" ng-submit="doRegister()" > <!-- ng-submit="doRegister()"-->
                     <table>
 	            	<tr>
 	                    <td>
@@ -40,10 +40,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Email:</label>
+                                <label for="email">Email:</label>
                             </td>
                             <td>
-                                <input type="text" ng-model="user.email"/>
+                                <input type="text" id="email" ng-model="user.email"/>
                                 <label ng-show="errors.email" class="error">{{errors.email}}</label>
                             </td>
                         </tr>

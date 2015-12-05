@@ -1,8 +1,0 @@
-*.classpath
-*.project
-*.settings
-*.springBeans
-*.gitignore
-/target/*
-/src/main/webapp/WEB-INF/glassfish-web.xml
-/target/

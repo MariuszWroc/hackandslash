@@ -1,7 +1,7 @@
 'use strict';
 
 // Define an angular module for our app
-var module = angular.module("StarterApp", ['ngRoute']);
+var module = angular.module("StarterApp", ['ngRoute', 'ngMaterial']);
 
 module.config(['$routeProvider',
     function($routeProvider) {
@@ -19,9 +19,7 @@ module.config(['$routeProvider',
                 });
     }]);
 
-module('StarterApp', ['ngMaterial']);
-
-module('StarterApp').controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
+module.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
     $scope.isRegister = false;
     $scope.toggleSidenav = function(menuId) {
       $mdSidenav(menuId).toggle();
@@ -100,7 +98,7 @@ module('StarterApp').controller('AppCtrl', ['$scope', '$mdSidenav', function($sc
     }
   }]);
 
-module('StarterApp').controller('registerController', ['$scope', '$http', function($scope, $http){
+module.controller('registerController', ['$scope', '$http', function($scope, $http){
     $scope.user ={
                 firstname : '',
                 lastname : '',
@@ -174,7 +172,7 @@ module('StarterApp').controller('registerController', ['$scope', '$http', functi
     };
 }]);
 
-module('StarterApp').controller('heroController', ['$scope', '$http', function($scope, $http){
+module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $scope.heroDetail = {}   
     $http.get('/hackandslash/hero/details')
     .success(function(response){
@@ -185,7 +183,7 @@ module('StarterApp').controller('heroController', ['$scope', '$http', function($
     });
 }]);
 
-module('StarterApp').controller('loginController', ['$scope', '$http', function($scope, $http){
+module.controller('loginController', ['$scope', '$http', function($scope, $http){
     $scope.user = {}   
     $http.post('/hackandslash/user/login', $scope.user)
     .success(function(response){

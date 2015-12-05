@@ -46,13 +46,8 @@
     		<a href="#/route1">Route 1</a><br/>
 			<a href="#/route2">Route 2</a><br/>
     	</md-sidenav>
+        <md-content layout="column" flex class="md-padding">
+            <div ng-view></div>
+        </md-content>
     </div>
-
-
-
-<div ng-view></div>
-
-
-
-
 

@@ -19,6 +19,7 @@
     <script src="${contextPath}/resources/js/heroController.js"></script>
     <script src="${contextPath}/resources/js/loginController.js"></script>
     <script src="${contextPath}/resources/js/registerController.js"></script>
+    <script src="${contextPath}/resources/js/sideNav.js"></script>
         <style>
     	.md-toolbar-tools h1 {
 		  font-size: inherit;
@@ -35,17 +36,17 @@
     <meta name="viewport" content="initial-scale=1" />
 </head>
 
-<body layout="column" ng-app="StarterApp">
+<body layout="column" ng-app="StarterApp" ng-controller="AppCtrl">
 	<md-toolbar layout="row">
       <div class="md-toolbar-tools">
-        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+        <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
           <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
         </md-button>
         <h1>Hack and slash home</h1>
       </div>
     </md-toolbar>
     <div layout="row" flex>
-    	<md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="Right" md-is-locked-open="$mdMedia('gt-sm')">
+    	<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
     		<md-button md-raised md-primary layout-fill href="#/register">Register</md-button>
     		<md-button md-raised md-primary layout-fill href="#/login">Log in</md-button>
     		<md-button md-raised md-primary layout-fill href="#/authors">Authors</md-button>

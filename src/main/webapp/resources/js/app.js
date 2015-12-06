@@ -6,13 +6,17 @@ var module = angular.module("StarterApp", ['ngRoute', 'ngMaterial']);
 module.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-                when('/route1', {
+                when('/register', {
                     templateUrl: '/hackandslash/register',
                     controller: 'registerController'
                 }).
-                when('/route2', {
+                when('/login', {
                     templateUrl: '/hackandslash/login',
                     controller: 'loginController'
+                }).
+                when('/hero', {
+                    templateUrl: '/hackandslash/hero',
+                    controller: 'heroController'
                 }).
                 otherwise({
                     redirectTo: '/'

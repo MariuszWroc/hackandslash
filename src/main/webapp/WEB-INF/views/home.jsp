@@ -43,8 +43,13 @@
     </md-toolbar>
     <div layout="row" flex>
     	<md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="Right" md-is-locked-open="$mdMedia('gt-sm')">
-    		<a href="#/route1">Route 1</a><br/>
-			<a href="#/route2">Route 2</a><br/>
+    		<md-button md-raised md-primary layout-fill href="#/register">Register</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/login">Log in</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/authors">Authors</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/contact">Contact</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/about">About Game</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/user">User</md-button>
+    		<md-button md-raised md-primary layout-fill href="#/hero">Hero</md-button>    		
     	</md-sidenav>
         <md-content layout="column" flex class="md-padding">
             <div ng-view></div>

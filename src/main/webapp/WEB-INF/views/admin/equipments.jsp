@@ -26,15 +26,15 @@
 	                <tr>
 	                    <td>${equipment.id}</td>
 	                    <td>${equipment.inPlace}</td>
-	                    <td><a href="<c:url value='/equipments/edit/${equipment.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/equipments/remove/${equipment.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/equipments/edit/${equipment.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/equipments/remove/${equipment.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
         <div>
             <h2>Add/Edit equipment</h2>  
-	        <c:url var="addAction" value="/equipments/add" ></c:url>
+	        <c:url var="addAction" value="/admin/equipments/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_equipment">  
 	            <table>  
 	                <tr>  

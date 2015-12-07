@@ -41,14 +41,14 @@ public class ItemAdminController {
         	itemService.update(item);
             logger.info("Item with id = " + item.getId() + ", updated");
         } 
-        return "redirect:/items";  
+        return "redirect:/admin/items";  
     } 
     
     @RequestMapping(value = "/items/remove/{id}")
     public String removeItem(@PathVariable("id") Integer id){
         itemService.delete(id);
         logger.info("Item with id = " + id + ", deleted");
-        return "redirect:/items";
+        return "redirect:/admin/items";
     }
     
     @RequestMapping(value = "/items/edit/{id}")

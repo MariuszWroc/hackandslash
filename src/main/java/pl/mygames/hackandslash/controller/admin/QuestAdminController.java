@@ -41,14 +41,14 @@ public class QuestAdminController {
         	questService.update(quest);
             logger.info("Place with id = " + quest.getId() + ", updated");
         } 
-        return "redirect:/quests";  
+        return "redirect:/admin/quests";  
     } 
     
     @RequestMapping(value = "/quests/remove/{id}")
     public String removeQuest(@PathVariable("id") Integer id){
         questService.delete(id);
         logger.info("Place with id = " + id + ", deleted");
-        return "redirect:/quests";
+        return "redirect:/admin/quests";
     }
     
     @RequestMapping(value = "/quests/edit/{id}")

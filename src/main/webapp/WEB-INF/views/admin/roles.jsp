@@ -28,15 +28,15 @@
 				<tr>
 					<td>${role.id}</td>
 					<td>${role.rolename}</td>
-					<td><a href="<c:url value='/roles/edit/${role.id}' />">Edit</a></td>
-					<td><a href="<c:url value='/roles/remove/${role.id}' />">Delete</a></td>
+					<td><a href="<c:url value='/admin/roles/edit/${role.id}' />">Edit</a></td>
+					<td><a href="<c:url value='/admin/roles/remove/${role.id}' />">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	<div>
 		<h2>Add/Edit role</h2>
-		<c:url var="addAction" value="/roles/add"></c:url>
+		<c:url var="addAction" value="/admin/roles/add"></c:url>
 		<form:form method="POST" action="${addAction}" commandName="one_role">
 			<table>
 				<tr>

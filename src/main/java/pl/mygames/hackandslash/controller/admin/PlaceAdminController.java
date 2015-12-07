@@ -41,14 +41,14 @@ public class PlaceAdminController {
         	placeService.update(place);
             logger.info("Place with id = " + place.getId() + ", deleted");
         } 
-        return "redirect:/places";  
+        return "redirect:/admin/places";  
     } 
     
     @RequestMapping(value = "/places/remove/{id}")
     public String removePlace(@PathVariable("id") Integer id){
         placeService.delete(id);
         logger.info("Place with id = " + id + ", deleted");
-        return "redirect:/places";
+        return "redirect:/admin/places";
     }
     
     @RequestMapping(value = "/places/edit/{id}")

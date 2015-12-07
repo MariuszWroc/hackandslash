@@ -41,14 +41,14 @@ public class NpcAdminController {
         	npcService.update(npc);
 	        logger.info("Npc with id = " + npc.getId() + ", updated");
         } 
-        return "redirect:/npcs";  
+        return "redirect:/admin/npcs";  
     } 
     
     @RequestMapping(value = "/npcs/remove/{id}")
     public String removeNpc(@PathVariable("id") Integer id){
         npcService.delete(id);
         logger.info("Npc with id = " + id + ", deleted");
-        return "redirect:/npcs";
+        return "redirect:/admin/npcs";
     }
     
     @RequestMapping(value = "/npcs/edit/{id}")

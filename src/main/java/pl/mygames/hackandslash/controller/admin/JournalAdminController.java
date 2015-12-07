@@ -41,14 +41,14 @@ public class JournalAdminController {
 	        	journalService.update(journal);
 	            logger.info("Journal with id = " + journal.getId() + ", updated");
 	        } 
-	        return "redirect:/journals";  
+	        return "redirect:/admin/journals";  
 	    }
 	    
 	    @RequestMapping(value = "/journals/remove/{id}")
 	    public String removeJournal(@PathVariable("id") Integer id){
 	        journalService.delete(id);
 	        logger.info("Journal with id = " + id + ", deleted");
-	        return "redirect:/journals";
+	        return "redirect:/admin/journals";
 	    }
 	    
 	    @RequestMapping(value = "/journals/edit/{id}")

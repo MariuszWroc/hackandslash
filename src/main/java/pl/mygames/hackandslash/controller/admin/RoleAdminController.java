@@ -41,14 +41,14 @@ public class RoleAdminController {
             roleService.update(role);
             logger.info("Place with id = " + keyValue + ", updated");
         } 
-        return "redirect:/roles";  
+        return "redirect:/admin/roles";  
     } 
     
     @RequestMapping(value = "/roles/remove/{id}")
     public String removeRole(@PathVariable("id") Integer id){
         roleService.delete(id);
         logger.info("Place with id = " + id + ", deleted");
-        return "redirect:/roles";
+        return "redirect:/admin/roles";
     }
     
     @RequestMapping(value = "/roles/edit/{id}")

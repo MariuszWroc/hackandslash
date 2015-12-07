@@ -18,6 +18,10 @@ module.config(['$routeProvider',
                     templateUrl: '/hackandslash/hero',
                     controller: 'heroController'
                 }).
+                when('about', {
+                    templateUrl: '/hackandslash/about',
+                    controller: 'menuController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });

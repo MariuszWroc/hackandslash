@@ -41,14 +41,14 @@ public class EquipmentAdminController {
         	equipmentService.update(equipment);
             logger.info("Equipment with id = " + equipment.getId() + ", updated");
         } 
-        return "redirect:/equipments";  
+        return "redirect:/admin/equipments";  
     } 
     
     @RequestMapping(value = "/equipments/remove/{id}")
     public String removeEquipment(@PathVariable("id") Integer id){
         equipmentService.delete(id);
         logger.info("Equipment with id = " + id + ", deleted");
-        return "redirect:/equipments";
+        return "redirect:/admin/equipments";
     }
     
     @RequestMapping(value = "/equipments/edit/{id}")

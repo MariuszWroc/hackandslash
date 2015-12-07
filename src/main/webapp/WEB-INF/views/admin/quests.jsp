@@ -28,15 +28,15 @@
 	                    <td>${quest.id}</td>
 	                    <td>${quest.description}</td>
 	                    <td>${quest.target}</td>
-	                    <td><a href="<c:url value='/quests/edit/${quest.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/quests/remove/${quest.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/quests/edit/${quest.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/quests/remove/${quest.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
 		</div>
         <div>
         	<h2>Add/Edit quest</h2>  
-	        <c:url var="addAction" value="/quests/add" ></c:url>
+	        <c:url var="addAction" value="/admin/quests/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_quest">  
 	            <table>  
 	                <tr>  

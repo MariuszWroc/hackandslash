@@ -47,14 +47,14 @@ public class UserAdminController {
             logger.info("Place with id = " + user.getId() + ", updated");
         } 
         
-        return "redirect:/users";  
+        return "redirect:/admin/users";  
     }  
 
     @RequestMapping(value = "/users/remove/{id}")
     public String removeUser(@PathVariable("id") Integer id){
         userService.delete(id);
         logger.info("Place with id = " + id + ", deleted");
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
     
     @RequestMapping(value = "/users/edit/{id}")

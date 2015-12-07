@@ -53,7 +53,7 @@ public class RegisterAdminController {
             	redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
             }
 		
-        return "redirect:/registerTest";  
+        return "redirect:/admin/registerTest";  
     }
     // method for angular it returns the arrayList of errors list is empty when no errors occoured
     @RequestMapping(value = "/registerTest/addAngu", method = RequestMethod.POST)  

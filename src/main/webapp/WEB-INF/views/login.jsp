@@ -4,7 +4,7 @@
             <table>
                 <tr>
                     <td>
-                        <label>Login:</label>
+                        <label>Login!:</label>
                     </td>
                     <td>
                         <input type="text" ng-model="user.login"/>

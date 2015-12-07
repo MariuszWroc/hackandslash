@@ -28,7 +28,7 @@
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
         <div align="center">
 	        <h2>Register user</h2>  
-	        <c:url var="addAction" value="/registerTest/add" ></c:url>
+	        <c:url var="addAction" value="/admin/registerTest/add" ></c:url>
 	        <form:form id="registerForm" method="POST" action="${addAction}" commandName="user">
 	            <table>
 	            	<tr>

@@ -41,7 +41,7 @@ public class CharacterAdminController {
         	characterService.update(character);
             logger.info("Character with id = " + character.getId() + ", updated");
         } 
-        return "redirect:/characters";  
+        return "redirect:/admin/characters";  
     } 
     
     @RequestMapping(value = "/characters/remove/{id}")

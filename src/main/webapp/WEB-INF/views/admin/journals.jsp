@@ -28,15 +28,15 @@
 	                    <td>${journal.id}</td>
 	                    <td>${journal.passed}</td>
 	                    <td>${journal.startDate}</td>
-	                    <td><a href="<c:url value='/journals/edit/${journal.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/journals/remove/${journal.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/journals/edit/${journal.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/journals/remove/${journal.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
     	</div>
         <div>
         	<h2>Add/Edit journal</h2>  
-	        <c:url var="addAction" value="/journals/add" ></c:url>
+	        <c:url var="addAction" value="/admin/journals/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_journal">  
 	            <table>  
 	                <tr>  

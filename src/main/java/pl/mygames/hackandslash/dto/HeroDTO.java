@@ -47,6 +47,7 @@ public class HeroDTO implements Serializable{
     private Integer baseHP;
     private Integer experience;
     private Integer startingPoints;
+    private Integer money;
 
     public HeroDTO() {
 		this.startingPoints = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
@@ -180,4 +181,11 @@ public class HeroDTO implements Serializable{
 		this.startingPoints = startingPoints;
 	}
 	
+	public Integer getMoney() {
+		return money;
+	}
+	
+	public void setMoney(Integer money) {
+		this.money = money;
+	}
 }

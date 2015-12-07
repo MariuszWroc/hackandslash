@@ -41,14 +41,14 @@ public class HeroAdminController {
         	heroService.update(hero);
             logger.info("Hero with id = " + hero.getId() + ", updated");
         } 
-        return "redirect:/heroes";  
+        return "redirect:/admin/heroes";  
     }  
     
     @RequestMapping(value = "/heroes/remove/{id}")
     public String removeHero(@PathVariable("id") Integer id){
         heroService.delete(id);
         logger.info("Hero with id = " + id + ", deleted");
-        return "redirect:/heroes";
+        return "redirect:/admin/heroes";
     }
     
     @RequestMapping(value = "/heroes/edit/{id}")

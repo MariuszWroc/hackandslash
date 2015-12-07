@@ -27,15 +27,15 @@
 	                <tr>
 	                    <td>${npc.id}</td>
 	                    <td>${npc.behaviour}</td>
-	                    <td><a href="<c:url value='/npcs/edit/${npc.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/npcs/remove/${npc.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/npcs/edit/${npc.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/npcs/remove/${npc.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
         <div>
         	<h2>Add/Edit npc</h2>  
-	        <c:url var="addAction" value="/npcs/add" ></c:url>
+	        <c:url var="addAction" value="/admin/npcs/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_npc">  
 	            <table>  
 	                <tr>  

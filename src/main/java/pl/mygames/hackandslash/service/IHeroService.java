@@ -11,5 +11,6 @@ public interface IHeroService {
     List<Hero> findById(Integer id);	
     List<Hero> findAll();
 	void delete(Integer id);
-        HeroDTO getHeroDTO(String heroName);
+    HeroDTO getHeroDTO(String heroName);
+	void add(HeroDTO heroDTO, String login);
 }

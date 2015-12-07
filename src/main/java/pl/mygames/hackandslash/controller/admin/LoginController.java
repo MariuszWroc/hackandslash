@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.website;
+package pl.mygames.hackandslash.controller.admin;
 
 
 import javax.validation.Valid;
@@ -12,54 +12,42 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.mygames.hackandslash.controller.admin.EquipmentAdminController;
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
 import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.dto.LoginDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(EquipmentAdminController.class);
     @Autowired
     IUserService userService;
     
-	@RequestMapping(value = "/logintest", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getUsers(ModelMap model) {
-		model.addAttribute("user", new GameUser());
+		model.addAttribute("user", new LoginDTO());
 		logger.info("Login view");
-	    return "test/login";
+	    return "admin/procedures/login";
 	}
 
-	@RequestMapping(value = {"/loginTestProcessing"}, method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result) {
+	@RequestMapping(value = {"/login/submit"}, method = RequestMethod.POST)
+	public String addUser(@ModelAttribute("user") @Valid LoginDTO user, BindingResult result) {
+		System.out.println("kupa");
 		if (!result.hasErrors()) {
-			if (userService.findByLogin(user.getLogin()).isEmpty()) {
-				userService.add(user);
-				logger.info("No user login found in database.");
+			if (userService.isLoginSuccess(user)) {
+				logger.info("Login success");
+				return "redirect:/success";
 			} else {
-				logger.info("Login was used by someone else.");
+				logger.info("Login failed. Wrong password or login.");
+				return "redirect:/failed";
 			}
-			return "redirect:/success";
+			
 		} else {
 			logger.info("Validation failed. " + result.getFieldError());
-			return "test/login";
+			return "admin/procedures/login";
 		} 
-	}
-	
-	@RequestMapping("/userTest")
-	public String geUserPage() {
-		return "user";
-	}
-
-	@RequestMapping("/adminTest")
-	public String geAdminPage() {
-		return "admin";
-	}
-
-	@RequestMapping("403page")
-	public String ge403denied() {
-		return "redirect:login?denied";
 	}
 
 }

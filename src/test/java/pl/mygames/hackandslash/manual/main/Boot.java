@@ -17,13 +17,13 @@ public class Boot extends SpringBootServletInitializer {
 
 	public static void main(final String[] args) {
 		SpringApplication.run(Boot.class, args);
-		HeroMain.testAddHero();
-		RulesMain.popuateAttributes();
+//		HeroMain.testAddHero();
+//		RulesMain.popuateAttributes();
+		FactoryMain.testFactoryHero();
 	}
 	
     @Override
     protected final SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
         return application.sources(Boot.class);
     }
-
 }

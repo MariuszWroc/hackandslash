@@ -65,6 +65,7 @@ public class CreateHeroAdminController {
 	@RequestMapping(value="/heroTest/add", method = RequestMethod.POST)
 	public String addHero(@ModelAttribute("hero") @Valid HeroDTO hero, BindingResult result) {
 		if (!result.hasErrors()) {
+			// TODO: testing mock
 			String loggedUser = "mczarny";
 			heroCreationService.add(hero, loggedUser);
 			logger.info("Hero with id " + hero.getId() + " added");

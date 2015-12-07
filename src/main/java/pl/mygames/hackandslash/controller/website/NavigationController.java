@@ -40,9 +40,24 @@ public class NavigationController {
 	        return "login";
 	}
     
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String getAboutAuthors() {
+	        return "about";
+	}
+    
     @RequestMapping(value = "/createHero", method = RequestMethod.GET)
 	public String getCreateHero() {
-	        return "createHero";
+	        return "create";
 	}
+    
+    @RequestMapping(value = {"/success"}, method = RequestMethod.GET)
+    public String getSuccess() {
+        return "admin/menu";
+    }
+    
+    @RequestMapping(value = {"/failed"}, method = RequestMethod.GET)
+    public String getFailed() {
+        return "admin/menu";
+    }
     
 }

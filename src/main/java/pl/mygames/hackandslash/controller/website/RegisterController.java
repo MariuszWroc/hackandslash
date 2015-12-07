@@ -26,17 +26,10 @@ import pl.mygames.hackandslash.service.IUserService;
 @RequestMapping(value = "/register")
 public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class); 
+    
 	@Autowired
-    private IRegisterService registerService;
+    private IUserService userService;
         
-        private IUserService userService;
-        
-        @Autowired(required = true)
-        @Qualifier(value = "userService")
-        public void setUserService(IUserService userService) {
-            this.userService = userService;
-        }
-	
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String viewRegistration(ModelMap model) {
     	RegisterDTO register = new RegisterDTO();

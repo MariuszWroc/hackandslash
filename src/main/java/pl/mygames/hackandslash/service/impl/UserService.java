@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.UserDao;
+import pl.mygames.hackandslash.dto.LoginDTO;
 import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.dto.util.general.Rolename;
 import pl.mygames.hackandslash.model.GameRole;
@@ -68,14 +69,6 @@ public class UserService implements IUserService {
     	setDefaultRole(user);
     	dao.update(user);
     }
-
-	private void setDefaultRole(GameUser user) {
-		Integer idRole = Rolename.USER.getId();
-		List<GameRole> gameRole = roleService.findById(idRole);
-        if(gameRole.iterator().hasNext()) {
-        	user.setGameRole(gameRole.iterator().next());	
-        }
-	}
 	
     @Override
 	public Integer generateId() {
@@ -96,6 +89,11 @@ public class UserService implements IUserService {
     public List<GameUser> findByLogin(String login) {
         return dao.findByQuery("GameUser.findByLogin", "login", login);
     }
+    
+    @Override
+    public List<GameUser> findByPassword(String password) {
+        return dao.findByQuery("GameUser.findByPassword", "password", password);
+    }
 
     @Override
     public List<GameUser> findById(Integer id) {
@@ -107,8 +105,36 @@ public class UserService implements IUserService {
         return dao.findByQuery("GameUser.findAll");
     }
     
+    @Override
+    public Boolean isLoginSuccess(LoginDTO loginDTO) {
+    	boolean userExist = isUserExist(loginDTO.getLogin());
+    	boolean passwordCorrect = isPasswordCorrect(loginDTO.getPassword());
+    	if((userExist) && (passwordCorrect)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    	
+    }
+
+	private void setDefaultRole(GameUser user) {
+		Integer idRole = Rolename.USER.getId();
+		List<GameRole> gameRole = roleService.findById(idRole);
+        if(gameRole.iterator().hasNext()) {
+        	user.setGameRole(gameRole.iterator().next());	
+        }
+	}
+    
     private Boolean isUserExist(String login) {
     	if (findByLogin(login).isEmpty()) {
+    		return false;
+    	} else {
+    		return true;
+    	}
+    }
+    
+    private Boolean isPasswordCorrect(String password) {
+    	if (findByPassword(password).isEmpty()) {
     		return false;
     	} else {
     		return true;

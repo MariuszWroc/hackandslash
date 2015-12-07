@@ -6,6 +6,9 @@
 package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import pl.mygames.hackandslash.model.GameUser;
 
 /**
@@ -14,7 +17,10 @@ import pl.mygames.hackandslash.model.GameUser;
  */
 public class LoginDTO implements Serializable{
     private static final long serialVersionUID = 1L;
+    
+    @NotBlank
     private String login;
+    @NotBlank
     private String password;
     
     

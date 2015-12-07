@@ -28,15 +28,15 @@
 	                    <td>${hero.id}</td>
 	                    <td>${hero.activated}</td>
 	                    <td>${hero.money}</td>
-	                    <td><a href="<c:url value='/heroes/edit/${hero.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/heroes/remove/${hero.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/heroes/edit/${hero.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/heroes/remove/${hero.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
         <div>
         	<h2>Add/Edit hero</h2>  
-	        <c:url var="addAction" value="/heroes/add" ></c:url>
+	        <c:url var="addAction" value="/admin/heroes/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_hero">  
 	            <table>  
 	                <tr>  

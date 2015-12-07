@@ -35,15 +35,15 @@
 	                    <td>${user.password}</td>
 	                    <td>${user.gender}</td>
 	                    <td>${user.activated}</td>
-	                    <td><a href="<c:url value='/users/edit/${user.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/users/remove/${user.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/users/edit/${user.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/users/remove/${user.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
         <div>
 	        <h2>Add/Edit user</h2>  
-	        <c:url var="addAction" value="/users/add" ></c:url>
+	        <c:url var="addAction" value="/admin/users/add" ></c:url>
 	        <form:form id="registerForm" method="POST" action="${addAction}" commandName="one_user">  
 	            <table>  
 	                <tr>  

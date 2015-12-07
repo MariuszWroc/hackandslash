@@ -21,6 +21,7 @@ public class AdminNavigationController {
      */
     @RequestMapping(value = {"/panel"}, method = RequestMethod.GET)
     public String getTests() {
-        return "admin/list";
+        return "admin/menu";
     }
+    
 }

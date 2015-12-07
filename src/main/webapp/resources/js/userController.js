@@ -1,4 +1,4 @@
-module.controller('loginController', ['$scope', '$http', function($scope, $http){
+module.controller('userController', ['$scope', '$http', function($scope, $http){
     $scope.user = {}   
     $http.post('/user/login', $scope.user)
     .success(function(response){

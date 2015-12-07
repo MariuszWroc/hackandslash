@@ -42,15 +42,15 @@
 	                    <td>${character.charisma}</td>
 	                    <td>${character.baseHP}</td>
 	                    <td>${character.experience}</td>
-	                    <td><a href="<c:url value='/characters/edit/${character.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/characters/remove/${character.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/characters/edit/${character.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/characters/remove/${character.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
         <div>
 	        <h2>Add/Edit character</h2>  
-	        <c:url var="addAction" value="/characters/add" ></c:url>
+	        <c:url var="addAction" value="/admin/characters/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_character">  
 	            <table>  
 	                <tr>  

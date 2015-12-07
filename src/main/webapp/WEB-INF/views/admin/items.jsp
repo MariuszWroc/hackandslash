@@ -42,15 +42,15 @@
 	                    <td>${item.addIntelligence}</td>
 	                    <td>${item.addCharisma}</td>
 	                    <td>${item.amount}</td>
-	                    <td><a href="<c:url value='/items/edit/${item.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/items/remove/${item.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/items/edit/${item.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/items/remove/${item.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
 	    </div>
         <div>
         <h2>Add/Edit item</h2>  
-	        <c:url var="addAction" value="/items/add" ></c:url>
+	        <c:url var="addAction" value="/admin/items/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_item">  
 	            <table>  
 	                <tr>  

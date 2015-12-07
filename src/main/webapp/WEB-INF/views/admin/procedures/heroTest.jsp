@@ -29,7 +29,7 @@
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<div align="center">
 		<h2>Hero creator</h2>
-		<c:url var="addAction" value="/heroTest/add"></c:url>
+		<c:url var="addAction" value="/admin/heroTest/add"></c:url>
 		<form:form id="heroForm" method="POST" action="${addAction}"
 			commandName="hero">
 			<table>

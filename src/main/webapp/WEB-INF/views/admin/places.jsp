@@ -29,15 +29,15 @@
 	                    <td>${place.latitude}</td>
 	                    <td>${place.longitude}</td>
 	                    <td>${place.radius}</td>
-	                    <td><a href="<c:url value='/places/edit/${place.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/places/remove/${place.id}' />">Delete</a></td>
+	                    <td><a href="<c:url value='/admin/places/edit/${place.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/admin/places/remove/${place.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
         </div>
          <div>
         	<h2>Add/Edit place</h2>  
-	        <c:url var="addAction" value="/places/add" ></c:url>
+	        <c:url var="addAction" value="/admin/places/add" ></c:url>
 	        <form:form method="POST" action="${addAction}" commandName="one_place">  
 	            <table>  
 	                <tr>  

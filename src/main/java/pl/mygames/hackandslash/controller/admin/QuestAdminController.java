@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class QuestAdminController {
     private static final Logger logger = LoggerFactory.getLogger(QuestAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class QuestAdminController {
     	keyValue = Autoincrementation.getValue(quests.size());
     	model.addAttribute("quests", quests);
     	model.addAttribute("one_quest", new Quest());
-        return "test/quests";
+        return "admin/quests";
     }
 	
     @RequestMapping(value = "/quests/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class QuestAdminController {
         model.addAttribute("quests", findQuests());
         model.addAttribute("one_quest", findQuest(id));
         logger.info("Place with id = " + id + ", edited");
-        return "test/quests";
+        return "admin/quests";
     }
 
     /*

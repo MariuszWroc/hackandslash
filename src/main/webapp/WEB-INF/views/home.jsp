@@ -6,6 +6,7 @@
 <head>
     <title>AngularJS Routes example</title>
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -20,19 +21,6 @@
     <script src="${contextPath}/resources/js/loginController.js"></script>
     <script src="${contextPath}/resources/js/registerController.js"></script>
     <script src="${contextPath}/resources/js/sideNav.js"></script>
-        <style>
-    	.md-toolbar-tools h1 {
-		  font-size: inherit;
-		  font-weight: inherit;
-		  margin: inherit;
-		}
-        
-        .error {
-            color: #ff0000;
-            font-style: italic;
-            font-weight: bold;
-        }
-    </style>
     <meta name="viewport" content="initial-scale=1" />
 </head>
 

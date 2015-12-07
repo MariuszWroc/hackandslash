@@ -23,6 +23,7 @@ import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
 @SessionAttributes("genderEnum")
+@RequestMapping(value = {"/admin"})
 public class RegisterAdminController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterAdminController.class); 
 	
@@ -34,7 +35,7 @@ public class RegisterAdminController {
     	model.addAttribute("user", new GameUser());
     	model.addAttribute("genderEnum", Gender.values());
     	logger.info("register view"); 
-        return "test/procedures/registerTest";
+        return "admin/procedures/registerTest";
     }
     
     @RequestMapping(value = "/registerTest/add", method = RequestMethod.POST)  

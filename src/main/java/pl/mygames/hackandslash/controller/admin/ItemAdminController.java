@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.Item;
 import pl.mygames.hackandslash.service.IItemService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class ItemAdminController {
     private static final Logger logger = LoggerFactory.getLogger(ItemAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class ItemAdminController {
         keyValue = Autoincrementation.getValue(items.size());
     	model.addAttribute("items", items);
     	model.addAttribute("one_item", new Item());
-        return "test/items";
+        return "admin/items";
     }
 	  
     @RequestMapping(value = "/items/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class ItemAdminController {
         model.addAttribute("items", findItems());
         model.addAttribute("one_item", findItem(id));
         logger.info("Item with id = " + id + ", edited");
-        return "test/items";
+        return "admin/items";
     }
     
     /*

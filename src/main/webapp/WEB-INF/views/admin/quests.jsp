@@ -1,6 +1,6 @@
 <%-- 
-    Document   : journals
-    Created on : Oct 31, 2015, 12:44:03 PM
+    Document   : quests
+    Created on : Oct 31, 2015, 12:41:58 PM
     Author     : mariusz
 --%>
 
@@ -13,31 +13,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Show journals</title>
+        <title>Show quests</title>
     </head>
     <body>
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-    	<div>
-	    	<h2>List of journals</h2>  
+        <div>
+	        <h2>List of quests</h2>  
 	        <table>
 	            <tr>
-	                <td>id</td><td>passed</td><td>start date</td>
+	                <td>Id</td><td>description</td><td>target</td>
 	            </tr>
-	            <c:forEach items="${journals}" var="journal">
+	            <c:forEach items="${quests}" var="quest">
 	                <tr>
-	                    <td>${journal.id}</td>
-	                    <td>${journal.passed}</td>
-	                    <td>${journal.startDate}</td>
-	                    <td><a href="<c:url value='/journals/edit/${journal.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/journals/remove/${journal.id}' />">Delete</a></td>
+	                    <td>${quest.id}</td>
+	                    <td>${quest.description}</td>
+	                    <td>${quest.target}</td>
+	                    <td><a href="<c:url value='/quests/edit/${quest.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/quests/remove/${quest.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
-    	</div>
+		</div>
         <div>
-        	<h2>Add/Edit journal</h2>  
-	        <c:url var="addAction" value="/journals/add" ></c:url>
-	        <form:form method="POST" action="${addAction}" commandName="one_journal">  
+        	<h2>Add/Edit quest</h2>  
+	        <c:url var="addAction" value="/quests/add" ></c:url>
+	        <form:form method="POST" action="${addAction}" commandName="one_quest">  
 	            <table>  
 	                <tr>  
 	                    <td>
@@ -49,37 +49,37 @@
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="passed"><spring:message text="Passed"/></form:label>
+	                        <form:label path="description"><spring:message text="Description"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="passed" />
+	                        <form:input path="description" />
 	                    </td> 
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="startDate"><spring:message text="Start date"/></form:label>
+	                        <form:label path="target"><spring:message text="Target"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="startDate" />
+	                        <form:input path="target" />
 	                    </td> 
 	                </tr> 
 	                <tr>  
 	                    <td colspan="2">
-	                    	<c:if test="${!empty one_journal.id}">
+	                    	<c:if test="${!empty one_quest.id}">
 	                    		<input type="submit" name="action" value="Edit"/>
 	                    	</c:if>
-	                    	<c:if test="${empty one_journal.id}">
+	                    	<c:if test="${empty one_quest.id}">
 	                    		<input type="submit" name="action" value="Add"/>
 	                    	</c:if>
 	                    	<input type="submit" name="action" value="Clear" />
-	                    </td>  
+	                    </td>    
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
         	<div>
 				<p>
-					<a href="${contextPath}/tests">powrót</a>
+					<a href="${contextPath}/admin/panel">powrót</a>
 				</p>
 			</div>
     </body>

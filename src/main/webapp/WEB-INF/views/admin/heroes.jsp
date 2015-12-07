@@ -1,6 +1,6 @@
 <%-- 
-    Document   : quests
-    Created on : Oct 31, 2015, 12:41:58 PM
+    Document   : heroes
+    Created on : Oct 31, 2015, 12:43:47 PM
     Author     : mariusz
 --%>
 
@@ -13,31 +13,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Show quests</title>
+        <title>Show heroes</title>
     </head>
     <body>
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-        <div>
-	        <h2>List of quests</h2>  
+    	<div>
+	        <h2>List of heroes</h2>  
 	        <table>
 	            <tr>
-	                <td>Id</td><td>description</td><td>target</td>
+	                <td>id</td><td>activated</td><td>money</td>
 	            </tr>
-	            <c:forEach items="${quests}" var="quest">
+	            <c:forEach items="${heroes}" var="hero">
 	                <tr>
-	                    <td>${quest.id}</td>
-	                    <td>${quest.description}</td>
-	                    <td>${quest.target}</td>
-	                    <td><a href="<c:url value='/quests/edit/${quest.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/quests/remove/${quest.id}' />">Delete</a></td>
+	                    <td>${hero.id}</td>
+	                    <td>${hero.activated}</td>
+	                    <td>${hero.money}</td>
+	                    <td><a href="<c:url value='/heroes/edit/${hero.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/heroes/remove/${hero.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
-		</div>
+        </div>
         <div>
-        	<h2>Add/Edit quest</h2>  
-	        <c:url var="addAction" value="/quests/add" ></c:url>
-	        <form:form method="POST" action="${addAction}" commandName="one_quest">  
+        	<h2>Add/Edit hero</h2>  
+	        <c:url var="addAction" value="/heroes/add" ></c:url>
+	        <form:form method="POST" action="${addAction}" commandName="one_hero">  
 	            <table>  
 	                <tr>  
 	                    <td>
@@ -49,37 +49,37 @@
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="description"><spring:message text="Description"/></form:label>
+	                        <form:label path="activated"><spring:message text="Activated"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="description" />
+	                        <form:input path="activated" />
 	                    </td> 
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="target"><spring:message text="Target"/></form:label>
+	                        <form:label path="money"><spring:message text="Money"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="target" />
+	                        <form:input path="money" />
 	                    </td> 
 	                </tr> 
 	                <tr>  
 	                    <td colspan="2">
-	                    	<c:if test="${!empty one_quest.id}">
+	                    	<c:if test="${!empty one_hero.id}">
 	                    		<input type="submit" name="action" value="Edit"/>
 	                    	</c:if>
-	                    	<c:if test="${empty one_quest.id}">
+	                    	<c:if test="${empty one_hero.id}">
 	                    		<input type="submit" name="action" value="Add"/>
 	                    	</c:if>
 	                    	<input type="submit" name="action" value="Clear" />
-	                    </td>    
+	                    </td> 
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
         	<div>
 				<p>
-					<a href="${contextPath}/tests">powrót</a>
+					<a href="${contextPath}/admin/panel">powrót</a>
 				</p>
 			</div>
     </body>

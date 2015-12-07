@@ -1,6 +1,6 @@
 <%-- 
-    Document   : places
-    Created on : Oct 31, 2015, 12:43:40 PM
+    Document   : journals
+    Created on : Oct 31, 2015, 12:44:03 PM
     Author     : mariusz
 --%>
 
@@ -13,32 +13,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Show places</title>
+        <title>Show journals</title>
     </head>
     <body>
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     	<div>
-	        <h2>List of places</h2>  
+	    	<h2>List of journals</h2>  
 	        <table>
 	            <tr>
-	                <td>Id</td><td>latitude</td><td>longitude</td>
+	                <td>id</td><td>passed</td><td>start date</td>
 	            </tr>
-	            <c:forEach items="${places}" var="place">
+	            <c:forEach items="${journals}" var="journal">
 	                <tr>
-	                    <td>${place.id}</td>
-	                    <td>${place.latitude}</td>
-	                    <td>${place.longitude}</td>
-	                    <td>${place.radius}</td>
-	                    <td><a href="<c:url value='/places/edit/${place.id}' />">Edit</a></td>
-						<td><a href="<c:url value='/places/remove/${place.id}' />">Delete</a></td>
+	                    <td>${journal.id}</td>
+	                    <td>${journal.passed}</td>
+	                    <td>${journal.startDate}</td>
+	                    <td><a href="<c:url value='/journals/edit/${journal.id}' />">Edit</a></td>
+						<td><a href="<c:url value='/journals/remove/${journal.id}' />">Delete</a></td>
 	                </tr>
 	            </c:forEach>
 	        </table>
-        </div>
-         <div>
-        	<h2>Add/Edit place</h2>  
-	        <c:url var="addAction" value="/places/add" ></c:url>
-	        <form:form method="POST" action="${addAction}" commandName="one_place">  
+    	</div>
+        <div>
+        	<h2>Add/Edit journal</h2>  
+	        <c:url var="addAction" value="/journals/add" ></c:url>
+	        <form:form method="POST" action="${addAction}" commandName="one_journal">  
 	            <table>  
 	                <tr>  
 	                    <td>
@@ -50,45 +49,37 @@
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="latitude"><spring:message text="Latitude"/></form:label>
+	                        <form:label path="passed"><spring:message text="Passed"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="latitude" />
+	                        <form:input path="passed" />
 	                    </td> 
 	                </tr>  
 	                <tr>
 	                    <td>
-	                        <form:label path="longitude"><spring:message text="Longitude"/></form:label>
+	                        <form:label path="startDate"><spring:message text="Start date"/></form:label>
 	                    </td>
 	                    <td>
-	                        <form:input path="longitude" />
-	                    </td> 
-	                </tr> 
-	                <tr>
-	                    <td>
-	                        <form:label path="radius"><spring:message text="Radius"/></form:label>
-	                    </td>
-	                    <td>
-	                        <form:input path="radius" />
+	                        <form:input path="startDate" />
 	                    </td> 
 	                </tr> 
 	                <tr>  
 	                    <td colspan="2">
-	                    	<c:if test="${!empty one_place.id}">
+	                    	<c:if test="${!empty one_journal.id}">
 	                    		<input type="submit" name="action" value="Edit"/>
 	                    	</c:if>
-	                    	<c:if test="${empty one_place.id}">
+	                    	<c:if test="${empty one_journal.id}">
 	                    		<input type="submit" name="action" value="Add"/>
 	                    	</c:if>
 	                    	<input type="submit" name="action" value="Clear" />
-	                    </td> 
+	                    </td>  
 	                </tr>  
 	            </table>   
 	        </form:form> 
         </div>
         	<div>
 				<p>
-					<a href="${contextPath}/tests">powrót</a>
+					<a href="${contextPath}/admin/panel">powrót</a>
 				</p>
 			</div>
     </body>

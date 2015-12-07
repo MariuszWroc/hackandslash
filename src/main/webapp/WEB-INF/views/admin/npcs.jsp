@@ -70,7 +70,7 @@
         </div>
         	<div>
 				<p>
-					<a href="${contextPath}/tests">powrót</a>
+					<a href="${contextPath}/admin/panel">powrót</a>
 				</p>
 			</div>
     </body>

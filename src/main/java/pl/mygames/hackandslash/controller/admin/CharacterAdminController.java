@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.service.ICharacterService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class CharacterAdminController {
     private static final Logger logger = LoggerFactory.getLogger(CharacterAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class CharacterAdminController {
         keyValue = Autoincrementation.getValue(characters.size());
        	model.addAttribute("characters", characters);
        	model.addAttribute("one_character", new GameCharacter());
-        return "test/characters";
+        return "admin/characters";
     }
 	
     @RequestMapping(value = "/characters/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class CharacterAdminController {
         model.addAttribute("characters", findCharacters());
         model.addAttribute("one_character", findCharacter(id));
         logger.info("Character with id = " + id + ", edited");
-        return "test/characters";
+        return "admin/characters";
     }
     
     /*

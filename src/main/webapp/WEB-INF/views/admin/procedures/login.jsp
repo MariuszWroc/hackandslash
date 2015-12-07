@@ -50,4 +50,9 @@
                 </tr>
 		</table>
 		</form:form>
+			<div align="left">
+				<p>
+					<a href="${contextPath}/admin/panel">powrót</a>
+				</p>
+			</div>
 	</div>

@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.Journal;
 import pl.mygames.hackandslash.service.IJournalService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class JournalAdminController {
     private static final Logger logger = LoggerFactory.getLogger(JournalAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class JournalAdminController {
 	        keyValue = Autoincrementation.getValue(journals.size());
 	    	model.addAttribute("journals", journals);
 	    	model.addAttribute("one_journal", new Journal());
-	        return "test/journals";
+	        return "admin/journals";
 	    }
 	  
 	    @RequestMapping(value = "/journals/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class JournalAdminController {
 	        model.addAttribute("journals", findJournals());
 	        model.addAttribute("one_journal", findJournal(id));
 	        logger.info("Journal with id = " + id + ", edited");
-	        return "test/journals";
+	        return "admin/journals";
 	    }
 	    
 	    /*

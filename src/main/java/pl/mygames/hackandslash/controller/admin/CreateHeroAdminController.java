@@ -20,6 +20,7 @@ import pl.mygames.hackandslash.service.IHeroCreationService;
 import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 @SessionAttributes({"hero", "genderEnum", "raceEnum", "professionEnum", "min", "max"})
 public class CreateHeroAdminController {
 	private static final Logger logger = LoggerFactory.getLogger(CreateHeroAdminController.class); 
@@ -58,7 +59,7 @@ public class CreateHeroAdminController {
 		model.addAttribute("strength", createDrawedAttributes.getStrength());
 		
 		logger.info("Hero view");
-		return "test/procedures/heroTest";
+		return "admin/procedures/heroTest";
 	}
 	
 	@RequestMapping(value="/heroTest/add", method = RequestMethod.POST)
@@ -70,7 +71,7 @@ public class CreateHeroAdminController {
 			return "redirect:/characters";
 		} else {
 			logger.info("Validation failed. " + result.getFieldError());
-			return "test/procedures/heroTest";
+			return "admin/procedures/heroTest";
 		}
 	}
 }

@@ -16,6 +16,7 @@ import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class UserAdminController {
     private static final Logger logger = LoggerFactory.getLogger(UserAdminController.class);
     
@@ -32,7 +33,7 @@ public class UserAdminController {
 		keyValue = Autoincrementation.getValue(users.size());
 		model.addAttribute("users", users);
 		model.addAttribute("one_user", new GameUser());
-	    return "test/users";
+	    return "admin/users";
 	}
 	
     @RequestMapping(value = "/users/add", method = RequestMethod.POST)  
@@ -61,7 +62,7 @@ public class UserAdminController {
         model.addAttribute("users", findUsers());
         model.addAttribute("one_user", findUser(id));
         logger.info("Place with id = " + id + ", edited");
-        return "test/users";
+        return "admin/users";
     }
     
     @RequestMapping(value = "/users/{login}")

@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author mariusz
  */
 @Controller
+@RequestMapping(value = {"/admin"})
 public class AdminNavigationController {
     
     /* This method will list all existing tests.
      */
-    @RequestMapping(value = {"/tests"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/panel"}, method = RequestMethod.GET)
     public String getTests() {
-        return "test/testlist";
+        return "admin/list";
     }
 }

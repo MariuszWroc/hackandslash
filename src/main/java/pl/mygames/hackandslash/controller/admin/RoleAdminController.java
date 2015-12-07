@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class RoleAdminController {
     private static final Logger logger = LoggerFactory.getLogger(RoleAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class RoleAdminController {
         keyValue = Autoincrementation.getValue(roles.size());
         model.addAttribute("roles", roles);
         model.addAttribute("one_role", new GameRole());
-        return "test/roles";
+        return "admin/roles";
     }
 
     @RequestMapping(value = "/roles/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class RoleAdminController {
         model.addAttribute("roles", findRoles());
         model.addAttribute("one_role", findRole(id));
         logger.info("Place with id = " + id + ", edited");
-        return "test/roles";
+        return "admin/roles";
     }
     
     /*

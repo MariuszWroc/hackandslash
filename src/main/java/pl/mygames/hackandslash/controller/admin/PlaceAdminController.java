@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class PlaceAdminController {
     private static final Logger logger = LoggerFactory.getLogger(PlaceAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class PlaceAdminController {
     	keyValue = Autoincrementation.getValue(places.size());
     	model.addAttribute("places", places);
     	model.addAttribute("one_place", new Place());
-        return "test/places";
+        return "admin/places";
     }
 	
     @RequestMapping(value = "/places/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class PlaceAdminController {
         model.addAttribute("places", findPlaces());
         model.addAttribute("one_place", findPlace(id));
         logger.info("Place with id = " + id + ", edited");
-        return "test/places";
+        return "admin/places";
     }
     
     /*

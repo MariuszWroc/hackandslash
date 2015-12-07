@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.model.Npc;
 import pl.mygames.hackandslash.service.INpcService;
 
 @Controller
+@RequestMapping(value = {"/admin"})
 public class NpcAdminController {
     private static final Logger logger = LoggerFactory.getLogger(NpcAdminController.class);
 	@Autowired
@@ -27,7 +28,7 @@ public class NpcAdminController {
         keyValue = Autoincrementation.getValue(npcs.size());
     	model.addAttribute("npcs", npcs);
     	model.addAttribute("one_npc", new Npc());
-        return "test/npcs";
+        return "admin/npcs";
     }
 	
     @RequestMapping(value = "/npcs/add", method = RequestMethod.POST)  
@@ -55,7 +56,7 @@ public class NpcAdminController {
         model.addAttribute("npcs", findNpcs());
         model.addAttribute("one_npc", findNpc(id));
         logger.info("Npc with id = " + id + ", edited");
-        return "test/npcs";
+        return "admin/npcs";
     }
     
     /*

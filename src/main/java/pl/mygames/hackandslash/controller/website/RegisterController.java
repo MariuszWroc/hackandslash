@@ -24,6 +24,7 @@ import pl.mygames.hackandslash.service.IUserService;
 
 @RestController
 @RequestMapping(value = "/register")
+@Deprecated
 public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class); 
     

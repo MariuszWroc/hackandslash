@@ -10,33 +10,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import pl.mygames.hackandslash.controller.util.Autoincrementation;
-import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.LoginDTO;
-import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
-@RequestMapping(value = {"/admin"})
-public class LoginController {
+public class LoginAdminController {
     private static final Logger logger = LoggerFactory.getLogger(EquipmentAdminController.class);
     @Autowired
     IUserService userService;
     
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getUsers(ModelMap model) {
-		model.addAttribute("user", new LoginDTO());
+		model.addAttribute("admin", new LoginDTO());
 		logger.info("Login view");
-	    return "admin/procedures/login";
+	    return "/login";
 	}
 
 	@RequestMapping(value = {"/login/submit"}, method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") @Valid LoginDTO user, BindingResult result) {
-		System.out.println("kupa");
+	public String addUser(@ModelAttribute("admin") @Valid LoginDTO admin, BindingResult result) {
 		if (!result.hasErrors()) {
-			if (userService.isLoginSuccess(user)) {
+			if (userService.isLoginSuccess(admin)) {
 				logger.info("Login success");
 				return "redirect:/success";
 			} else {
@@ -46,7 +40,7 @@ public class LoginController {
 			
 		} else {
 			logger.info("Validation failed. " + result.getFieldError());
-			return "admin/procedures/login";
+			return "/login";
 		} 
 	}
 

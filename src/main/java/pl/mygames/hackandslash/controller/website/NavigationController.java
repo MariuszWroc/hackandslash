@@ -35,10 +35,10 @@ public class NavigationController {
 	        return "hero";
 	}
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String getLogin() {
-	        return "login";
-	}
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public String getLogin() {
+//	        return "login";
+//	}
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String getAboutAuthors() {
@@ -52,12 +52,12 @@ public class NavigationController {
     
     @RequestMapping(value = {"/success"}, method = RequestMethod.GET)
     public String getSuccess() {
-        return "admin/menu";
+        return "helper/success";
     }
     
     @RequestMapping(value = {"/failed"}, method = RequestMethod.GET)
     public String getFailed() {
-        return "admin/menu";
+        return "helper/failed";
     }
     
 }

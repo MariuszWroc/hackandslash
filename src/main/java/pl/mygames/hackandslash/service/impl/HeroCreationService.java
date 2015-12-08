@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sun.jndi.url.iiopname.iiopnameURLContextFactory;
-
 import pl.mygames.hackandslash.dao.HeroDao;
-import pl.mygames.hackandslash.dto.*;
+import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.StartingPoint;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.model.*;

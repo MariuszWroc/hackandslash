@@ -16,6 +16,5 @@ public class FactoryMain {
 		Hero heroEntity = new Hero();
 		heroEntity.setMoney(100);
 		CopyingObjectFactory.makeTransferObject(heroEntity, hero);
-		System.out.println("!!! " + hero.getMoney());
 	}
 }

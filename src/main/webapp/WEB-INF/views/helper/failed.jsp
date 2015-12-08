@@ -13,13 +13,7 @@
         <title>Registration Confirmation Page</title>
     </head>
     <body>
-        message : ${success}
+        message : ${failed}
         <br/>
-        <table>        
-	        <tr>
-	        	<td>Login :</td> <td>${registerForm.login}</td>
-	        	<td>Password :</td> <td>${registerForm.password}</td>
-	        </tr>
-		</table>
     </body>
 </html>

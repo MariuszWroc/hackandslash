@@ -7,17 +7,16 @@
     
         <http pattern="/resources/css/**" security="none" />
             <http auto-config="true" use-expressions="true">
-                <intercept-url pattern="/resources*/*" access="permitAll"/>
-                <intercept-url pattern="/Pages/AdminPages/**" access="ROLE_ADMIN" />
-                <intercept-url pattern="/Pages/UserPages/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+            	<intercept-url pattern="/admin**" access="ROLE_USER" />
+            	<intercept-url pattern="/" access="isFullyAuthenticated()"/>
                 <form-login 
                     login-processing-url="/j_spring_security_check" 
                     login-page="/login" 
-                    default-target-url="/user"
-                    authentication-failure-url="/login?authfailed" 
+                    default-target-url="/admin/panel"
+                    authentication-failure-url="/failed" 
                     username-parameter="username"
                     password-parameter="password" />
-                <logout delete-cookies="true" logout-success-url="/login?logout" invalidate-session="true" />
+                <logout delete-cookies="true" logout-success-url="/" invalidate-session="true" />
 
                 <!-- disable csrf protection -->
                 <!--<csrf disabled="true"/>-->

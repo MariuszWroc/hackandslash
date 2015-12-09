@@ -107,7 +107,7 @@ public class UserService implements IUserService {
     
     @Override
     public Boolean isLoginSuccess(LoginDTO loginDTO) {
-    	boolean userExist = isUserExist(loginDTO.getLogin());
+    	boolean userExist = isUserExist(loginDTO.getUsername());
     	boolean passwordCorrect = isPasswordCorrect(loginDTO.getPassword());
     	if((userExist) && (passwordCorrect)) {
     		return true;

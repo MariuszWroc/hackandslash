@@ -19,7 +19,7 @@ public class LoginDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @NotBlank
-    private String login;
+    private String username;
     @NotBlank
     private String password;
     
@@ -27,22 +27,22 @@ public class LoginDTO implements Serializable{
     public LoginDTO(){
         
     }
-    
-    public LoginDTO(GameUser user){
-        login = user.getLogin();
-        password = user.getPassword();
-    }
 
-    public String getLogin() {
-        return login;
-    }
+	public LoginDTO(GameUser user) {
+		username = user.getLogin();
+		password = user.getPassword();
+	}
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public String getPassword() {
-        return password;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
     }
 
     public void setPassword(String password) {

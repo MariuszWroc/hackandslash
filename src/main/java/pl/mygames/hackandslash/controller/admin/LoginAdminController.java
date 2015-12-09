@@ -20,14 +20,14 @@ public class LoginAdminController {
     @Autowired
     IUserService userService;
     
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginTest", method = RequestMethod.GET)
 	public String getUsers(ModelMap model) {
 		model.addAttribute("admin", new LoginDTO());
 		logger.info("Login view");
 	    return "/login";
 	}
 
-	@RequestMapping(value = {"/login/submit"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/loginTest/submit"}, method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("admin") @Valid LoginDTO admin, BindingResult result) {
 		if (!result.hasErrors()) {
 			if (userService.isLoginSuccess(admin)) {

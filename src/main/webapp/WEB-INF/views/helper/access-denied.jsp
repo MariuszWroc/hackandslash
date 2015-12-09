@@ -1,5 +1,5 @@
 <%-- 
-    Document   : failed
+    Document   : access denied
     Created on : Oct 29, 2015, 5:24:12 PM
     Author     : mariusz
 --%>
@@ -11,10 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration Confirmation Page</title>
+        <title>Access denied</title>
     </head>
     <body>
-        message : ${failed}
-        <br/>
+		Access denied
     </body>
 </html>

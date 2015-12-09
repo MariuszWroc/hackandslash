@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = {"/admin"})
-public class AdminNavigationController {
+public class NavigationAdminController {
     
     /* This method will list all existing tests.
      */

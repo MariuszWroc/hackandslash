@@ -45,7 +45,6 @@ public class RegisterController {
 		if (result.hasErrors()) {
 			return "redirect:/failed";
 		} else {
-			logger.info("User values is : " + register.getLogin() + " " + register.getPassword());
 //			registerService.add(register);
 			return "redirect:/success";
 		}

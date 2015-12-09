@@ -1,5 +1,5 @@
 <%-- 
-    Document   : admin panel login
+    Document   : characters
     Created on : Oct 31, 2015, 11:27:13 AM
     Author     : mariusz
 --%>
@@ -18,10 +18,10 @@
     <body>
 	<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 	<div align = "center">
-		<h2>Login Page</h2>
-		<c:url var="addAction" value="/login/submit"></c:url>
+		<h2>Login Page - Test (Old)</h2>
+		<c:url var="addAction" value="/admin/login/submit"></c:url>
 		<form:form id="loginForm" method="POST" action="${addAction}"
-			commandName="admin">
+			commandName="user">
 			<table>
 					<tr>
 	                    <td>

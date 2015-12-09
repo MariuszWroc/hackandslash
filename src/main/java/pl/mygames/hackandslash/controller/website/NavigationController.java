@@ -25,20 +25,15 @@ public class NavigationController {
 	        return "register";
 	}
     
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String getUser() {
-	        return "user";
+    @RequestMapping(value = "/email", method = RequestMethod.GET)
+	public String getEmail() {
+	        return "email";
 	}
     
-    @RequestMapping(value = "/hero", method = RequestMethod.GET)
-	public String getHero() {
-	        return "hero";
+    @RequestMapping(value = "/loginAdmin", method = RequestMethod.GET)
+	public String getLogin() {
+	        return "loginAdmin";
 	}
-    
-//    @RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public String getLogin() {
-//	        return "login";
-//	}
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String getAboutAuthors() {

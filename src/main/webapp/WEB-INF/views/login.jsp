@@ -9,7 +9,7 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<div align="center">
+		<div>
 			<c:url var="addAction" value="/j_spring_security_check" />
 		    <form:form action="${addAction}" method="POST">
 		        <table>

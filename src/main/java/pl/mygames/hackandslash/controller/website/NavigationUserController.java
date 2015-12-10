@@ -10,12 +10,12 @@ public class NavigationUserController {
 	
 	@RequestMapping(value = "/hero", method = RequestMethod.GET)
 	public String getHero() {
-		return "hero";
+		return "user/hero";
 	}
 	
 	@RequestMapping(value = "/profil", method = RequestMethod.GET)
 	public String getUserProfil() {
-		return "user";
+		return "user/profil";
 	}
 }
 

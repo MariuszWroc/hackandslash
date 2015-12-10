@@ -44,6 +44,10 @@ public class NavigationController {
 	public String getScreens() {
 	        return "main/screens";
 	}
+    @RequestMapping(value = "/makers", method = RequestMethod.GET)
+	public String getMakers() {
+	        return "main/makers";
+	}
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
     public String getLogout() {

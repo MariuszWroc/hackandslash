@@ -23,7 +23,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
         })
         .error(function(error){
             console.log(error);
-        })
+        });
     $http.get('/register/genderList')
         .success(function(res) {
             $scope.genders = res;

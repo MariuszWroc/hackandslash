@@ -22,24 +22,28 @@ public class NavigationController {
 	
     @RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String getRegister() {
-	        return "register";
+	        return "main/register";
 	}
     
     @RequestMapping(value = "/email", method = RequestMethod.GET)
 	public String getEmail() {
-	        return "email";
+	        return "main/email";
 	}
     
     @RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String getAboutAuthors() {
-	        return "about";
+	        return "main/about";
 	}
     
     @RequestMapping(value = "/createHero", method = RequestMethod.GET)
 	public String getCreateHero() {
-	        return "create";
+	        return "main/create";
 	}
     
+    @RequestMapping(value = "/screens", method = RequestMethod.GET)
+	public String getScreens() {
+	        return "main/screens";
+	}
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
     public String getLogout() {

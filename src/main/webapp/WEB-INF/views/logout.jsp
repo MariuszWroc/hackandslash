@@ -2,13 +2,11 @@
 <%@page session="true"%>
 <html>
 <body>
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
 
-	<c:url value="/j_spring_security_logout" var="logoutUrl" />
-
+	<c:url var="logoutUrl" value="${contextPath}/j_spring_security_logout" />
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<!-- csrt for log out-->
-	<form action="${logoutUrl}" method="post" id="logoutForm">
+	<form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
 	  <input type="hidden" 
 		name="${_csrf.parameterName}"
 		value="${_csrf.token}" />
@@ -22,8 +20,8 @@
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a
-				href="javascript:formSubmit()"> Logout</a>
+			Welcome : ${pageContext.request.userPrincipal.name} | 
+			<a href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
 

@@ -15,6 +15,7 @@ import pl.mygames.hackandslash.dto.LoginDTO;
 import pl.mygames.hackandslash.service.IUserService;
 
 @Controller
+@Deprecated
 public class LoginAdminController {
     private static final Logger logger = LoggerFactory.getLogger(EquipmentAdminController.class);
     @Autowired

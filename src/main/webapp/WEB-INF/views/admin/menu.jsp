@@ -29,7 +29,9 @@
         <h2>Testing registration and login procedure</h2>
         <a href="${contextPath}/admin/registerTest">register user</a><br/>
         <a href="${contextPath}/admin/heroTest">create Hero</a><br/>
-        <a href="${contextPath}/admin/login">login</a><br/>
+        <h3>---</h2>
+        <a href="${contextPath}/admin/logout">logout</a><br/>
+        <a href="${contextPath}/">start page</a><br/>
         <p>Problemy z encjami<br/>>
         npc -- obiekt transferowy<br/>
 		journal -- rozwiązanie: standardowy zestaw questów dla rasy<br/>

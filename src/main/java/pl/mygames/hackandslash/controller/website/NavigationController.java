@@ -30,11 +30,6 @@ public class NavigationController {
 	        return "email";
 	}
     
-    @RequestMapping(value = "/loginAdmin", method = RequestMethod.GET)
-	public String getLogin() {
-	        return "loginAdmin";
-	}
-    
     @RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String getAboutAuthors() {
 	        return "about";
@@ -45,6 +40,17 @@ public class NavigationController {
 	        return "create";
 	}
     
+    
+    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+    public String getLogout() {
+        return "logout";
+    }
+    
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String getLogin() {
+        return "login";
+    }
+    
     @RequestMapping(value = {"/success"}, method = RequestMethod.GET)
     public String getSuccess() {
         return "helper/success";
@@ -53,6 +59,11 @@ public class NavigationController {
     @RequestMapping(value = {"/failed"}, method = RequestMethod.GET)
     public String getFailed() {
         return "helper/failed";
+    }
+    
+    @RequestMapping(value = {"/denied"}, method = RequestMethod.GET)
+    public String getAccessDenied() {
+        return "helper/access-denied";
     }
     
 }

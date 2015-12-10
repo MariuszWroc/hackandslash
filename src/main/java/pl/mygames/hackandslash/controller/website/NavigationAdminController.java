@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.mygames.hackandslash.controller.admin;
+package pl.mygames.hackandslash.controller.website;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class NavigationAdminController {
     /* This method will list all existing tests.
      */
     @RequestMapping(value = {"/panel"}, method = RequestMethod.GET)
-    public String getTests() {
+    public String getAdminPanel() {
         return "admin/menu";
     }
     

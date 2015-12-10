@@ -50,6 +50,10 @@ module.config(['$routeProvider',
                     templateUrl: '/hackandslash/admin/panel',
                     controller: 'adminController'
                 }).
+                when('/',{
+                   templateUrl: '/hackandslash/welcome',
+                   controller: 'menuController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });

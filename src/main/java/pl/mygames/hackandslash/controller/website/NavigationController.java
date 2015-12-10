@@ -59,6 +59,11 @@ public class NavigationController {
         return "login";
     }
     
+    @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
+    public String getWelcome(){
+        return "main/welcomePage";
+    }
+    
     @RequestMapping(value = {"/success"}, method = RequestMethod.GET)
     public String getSuccess() {
         return "helper/success";

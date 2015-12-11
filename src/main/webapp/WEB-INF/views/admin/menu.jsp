@@ -1,5 +1,5 @@
 <%-- 
-    Document   : testlist
+    Document   : admin panel
     Created on : Oct 31, 2015, 12:46:01 PM
     Author     : mariusz
 --%>
@@ -29,13 +29,8 @@
         <h2>Testing registration and login procedure</h2>
         <a href="${contextPath}/admin/registerTest">register user</a><br/>
         <a href="${contextPath}/admin/heroTest">create Hero</a><br/>
-        <h3>---</h2>
+        <h2>---</h2>
         <a href="${contextPath}/admin/logout">logout</a><br/>
         <a href="${contextPath}/">start page</a><br/>
-        <p>Problemy z encjami<br/>>
-        npc -- obiekt transferowy<br/>
-		journal -- rozwiązanie: standardowy zestaw questów dla rasy<br/>
-		equipment -- rozwiązanie: standardowy zestaw przedmiotów dla postaci o danej profesji<br/>
-		heroes -- zadziała jeśli journal, equipment i character istnieją, obiekt transferowy</p>
     </body>
 </html>

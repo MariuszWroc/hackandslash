@@ -4,6 +4,6 @@
     Author     : Jaca
 --%>
 <div>
-   <a href= "#/login"> Login </a> <br>
+   <a href= "#/login"> Login </a>&nbsp;
    <a href= "#/register"> Register </a>
 </div>

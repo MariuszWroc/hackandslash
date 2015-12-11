@@ -1,9 +1,43 @@
 <div  ng-controller="registerController" flex id="content">
             <md-content layout="column" flex class="md-padding">
-                <form name="registration" ng-submit="doRegister()" > <!-- ng-submit="doRegister()"-->
+                <form name="registration" ng-submit="doRegister()" >
                     <table>
-	            	<tr>
-	                    <td>
+                    <tr>
+                        <tr>
+                            <td>
+                                <label>Login:</label>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="user.login"/>
+                            </td>
+                            <td>
+                                <label ng-show="errors.login" class="error">{{errors.login}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">Email:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="email" ng-model="user.email"/>
+                            </td>
+                            <td>
+                                <label ng-show="errors.email" class="error">{{errors.email}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Password:</label>
+                            </td>
+                            <td>
+                                <input type="password" ng-model="user.password"/>
+                            </td>
+                            <td>
+                                <label ng-show="errors.password" class="error">{{errors.password}}</label>
+                            </td>
+                        </tr>
+	            		<tr>
+	                    	<td>
                                 <label>Firstname:</label>
                             </td>
                             <td>
@@ -23,7 +57,10 @@
                                 <label>Age:</label>
                             </td>
                             <td>
-                                <input type="number" ng-model="user.age"/>
+                                <input type="number" min="1" max="99" ng-model="user.age"/>
+                            </td>
+                            <td>
+                                <label ng-show="errors.password" class="error">{{errors.password}}</label>
                             </td>
                         </tr>
                         <tr>
@@ -37,31 +74,7 @@
                                     </md-select>
                                 </md-input-container>
                             </td>
-                        </tr>
-                        <tr>
                             <td>
-                                <label for="email">Email:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="email" ng-model="user.email"/>
-                                <label ng-show="errors.email" class="error">{{errors.email}}</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Login:</label>
-                            </td>
-                            <td>
-                                <input type="text" ng-model="user.login"/>
-                                <label ng-show="errors.login" class="error">{{errors.login}}</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Password:</label>
-                            </td>
-                            <td>
-                                <input type="password" ng-model="user.password"/>
                                 <label ng-show="errors.password" class="error">{{errors.password}}</label>
                             </td>
                         </tr>

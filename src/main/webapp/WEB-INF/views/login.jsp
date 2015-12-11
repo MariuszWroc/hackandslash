@@ -5,11 +5,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css"
+		href="${contextPath}/resources/css/home.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Login</title>
 	</head>
 	<body>
-		<div>
+		<div id="login-box">
 			<c:url var="addAction" value="/j_spring_security_check" />
 		    <form:form action="${addAction}" method="POST">
 		        <table>

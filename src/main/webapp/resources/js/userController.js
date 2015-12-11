@@ -1,5 +1,5 @@
 module.controller('userController', ['$scope', '$http', function($scope, $http){
-    $scope.user = {};
+    $scope.user = {}
     $http.post('/user/login', $scope.user)
     .success(function(response){
         if(response.length>0) {

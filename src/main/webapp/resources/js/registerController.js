@@ -17,10 +17,11 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
         'password': ''
     };
     $scope.genders = [];
-    
-    $http.get(prefix + '/admin/users/'+'jbednarczyk')
+    console.log('getting user: jbednarczyk)');
+    $http.get(prefix + '/user/'+'jbednarczyk')
         .success(function(res){
-             $scope.userDetail = res;   
+            console.log('getting user:',res);
+            $scope.userDetail = res;   
         })
         .error(function(error){
             console.log(error);

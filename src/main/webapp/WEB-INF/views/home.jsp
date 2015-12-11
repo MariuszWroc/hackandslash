@@ -30,6 +30,7 @@
 <script src="${contextPath}/resources/js/loginController.js"></script>
 <script src="${contextPath}/resources/js/registerController.js"></script>
 <script src="${contextPath}/resources/js/sideNav.js"></script>
+<script src="${contextPath}/resources/js/userController.js"></script>
 <meta name="viewport" content="initial-scale=1" />
 </head>
 

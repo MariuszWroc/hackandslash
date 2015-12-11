@@ -1,4 +1,5 @@
 module.controller('registerController', ['$scope', '$http', function($scope, $http){
+        var prefix = 'http://localhost:8084/hackandslash/';
     $scope.user ={
                 firstname : '',
                 lastname : '',
@@ -17,14 +18,14 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
     };
     $scope.genders = [];
     
-    $http.get('/users/'+'jbednarczyk')
+    $http.get(prefix + '/admin/users/'+'jbednarczyk')
         .success(function(res){
              $scope.userDetail = res;   
         })
         .error(function(error){
             console.log(error);
         });
-    $http.get('/register/genderList')
+    $http.get(prefix + 'register/genderList')
         .success(function(res) {
             $scope.genders = res;
         }).error(function(error) {
@@ -36,7 +37,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
             'password': ''
         };
         console.log('adding',$scope.user);
-        $http.post('/registerTest/addAngu', $scope.user).success(function(response) {//registerTest/add
+        $http.post(prefix + 'registerTest/addAngu', $scope.user).success(function(response) {//registerTest/add
             if(response.length>0) {
                 angular.forEach(response, function(val){                                    
                    if(val.field==='login'){

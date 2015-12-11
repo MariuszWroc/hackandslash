@@ -57,6 +57,7 @@ public class RegisterController {
         
         @RequestMapping(value = {"/genderList"}, method = RequestMethod.GET)
         public @ResponseBody List<GenderWorkAround> getGenderList(ModelMap model) {
+            System.out.println("test");
             List<GenderWorkAround> list = new ArrayList<>();
             for(Gender g:Gender.values()){
                list.add(new GenderWorkAround(g));

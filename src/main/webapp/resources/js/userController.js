@@ -1,19 +1,37 @@
 module.controller('userController', ['$scope', '$http', function($scope, $http){
-    $scope.user = {}
-    $http.post('/user/login', $scope.user)
-    .success(function(response){
-        if(response.length>0) {
-            angular.forEach(response, function(val){                                    
-               if(val.field==='login'){
-                   $scope.errors.login = val.defaultMessage;
-               }
-               if(val.field==='password'){
-                   $scope.errors.password = val.defaultMessage;
-               }
-            });
-        }
-    })
-    .error(function(error){
-        console.log(error);
-    });
+        var prefix = '/hackandslash/';
+    $scope.user ={
+                firstname : '',
+                lastname : '',
+                login : '',
+                password : ''
+                };
+    $scope.errors = {
+        'login': '',
+        'password': ''
+    };
+    $scope.genders = [];
+    console.log('before get user');
+    $http.get(prefix + '/user/'+'jbednarczyk')
+        .success(function(res){
+            console.log('getting user:',res);
+            $scope.userDetail = res;   
+        })
+        .error(function(error){
+            console.log("Error after getting user " + error);
+        });
+    
+    $scope.clear = function(){
+        $scope.user ={
+                firstname : '',
+                lastname : '',
+                login : '',
+                password : '',
+                heroesIds : []
+                };
+        $scope.errors = {
+            'login': '',
+            'password': ''
+        };
+    };
 }]);

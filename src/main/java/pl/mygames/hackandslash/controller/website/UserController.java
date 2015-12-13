@@ -36,17 +36,17 @@ public class UserController {
     /*
      * Mapping users list and one user 
      */
-    @RequestMapping(value = "/edit/{id}")
-    public String editUser(@PathVariable("id") Integer id, ModelMap model) {
+    @RequestMapping(value = "/edit/{login}")
+    public String editUser(@PathVariable("login") String login, ModelMap model) {
         model.addAttribute("users", findUsers());
-        model.addAttribute("one_user", findUser(id));
-        logger.info("Place with id = " + id + ", edited");
-        return "admin/users";
+        logger.info("User with login = " + login + ", edited");
+        return "/{login}";
     }
 
     @RequestMapping(value = "/{login}")
     public @ResponseBody
     UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
+        logger.info("User with login = " + login + " loaded");
         return userService.getUserDTO(login);
     }
 

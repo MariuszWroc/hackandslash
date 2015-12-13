@@ -14,33 +14,25 @@ module.config(['$routeProvider',
                     templateUrl: '/hackandslash/login',
                     controller: 'loginController'
                 }).
-                when('/hero', {
-                    templateUrl: '/hackandslash/hero',
-                    controller: 'heroController'
-                }).
                 when('/about', {
                     templateUrl: '/hackandslash/about',
-                    controller: 'menuController'
                 }).
                 when('/makers', {
                     templateUrl: '/hackandslash/makers',
-                    controller: 'menuController'
                 }).
-                when('/create', {
+                when('user/create', {
                     templateUrl: '/hackandslash/createHero',
-                    controller: 'heroController'
+                    controller: 'userController'
                 }).
                 when('/screens', {
                     templateUrl: '/hackandslash/screens',
-                    controller: 'menuController'
                 }).
                 when('/contact',{
                     templateUrl: '/hackandslash/email',
-                    controller: 'menuController'   
                 }).
-                when('/hero',{
+                when('user/hero',{
                     templateUrl: '/hackandslash/user/hero',
-                    controller: 'menuController'   
+                    controller: 'userController'
                 }).
                 when('/user/profil', {
                     templateUrl: '/hackandslash/user/profil',
@@ -52,7 +44,6 @@ module.config(['$routeProvider',
                 }).
                 when('/',{
                    templateUrl: '/hackandslash/welcome',
-                   controller: 'menuController'
                 }).
                 otherwise({
                     redirectTo: '/'

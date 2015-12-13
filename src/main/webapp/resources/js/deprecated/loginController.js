@@ -1,6 +1,6 @@
 module.controller('loginController', ['$scope', '$http', function($scope, $http){
     $scope.user = {}   
-    $http.post('/user/login', $scope.user)
+    $http.post('/user/loginxxx', $scope.user)
     .success(function(response){
         if(response.length>0) {
             angular.forEach(response, function(val){                                    

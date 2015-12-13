@@ -16,6 +16,7 @@ import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
 
 @RestController
+@Deprecated
 public class HeroController {
         
 	@RequestMapping(value = "/hero/details", method = RequestMethod.GET)

@@ -12,7 +12,8 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
     };
     $scope.genders = [];
     console.log('before get user');
-    $http.get(prefix + '/user/'+'jbednarczyk')
+    
+    $http.get(prefix + '/user/profil'+'jbednarczyk')
         .success(function(res){
             console.log('getting user:',res);
             $scope.userDetail = res;   
@@ -20,6 +21,15 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
         .error(function(error){
             console.log("Error after getting user " + error);
         });
+    
+    $http.get(prefix + '/user/hero'+'jbednarczyk')
+    .success(function(res){
+        console.log('getting user:',res);
+        $scope.userDetail = res;   
+    })
+    .error(function(error){
+        console.log("Error after getting user " + error);
+    });
     
     $scope.clear = function(){
         $scope.user ={

@@ -43,9 +43,16 @@ public class UserController {
         return "/{login}";
     }
 
-    @RequestMapping(value = "/{login}")
+    @RequestMapping(value = "profil/{login}")
     public @ResponseBody
     UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
+        logger.info("User with login = " + login + " loaded");
+        return userService.getUserDTO(login);
+    }
+    
+    @RequestMapping(value = "hero/{login}")
+    public @ResponseBody
+    UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
         logger.info("User with login = " + login + " loaded");
         return userService.getUserDTO(login);
     }

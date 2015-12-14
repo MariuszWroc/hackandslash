@@ -2,6 +2,7 @@
 
 // Define an angular module for our app
 var module = angular.module("StarterApp", ['ngRoute', 'ngMaterial']);
+var prefix = '/hackandslash/';
 
 module.config(['$routeProvider',
     function($routeProvider) {
@@ -16,9 +17,11 @@ module.config(['$routeProvider',
                 }).
                 when('/about', {
                     templateUrl: '/hackandslash/about',
+                    controller: 'menuController'
                 }).
                 when('/makers', {
                     templateUrl: '/hackandslash/makers',
+                    controller: 'menuController'
                 }).
                 when('user/create', {
                     templateUrl: '/hackandslash/createHero',
@@ -26,9 +29,11 @@ module.config(['$routeProvider',
                 }).
                 when('/screens', {
                     templateUrl: '/hackandslash/screens',
+                    controller: 'menuController'
                 }).
                 when('/contact',{
                     templateUrl: '/hackandslash/email',
+                    controller: 'menuController'
                 }).
                 when('user/hero',{
                     templateUrl: '/hackandslash/user/hero',
@@ -44,8 +49,15 @@ module.config(['$routeProvider',
                 }).
                 when('/',{
                    templateUrl: '/hackandslash/welcome',
+                   controller: 'menuController'
                 }).
                 otherwise({
                     redirectTo: '/'
                 });
     }]);
+
+module.controller('AppCtrl', [ '$scope', '$mdSidenav', function($scope, $mdSidenav) {
+			$scope.toggleSidenav = function() {
+				$mdSidenav('left').toggle();
+			};
+		} ]);

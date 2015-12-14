@@ -1,21 +1,5 @@
 module.controller('menuController', ['$scope', '$http', function($scope, $http){
     $scope.user = {}
-    $http.post('/login', $scope.user)
-    .success(function(response){
-        if(response.length>0) {
-            angular.forEach(response, function(val){                                    
-               if(val.field==='login'){
-                   $scope.errors.login = val.defaultMessage;
-               }
-               if(val.field==='password'){
-                   $scope.errors.password = val.defaultMessage;
-               }
-            });
-        }
-    })
-    .error(function(error){
-        console.log(error);
-    });
     
     $scope.doRegister = function (){
         $scope.errors = {
@@ -23,7 +7,7 @@ module.controller('menuController', ['$scope', '$http', function($scope, $http){
             'password': ''
         };
         console.log('adding',$scope.user);
-        $http.post(prefix + 'registerTest/addAngu', $scope.user).success(function(response) {//registerTest/add
+        $http.post(prefix + 'registerTest/addAngu', $scope.user).success(function(response) {
             if(response.length>0) {
                 angular.forEach(response, function(val){                                    
                    if(val.field==='login'){

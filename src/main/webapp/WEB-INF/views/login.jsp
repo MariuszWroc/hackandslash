@@ -5,15 +5,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css"
-		href="${contextPath}/resources/css/home.css">
+		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Login</title>
 	</head>
-	<body>
+	<body ng-cloak class="ng-cloak">
 		<div id="login-box">
 			<c:url var="addAction" value="/j_spring_security_check" />
-		    <form:form action="${addAction}" method="POST">
+		    <form:form action="${addAction}" method="POST" accept-charset="UTF-8">
 		        <table>
 		            <tr>
 		                <td>

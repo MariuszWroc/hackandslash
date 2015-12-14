@@ -14,27 +14,24 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
 <!--     Angular Material Dependencies -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 <!-- Javascript beside shivs goes here -->
 <script src="${contextPath}/resources/js/app.js"></script>
-<script src="${contextPath}/resources/js/heroController.js"></script>
-<script src="${contextPath}/resources/js/loginController.js"></script>
-<script src="${contextPath}/resources/js/registerController.js"></script>
-<script src="${contextPath}/resources/js/sideNav.js"></script>
+<script src="${contextPath}/resources/js/menuController.js"></script>
 <script src="${contextPath}/resources/js/userController.js"></script>
 <meta name="viewport" content="initial-scale=1" />
 </head>
 
-<body layout="column" ng-app="StarterApp" ng-controller="AppCtrl">
+<body layout="column" ng-app="StarterApp" ng-controller="AppCtrl" ng-cloak class="ng-cloak">
 	<div id="wrapper">
 		<div id="headerwrap">
 			<div id="header">
@@ -49,11 +46,11 @@
 					</h1>
 					<span flex></span>
 					<md-button class="md-icon-button" aria-label="Log in" href="#/login">
-						<md-tooltip>Log in</md-tooltip> <img src="login.png"
+						<md-tooltip>Log in</md-tooltip> <img src="${contextPath}/resources/img/icons/login.svg"
 						style="width: 24px; height: 24px;" /> 
 					</md-button>
 					<md-button class="md-icon-button" aria-label="Register" href="#/register">
-						<md-tooltip>Register</md-tooltip> <img src="register.png"
+						<md-tooltip>Register</md-tooltip> <img src="${contextPath}/resources/img/icons/account.svg"
 						style="width: 24px; height: 24px;" /> 
 					</md-button>
 				</div>

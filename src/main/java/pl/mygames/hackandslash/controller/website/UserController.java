@@ -7,14 +7,19 @@ package pl.mygames.hackandslash.controller.website;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
@@ -24,6 +29,7 @@ import pl.mygames.hackandslash.service.IUserService;
  * @author Jaca
  */
 @RestController
+@Scope("session")
 @RequestMapping(value = {"/user"})
 public class UserController {
 
@@ -46,17 +52,52 @@ public class UserController {
     @RequestMapping(value = "/profil/{login}")
     public @ResponseBody
     UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
-        logger.info("User with login = " + login + " loaded");
-        return userService.getUserDTO(login);
+        if (authenticateUser(login)) {
+            logger.info("User with login = " + login + " loaded");
+        	return userService.getUserDTO(login);
+        } else {
+        	return null;
+        }
     }
     
     @RequestMapping(value = "/hero/{login}")
     public @ResponseBody
     UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
-        logger.info("User with login = " + login + " loaded");
-        return userService.getUserDTO(login);
+        if (authenticateUser(login)) {
+        	logger.info("Hero with user login = " + login + " loaded");
+        	return userService.getUserDTO(login);
+        } else {
+        	return null;
+        }
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    private Boolean authenticateUser(HttpServletRequest request, String login) {
+    	String loginFromSession = (String) request.getSession().getAttribute("username");
+    	if (login.equals(loginFromSession)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    private Boolean authenticateUser(String login) {
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	if (auth != null) {
+    	    Object principal = auth.getPrincipal();  
+    	    if (principal instanceof UserDetails) {
+    	    	UserDetails user = (UserDetails) principal;
+    	    	logger.info("Username in actual session: " + user.getUsername());
+    	    	if (user.getUsername().equals(login)) {
+    	    		logger.info("User " + login + " is logged in");
+	    	    	return true;
+    	    	}
+    	    }
+    	}
+    		return false;
+    }
+    
+    
     /*
      * This method will list all existing users.
      */

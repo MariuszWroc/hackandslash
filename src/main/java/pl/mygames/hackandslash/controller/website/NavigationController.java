@@ -79,4 +79,19 @@ public class NavigationController {
         return "helper/access-denied";
     }
     
+    @RequestMapping(value = {"/header"}, method = RequestMethod.GET)
+    public String getHeaderTemplate() {
+        return "template/header";
+    }
+    
+    @RequestMapping(value = {"/left"}, method = RequestMethod.GET)
+    public String getContentTemplate() {
+        return "template/left";
+    }
+    
+    @RequestMapping(value = {"/footer"}, method = RequestMethod.GET)
+    public String getFooterTemplate() {
+        return "template/footer";
+    }
+    
 }

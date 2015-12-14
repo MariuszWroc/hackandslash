@@ -9,11 +9,11 @@ module.config(['$routeProvider',
         $routeProvider.
                 when('/register', {
                     templateUrl: '/hackandslash/register',
-                    controller: 'registerController'
+                    controller: 'menuController'
                 }).
                 when('/login', {
                     templateUrl: '/hackandslash/login',
-                    controller: 'loginController'
+                    controller: 'menuController'
                 }).
                 when('/about', {
                     templateUrl: '/hackandslash/about',
@@ -24,7 +24,7 @@ module.config(['$routeProvider',
                     controller: 'menuController'
                 }).
                 when('user/create', {
-                    templateUrl: '/hackandslash/createHero',
+                    templateUrl: '/hackandslash/user/createHero',
                     controller: 'userController'
                 }).
                 when('/screens', {

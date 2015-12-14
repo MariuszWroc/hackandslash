@@ -11,7 +11,7 @@
 		<title>Login</title>
 	</head>
 	<body ng-cloak class="ng-cloak">
-		<div id="login-box">
+		<div ng-controller="menuController" class="container" id="login-box">
 			<c:url var="addAction" value="/j_spring_security_check" />
 		    <form:form action="${addAction}" method="POST" accept-charset="UTF-8">
 		        <table>

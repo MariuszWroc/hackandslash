@@ -15,6 +15,27 @@
 		    <md-content layout="column" flex class="md-padding">
 		    	<div id="profil">
 			        <table style="width:100%">
+			         <tr>
+			              <td>
+			              	<label>Login</label>
+			              </td>
+			              <td>{{userDetail.username}}</td>
+			            </tr>
+			            <tr>
+			             <tr>
+			              <td>
+			              	<label>Password</label>
+			              </td>
+			              <td>{{userDetail.password}}</td>
+			            </tr>
+			            <tr>
+			             <tr>
+			              <td>
+			              	<label>Address e-mail</label>
+			              </td>
+			              <td>{{userDetail.email}}</td>
+			            </tr>
+			            <tr>
 			            <tr>
 			              <td>
 			              	<label>Firstname</label>
@@ -27,13 +48,7 @@
 			              </td>
 			              <td>{{userDetail.lastname}}</td>
 			            </tr>
-			            <tr>
-			              <td>
-			              	<label>Login</label>
-			              </td>
-			              <td>{{userDetail.login}}</td>
-			            </tr>
-			            <tr>
+			           
 			              <td>
 			              	<label>Age</label>
 			              </td>

@@ -34,5 +34,6 @@ module.controller('menuController', ['$scope', '$http', function($scope, $http){
         $scope.genders = res;
     }).error(function(error) {
         alert(error);
-    }); 
+    });
+    
 }]);

@@ -32,7 +32,7 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
             console.log("Error after getting user " + error);
         });
     
-    $http.get(prefix + '/user/hero'+'jbednarczyk')
+    $http.get(prefix + '/user/hero/'+'jbednarczyk')
     .success(function(res){
         console.log('getting user:',res);
         $scope.userDetail = res;   

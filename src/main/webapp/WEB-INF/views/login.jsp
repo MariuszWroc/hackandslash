@@ -20,7 +20,7 @@
 		                	<spring:message text="Login:"/>
 		                </td>
 		                <td>
-		                	<input type="text" id="username" value="" required>
+		                	<input type="text" name="username" value="" required>
 		               	</td>
 		            </tr>
 		            <tr>
@@ -28,7 +28,7 @@
 		                	<spring:message text="Password:"/>
 		                </td>
 		                <td>
-		                	<input type="password" id="password" required/>
+		                	<input type="password" name="password" required/>
 		                </td>
 		            </tr>
 		            <tr>

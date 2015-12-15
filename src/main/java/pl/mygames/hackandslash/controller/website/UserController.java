@@ -72,15 +72,6 @@ public class UserController {
         }
     }
     
-    @RequestMapping(value = "/actualhero", method = RequestMethod.GET)
-    public @ResponseBody UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
-        if (authenticateUser(login)) {
-        	logger.info("Hero with user login = " + login + " loaded");
-        	return userService.getUserDTO(login);
-        } else {
-        	return null;
-        }
-    }
     
     @RequestMapping(value = "/hero/{login}", method = RequestMethod.GET)
     public @ResponseBody

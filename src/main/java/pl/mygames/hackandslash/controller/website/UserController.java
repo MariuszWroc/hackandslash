@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,14 +43,14 @@ public class UserController {
     /*
      * Mapping users list and one user 
      */
-    @RequestMapping(value = "/edit/{login}")
+    @RequestMapping(value = "/edit/{login}", method = RequestMethod.GET)
     public String editUser(@PathVariable("login") String login, ModelMap model) {
         model.addAttribute("users", findUsers());
         logger.info("User with login = " + login + ", edited");
         return "/{login}";
     }
 
-    @RequestMapping(value = "/profil/{login}")
+    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)
     public @ResponseBody
     UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
         if (authenticateUser(login)) {
@@ -60,7 +61,28 @@ public class UserController {
         }
     }
     
-    @RequestMapping(value = "/hero/{login}")
+    @RequestMapping(value = "/actualProfil", method = RequestMethod.GET)
+    public @ResponseBody UserDTO getUser(ModelMap model) {
+        if (getActualLoggedUser().isEnabled()) {
+        	String login = getActualLoggedUser().getUsername();
+            logger.info("User with login = " + login + " loaded");
+        	return userService.getUserDTO(login);
+        } else {
+        	return null;
+        }
+    }
+    
+    @RequestMapping(value = "/actualhero", method = RequestMethod.GET)
+    public @ResponseBody UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
+        if (authenticateUser(login)) {
+        	logger.info("Hero with user login = " + login + " loaded");
+        	return userService.getUserDTO(login);
+        } else {
+        	return null;
+        }
+    }
+    
+    @RequestMapping(value = "/hero/{login}", method = RequestMethod.GET)
     public @ResponseBody
     UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
         if (authenticateUser(login)) {
@@ -70,32 +92,30 @@ public class UserController {
         	return null;
         }
     }
-
-    @RequestMapping(method = RequestMethod.GET)
-    private Boolean authenticateUser(HttpServletRequest request, String login) {
-    	String loginFromSession = (String) request.getSession().getAttribute("username");
-    	if (login.equals(loginFromSession)) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
     
     private Boolean authenticateUser(String login) {
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    	if (auth != null) {
-    	    Object principal = auth.getPrincipal();  
-    	    if (principal instanceof UserDetails) {
-    	    	UserDetails user = (UserDetails) principal;
-    	    	logger.info("Username in actual session: " + user.getUsername());
-    	    	if (user.getUsername().equals(login)) {
-    	    		logger.info("User " + login + " is logged in");
-	    	    	return true;
-    	    	}
-    	    }
-    	}
-    		return false;
+		if (getActualLoggedUser().getUsername().equals(login)) {
+			logger.info("User " + login + " is logged in");
+			return true;
+		}
+		return false;
     }
+
+	private UserDetails getActualLoggedUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		logger.info("Authentication exist in SecurityContextHolder");
+		if (auth != null) {
+			Object principal = auth.getPrincipal();
+			logger.info("getting principal..");
+			if (principal instanceof UserDetails) {
+				UserDetails user = (UserDetails) principal;
+    	    	logger.info("Username in actual session: " + user.getUsername());
+    	    	return user;
+			}
+		}
+		
+		return null;
+	}
     
     
     /*

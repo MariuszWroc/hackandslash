@@ -7,7 +7,7 @@ module.controller('menuController', ['$scope', '$http', function($scope, $http){
             'password': ''
         };
         console.log('adding',$scope.user);
-        $http.post(prefix + 'registerTest/addAngu', $scope.user).success(function(response) {
+        $http.post(prefix + '/registerTest/addAngu', $scope.user).success(function(response) {
             if(response.length>0) {
                 angular.forEach(response, function(val){                                    
                    if(val.field==='login'){
@@ -29,7 +29,7 @@ module.controller('menuController', ['$scope', '$http', function($scope, $http){
         });
     };
     
-    $http.get(prefix + 'register/genderList')
+    $http.get(prefix + '/register/genderList')
     .success(function(res) {
         $scope.genders = res;
     }).error(function(error) {

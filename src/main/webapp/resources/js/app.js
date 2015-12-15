@@ -2,53 +2,53 @@
 
 // Define an angular module for our app
 var module = angular.module("StarterApp", ['ngRoute', 'ngMaterial']);
-var prefix = '/hackandslash/';
+var prefix = '/hackandslash';
 
 module.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
                 when('/register', {
-                    templateUrl: '/hackandslash/register',
+                    templateUrl: prefix + '/register',
                     controller: 'menuController'
                 }).
                 when('/login', {
-                    templateUrl: '/hackandslash/login',
+                    templateUrl: prefix + '/login',
                     controller: 'menuController'
                 }).
                 when('/about', {
-                    templateUrl: '/hackandslash/about',
+                    templateUrl: prefix + '/about',
                     controller: 'menuController'
                 }).
                 when('/makers', {
-                    templateUrl: '/hackandslash/makers',
+                    templateUrl: prefix + '/makers',
                     controller: 'menuController'
                 }).
                 when('user/create', {
-                    templateUrl: '/hackandslash/user/createHero',
+                    templateUrl: prefix + '/user/createHero',
                     controller: 'userController'
                 }).
                 when('/screens', {
-                    templateUrl: '/hackandslash/screens',
+                    templateUrl: prefix + '/screens',
                     controller: 'menuController'
                 }).
                 when('/contact',{
-                    templateUrl: '/hackandslash/email',
+                    templateUrl: prefix + '/email',
                     controller: 'menuController'
                 }).
                 when('user/hero',{
-                    templateUrl: '/hackandslash/user/hero',
+                    templateUrl: prefix + '/user/hero',
                     controller: 'userController'
                 }).
                 when('/user/profil', {
-                    templateUrl: '/hackandslash/user/profil',
+                    templateUrl: prefix + '/user/profil',
                     controller: 'userController'
                 }).
                 when('/admin/menu', {
-                    templateUrl: '/hackandslash/admin/panel',
+                    templateUrl: prefix + '/admin/panel',
                     controller: 'adminController'
                 }).
                 when('/',{
-                   templateUrl: '/hackandslash/welcome',
+                   templateUrl: prefix + '/welcome',
                    controller: 'menuController'
                 }).
                 otherwise({

@@ -14,8 +14,7 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
     
     $scope.genders = [];
 
-    
-    $http.get(prefix + '/user/profil/'+'jbednarczyk')
+    $http.get(prefix + '/user/actualProfil')
         .success(function(res){
             console.log('is user logged? ',res);
             $scope.userDetail = res;   

@@ -42,7 +42,7 @@
 							<div class="form-group col-md-12">
 								<label class="col-md-2 control-lable" for="file">Address e-mail</label>
 								<div class="col-md-7">
-									<input type="text" ng-model="userDetail.email"
+									<input type="email" ng-model="userDetail.email"
 										class="form-control input-sm"/>
 								</div>
 							</div>
@@ -120,7 +120,7 @@
 						</h2>
 					</c:if>
 				</div>
+			</md-content>
 		</div>
-	</md-content>
 </body>
 </html>

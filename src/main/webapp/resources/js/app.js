@@ -23,9 +23,9 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/makers',
                     controller: 'menuController'
                 }).
-                when('user/create', {
+                when('/user/create', {
                     templateUrl: prefix + '/user/createHero',
-                    controller: 'userController'
+                    controller: 'menuController'
                 }).
                 when('/screens', {
                     templateUrl: prefix + '/screens',
@@ -35,9 +35,9 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/email',
                     controller: 'menuController'
                 }).
-                when('user/hero',{
+                when('/user/hero',{
                     templateUrl: prefix + '/user/hero',
-                    controller: 'userController'
+                    controller: 'heroController'
                 }).
                 when('/user/profil', {
                     templateUrl: prefix + '/user/profil',

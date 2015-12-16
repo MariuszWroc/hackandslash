@@ -11,9 +11,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import pl.mygames.hackandslash.dto.util.general.Dice;
-import pl.mygames.hackandslash.service.impl.logic.Rules;
-
 
 /**
  *
@@ -21,171 +18,205 @@ import pl.mygames.hackandslash.service.impl.logic.Rules;
  */
 public class HeroDTO implements Serializable{
     private static final long serialVersionUID = 1L;
-    private Integer id;
-    private Boolean activated;
+    private final Integer id;
+    private final Boolean activated;
     @NotBlank
-    private String firstname;
-    private String lastname;
+    private final String firstname;
+    private final String lastname;
     @NotNull
-    private Integer gender;
+    private final Integer gender;
     @NotNull
-    private Integer age;
+    private final Integer age;
     @NotNull
-    private Integer race;
+    private final Integer race;
     @NotNull
-    private Integer profession;
+    private final Integer profession;
     @NotNull
-    private Integer strength;
+    private final Integer strength;
     @NotNull
-    private Integer dexterity;
+    private final Integer dexterity;
     @NotNull
-    private Integer constitution;
+    private final Integer constitution;
     @NotNull
-    private Integer intelligence;
+    private final Integer intelligence;
     @NotNull
-    private Integer charisma;
-    private Integer baseHP;
-    private Integer experience;
-    private Integer startingPoints;
-    private Integer money;
+    private final Integer charisma;
+    private final Integer baseHP;
+    private final Integer experience;
+    private final Integer startingPoints;
+    private final Integer money;
 
-    public HeroDTO() {
-		this.startingPoints = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
-	}
+	private HeroDTO(HeroBuilder builder) {
+			this.id = builder.id;
+			this.activated = builder.activated;
+			this.firstname = builder.firstname;
+			this.lastname = builder.lastname;
+			this.gender = builder.gender;
+			this.age = builder.age;
+			this.race = builder.race;
+			this.profession = builder.profession;
+			this.strength = builder.strength;
+			this.dexterity = builder.dexterity;
+			this.constitution = builder.constitution;
+			this.intelligence = builder.intelligence;
+			this.charisma = builder.charisma;
+			this.baseHP = builder.baseHP;
+			this.experience = builder.experience;
+			this.startingPoints = builder.startingPoints;
+			this.money = builder.money;
+		}
 
 	public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Boolean getActivated() {
         return activated;
     }
 
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
-    }
-
     public String getFirstname() {
         return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public Integer getGender() {
         return gender;
-    }
-
-    public void setGender(Integer gender) {
-        this.gender = gender;
     }
 
     public Integer getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public Integer getRace() {
         return race;
-    }
-
-    public void setRace(Integer race) {
-        this.race = race;
     }
 
     public Integer getProfession() {
         return profession;
     }
 
-    public void setProfession(Integer profession) {
-        this.profession = profession;
-    }
-
     public Integer getStrength() {
         return strength;
-    }
-
-    public void setStrength(Integer strength) {
-        this.strength = strength;
     }
 
     public Integer getDexterity() {
         return dexterity;
     }
 
-    public void setDexterity(Integer dexterity) {
-        this.dexterity = dexterity;
-    }
-
     public Integer getConstitution() {
         return constitution;
-    }
-
-    public void setConstitution(Integer constitution) {
-        this.constitution = constitution;
     }
 
     public Integer getIntelligence() {
         return intelligence;
     }
 
-    public void setIntelligence(Integer intelligence) {
-        this.intelligence = intelligence;
-    }
-
     public Integer getCharisma() {
         return charisma;
-    }
-
-    public void setCharisma(Integer charisma) {
-        this.charisma = charisma;
     }
 
 	public Integer getBaseHP() {
 		return baseHP;
 	}
 
-	public void setBaseHP(Integer baseHP) {
-		this.baseHP = baseHP;
-	}
-
 	public Integer getExperience() {
 		return experience;
 	}
 
-	public void setExperience(Integer experience) {
-		this.experience = experience;
-	}
-
 	public Integer getStartingPoints() {
 		return startingPoints;
-	}
-
-	public void setStartingPoints(Integer startingPoints) {
-		this.startingPoints = startingPoints;
 	}
 	
 	public Integer getMoney() {
 		return money;
 	}
 	
-	public void setMoney(Integer money) {
-		this.money = money;
+	public static class HeroBuilder {
+	    private Integer id;
+	    private Boolean activated;
+	    @NotBlank
+	    private final String firstname;
+	    private String lastname;
+	    @NotNull
+	    private final Integer gender;
+	    @NotNull
+	    private final Integer age;
+	    @NotNull
+	    private final Integer race;
+	    @NotNull
+	    private final Integer profession;
+	    @NotNull
+	    private final Integer strength;
+	    @NotNull
+	    private final Integer dexterity;
+	    @NotNull
+	    private final Integer constitution;
+	    @NotNull
+	    private final Integer intelligence;
+	    @NotNull
+	    private final Integer charisma;
+	    private Integer baseHP;
+	    private Integer experience;
+	    private Integer startingPoints;
+	    private Integer money;
+	    
+	    
+	    
+		public HeroBuilder(String firstname, Integer gender,
+				Integer age, Integer race, Integer profession, Integer strength, Integer dexterity,
+				Integer constitution, Integer intelligence, Integer charisma) {
+			this.firstname = firstname;
+			this.gender = gender;
+			this.age = age;
+			this.race = race;
+			this.profession = profession;
+			this.strength = strength;
+			this.dexterity = dexterity;
+			this.constitution = constitution;
+			this.intelligence = intelligence;
+			this.charisma = charisma;
+		}
+		
+		public HeroBuilder id(Integer id) {
+			this.id = id;
+			return this;
+		}
+
+		public HeroBuilder activated(Boolean activated) {
+			this.activated = activated;
+			return this;
+		}
+
+		public HeroBuilder lastname(String lastname) {
+			this.lastname = lastname;
+			return this;
+		}
+		
+		public HeroBuilder baseHP(Integer baseHP) {
+			this.baseHP = baseHP;
+			return this;
+		}
+		
+		public HeroBuilder experience(Integer experience) {
+			this.experience = experience;
+			return this;
+		}
+		
+		public HeroBuilder startingPoints(Integer startingPoints) {
+			this.startingPoints = startingPoints;
+			return this;
+		}
+		
+		public HeroBuilder money(Integer money) {
+			this.money = money;
+			return this;
+		}
+
+		public HeroDTO build() {
+			return new HeroDTO(this);
+		}
 	}
 }

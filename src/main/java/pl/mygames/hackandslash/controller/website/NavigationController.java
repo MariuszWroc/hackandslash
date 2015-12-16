@@ -34,12 +34,7 @@ public class NavigationController {
 	public String getAboutAuthors() {
 	        return "main/about";
 	}
-    
-    @RequestMapping(value = "/createHero", method = RequestMethod.GET)
-	public String getCreateHero() {
-	        return "main/create";
-	}
-    
+            
     @RequestMapping(value = "/screens", method = RequestMethod.GET)
 	public String getScreens() {
 	        return "main/screens";

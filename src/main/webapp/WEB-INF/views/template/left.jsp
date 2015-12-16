@@ -12,5 +12,5 @@
 	</div>
 	</md-toolbar> <md-content layout-padding=""> <md-button md-raised
 		md-primary layout-fill href="#/user/profil">Profil</md-button> <md-button
-		md-raised md-primary layout-fill href="#/hero">Heroes</md-button> </md-content> </md-sidenav>
+		md-raised md-primary layout-fill href="#user/hero">Heroes</md-button> </md-content> </md-sidenav>
 </div>

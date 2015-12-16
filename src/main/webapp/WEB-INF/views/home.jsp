@@ -28,6 +28,7 @@
 	<script src="${contextPath}/resources/js/app.js"></script>
 	<script src="${contextPath}/resources/js/menuController.js"></script>
 	<script src="${contextPath}/resources/js/userController.js"></script>
+	<script src="${contextPath}/resources/js/heroController.js"></script>
 	<meta name="viewport" content="initial-scale=1" />
 </head>
 

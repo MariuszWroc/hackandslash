@@ -32,7 +32,7 @@ import pl.mygames.hackandslash.service.IUserService;
 @RestController
 @Scope("session")
 @RequestMapping(value = {"/user"})
-public class UserController {
+public class UserController extends UserCommon{
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
@@ -71,43 +71,7 @@ public class UserController {
         	return null;
         }
     }
-    
-    
-    @RequestMapping(value = "/hero/{login}", method = RequestMethod.GET)
-    public @ResponseBody
-    UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
-        if (authenticateUser(login)) {
-        	logger.info("Hero with user login = " + login + " loaded");
-        	return userService.getUserDTO(login);
-        } else {
-        	return null;
-        }
-    }
-    
-    private Boolean authenticateUser(String login) {
-		if (getActualLoggedUser().getUsername().equals(login)) {
-			logger.info("User " + login + " is logged in");
-			return true;
-		}
-		return false;
-    }
-
-	private UserDetails getActualLoggedUser() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		logger.info("Authentication exist in SecurityContextHolder");
-		if (auth != null) {
-			Object principal = auth.getPrincipal();
-			logger.info("getting principal..");
-			if (principal instanceof UserDetails) {
-				UserDetails user = (UserDetails) principal;
-    	    	logger.info("Username in actual session: " + user.getUsername());
-    	    	return user;
-			}
-		}
-		
-		return null;
-	}
-    
+      
     
     /*
      * This method will list all existing users.

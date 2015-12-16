@@ -30,7 +30,7 @@ public class CreateHeroAdminController {
 	
 	@RequestMapping(value = "/heroTest", method = RequestMethod.GET)
 	public String showHero(ModelMap model) {
-		model.addAttribute("hero", new HeroDTO());
+		model.addAttribute("hero", null);
 		model.addAttribute("genderEnum", Gender.values());
 		model.addAttribute("raceEnum", UserRace.values());
 		model.addAttribute("professionEnum", UserProfession.values());

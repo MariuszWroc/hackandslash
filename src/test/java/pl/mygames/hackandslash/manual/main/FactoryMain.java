@@ -12,7 +12,7 @@ public class FactoryMain {
 	
 	public static void testFactoryHero() {
 		logger.info("Testing factory of Hero");
-		HeroDTO hero = new HeroDTO();
+		HeroDTO hero = null;
 		Hero heroEntity = new Hero();
 		heroEntity.setMoney(100);
 		CopyingObjectFactory.makeTransferObject(heroEntity, hero);

@@ -12,17 +12,7 @@ public class HeroMain {
 	public static void testAddHero() {
 		logger.info("Testing add Hero");
 		HeroCreationService creationService = new HeroCreationService();
-		HeroDTO heroDTO = new HeroDTO();
-		heroDTO.setAge(26);
-		heroDTO.setGender(1);
-		heroDTO.setFirstname("Mario");
-		heroDTO.setRace(1);
-		heroDTO.setProfession(2);
-		heroDTO.setStrength(16);
-		heroDTO.setDexterity(12);
-		heroDTO.setConstitution(14);
-		heroDTO.setIntelligence(10);
-		heroDTO.setCharisma(8);
+		HeroDTO heroDTO = null;
 		String login = "mczarny";
 //		creationService.add(heroDTO, login);
 		

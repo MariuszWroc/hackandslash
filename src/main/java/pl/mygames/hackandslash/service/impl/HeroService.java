@@ -1,21 +1,29 @@
 package pl.mygames.hackandslash.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.HeroDao;
+import pl.mygames.hackandslash.controller.website.NavigationController;
+import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.dto.util.general.Dice;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.*;
+import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Service
 @Transactional(readOnly = true)
 public class HeroService implements IHeroService {
-
+	private static final Logger logger = LoggerFactory.getLogger(HeroService.class);
+	
     @Autowired
     private HeroDao dao;
     
@@ -58,24 +66,40 @@ public class HeroService implements IHeroService {
     }
     
     @Override
-    public HeroDTO getHeroDTO(String heroName) {
+    public HeroDTO getHeroByUser(String login) {
+    	Hero heroEntity = null;
+    	List<Hero> heroByUserLogin = dao.getHeroByParam("login", login);
+    	for (Hero hero : heroByUserLogin) {
+    		logger.info("heroByUserLogin " + hero.getId() + " " + hero.getMoney() + " " + hero.getGameUser().getLogin()); 
+		}
+    	
+    	if (heroByUserLogin.iterator().hasNext()) {
+    		heroEntity = heroByUserLogin.iterator().next();
+    	}
+//    	
+//        List<GameCharacter> characters = new ArrayList<>();
+//        GameCharacter character = null;
+//        if (!characters.isEmpty()) {
+//        	character = characters.iterator().next();
+//        }
+    	
+    	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
+
+		HeroDTO heroDTO = new HeroDTO
+				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
+					.id(heroEntity.getId())
+					.activated(true)
+					.startingPoints(diceRoller)
+					.build();
+        
+        return heroDTO;
+    }
+    
+    @Override
+    public HeroDTO getHeroByName(String heroName) {
         List<GameCharacter> characters = characterService.findByName(heroName);
         GameCharacter character = null;
-        HeroDTO heroDTO = new HeroDTO();
-        if(characters.iterator().hasNext()) {
-        	character = characters.iterator().next();
-        }
-        heroDTO.setFirstname(character.getFirstname());
-        heroDTO.setGender(character.getGender());
-        heroDTO.setAge(character.getAge());
-        heroDTO.setRace(character.getRace());
-        heroDTO.setProfession(character.getProfession());
-        heroDTO.setStrength(character.getStrength());
-        heroDTO.setDexterity(character.getDexterity());
-        heroDTO.setConstitution(character.getConstitution());
-        heroDTO.setConstitution(character.getConstitution());
-        heroDTO.setIntelligence(character.getIntelligence());
-        heroDTO.setCharisma(character.getCharisma());
+        HeroDTO heroDTO = null;
         return null;
     }
 

@@ -5,5 +5,5 @@ import java.util.List;
 import pl.mygames.hackandslash.model.Hero;
 
 public interface IHeroDao {
-	List<Hero> getHeroByUserLogin(String login);
+	List<Hero> getHeroByParam(String paramName, String paramValue);
 }

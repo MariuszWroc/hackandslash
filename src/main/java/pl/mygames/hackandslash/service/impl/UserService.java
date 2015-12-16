@@ -9,7 +9,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.UserDao;
+import pl.mygames.hackandslash.dao.impl.UserDao;
 import pl.mygames.hackandslash.dto.LoginDTO;
 import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.dto.util.general.Rolename;

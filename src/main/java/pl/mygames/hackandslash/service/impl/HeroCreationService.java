@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.HeroDao;
+import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.StartingPoint;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;

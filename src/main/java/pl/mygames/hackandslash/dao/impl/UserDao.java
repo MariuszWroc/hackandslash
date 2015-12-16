@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.dao;
+package pl.mygames.hackandslash.dao.impl;
 
 import org.springframework.stereotype.Repository;
 

@@ -6,7 +6,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.ItemDao;
+import pl.mygames.hackandslash.dao.impl.ItemDao;
 import pl.mygames.hackandslash.model.Item;
 import pl.mygames.hackandslash.service.IItemService;
 

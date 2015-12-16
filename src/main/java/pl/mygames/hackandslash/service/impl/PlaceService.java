@@ -6,7 +6,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.PlaceDao;
+import pl.mygames.hackandslash.dao.impl.PlaceDao;
 import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 

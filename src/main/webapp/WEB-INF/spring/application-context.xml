@@ -9,4 +9,5 @@
     
     <!-- Import hibernate properties and components mapping -->
     <beans:import resource="spring-mail.xml" />
+    <beans:import resource="database-config.xml" />
 </beans>

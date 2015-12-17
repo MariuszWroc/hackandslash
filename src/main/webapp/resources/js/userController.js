@@ -1,6 +1,7 @@
 module.controller('userController', ['$scope', '$http', function($scope, $http){
     
     $scope.userDetail = {};
+    
     $http.get(prefix + '/user/actualProfil')
         .success(function(res){
             console.log('is user logged? ',res);

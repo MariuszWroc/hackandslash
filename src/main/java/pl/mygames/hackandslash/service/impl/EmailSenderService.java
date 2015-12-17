@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import pl.mygames.hackandslash.dto.EmailDTO;
 
-@Service
 public class EmailSenderService {
 	private static final Logger logger = LoggerFactory.getLogger(EmailSenderService.class); 
 	

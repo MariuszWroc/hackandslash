@@ -20,68 +20,67 @@
 						class="form-horizontal">
 						<input type="hidden" ng-model="userDetail.id" />
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Login</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputLogin">Login</label>
 								<div class="col-md-7">
-									<input type="text"
-										class="form-control input-sm"
-										ng-model="userDetail.username" disabled="disabled"/>
+									<input id="inputLogin" type="text" ng-model="userDetail.username"
+										class="form-control input-sm" disabled="disabled">
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Password</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputPassword">Password</label>
 								<div class="col-md-7">
-									<input type="password" ng-model="userDetail.password"
+									<input id="inputPassword" type="password" ng-model="userDetail.password"
 										class="form-control input-sm"/>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Address e-mail</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputEmail">Address e-mail</label>
 								<div class="col-md-7">
-									<input type="email" ng-model="userDetail.email"
+									<input id="inputEmail" type="email" ng-model="userDetail.email"
 										class="form-control input-sm"/>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Firstname</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputFirstname">Firstname</label>
 								<div class="col-md-7">
-									<input type="text" ng-model="userDetail.firstname"
+									<input id="inputFirstname" type="text" ng-model="userDetail.firstname"
 										class="form-control input-sm"
 										/>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Lastname</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputLastname">Lastname</label>
 								<div class="col-md-7">
-									<input type="text" ng-model="userDetail.lastname"
+									<input id="inputLastname" type="text" ng-model="userDetail.lastname"
 										class="form-control input-sm"
 										/>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Gender</label>
+							<div class="form-group form-group-lg">
+							    <label class="col-md-2 control-label" for="inputGender">Gender</label>
 								<div class="col-md-7">
-									<input type="text" ng-model="userDetail.gender"
-										class="form-control input-sm"
-										/>
+									<md-select class="form-control input-sm" ng-model="selectedGender">
+										<md-option  ng-value="gender.id" ng-repeat="gender in genders">{{gender.label}}</md-option>
+									</md-select>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group col-md-12">
-								<label class="col-md-2 control-lable" for="file">Age</label>
+							<div class="form-group form-group-lg">
+								<label class="col-md-2 control-label" for="inputAge">Age</label>
 								<div class="col-md-7">
-									<input type="number" min="7" max="99" ng-model="userDetail.age"
+									<input id="inputAge" type="number" min="7" max="99" ng-model="userDetail.age"
 										class="form-control input-sm"
 										/>
 								</div>

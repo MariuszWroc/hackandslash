@@ -20,7 +20,7 @@
 						<form ng-submit="submit()" name="userForm" class="form-horizontal">
 							<input type="hidden" ng-model="heroDetail.id" />
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Firstname</label>
 									<div class="col-md-7">
 										<input type="text"
@@ -30,7 +30,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Lastname</label>
 									<div class="col-md-7">
 										<input type="text"
@@ -40,7 +40,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Gender</label>
 									<div class="col-md-7">
 										<input type="text"
@@ -50,7 +50,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Age</label>
 									<div class="col-md-7">
 										<input type="number" min="18" max="99"
@@ -60,7 +60,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Race</label>
 									<div class="col-md-7">
 										<input type="text"
@@ -70,7 +70,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Profession</label>
 									<div class="col-md-7">
 										<input type="text"
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Strength</label>
 									<div class="col-md-7">
 										<input type="number"
@@ -90,7 +90,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Dexterity</label>
 									<div class="col-md-7">
 										<input type="number"
@@ -100,7 +100,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Constitution</label>
 									<div class="col-md-7">
 										<input type="number"
@@ -110,7 +110,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Intelligence</label>
 									<div class="col-md-7">
 										<input type="number"
@@ -120,7 +120,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">Charisma</label>
 									<div class="col-md-7">
 										<input type="number"
@@ -130,7 +130,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="form-group col-md-12">
+								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-lable" for="file">BaseHp</label>
 									<div class="col-md-7">
 										<input type="number"

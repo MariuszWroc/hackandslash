@@ -21,7 +21,7 @@
 							<input type="hidden" ng-model="userRegister.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputLogin">Login</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputLogin"><span class="pull-left">Login</span></label>
 									<div class="col-md-7">
 										<input id="inputLogin" type="text" ng-model="userRegister.username"
 											class="form-control input-sm" >
@@ -30,7 +30,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputPassword">Password</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputPassword"><span class="pull-left">Password</span></label>
 									<div class="col-md-7">
 										<input id="inputPassword" type="password" ng-model="userRegister.password"
 											class="form-control input-sm"/>
@@ -39,7 +39,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputEmail">Address e-mail</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputEmail"><span class="pull-left">Address e-mail</span></label>
 									<div class="col-md-7">
 										<input id="inputEmail" type="email" ng-model="userRegister.email"
 											class="form-control input-sm"/>
@@ -48,7 +48,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputFirstname">Firstname</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputFirstname"><span class="pull-left">Firstname</span></label>
 									<div class="col-md-7">
 										<input id="inputFirstname" type="text" ng-model="userRegister.firstname"
 											class="form-control input-sm"
@@ -58,7 +58,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputLastname">Lastname</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputLastname"><span class="pull-left">Lastname</span></label>
 									<div class="col-md-7">
 										<input id="inputLastname" type="text" ng-model="userRegister.lastname"
 											class="form-control input-sm"
@@ -68,19 +68,20 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-								    <label class="col-md-2 control-label" for="inputGender">Gender</label>
+									<label id="form-label" class="col-md-2 control-label"
+										for="inputGender"><span class="pull-left">Gender</span></label>
 									<div class="col-md-7">
-										<md-select class="form-control input-sm" ng-model="selectedGender">
-											<md-option  ng-value="gender.id" ng-repeat="gender in genders">{{gender.label}}</md-option>
-										</md-select>
+										<select id="mySel" class="form-control">
+		          							<option ng-repeat="gender in genders" ng-selected="selectedGender" ng-model="gender.id">{{gender.label}}</option>
+		        						</select>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="inputAge">Age</label>
+									<label id="form-label" class="col-md-2 control-label" for="inputAge"><span class="pull-left">Age</span></label>
 									<div class="col-md-7">
-										<input id="inputAge" type="number" min="7" max="99" ng-model="userRegister.age"
+										<input id="inputAge" type="number" value="18" min="7" max="99" ng-model="userRegister.age"
 											class="form-control input-sm"
 											/>
 									</div>

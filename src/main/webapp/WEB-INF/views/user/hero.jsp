@@ -21,7 +21,7 @@
 							<input type="hidden" ng-model="heroDetail.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Firstname</label>
+									<label class="col-md-2 control-label" for="file">Firstname</label>
 									<div class="col-md-7">
 										<input type="text"
 											class="form-control input-sm"
@@ -31,7 +31,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Lastname</label>
+									<label class="col-md-2 control-label" for="file">Lastname</label>
 									<div class="col-md-7">
 										<input type="text"
 											class="form-control input-sm"
@@ -41,7 +41,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Gender</label>
+									<label class="col-md-2 control-label" for="file">Gender</label>
 									<div class="col-md-7">
 										<input type="text"
 											class="form-control input-sm"
@@ -51,7 +51,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Age</label>
+									<label class="col-md-2 control-label" for="file">Age</label>
 									<div class="col-md-7">
 										<input type="number" min="18" max="99"
 											class="form-control input-sm"
@@ -61,7 +61,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Race</label>
+									<label class="col-md-2 control-label" for="file">Race</label>
 									<div class="col-md-7">
 										<input type="text"
 											class="form-control input-sm"
@@ -71,7 +71,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Profession</label>
+									<label class="col-md-2 control-label" for="file">Profession</label>
 									<div class="col-md-7">
 										<input type="text"
 											class="form-control input-sm"
@@ -81,7 +81,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Strength</label>
+									<label class="col-md-2 control-label" for="file">Strength</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -91,7 +91,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Dexterity</label>
+									<label class="col-md-2 control-label" for="file">Dexterity</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -101,7 +101,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Constitution</label>
+									<label class="col-md-2 control-label" for="file">Constitution</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -111,7 +111,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Intelligence</label>
+									<label class="col-md-2 control-label" for="file">Intelligence</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -121,7 +121,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">Charisma</label>
+									<label class="col-md-2 control-label" for="file">Charisma</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -131,7 +131,7 @@
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-lable" for="file">BaseHp</label>
+									<label class="col-md-2 control-label" for="file">BaseHp</label>
 									<div class="col-md-7">
 										<input type="number"
 											class="form-control input-sm"
@@ -141,8 +141,7 @@
 							</div>
 						<div class="row">
 	                          <div class="form-actions floatRight">
-	                              <input type="submit"  value="Create" class="btn btn-primary btn-sm" >
-	                              <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Clear</button>
+	                              <input type="submit"  value="update" class="btn btn-primary btn-sm" >
 	                          </div>
 	                     </div>
 	            	</form>

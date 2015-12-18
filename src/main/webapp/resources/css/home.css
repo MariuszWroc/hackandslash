@@ -88,6 +88,10 @@ p {
     bottom: 0;
 }
 
+#form-label {
+  margin-left: 15px;
+}
+
 
 
 .h1 .h2 .h3 {

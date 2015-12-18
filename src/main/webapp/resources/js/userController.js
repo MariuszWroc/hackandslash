@@ -2,12 +2,15 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
     
     $scope.userDetail = {};
     
+    $scope.userRegister = {};
+    
     $scope.genders = [
-                      { 'id': 1, 'label': 'Male' },
-                      { 'id': 2, 'label': 'Female' },
+                      { id: 0, label: '' },
+                      { id: 1, label: 'Male' },
+                      { id: 2, label: 'Female' },
                       ];
     
-    $scope.selectedGender = $scope.genders[0].id;
+    $scope.selectedGender = 0;
     
     $http.get(prefix + '/user/actualProfil')
         .success(function(res){
@@ -18,8 +21,10 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
             console.log("Error after getting user " + error);
         });
         
-        $scope.reset = function(){
+    $scope.reset = function(){
             console.log('test');
             $scope.userDetail = {};
         };
+
+    
 }]);

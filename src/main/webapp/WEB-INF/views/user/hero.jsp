@@ -149,6 +149,32 @@
 	            	</form>
 					</div>
 				</div>
+				<div class="panel panel-default">
+                <!-- Default panel contents -->
+              <div class="panel-heading"><span class="lead">List of Heroes </span></div>
+              <div class="tablecontainer">
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              <th>ID.</th>
+                              <th>Name</th>
+                              <th width="20%"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="one_hero in heroes">
+                              <td><span ng-bind="one_hero.id"></span></td>
+                              <td><span ng-bind="one_hero.firstname"></span></td>
+                              <td>
+                              <button type="button" ng-click="edit(one_hero.id)" class="btn btn-success custom-width">Edit</button>  
+                              <button type="button" ng-click="remove(one_hero.id)" class="btn btn-danger custom-width">Remove</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
 		    </md-content>  
 		</div>
 	</body>

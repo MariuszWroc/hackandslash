@@ -1,5 +1,5 @@
 <%-- 
-    Document   : ShowUsers
+    Document   : ShowHeroes
     Created on : Nov 28, 2015, 8:13:58 PM
     Author     : Jaca
 --%>
@@ -9,15 +9,16 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
 	</head>
-	<body>
-		<div ng-controller="heroController" flex id="content" ng-cloak class="ng-cloak">
+	<body ng-cloak class="ng-cloak">
+		<div ng-controller="heroController" flex id="content">
 		    <md-content layout="column" flex class="md-padding">
-		    	<div id="heroProfil">
-					<div class="formContainer">
-						<form ng-submit="submit()" name="userForm" class="form-horizontal">
+		    	<div id="heroProfil" class="panel panel-default">
+		    		<div class="panel-heading">
+		    			<span class="lead">Hero Management Form </span>
+		    		</div>
+					<div class="formcontainer">
+						<form ng-submit="submit()" name="heroForm" class="form-horizontal">
 							<input type="hidden" ng-model="heroDetail.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">

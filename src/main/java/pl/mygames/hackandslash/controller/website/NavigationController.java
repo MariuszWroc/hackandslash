@@ -39,9 +39,10 @@ public class NavigationController {
 	public String getScreens() {
 	        return "main/screens";
 	}
-    @RequestMapping(value = "/makers", method = RequestMethod.GET)
+    
+    @RequestMapping(value = "/authors", method = RequestMethod.GET)
 	public String getMakers() {
-	        return "main/makers";
+	        return "main/authors";
 	}
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
@@ -56,12 +57,7 @@ public class NavigationController {
     
     @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
     public String getWelcome(){
-        return "main/welcomePage";
-    }
-    
-    @RequestMapping(value = {"/success"}, method = RequestMethod.GET)
-    public String getSuccess() {
-        return "helper/success";
+        return "main/welcome";
     }
     
     @RequestMapping(value = {"/failed"}, method = RequestMethod.GET)

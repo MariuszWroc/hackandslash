@@ -2,7 +2,6 @@
 <%@page session="true"%>
 <html>
 <body>
-
 	<c:url var="logoutUrl" value="${contextPath}/j_spring_security_logout" />
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<!-- csrt for log out-->

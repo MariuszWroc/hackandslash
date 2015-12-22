@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Login</title>
 	</head>

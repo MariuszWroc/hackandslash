@@ -4,17 +4,13 @@
     Author     : mariusz
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page session="false"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Registration Confirmation Page</title>
-    </head>
-    <body>
-        message : ${failed}
-        <br/>
-    </body>
+	<head>
+		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
+	</head>
+	<body ng-cloak class="ng-cloak">
+		<h1>Failed</h1>
+	</body>
 </html>

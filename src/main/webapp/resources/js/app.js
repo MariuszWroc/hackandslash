@@ -9,7 +9,7 @@ module.config(['$routeProvider',
         $routeProvider.
                 when('/register', {
                     templateUrl: prefix + '/register',
-                    controller: 'menuController'
+                    controller: 'userController'
                 }).
                 when('/login', {
                     templateUrl: prefix + '/login',
@@ -19,25 +19,25 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/about',
                     controller: 'menuController'
                 }).
-                when('/makers', {
-                    templateUrl: prefix + '/makers',
-                    controller: 'menuController'
-                }).
-                when('/user/create', {
-                    templateUrl: prefix + '/user/createHero',
+                when('/authors', {
+                    templateUrl: prefix + '/authors',
                     controller: 'menuController'
                 }).
                 when('/screens', {
                     templateUrl: prefix + '/screens',
                     controller: 'menuController'
                 }).
-                when('/contact',{
+                when('/contact', {
                     templateUrl: prefix + '/email',
                     controller: 'menuController'
                 }).
-                when('/user/hero',{
+                when('/user/hero', {
                     templateUrl: prefix + '/user/hero',
                     controller: 'heroController'
+                }).
+                when('/user/game', {
+                    templateUrl: prefix + '/user/game',
+                    controller: 'gameController'
                 }).
                 when('/user/profil', {
                     templateUrl: prefix + '/user/profil',
@@ -47,7 +47,7 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/admin/panel',
                     controller: 'adminController'
                 }).
-                when('/',{
+                when('/', {
                    templateUrl: prefix + '/welcome',
                    controller: 'menuController'
                 }).

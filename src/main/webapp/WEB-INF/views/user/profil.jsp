@@ -8,14 +8,14 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css"/>
-		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
 	</head>
-	<body>
-	<div ng-controller="userController" flex id="content" ng-cloak class="ng-cloak">
+	<body ng-cloak class="ng-cloak">
+	<div ng-controller="userController" flex id="content">
 		<md-content layout="column" flex class="md-padding">
-		<div id="profil">
+		<div id="profil" class="panel panel-default">
+			<div class="panel-heading">
+		    	<span class="lead">User Management Form </span>
+		    </div>
 			<div class="formcontainer">
 				<form ng-submit="submit()" name="userForm" class="form-horizontal">
 					<input type="hidden" ng-model="userDetail.id" />

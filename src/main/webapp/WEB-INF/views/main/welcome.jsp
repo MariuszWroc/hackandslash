@@ -1,9 +1,8 @@
 <%-- 
-    Document   : access denied
-    Created on : Oct 29, 2015, 5:24:12 PM
-    Author     : mariusz
+    Document   : welcomePage
+    Created on : Dec 10, 2015, 11:15:15 PM
+    Author     : Jaca
 --%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 	<head>
@@ -11,6 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
 	<body ng-cloak class="ng-cloak">
-		<h1>Access Denied</h1>
+		<div>
+			<a href="#/login"> Login </a>&nbsp; 
+			<a href="#/register"> Register</a>
+		</div>
 	</body>
 </html>

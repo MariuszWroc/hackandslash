@@ -1,8 +1,8 @@
 module.controller('userController', ['$scope', '$http', function($scope, $http){
     
-    $scope.userDetail = {};
-    
-    $scope.userRegister = {};
+	$scope.userDetail = {};
+	
+	$scope.userRegister = {id:null, username:'', password:'', email:'', firstname:'', lastname:'', genders: [], age:''};
     
     $scope.genders = [
                       { id: 0, label: '' },
@@ -18,12 +18,13 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
             $scope.userDetail = res;   
         })
         .error(function(error){
-            console.log("Error after getting user " + error);
+            console.log('rror after getting user ' + error);
         });
         
     $scope.reset = function(){
-            console.log('test');
-            $scope.userDetail = {};
+            console.log('reset user register');
+            $scope.userRegister = {id:null, username:'', password:'', email:'', firstname:'', lastname:'', genders: [], age:''};
+            $scope.registerForm.$setPristine();
         };
 
     

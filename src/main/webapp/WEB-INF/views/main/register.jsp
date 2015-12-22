@@ -8,16 +8,17 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
-	<body>
-		<div ng-controller="userController" flex id="content" ng-cloak class="ng-cloak">
+	<body flex id="content" ng-cloak>
+		<div ng-controller="userController">
 			<md-content layout="column" flex class="md-padding">
-				<div id="profil">
+				<div id="register" class="panel panel-default">
+					<div class="panel-heading">
+		    			<span class="lead">Register Form </span>
+		    		</div>
 					<div class="formcontainer">
-						<form ng-submit="submit()" name="userForm"
-							class="form-horizontal">
+						<form ng-submit="submit()" name="registerForm" class="form-horizontal">
 							<input type="hidden" ng-model="userRegister.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">
@@ -90,7 +91,7 @@
 							<div class="row">
 		                          <div class="form-actions floatRight">
 		                              <input type="submit"  value="Create" class="btn btn-primary btn-sm" >
-		                              <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Clear</button>
+		                              <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="registerForm.$pristine">Clear</button>
 		                          </div>
 		                     </div>
 		            	</form>

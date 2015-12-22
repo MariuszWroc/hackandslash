@@ -5,9 +5,9 @@
 		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
 	<body ng-cloak class="ng-cloak">
-		<div ng-controller="menuController" flex id="content" ng-cloak class="ng-cloak">
+		<div ng-controller="menuController" flex id="content">
 			<md-content layout="column" flex class="md-padding">
-				<div id="about" class="panel panel-default">
+				<div id="authors" class="panel panel-default">
 					<div class="panel-heading">
 						<span class="lead">About us</span>
 					</div>
@@ -15,6 +15,3 @@
 				</div>
 			</md-content>
 		</div>
-	</body>
-</html>
-

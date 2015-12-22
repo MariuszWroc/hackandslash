@@ -20,5 +20,11 @@ public class NavigationUserController {
 	public String getUserProfil() {
 		return "user/profil";
 	}
+	
+	@Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping(value = "/game", method = RequestMethod.GET)
+	public String getPlayGame() {
+		return "user/game";
+	}
 }
 

@@ -9,6 +9,7 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
 	<body ng-cloak class="ng-cloak">
 		<div ng-controller="gameController" flex id="content">

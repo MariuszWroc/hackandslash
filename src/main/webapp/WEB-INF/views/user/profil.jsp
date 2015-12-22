@@ -8,14 +8,15 @@
 <html>
 	<head>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
-	<body ng-cloak class="ng-cloak">
+<body ng-cloak class="ng-cloak">
 	<div ng-controller="userController" flex id="content">
 		<md-content layout="column" flex class="md-padding">
 		<div id="profil" class="panel panel-default">
 			<div class="panel-heading">
-		    	<span class="lead">User Management Form </span>
-		    </div>
+				<span class="lead">User Management Form </span>
+			</div>
 			<div class="formcontainer">
 				<form ng-submit="submit()" name="userForm" class="form-horizontal">
 					<input type="hidden" ng-model="userDetail.id" />
@@ -105,8 +106,9 @@
 								for="inputGender"><span class="pull-left">Gender</span></label>
 							<div class="col-md-7">
 								<select id="mySel" class="form-control">
-          							<option ng-repeat="gender in genders" ng-selected="selectedGender" ng-model="gender.id">{{gender.label}}</option>
-        						</select>
+									<option ng-repeat="gender in genders"
+										ng-selected="selectedGender" ng-model="gender.id">{{gender.label}}</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -120,30 +122,19 @@
 			</div>
 		</div>
 		<div id="logout">
-					<c:url var="logoutUrl"
-						value="${contextPath}/j_spring_security_logout" />
-					<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-					<!-- csrt for log out-->
-					<form action="<c:url value='/j_spring_security_logout' />"
-						method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-					</form>
-	
-					<script>
-							function formSubmit() {
-								document.getElementById("logoutForm").submit();
-							}
-						</script>
-	
-					<c:if test="${pageContext.request.userPrincipal.name != null}">
-						<h2>
-							Welcome : ${pageContext.request.userPrincipal.name} | <a
-								href="javascript:formSubmit()"> Logout</a>
-						</h2>
-					</c:if>
+			<!-- csrt for log out-->
+			<c:url var="addAction" value="/j_spring_security_logout"/>
+			<form action="${addAction}" method="POST" id="logoutForm" accept-charset="UTF-8">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<div id="logoutButton">
+					<input name="submit" type="submit"
+		                    value="logout" />
 				</div>
-			</md-content>
+			</form>
+			
+			
 		</div>
+		</md-content>
+	</div>
 </body>
 </html>

@@ -15,6 +15,10 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/login',
                     controller: 'menuController'
                 }).
+                when('/logout', {
+                    templateUrl: prefix + '/logout',
+                    controller: 'menuController'
+                }).
                 when('/about', {
                     templateUrl: prefix + '/about',
                     controller: 'menuController'

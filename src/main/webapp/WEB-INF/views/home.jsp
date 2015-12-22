@@ -30,6 +30,7 @@
 		<script src="${contextPath}/resources/js/menuController.js"></script>
 		<script src="${contextPath}/resources/js/userController.js"></script>
 		<script src="${contextPath}/resources/js/heroController.js"></script>
+		<script src="${contextPath}/resources/js/gameController.js"></script>
 		<meta name="viewport" content="initial-scale=1" />
 	</head>
 	<body layout="column" ng-app="StarterApp" ng-controller="AppCtrl">

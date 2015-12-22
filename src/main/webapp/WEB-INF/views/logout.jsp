@@ -5,24 +5,19 @@
 	<c:url var="logoutUrl" value="${contextPath}/j_spring_security_logout" />
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 	<!-- csrt for log out-->
-	<form action="<c:url value='/j_spring_security_logout' />" method="post" id="logoutForm">
-	  <input type="hidden" 
-		name="${_csrf.parameterName}"
-		value="${_csrf.token}" />
-	</form>
-	
-	<script>
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-	</script>
-
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | 
-			<a href="javascript:formSubmit()"> Logout</a>
-		</h2>
-	</c:if>
+		<div id="logout">
+			<!-- csrt for log out-->
+			<c:url var="addAction" value="/j_spring_security_logout"/>
+			<form action="${addAction}" method="POST" id="logoutForm" accept-charset="UTF-8">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<div id="logoutButton">
+					<input name="submit" type="submit"
+		                    value="logout" />
+				</div>
+			</form>
+			
+			
+		</div>
 
 </body>
 </html>

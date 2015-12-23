@@ -1,6 +1,5 @@
 package pl.mygames.hackandslash.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.controller.website.NavigationController;
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.Dice;

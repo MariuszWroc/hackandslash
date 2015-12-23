@@ -40,6 +40,13 @@ public class UserController extends UserCommon{
     private IUserService userService;
     private Integer keyValue;
 
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logoutUser(@ModelAttribute(value = "endpoint") String endpoint, ModelMap model) {
+        logger.info("User logout" + endpoint);
+        getActualLogoutUser();
+        return "/";
+    }
+    
     /*
      * Mapping users list and one user 
      */

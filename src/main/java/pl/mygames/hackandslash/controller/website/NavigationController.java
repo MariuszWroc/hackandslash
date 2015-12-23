@@ -47,7 +47,7 @@ public class NavigationController {
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
     public String getLogout() {
-        return "logout";
+        return "helper/afterLogout";
     }
     
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)

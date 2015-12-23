@@ -19,6 +19,10 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/logout',
                     controller: 'menuController'
                 }).
+                when('/logout/success', {
+                    templateUrl: prefix + '/logout/success',
+                    controller: 'menuController'
+                }).
                 when('/about', {
                     templateUrl: prefix + '/about',
                     controller: 'menuController'
@@ -60,8 +64,41 @@ module.config(['$routeProvider',
                 });
     }]);
 
-module.controller('AppCtrl', [ '$scope', '$mdSidenav', function($scope, $mdSidenav) {
-			$scope.toggleSidenav = function() {
+
+module.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdSidenav) {
+	$scope.status = '';
+	$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm')
+
+				$scope.toggleSidenav = function() {
 				$mdSidenav('left').toggle();
 			};
-		} ]);
+	
+	  $scope.logout = function(ev) {
+	    $mdDialog.show({
+	    	templateUrl: prefix + '/logout',
+	        parent: angular.element(document.querySelector('#container')),
+	        targetEvent: ev,
+	        plain: true,
+	        clickOutsideToClose:true,
+        }).then(function (value) {
+            // perform delete operation
+        }, function (value) {
+            //Do something 
+        });
+	  };
+	  
+	  function DialogController($scope, $mdDialog) {
+		  $scope.hide = function() {
+		    $mdDialog.hide();
+		  };
+
+		  $scope.cancel = function() {
+		    $mdDialog.cancel();
+		  };
+
+		  $scope.answer = function(answer) {
+		    $mdDialog.hide(answer);
+		  };
+	  };
+	
+});

@@ -19,8 +19,9 @@
 			default-target-url="/"
 			authentication-failure-url="/failed"
 			username-parameter="username"
-			password-parameter="password" />
-		<logout delete-cookies="true" logout-success-url="/" 
+			password-parameter="password"
+			always-use-default-target="true" />
+		<logout delete-cookies="true" logout-success-url="/#/logout/success" 
 			logout-url="/j_spring_security_logout" invalidate-session="true" />
 		<!-- disable csrf protection -->
 		<!--<csrf disabled="true"/> -->

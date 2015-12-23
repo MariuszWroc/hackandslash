@@ -73,32 +73,29 @@ module.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdSidenav) {
 				$mdSidenav('left').toggle();
 			};
 	
-	  $scope.logout = function(ev) {
+        $scope.logout = function(ev) {
 	    $mdDialog.show({
 	    	templateUrl: prefix + '/logout',
 	        parent: angular.element(document.querySelector('#container')),
 	        targetEvent: ev,
 	        plain: true,
-	        clickOutsideToClose:true,
-        }).then(function (value) {
+                controller: 'DialogController',
             // perform delete operation
-        }, function (value) {
-            //Do something 
-        });
-	  };
-	  
-	  function DialogController($scope, $mdDialog) {
-		  $scope.hide = function() {
-		    $mdDialog.hide();
-		  };
-
-		  $scope.cancel = function() {
-		    $mdDialog.cancel();
-		  };
-
-		  $scope.answer = function(answer) {
-		    $mdDialog.hide(answer);
-		  };
-	  };
-	
+            }, function (value) {
+                //Do something 
+            });
+        };
+        
+        $scope.login = function(ev) {
+            $mdDialog.show({
+	    	templateUrl: prefix + '/login',
+	        parent: angular.element(document.querySelector('#container')),
+	        targetEvent: ev,
+	        plain: true,
+                controller: 'DialogController',
+            // perform delete operation
+            }, function (value) {
+                //Do something 
+            });
+        }
 });

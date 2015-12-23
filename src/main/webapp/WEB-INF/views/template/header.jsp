@@ -15,7 +15,7 @@
 				</md-button>
 				<span>Hack and Slash </span> <span flex></span>
 				<c:if test="${pageContext.request.userPrincipal.name == null}">
-					<md-button class="md-icon-button" aria-label="Log in" href="#/login">
+					<md-button class="md-icon-button" aria-label="Log in" ng-click="login($event)">
 						<md-tooltip>Log in</md-tooltip> 
 						<img src="${contextPath}/resources/img/icons/login.svg"
 							style="width: 24px; height: 24px;" /> 

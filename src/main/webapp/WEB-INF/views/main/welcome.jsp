@@ -10,9 +10,11 @@
 		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
 	<body ng-cloak class="ng-cloak">
-		<div>
-			<a href="#/login"> Login </a>&nbsp; 
-			<a href="#/register"> Register</a>
+		<div id="welcome" class="panel panel-default">
+					<div class="panel-heading">
+						<span class="lead">Welcome Page</span>
+					</div>
+					<div class="formcontainer"></div>
 		</div>
 	</body>
 </html>

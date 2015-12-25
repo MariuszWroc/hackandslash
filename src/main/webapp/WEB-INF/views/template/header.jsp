@@ -10,21 +10,22 @@
 			<md-toolbar layout="row">
 			<div class="md-toolbar-tools" id="popupContainer">
 				<md-button ng-click="toggleSidenav('left')" class="md-icon-button">
-				<md-tooltip>Side Panel</md-tooltip> <md-icon aria-label="Menu"
-					md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+					<md-tooltip>Side Panel</md-tooltip> <md-icon aria-label="Menu"
+						md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+						</md-icon>
 				</md-button>
-				<span>Hack and Slash </span> <span flex></span>
+				<md-button class="md-flat" href="#/">Hack and Slash</md-button> <span flex></span>
 				<c:if test="${pageContext.request.userPrincipal.name == null}">
 					<md-button class="md-icon-button" aria-label="Log in" ng-click="login($event)">
 						<md-tooltip>Log in</md-tooltip> 
 						<img src="${contextPath}/resources/img/icons/login.svg"
 							style="width: 24px; height: 24px;" /> 
 					</md-button>
-				<md-button class="md-icon-button" aria-label="Register" href="#/register"> 
-					<md-tooltip>Register</md-tooltip> 
-					<img src="${contextPath}/resources/img/icons/account.svg"
-						style="width: 24px; height: 24px;" /> 
-				</md-button>
+					<md-button class="md-icon-button" aria-label="Register" href="#/register"> 
+						<md-tooltip>Register</md-tooltip> 
+						<img src="${contextPath}/resources/img/icons/account.svg"
+							style="width: 24px; height: 24px;" /> 
+					</md-button>
 				</c:if>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<md-button class="md-icon-button" aria-label="Log out" ng-click="logout($event)">

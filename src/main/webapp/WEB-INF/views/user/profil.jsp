@@ -121,19 +121,6 @@
 					</form>
 				</div>
 			</div>
-			<div id="logout">
-				<!-- csrt for log out-->
-				<c:url var="addAction" value="/j_spring_security_logout"/>
-				<form action="${addAction}" method="POST" id="logoutForm" accept-charset="UTF-8">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<div id="logoutButton">
-						<input name="submit" type="submit"
-			                    value="logout" />
-					</div>
-				</form>
-				
-				
-			</div>
 			</md-content>
 		</div>
 	</body>

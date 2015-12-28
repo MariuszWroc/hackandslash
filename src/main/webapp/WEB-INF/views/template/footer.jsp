@@ -7,9 +7,9 @@
 	<body ng-cloak class="ng-cloak">
 		<div id="footer" layout="row" layout-align="center center">
 			<p>
-				<a id="link-3" ng-href="#/authors">Authors</a> 
-				<a id="link-3" ng-href="#/contact">Contact</a> 
-				<a id="link-3" ng-href="#/about">About</a>
+				<a id="authors" ng-href="#/authors">Authors</a> 
+				<a id="contact" ng-href="#/contact">Contact</a> 
+				<a id="about" ng-href="#/about">About</a>
 			</p>
 		</div>
 	</body>

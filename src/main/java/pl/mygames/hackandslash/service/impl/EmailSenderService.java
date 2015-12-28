@@ -1,5 +1,6 @@
 package pl.mygames.hackandslash.service.impl;
 
+import org.jvnet.hk2.annotations.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.mail.*;
 
 import pl.mygames.hackandslash.dto.EmailDTO;
 
+@Service
 public class EmailSenderService {
 	private static final Logger logger = LoggerFactory.getLogger(EmailSenderService.class); 
 	

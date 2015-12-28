@@ -34,7 +34,9 @@
 				'activated' FROM gameuser WHERE login=?;" authorities-by-username-query=" SELECT 
 				u.login, r.rolename FROM gameuser u, gamerole r WHERE r.id = u.GameRole_id AND u.login=?;" 
 				/>
-
+					<user-service>
+                        <user name="admin" password="admin" authorities="ROLE_ADMIN" />
+                    </user-service>
                 </authentication-provider>
             </authentication-manager>
 </beans:beans>

@@ -19,7 +19,7 @@
 		    			<span class="lead">Hero Management Form </span>
 		    		</div>
 					<div class="formcontainer">
-						<form ng-submit="submit()" name="heroForm" class="form-horizontal">
+						<form ng-submit="submit()" method="POST" name="heroForm" class="form-horizontal">
 							<input type="hidden" ng-model="heroDetail.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">

@@ -25,5 +25,7 @@ public class NavigationAdminController {
     public String getAdminPanel() {
         return "admin/menu";
     }
+	
+
     
 }

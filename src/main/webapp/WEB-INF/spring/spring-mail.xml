@@ -6,7 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	<property name="host" value="smtp.gmail.com" />
-	<property name="port" value="587" />
+	<property name="port" value="465" />
 	<property name="username" value="slaskManager@gmail.com" />
 	<property name="password" value="JMslask123" />
 		
@@ -17,6 +17,11 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
        	   </props>
 	</property>
 </bean>
+	
+       <!-- Email Properties Placeholder -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:database.local.properties" />
+    </bean>	
 	
 <bean id="emailSenderService" class="pl.mygames.hackandslash.service.impl.EmailSenderService">
 	<property name="mailSender" ref="mailSender" />

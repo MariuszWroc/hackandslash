@@ -29,6 +29,7 @@
         <h2>Testing registration and login procedure</h2>
         <a href="${contextPath}/admin/registerTest">register user</a><br/>
         <a href="${contextPath}/admin/heroTest">create Hero</a><br/>
+        <a href="${contextPath}/admin/email">Send email</a><br/>
         <h2>---</h2>
         <a href="${contextPath}/admin/logout">logout</a><br/>
         <a href="${contextPath}/">start page</a><br/>

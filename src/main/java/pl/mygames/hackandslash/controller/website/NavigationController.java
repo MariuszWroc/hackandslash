@@ -40,6 +40,11 @@ public class NavigationController {
 	        return "main/authors";
 	}
     
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+    public String getEmail() {
+        return "main/email";
+    }
+    
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
     public String getLogout() {
         return "logout";

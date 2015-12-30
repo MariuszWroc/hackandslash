@@ -9,7 +9,7 @@
 			<md-content layout="column" flex class="md-padding">
 				<div id="about" class="panel panel-default">
 					<div class="panel-heading">
-						<span class="lead">About us</span>
+						<span class="lead">About game</span>
 					</div>
 					<div class="formcontainer"></div>
 				</div>

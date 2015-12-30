@@ -5,7 +5,7 @@
 <%@ page session="false"%>
 <html lang="en" ng-app="StarterApp">
 	<head>
-		<title>AngularJS Routes example</title>
+		<title>Hack and slash MMO game</title>
 		<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/home.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -54,6 +54,7 @@
 		<script src="${contextPath}/resources/js/userController.js"></script>
 		<script src="${contextPath}/resources/js/heroController.js"></script>
 		<script src="${contextPath}/resources/js/gameController.js"></script>
-                <script src="${contextPath}/resources/js/dialogController.js"></script>
+		<script src="${contextPath}/resources/js/emailController.js"></script>
+        <script src="${contextPath}/resources/js/dialogController.js"></script>
 	</body>
 </html>

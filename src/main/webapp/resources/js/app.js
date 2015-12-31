@@ -59,6 +59,10 @@ module.config(['$routeProvider',
                    templateUrl: prefix + '/welcome',
                    controller: 'menuController'
                 }).
+                when('/failed', {
+                    templateUrl: prefix + '/failed',
+                    controller: 'menuController'
+                 }).
                 otherwise({
                     redirectTo: '/'
                 });

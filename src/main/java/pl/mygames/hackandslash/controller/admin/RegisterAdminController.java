@@ -17,7 +17,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import pl.mygames.hackandslash.dto.util.general.Gender;
+import pl.mygames.hackandslash.dto.util.general.GenderEnum;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 
@@ -33,7 +33,7 @@ public class RegisterAdminController {
     @RequestMapping(value = "/registerTest", method = RequestMethod.GET)
     public String viewRegistration(ModelMap model) {
     	model.addAttribute("user", new GameUser());
-    	model.addAttribute("genderEnum", Gender.values());
+    	model.addAttribute("genderEnum", GenderEnum.values());
     	logger.info("register view"); 
         return "admin/procedures/registerTest";
     }

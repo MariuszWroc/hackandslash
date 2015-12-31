@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.*;
-import pl.mygames.hackandslash.dto.util.general.Gender;
+import pl.mygames.hackandslash.dto.util.general.GenderEnum;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
 import pl.mygames.hackandslash.service.IHeroCreationService;
@@ -31,7 +31,7 @@ public class CreateHeroAdminController {
 	@RequestMapping(value = "/heroTest", method = RequestMethod.GET)
 	public String showHero(ModelMap model) {
 		model.addAttribute("hero", null);
-		model.addAttribute("genderEnum", Gender.values());
+		model.addAttribute("genderEnum", GenderEnum.values());
 		model.addAttribute("raceEnum", UserRace.values());
 		model.addAttribute("professionEnum", UserProfession.values());
 

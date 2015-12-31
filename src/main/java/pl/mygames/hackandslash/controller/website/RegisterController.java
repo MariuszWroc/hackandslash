@@ -4,57 +4,50 @@ package pl.mygames.hackandslash.controller.website;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.ws.rs.Consumes;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import pl.mygames.hackandslash.dto.GenderWorkAround;
+import org.springframework.web.bind.annotation.*;
 
-import pl.mygames.hackandslash.dto.RegisterDTO;
-import pl.mygames.hackandslash.dto.util.general.Gender;
-import pl.mygames.hackandslash.service.IRegisterService;
+import pl.mygames.hackandslash.dto.GenderDTO;
+
+import pl.mygames.hackandslash.dto.util.general.GenderEnum;
+import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
+
 
 @RestController
 @RequestMapping(value = "/register")
-@Deprecated
 public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class); 
     
 	@Autowired
     private IUserService userService;
         
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String viewRegistration(ModelMap model) {
-    	RegisterDTO register = new RegisterDTO();
-    	model.addAttribute("registerDTO", register);
-    	logger.info("register view"); 
-        return "register";
-    }
-	
-	@RequestMapping(value = "/register/add", method = RequestMethod.POST)
-	public String processRegistration(@ModelAttribute(value = "registerDTO") RegisterDTO register, BindingResult result) {
-		
+	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"})
+	public ResponseEntity<Void> processRegistration(@RequestBody GameUser userRegister, BindingResult result) {
+		logger.info("Creating User " + userRegister.getLogin());
 		if (result.hasErrors()) {
-			return "redirect:/failed";
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		} else {
-//			registerService.add(register);
-			return "redirect:/success";
+			userService.add(userRegister);
+			HttpHeaders headers = new HttpHeaders();
+//	        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 		}
 	}
         
         @RequestMapping(value = {"/genderList"}, method = RequestMethod.GET)
-        public @ResponseBody List<GenderWorkAround> getGenderList(ModelMap model) {
-            List<GenderWorkAround> list = new ArrayList<>();
-            for(Gender g:Gender.values()){
-               list.add(new GenderWorkAround(g));
+        public @ResponseBody List<GenderDTO> getGenderList(ModelMap model) {
+            List<GenderDTO> list = new ArrayList<>();
+            for(GenderEnum gender: GenderEnum.values()){
+               list.add(new GenderDTO(gender));
             }
             return list;
         }

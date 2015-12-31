@@ -9,6 +9,7 @@
 	<http use-expressions="true" disable-url-rewriting="true">
 		<access-denied-handler error-page="/denied" />
 		<intercept-url pattern="/" method="GET" access="permitAll"/>
+		<intercept-url pattern="/register/add" method="POST" access="permitAll"/>
 		<intercept-url pattern="/login" method="GET" access="isAnonymous()"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**"

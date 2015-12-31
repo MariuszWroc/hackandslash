@@ -18,7 +18,7 @@
 		    			<span class="lead">Register Form </span>
 		    		</div>
 					<div class="formcontainer">
-						<form ng-submit="submit()" name="registerForm" class="form-horizontal">
+						<form ng-submit="doRegister()" method="post" name="registerForm" class="form-horizontal">
 							<input type="hidden" ng-model="userRegister.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">

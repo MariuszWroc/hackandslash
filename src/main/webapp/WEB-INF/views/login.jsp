@@ -25,7 +25,7 @@
                                         <spring:message text="Password:"/>
                                 </td>
                                 <td>
-                                        <input type="password" name="password" required/>
+                                        <input type="password" name="password" value="" required/>
                                 </td>
                             </tr>
                             <tr>

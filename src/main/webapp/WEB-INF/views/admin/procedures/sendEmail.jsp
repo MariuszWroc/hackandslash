@@ -18,7 +18,7 @@
 	</head>
 	<body>
 	    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-	    <c:url var="addAction" value="/admin/email/send" ></c:url>
+	    <c:url var="addAction" value="/email/send" ></c:url>
 	    <div>
 	    	<center>
 		        <h1>Spring MVC - Send e-mail</h1>

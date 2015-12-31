@@ -38,36 +38,7 @@ public class UserController extends UserCommon{
 
     @Autowired
     private IUserService userService;
-    private Integer keyValue;
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logoutUser(@ModelAttribute(value = "endpoint") String endpoint, ModelMap model) {
-        logger.info("User logout" + endpoint);
-        getActualLogoutUser();
-        return "/";
-    }
-    
-    /*
-     * Mapping users list and one user 
-     */
-    @RequestMapping(value = "/edit/{login}", method = RequestMethod.GET)
-    public String editUser(@PathVariable("login") String login, ModelMap model) {
-        model.addAttribute("users", findUsers());
-        logger.info("User with login = " + login + ", edited");
-        return "/{login}";
-    }
-
-    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)
-    public @ResponseBody
-    UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
-        if (authenticateUser(login)) {
-            logger.info("User with login = " + login + " loaded");
-        	return userService.getUserDTO(login);
-        } else {
-        	return null;
-        }
-    }
-    
     @RequestMapping(value = "/actualProfil", method = RequestMethod.GET)
     public @ResponseBody UserDTO getUser(ModelMap model) {
         if (getActualLoggedUser().isEnabled()) {
@@ -78,6 +49,36 @@ public class UserController extends UserCommon{
         	return null;
         }
     }
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logoutUser(@ModelAttribute(value = "endpoint") String endpoint, ModelMap model) {
+        logger.info("User logout" + endpoint);
+        getActualLogoutUser();
+        return "/";
+    }
+    
+    /*
+     * Mapping users list and one user 
+     */
+//    @RequestMapping(value = "/edit/{login}", method = RequestMethod.GET)
+//    public String editUser(@PathVariable("login") String login, ModelMap model) {
+//        model.addAttribute("users", findUsers());
+//        logger.info("User with login = " + login + ", edited");
+//        return "/{login}";
+//    }
+
+//    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)
+//    public @ResponseBody
+//    UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
+//        if (authenticateUser(login)) {
+//            logger.info("User with login = " + login + " loaded");
+//        	return userService.getUserDTO(login);
+//        } else {
+//        	return null;
+//        }
+//    }
+    
+
       
     
     /*

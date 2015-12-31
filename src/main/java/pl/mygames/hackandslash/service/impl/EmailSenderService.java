@@ -1,10 +1,10 @@
 package pl.mygames.hackandslash.service.impl;
 
-import org.jvnet.hk2.annotations.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.*;
+import org.springframework.stereotype.Service;
 
 import pl.mygames.hackandslash.dto.EmailDTO;
 

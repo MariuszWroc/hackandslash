@@ -13,7 +13,7 @@
 						<span class="lead">Contact us</span>
 					</div>
 					<div class="formcontainer">
-						<form ng-submit="submit()" method="POST" name="emailForm" class="form-horizontal">
+						<form ng-submit="sendEmail()" method="POST" name="emailForm" class="form-horizontal">
 							<div class="row">
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">From</label>
@@ -36,8 +36,8 @@
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">Content</label>
 									<div class="col-md-7">
-										<input type="text" class="form-control input-sm"
-											ng-model="emailDetail.body" required="required"/>
+										<textarea rows="10" class="form-control input-sm"
+											ng-model="emailDetail.body" required="required"></textarea>
 									</div>								
 								</div>
 							</div>

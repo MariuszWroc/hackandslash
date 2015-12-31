@@ -55,7 +55,7 @@ public class NavigationController {
         return "helper/afterLogout";
     }
     
-    @RequestMapping(value = {"/logout/failed"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/failed"}, method = RequestMethod.GET)
     public String getFailed() {
         return "helper/failed";
     }

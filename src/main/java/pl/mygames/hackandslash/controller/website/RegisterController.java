@@ -50,11 +50,6 @@ public class RegisterController {
 		}
 	}
         
-        @RequestMapping(value = {"/userList.json"}, method = RequestMethod.GET)
-        public @ResponseBody int getUserList() {
-            return userService.findAll().size();
-        }
-        
         @RequestMapping(value = {"/genderList"}, method = RequestMethod.GET)
         public @ResponseBody List<GenderWorkAround> getGenderList(ModelMap model) {
             List<GenderWorkAround> list = new ArrayList<>();

@@ -18,7 +18,7 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
             $scope.userDetail = res;   
         })
         .error(function(error){
-            console.log('rror after getting user ' + error);
+            console.log('Error after getting user ' + error);
         });
         
     $scope.reset = function(){

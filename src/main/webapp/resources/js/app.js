@@ -9,7 +9,7 @@ module.config(['$routeProvider',
         $routeProvider.
                 when('/register', {
                     templateUrl: prefix + '/register',
-                    controller: 'userController'
+                    controller: 'registerController'
                 }).
                 when('/login', {
                     templateUrl: prefix + '/login',
@@ -46,6 +46,10 @@ module.config(['$routeProvider',
                 when('/user/game', {
                     templateUrl: prefix + '/user/game',
                     controller: 'gameController'
+                }).
+                when('/denied', {
+                    templateUrl: prefix + '/denied',
+                    controller: 'menuController'
                 }).
                 when('/user/profil', {
                     templateUrl: prefix + '/user/profil',

@@ -6,10 +6,11 @@
 	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<http pattern="/resources/css/**" security="none" />
+	<http pattern="/register/add" security="none"/>
 	<http use-expressions="true" disable-url-rewriting="true">
 		<access-denied-handler error-page="/denied" />
 		<intercept-url pattern="/" method="GET" access="permitAll"/>
-		<intercept-url pattern="/register/add" method="POST" access="permitAll"/>
+		<intercept-url pattern="/register/**" access="isAnonymous()"/>
 		<intercept-url pattern="/login" method="GET" access="isAnonymous()"/>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**"

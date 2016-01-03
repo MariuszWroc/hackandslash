@@ -72,7 +72,7 @@ public class NavigationController {
     
     @RequestMapping(value = {"/denied"}, method = RequestMethod.GET)
     public String getAccessDenied() {
-        return "helper/access-denied";
+        return "helper/accessDenied";
     }
     
     @RequestMapping(value = {"/header"}, method = RequestMethod.GET)

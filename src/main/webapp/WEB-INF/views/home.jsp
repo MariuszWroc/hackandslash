@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-                <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
+        <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 		<meta name="viewport" content="initial-scale=1" />
 	</head>
 	<body layout="column" ng-app="StarterApp" ng-controller="AppCtrl">
@@ -51,6 +51,7 @@
 			src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 		<script src="${contextPath}/resources/js/app.js"></script>
 		<script src="${contextPath}/resources/js/menuController.js"></script>
+		<script src="${contextPath}/resources/js/registerController.js"></script>
 		<script src="${contextPath}/resources/js/userController.js"></script>
 		<script src="${contextPath}/resources/js/heroController.js"></script>
 		<script src="${contextPath}/resources/js/gameController.js"></script>

@@ -14,11 +14,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.UserDTO;
@@ -57,15 +60,31 @@ public class UserController extends UserCommon{
         return "/";
     }
     
-    /*
-     * Mapping users list and one user 
-     */
-//    @RequestMapping(value = "/edit/{login}", method = RequestMethod.GET)
-//    public String editUser(@PathVariable("login") String login, ModelMap model) {
-//        model.addAttribute("users", findUsers());
-//        logger.info("User with login = " + login + ", edited");
-//        return "/{login}";
-//    }
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<GameUser> updateUser(@PathVariable("id") Integer id, @RequestBody GameUser user, BindingResult result) {
+    	logger.info("Updating User " + id);
+        GameUser currentUser = findUser(id);
+        
+        if (currentUser == null) {
+        	logger.info("User with id " + id + " not found");
+            return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
+        } else {
+            copyUser(user, currentUser);
+            userService.update(currentUser);
+            return new ResponseEntity<GameUser>(currentUser, HttpStatus.OK);
+        }
+
+    }
+
+	private void copyUser(GameUser user, GameUser currentUser) {
+		currentUser.setLogin(user.getLogin());
+        currentUser.setEmail(user.getEmail());
+        currentUser.setFirstname(user.getFirstname());
+        currentUser.setLastname(user.getLastname());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setAge(user.getAge());
+        currentUser.setGender(user.getGender());
+	}
 
 //    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)
 //    public @ResponseBody
@@ -107,7 +126,7 @@ public class UserController extends UserCommon{
         } else {
             user = users.iterator().next();
             if (users.size() > 1) {
-                logger.info("Method findUserInteger id) returned more then one result");
+                logger.info("Method findUser returned more then one result");
             }
         }
         return user;

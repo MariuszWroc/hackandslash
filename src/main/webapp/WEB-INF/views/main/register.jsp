@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/common.css">
 	</head>
 	<body flex id="content" ng-cloak>
-		<div ng-controller="userController">
+		<div ng-controller="registerController">
 			<md-content layout="column" flex class="md-padding">
 				<div id="register" class="panel panel-default">
 					<div class="panel-heading">
@@ -24,7 +24,7 @@
 								<div class="form-group form-group-lg">
 									<label id="form-label" class="col-md-2 control-label" for="inputLogin"><span class="pull-left">Login</span></label>
 									<div class="col-md-7">
-										<input id="inputLogin" type="text" ng-model="userRegister.username"
+										<input id="inputLogin" type="text" ng-model="userRegister.login"
 											class="form-control input-sm" >
 									</div>
 								</div>
@@ -82,7 +82,7 @@
 								<div class="form-group form-group-lg">
 									<label id="form-label" class="col-md-2 control-label" for="inputAge"><span class="pull-left">Age</span></label>
 									<div class="col-md-7">
-										<input id="inputAge" type="number" value="18" min="7" max="99" ng-model="userRegister.age"
+										<input id="inputAge" type="number" min="7" max="99" ng-model="userRegister.age"
 											class="form-control input-sm"
 											/>
 									</div>

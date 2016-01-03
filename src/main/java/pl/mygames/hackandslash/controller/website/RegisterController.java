@@ -5,6 +5,7 @@ package pl.mygames.hackandslash.controller.website;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 
 import org.slf4j.Logger;
@@ -28,27 +29,28 @@ public class RegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class); 
     
 	@Autowired
-    private IUserService userService;
-        
-	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = {"application/json;charset=UTF-8"})
+	private IUserService userService;
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
 	public ResponseEntity<Void> processRegistration(@RequestBody GameUser userRegister, BindingResult result) {
-		logger.info("Creating User " + userRegister.getLogin());
-		if (result.hasErrors()) {
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-		} else {
+		String login = userRegister.getLogin();
+		logger.info("Creating User " + login);
+
+		if ((!result.hasErrors()) && (userService.isRegisterUserValid(login, userRegister.getEmail()))) {
+			logger.info("Creating User " + login);
 			userService.add(userRegister);
-			HttpHeaders headers = new HttpHeaders();
-//	        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-	        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 	}
-        
-        @RequestMapping(value = {"/genderList"}, method = RequestMethod.GET)
-        public @ResponseBody List<GenderDTO> getGenderList(ModelMap model) {
-            List<GenderDTO> list = new ArrayList<>();
-            for(GenderEnum gender: GenderEnum.values()){
-               list.add(new GenderDTO(gender));
-            }
-            return list;
-        }
+	
+	@RequestMapping(value = { "/genderList" }, method = RequestMethod.GET)
+	public @ResponseBody List<GenderDTO> getGenderList(ModelMap model) {
+		List<GenderDTO> list = new ArrayList<>();
+		for (GenderEnum gender : GenderEnum.values()) {
+			list.add(new GenderDTO(gender));
+		}
+		return list;
+	}
 }

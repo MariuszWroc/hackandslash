@@ -23,7 +23,7 @@ import org.hibernate.validator.constraints.NotBlank;
     @NamedQuery(name = "GameUser.findByFirstname", query = "SELECT g FROM GameUser g WHERE g.firstname = :firstname"),
     @NamedQuery(name = "GameUser.findByLastname", query = "SELECT g FROM GameUser g WHERE g.lastname = :lastname"),
     @NamedQuery(name = "GameUser.findByAge", query = "SELECT g FROM GameUser g WHERE g.age = :age"),
-    @NamedQuery(name = "GameUser.findByGender", query = "SELECT g FROM GameUser g WHERE g.gender = :gender"),
+    @NamedQuery(name = "GameUser.findByEmail", query = "SELECT g FROM GameUser g WHERE g.email = :email"),
     @NamedQuery(name = "GameUser.findByLogin", query = "SELECT g FROM GameUser g WHERE g.login = :login"),
     @NamedQuery(name = "GameUser.findByPassword", query = "SELECT g FROM GameUser g WHERE g.password = :password"),
     @NamedQuery(name = "GameUser.findByActivated", query = "SELECT g FROM GameUser g WHERE g.activated = :activated")})

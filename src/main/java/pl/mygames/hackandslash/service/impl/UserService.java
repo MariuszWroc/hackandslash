@@ -36,16 +36,16 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public Boolean add(GameUser user) {
-    	if(!isUserExist(user.getLogin())) {
+//    	if(!isUserExist(user.getLogin())) {
         	user.setId(generateId());
         	user.setActivated(Boolean.TRUE);
         	setDefaultRole(user);
             dao.add(user);
             return true;
-    	} else {
-    		logger.info("User already exist.");
-    		return false;
-    	}
+//    	} else {
+//    		logger.info("User already exist.");
+//    		return false;
+//    	}
 
     }
 
@@ -94,6 +94,12 @@ public class UserService implements IUserService {
     public List<GameUser> findByPassword(String password) {
         return dao.findByQuery("GameUser.findByPassword", "password", password);
     }
+    
+    @Override
+    public List<GameUser> findByEmail(String email) {
+        return dao.findByQuery("GameUser.findByEmail", "email", email);
+    }
+
 
     @Override
     public List<GameUser> findById(Integer id) {
@@ -110,11 +116,21 @@ public class UserService implements IUserService {
     	boolean userExist = isUserExist(loginDTO.getUsername());
     	boolean passwordCorrect = isPasswordCorrect(loginDTO.getPassword());
     	if((userExist) && (passwordCorrect)) {
+        	logger.info("login success");
     		return true;
     	} else {
     		return false;
     	}
     	
+    }
+    
+    @Override
+	public Boolean isRegisterUserValid(String login, String email) {
+    	if ((isUserExist(login)) && (isEmailExist(email))) {
+    		return false;
+    	} else {
+    		return true;
+    	}
     }
 
 	private void setDefaultRole(GameUser user) {
@@ -124,11 +140,21 @@ public class UserService implements IUserService {
         	user.setGameRole(gameRole.iterator().next());	
         }
 	}
-    
-    private Boolean isUserExist(String login) {
+	
+	private Boolean isUserExist(String login) {
     	if (findByLogin(login).isEmpty()) {
     		return false;
     	} else {
+        	logger.info("user exist");
+    		return true;
+    	}
+    }
+	
+	private Boolean isEmailExist(String email) {
+    	if (findByEmail(email).isEmpty()) {
+    		return false;
+    	} else {
+        	logger.info("email exist");
     		return true;
     	}
     }

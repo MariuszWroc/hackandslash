@@ -117,6 +117,10 @@
 								<input type="submit" value="Update"
 									class="btn btn-primary btn-sm">
 							</div>
+							<div class="form-actions floatRight">
+								<input type="button" ng-click="deleteUser()" value="Remove"
+									class="btn btn-primary btn-sm">
+							</div>
 						</div>
 					</form>
 				</div>

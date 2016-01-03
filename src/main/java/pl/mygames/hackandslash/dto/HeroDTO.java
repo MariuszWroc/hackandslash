@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class HeroDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private final Integer id;
-    private final Boolean activated;
+    private final Integer activated;
     @NotBlank
     private final String firstname;
     private final String lastname;
@@ -70,7 +70,7 @@ public class HeroDTO implements Serializable{
         return id;
     }
 
-    public Boolean getActivated() {
+    public Integer getActivated() {
         return activated;
     }
 
@@ -136,7 +136,7 @@ public class HeroDTO implements Serializable{
 	
 	public static class HeroBuilder {
 	    private Integer id;
-	    private Boolean activated;
+	    private Integer activated;
 	    @NotBlank
 	    private final String firstname;
 	    private String lastname;
@@ -185,7 +185,7 @@ public class HeroDTO implements Serializable{
 			return this;
 		}
 
-		public HeroBuilder activated(Boolean activated) {
+		public HeroBuilder activated(Integer activated) {
 			this.activated = activated;
 			return this;
 		}

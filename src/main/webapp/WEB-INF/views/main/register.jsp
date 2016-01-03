@@ -35,6 +35,7 @@
 									<div class="col-md-7">
 										<input id="inputPassword" type="password" ng-model="userRegister.password"
 											class="form-control input-sm"/>
+										<label class="col-md-2 control-label" ng-show="errors.password" >{{errors.password}} </label>
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,6 @@
 module.controller('registerController', ['$scope', '$http', function($scope, $http){
     
-	$scope.userRegister = {id:null, username:'', password:'', email:'', firstname:'', lastname:'', age:''};
+	$scope.userRegister = {id:null, password:'', email:'', firstname:'', lastname:'', age:''};
     
     $scope.genders = [
                       { id: 0, label: '' },
@@ -18,8 +18,12 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
         console.log('adding', $scope.userRegister);
         $http.post(prefix + "/register/add", $scope.userRegister)
         	.success(function(response) {
-	            if(response.length>0) {
-	                angular.forEach(response, function(val){
+                alert('registration successfull\n\
+                       You can now play the game');
+	        })
+	        .error(function(error) {
+	        	if(error.length>0) {
+	                angular.forEach(error, function(val){
 	                   if(val.field==='login'){
 	                       $scope.errors.login = val.defaultMessage;
 	                   }
@@ -27,12 +31,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
 	                       $scope.errors.password = val.defaultMessage;
 	                   }
 	                });
-	            } else {
-	                alert('registration successfull\n\
-	                       You can now play the game');
 	            }
-	        })
-	        .error(function(error) {
 	        	console.log("Can't post user register, " + error);
 	        });
     };

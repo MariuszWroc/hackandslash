@@ -24,6 +24,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
@@ -43,13 +44,14 @@ public class UserController extends UserCommon{
     private IUserService userService;
 
     @RequestMapping(value = "/actualProfil", method = RequestMethod.GET)
-    public @ResponseBody UserDTO getUser(ModelMap model) {
+    public ResponseEntity<UserDTO> getUser(ModelMap model) {
         if (getActualLoggedUser().isEnabled()) {
         	String login = getActualLoggedUser().getUsername();
             logger.info("User with login = " + login + " loaded");
-        	return userService.getUserDTO(login);
+            UserDTO userLoaded = userService.getUserDTO(login);
+        	return new ResponseEntity<UserDTO>(userLoaded, HttpStatus.OK);
         } else {
-        	return null;
+        	return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
         }
     }
     
@@ -60,7 +62,7 @@ public class UserController extends UserCommon{
         return "/";
     }
     
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
     public ResponseEntity<GameUser> updateUser(@PathVariable("id") Integer id, @RequestBody GameUser user, BindingResult result) {
     	logger.info("Updating User " + id);
         GameUser currentUser = findUser(id);
@@ -72,6 +74,20 @@ public class UserController extends UserCommon{
             copyUser(user, currentUser);
             userService.update(currentUser);
             return new ResponseEntity<GameUser>(currentUser, HttpStatus.OK);
+        }
+    }
+    
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<GameUser> deleteUser(@PathVariable("id") Integer id) {
+    	logger.info("Fetching & Deleting User with id " + id);
+  
+        GameUser currentUser = findUser(id);
+        if (currentUser == null) {
+        	logger.info("Unable to delete. User with id " + id + " not found");
+            return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
+        } else {
+            userService.delete(id);
+            return new ResponseEntity<GameUser>(HttpStatus.NO_CONTENT);
         }
 
     }

@@ -13,5 +13,6 @@ public interface IHeroService {
 	void delete(Integer id);
 	void add(HeroDTO heroDTO, String login);
 	HeroDTO getHeroByName(String heroName);
-	HeroDTO getHeroByUser(String login);
+	HeroDTO findByUser(String login);
+	List<HeroDTO> findAllByUser(String login);
 }

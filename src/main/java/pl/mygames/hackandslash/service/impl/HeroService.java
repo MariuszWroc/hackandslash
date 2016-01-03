@@ -1,6 +1,6 @@
 package pl.mygames.hackandslash.service.impl;
 
-import java.util.List;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,8 +64,9 @@ public class HeroService implements IHeroService {
     }
     
     @Override
-    public HeroDTO getHeroByUser(String login) {
+    public HeroDTO findByUser(String login) {
     	Hero heroEntity = null;
+    	
     	List<Hero> heroByUserLogin = dao.getHeroByParam("login", login);
     	for (Hero hero : heroByUserLogin) {
     		logger.info("heroByUserLogin " + hero.getId() + " " + hero.getMoney() + " " + hero.getGameUser().getLogin()); 
@@ -86,7 +87,7 @@ public class HeroService implements IHeroService {
 		HeroDTO heroDTO = new HeroDTO
 				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
 					.id(heroEntity.getId())
-					.activated(true)
+					.activated(heroEntity.getActivated())
 					.startingPoints(diceRoller)
 					.build();
         
@@ -99,6 +100,25 @@ public class HeroService implements IHeroService {
         GameCharacter character = null;
         HeroDTO heroDTO = null;
         return null;
+    }
+    
+    @Override    
+    public List<HeroDTO> findAllByUser(String login) {
+    	List<Hero> heroByUserLogin = dao.getHeroByParam("login", login);
+    	List<HeroDTO> heroesDTOs = new ArrayList<HeroDTO>();
+    	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
+    	
+    	for (Hero heroEntity : heroByUserLogin) {
+    		logger.info("findAllByUser " + heroEntity.getId() + " " + heroEntity.getMoney() + " " + heroEntity.getGameUser().getLogin());
+    		HeroDTO dto = new HeroDTO				
+    				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
+					.id(heroEntity.getId())
+					.activated(heroEntity.getActivated())
+					.startingPoints(diceRoller)
+					.build();
+    		heroesDTOs.add(dto);
+    	}
+		return heroesDTOs;
     }
 
     @Override

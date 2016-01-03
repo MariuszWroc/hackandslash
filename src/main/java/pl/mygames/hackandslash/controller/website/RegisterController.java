@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
-import javax.ws.rs.Consumes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.GenderDTO;
-
 import pl.mygames.hackandslash.dto.util.general.GenderEnum;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
@@ -32,16 +31,17 @@ public class RegisterController {
 	private IUserService userService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
-	public ResponseEntity<Void> processRegistration(@RequestBody GameUser userRegister, BindingResult result) {
+	public ResponseEntity<List<ObjectError>> processRegistration(@RequestBody @Valid GameUser userRegister, BindingResult result) {
 		String login = userRegister.getLogin();
 		logger.info("Creating User " + login);
 
 		if ((!result.hasErrors()) && (userService.isRegisterUserValid(login, userRegister.getEmail()))) {
 			logger.info("Creating User " + login);
 			userService.add(userRegister);
-			return new ResponseEntity<Void>(HttpStatus.CREATED);
+			HttpHeaders headers = new HttpHeaders();
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
 		} else {
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
 		}
 	}
 	

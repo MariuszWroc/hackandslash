@@ -32,6 +32,7 @@ public class GameUser extends AbstractEntity {
     @Id
     @Basic(optional = false)
     @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Size(max = 45)
     private String firstname;
@@ -50,6 +51,7 @@ public class GameUser extends AbstractEntity {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     @Email
+    @NotBlank
     private String email;
     @Basic(optional = false)
     @Column(nullable = false)
@@ -63,17 +65,24 @@ public class GameUser extends AbstractEntity {
     public GameUser() {
     }
 
-    public GameUser(Integer id, Integer age, String firstname, String lastname, 
-                    String login, String password) {
-        this.id = id;
-        this.age = age;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.login = login;
-        this.password = password;
-    }
+    
 
-    @Override
+    public GameUser(Integer id, String firstname, String lastname, Integer age, Integer gender, String login,
+			String password, String email, Boolean activated) {
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.age = age;
+		this.gender = gender;
+		this.login = login;
+		this.password = password;
+		this.email = email;
+		this.activated = activated;
+	}
+
+
+
+	@Override
     public Integer getId() {
         return id;
     }

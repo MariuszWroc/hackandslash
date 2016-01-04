@@ -49,7 +49,7 @@ public class RegisterService implements IRegisterService {
         user.setFirstname(registerDTO.getFirstname());
         user.setLastname(registerDTO.getLastname());
         user.setGender(registerDTO.getGender());
-        user.setLogin(registerDTO.getUsername());
+        user.setLogin(registerDTO.getLogin());
         user.setPassword(registerDTO.getPassword());
         user.setActivated(Boolean.FALSE);
         user.setHeroList(null);

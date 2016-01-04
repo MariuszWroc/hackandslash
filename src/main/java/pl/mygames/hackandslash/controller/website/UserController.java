@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,15 +47,13 @@ public class UserController extends UserCommon{
     @RequestMapping(value = "/actualProfil", method = RequestMethod.GET)
     public ResponseEntity<UserDTO> getUser(ModelMap model) {
         if (getActualLoggedUser().isEnabled()) {
-        	String login = getActualLoggedUser().getUsername();
-            logger.info("User with login = " + login + " loaded");
-            UserDTO userLoaded = userService.getUserDTO(login);
+        	UserDTO userLoaded = loadActualProfil();
         	return new ResponseEntity<UserDTO>(userLoaded, HttpStatus.OK);
         } else {
         	return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
         }
     }
-    
+
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logoutUser(@ModelAttribute(value = "endpoint") String endpoint, ModelMap model) {
         logger.info("User logout" + endpoint);
@@ -63,17 +62,18 @@ public class UserController extends UserCommon{
     }
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<GameUser> updateUser(@PathVariable("id") Integer id, @RequestBody GameUser user, BindingResult result) {
+    public ResponseEntity<GameUser> updateUser(@PathVariable("id") Integer id, @RequestBody @Valid GameUser currentUser, BindingResult result) {
     	logger.info("Updating User " + id);
-        GameUser currentUser = findUser(id);
         
-        if (currentUser == null) {
+    	GameUser dbUser = findUser(id);
+        if (dbUser == null) {
         	logger.info("User with id " + id + " not found");
             return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
         } else {
-            copyUser(user, currentUser);
+        	GameUser userAfter = copyUser(currentUser, dbUser);
             userService.update(currentUser);
-            return new ResponseEntity<GameUser>(currentUser, HttpStatus.OK);
+        	logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
+            return new ResponseEntity<GameUser>(userAfter, HttpStatus.OK);
         }
     }
     
@@ -81,25 +81,48 @@ public class UserController extends UserCommon{
     public ResponseEntity<GameUser> deleteUser(@PathVariable("id") Integer id) {
     	logger.info("Fetching & Deleting User with id " + id);
   
-        GameUser currentUser = findUser(id);
-        if (currentUser == null) {
+        GameUser dbUser = findUser(id);
+        if (dbUser == null) {
         	logger.info("Unable to delete. User with id " + id + " not found");
             return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
         } else {
             userService.delete(id);
+        	logger.info("User with id " + id + " deleted");
             return new ResponseEntity<GameUser>(HttpStatus.NO_CONTENT);
         }
 
     }
+    
+	private UserDTO loadActualProfil() {
+		String login = getActualLoggedUser().getUsername();
+		logger.info("User with login = " + login + " loaded");
+		UserDTO userLoaded = userService.getUserDTO(login);
+		
+		return userLoaded;
+	}
 
-	private void copyUser(GameUser user, GameUser currentUser) {
-		currentUser.setLogin(user.getLogin());
-        currentUser.setEmail(user.getEmail());
-        currentUser.setFirstname(user.getFirstname());
-        currentUser.setLastname(user.getLastname());
-        currentUser.setPassword(user.getPassword());
-        currentUser.setAge(user.getAge());
-        currentUser.setGender(user.getGender());
+	private GameUser copyUser(GameUser userBefore, GameUser userAfter) {
+		Integer id = userBefore.getId();
+		String login = userBefore.getLogin();
+		String email = userBefore.getEmail();
+		
+		if((id != null) && (login != null) && (email != null)) {
+			userAfter.setId(id);
+			userAfter.setLogin(login);
+	        userAfter.setEmail(email);
+	        userAfter.setFirstname(userBefore.getFirstname());
+	        userAfter.setLastname(userBefore.getLastname());
+	        userAfter.setPassword(userBefore.getPassword());
+	        userAfter.setAge(userBefore.getAge());
+	        userAfter.setGender(userBefore.getGender());
+	        userAfter.setActivated(userBefore.getActivated());
+	        userAfter.setGameRole(userBefore.getGameRole());
+	        userAfter.setHeroList(userBefore.getHeroList());
+		}
+        
+		logger.info("New user " + userAfter.getId() + " " + userAfter.getGender() + " " + userAfter.getGameRole()  + " " + userAfter.getHeroList());
+		
+        return userAfter;
 	}
 
 //    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)

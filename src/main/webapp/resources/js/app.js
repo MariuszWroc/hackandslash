@@ -70,6 +70,7 @@ module.config(['$routeProvider',
                 otherwise({
                     redirectTo: '/'
                 });
+
     }]);
 
 

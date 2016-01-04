@@ -31,14 +31,13 @@ public class RegisterController {
 	private IUserService userService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
-	public ResponseEntity<List<ObjectError>> processRegistration(@RequestBody @Valid GameUser userRegister, BindingResult result) {
+	public ResponseEntity<List<ObjectError>> addUser(@RequestBody @Valid GameUser userRegister, BindingResult result) {
 		String login = userRegister.getLogin();
 		logger.info("Creating User " + login);
 
 		if ((!result.hasErrors()) && (userService.isRegisterUserValid(login, userRegister.getEmail()))) {
 			logger.info("Creating User " + login);
 			userService.add(userRegister);
-			HttpHeaders headers = new HttpHeaders();
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);

@@ -12,27 +12,29 @@ import pl.mygames.hackandslash.model.GameUser;
  *
  * @author mariusz
  */
-public class UserDTO extends LoginDTO implements Serializable{
+public class UserDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String firstname;
     private String lastname;
+    private String login;
+    private String password;
     private Integer age;
     private Integer gender;
     private String email;
     private Boolean activated;
     
     public UserDTO(){
-        super();
     }
     
     public UserDTO(GameUser user){
-        super(user);
         id = user.getId();
         firstname = user.getFirstname();
         lastname = user.getLastname();
         age = user.getAge();
         gender = user.getGender();
+        login = user.getLogin();
+        password = user.getPassword();
         email = user.getEmail();
         activated = user.getActivated();
     }
@@ -92,6 +94,21 @@ public class UserDTO extends LoginDTO implements Serializable{
     public void setActivated(Boolean activated) {
         this.activated = activated;
     }
-    
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
     
 }

@@ -4,6 +4,8 @@
     Author     : Jaca
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@page session="true"%>
 <html>
 	<head>
@@ -18,7 +20,7 @@
 		    			<span class="lead">Register Form </span>
 		    		</div>
 					<div class="formcontainer">
-						<form ng-submit="doRegister()" method="post" name="registerForm" class="form-horizontal">
+						<form ng-submit="doRegister()" data-toggle="validator" method="post" name="registerForm" id="registerForm" class="form-horizontal">
 							<input type="hidden" ng-model="userRegister.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">
@@ -26,16 +28,21 @@
 									<div class="col-md-7">
 										<input id="inputLogin" type="text" ng-model="userRegister.login"
 											class="form-control input-sm" >
+										<div class="has-error" ng-show="registerForm.$dirty">
+											<label ng-show="errors.login" class="help-block" >{{errors.login}} </label>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
 									<label id="form-label" class="col-md-2 control-label" for="inputPassword"><span class="pull-left">Password</span></label>
-									<div class="col-md-7">
+									<div class="col-md-7" >
 										<input id="inputPassword" type="password" ng-model="userRegister.password"
 											class="form-control input-sm"/>
-										<label class="col-md-2 control-label" ng-show="errors.password" >{{errors.password}} </label>
+										<div class="has-error" ng-show="registerForm.$dirty">
+											<label ng-show="errors.password" class="help-block">{{errors.password}} </label>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -45,6 +52,9 @@
 									<div class="col-md-7">
 										<input id="inputEmail" type="email" ng-model="userRegister.email"
 											class="form-control input-sm"/>
+									</div>
+									<div class="has-error" ng-show="registerForm.$dirty">
+										<label ng-show="errors.email" class="help-block" >{{errors.email}} </label>
 									</div>
 								</div>
 							</div>
@@ -102,3 +112,4 @@
 			</div>
 	</body>
 </html>
+

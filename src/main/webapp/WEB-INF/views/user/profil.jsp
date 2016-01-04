@@ -18,7 +18,7 @@
 					<span class="lead">User Management Form </span>
 				</div>
 				<div class="formcontainer">
-					<form ng-submit="submit()" method="POST" name="userForm" class="form-horizontal">
+					<form ng-submit="submit()" method="post" name="userForm" class="form-horizontal">
 						<input type="hidden" ng-model="userDetail.id" />
 						<div class="row">
 							<div class="form-group form-group-lg">
@@ -26,11 +26,11 @@
 									for="inputLogin"><span class="pull-left">Login</span></label>
 								<div class="col-md-7">
 									<input id="inputLogin" type="text"
-										ng-model="userDetail.username" class="form-control input-sm"
+										ng-model="userDetail.login" class="form-control input-sm"
 										disabled="disabled">
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.username" class="error">{{errors.username}}</span>
+									<label ng-show="errors.login" class="help-block">{{errors.login}} </label>
 								</div>
 							</div>
 						</div>
@@ -43,7 +43,7 @@
 										ng-model="userDetail.password" class="form-control input-sm" />
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.username" class="error">{{errors.username}}</span>
+									<label ng-show="errors.password" class="help-block">{{errors.password}} </label>
 								</div>
 							</div>
 						</div>
@@ -57,7 +57,7 @@
 										class="form-control input-sm" />
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.username" class="error">{{errors.username}}</span>
+									<label ng-show="errors.email" class="help-block">{{errors.email}} </label>
 								</div>
 							</div>
 						</div>
@@ -69,9 +69,6 @@
 									<input id="inputFirstname" type="text"
 										ng-model="userDetail.firstname" class="form-control input-sm" />
 								</div>
-								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.username" class="error">{{errors.username}}</span>
-								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -82,9 +79,6 @@
 									<input id="inputLastname" type="text"
 										ng-model="userDetail.lastname" class="form-control input-sm" />
 								</div>
-								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.username" class="error">{{errors.lastname}}</span>
-								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -94,9 +88,6 @@
 								<div class="col-md-7">
 									<input id="inputAge" type="number" min="7" max="99"
 										ng-model="userDetail.age" class="form-control input-sm" />
-								</div>
-								<div class="has-error" ng-show="userForm.$dirty">
-									<span ng-show="errors.age" class="error">{{errors.username}}</span>
 								</div>
 							</div>
 						</div>
@@ -116,10 +107,9 @@
 							<div class="form-actions floatRight">
 								<input type="submit" value="Update"
 									class="btn btn-primary btn-sm">
-							</div>
-							<div class="form-actions floatRight">
 								<input type="button" ng-click="deleteUser()" value="Remove"
-									class="btn btn-primary btn-sm">
+									class="btn btn-danger btn-sm">
+								 <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="registerForm.$pristine">Clear</button>
 							</div>
 						</div>
 					</form>

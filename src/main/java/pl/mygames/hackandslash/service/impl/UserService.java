@@ -36,16 +36,16 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public Boolean add(GameUser user) {
-//    	if(!isUserExist(user.getLogin())) {
+    	if(!isUserExist(user.getLogin())) {
         	user.setId(generateId());
         	user.setActivated(Boolean.TRUE);
         	setDefaultRole(user);
             dao.add(user);
             return true;
-//    	} else {
-//    		logger.info("User already exist.");
-//    		return false;
-//    	}
+    	} else {
+    		logger.info("User already exist.");
+    		return false;
+    	}
 
     }
 

@@ -9,12 +9,14 @@
 		<div id="header" >
 			<md-toolbar layout="row">
 			<div class="md-toolbar-tools" id="popupContainer">
-				<md-button ng-click="toggleSidenav('left')" class="md-icon-button">
-					<md-tooltip>Side Panel</md-tooltip> 
-					<md-icon aria-label="Menu"
-						md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-					</md-icon>
-				</md-button>
+				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<md-button ng-click="toggleSidenav('left')" class="md-icon-button">
+						<md-tooltip>Side Panel</md-tooltip> 
+						<md-icon aria-label="Menu"
+							md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+						</md-icon>
+					</md-button>
+				</c:if>
 				<md-button class="md-flat" ng-href="#/">Hack and Slash</md-button> 
 				<span flex></span>
 				<c:if test="${pageContext.request.userPrincipal.name == null}">

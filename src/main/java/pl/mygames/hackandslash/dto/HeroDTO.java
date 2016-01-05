@@ -218,5 +218,10 @@ public class HeroDTO implements Serializable{
 		public HeroDTO build() {
 			return new HeroDTO(this);
 		}
+		
+		@Override
+		public String toString() {
+	        return String.format("%s, id: %d [hero: %s %s, with exp: %s]", getClass().getSimpleName(), id, firstname, lastname, experience);
+		}
 	}
 }

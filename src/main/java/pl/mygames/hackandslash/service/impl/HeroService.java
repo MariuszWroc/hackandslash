@@ -104,17 +104,21 @@ public class HeroService implements IHeroService {
     
     @Override    
     public List<HeroDTO> findAllByUser(String login) {
-    	List<Hero> heroByUserLogin = dao.getHeroByParam("login", login);
+    	List<Hero> heroesByUserLogin = dao.getHeroByParam("login", login);
     	List<HeroDTO> heroesDTOs = new ArrayList<HeroDTO>();
     	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
     	
-    	for (Hero heroEntity : heroByUserLogin) {
-    		logger.info("findAllByUser " + heroEntity.getId() + " " + heroEntity.getMoney() + " " + heroEntity.getGameUser().getLogin());
-    		HeroDTO dto = new HeroDTO				
-    				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
+    	for (Hero heroEntity : heroesByUserLogin) {
+    		logger.info("findAllByUser " + heroEntity.getId() + " " + heroEntity.getMoney());
+    		GameCharacter gameCharacter = heroEntity.getGameCharacter();
+			HeroDTO dto = new HeroDTO				
+    				.HeroBuilder(gameCharacter.getFirstname(), gameCharacter.getGender(), gameCharacter.getAge(), 
+    						gameCharacter.getRace(), gameCharacter.getProfession(), gameCharacter.getStrength(), gameCharacter.getDexterity(), 
+    						gameCharacter.getConstitution(), gameCharacter.getIntelligence(), gameCharacter.getCharisma())
 					.id(heroEntity.getId())
 					.activated(heroEntity.getActivated())
 					.startingPoints(diceRoller)
+					.baseHP(diceRoller)
 					.build();
     		heroesDTOs.add(dto);
     	}

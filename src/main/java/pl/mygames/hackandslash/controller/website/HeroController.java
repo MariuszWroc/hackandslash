@@ -21,10 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
-import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IHeroService;
-import pl.mygames.hackandslash.service.IUserService;
 
 @RestController
 @Scope("session")
@@ -40,7 +38,14 @@ public class HeroController extends UserCommon {
 		if (getActualLoggedUser().isEnabled()) {
 			String login = getActualLoggedUser().getUsername();
 			logger.info("Hero with user login = " + login + " loaded");
-			HeroDTO heroLoaded = heroService.findByUser(login);
+	        List<HeroDTO> heroes = heroService.findAllByUser(login);
+			logger.info("heroes size " + heroes.size());
+	        HeroDTO heroLoaded = heroes.iterator().next();
+			logger.info("Hero find by findAll, id: " + heroLoaded.getId() + " loaded");
+	        
+			HeroDTO herotmp = heroService.findByUser(login);
+			logger.info("Hero find by user, id: " + herotmp.getId() + " loaded");
+			
 			return new ResponseEntity<HeroDTO>(heroLoaded, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
@@ -51,7 +56,7 @@ public class HeroController extends UserCommon {
     public ResponseEntity<List<HeroDTO>> listAllUsers() {
     	String login = getActualLoggedUser().getUsername();
         List<HeroDTO> heroes = heroService.findAllByUser(login);
-        logger.info("Heroes list with user login = " + login + " loaded");
+        logger.info("Heroes list with size + " + heroes.size() + " and with user login = " + login + " loaded");
         if(heroes.isEmpty()){
             return new ResponseEntity<List<HeroDTO>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
@@ -62,7 +67,8 @@ public class HeroController extends UserCommon {
     public ResponseEntity<Hero> updateHero(@PathVariable("id") Integer id, @RequestBody Hero hero, BindingResult result) {
     	logger.info("Updating hero " + id);
         
-        if (hero == null) {
+    	Hero dbHero = findHero(id);
+        if (dbHero == null) {
         	logger.info("Hero with id " + id + " not found");
             return new ResponseEntity<Hero>(HttpStatus.NOT_FOUND);
         } else {
@@ -76,8 +82,8 @@ public class HeroController extends UserCommon {
     public ResponseEntity<Hero> deleteHero(@PathVariable("id") Integer id) {
     	logger.info("Fetching & Deleting hero with id " + id);
   
-    	Hero currentUser = findHero(id);
-        if (currentUser == null) {
+    	Hero dbHero = findHero(id);
+        if (dbHero == null) {
         	logger.info("Unable to delete. Hero with id " + id + " not found");
             return new ResponseEntity<Hero>(HttpStatus.NOT_FOUND);
         } else {

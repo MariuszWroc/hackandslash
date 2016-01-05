@@ -40,13 +40,14 @@ public class HeroController extends UserCommon {
 			logger.info("Hero with user login = " + login + " loaded");
 	        List<HeroDTO> heroes = heroService.findAllByUser(login);
 			logger.info("heroes size " + heroes.size());
-	        HeroDTO heroLoaded = heroes.iterator().next();
-			logger.info("Hero find by findAll, id: " + heroLoaded.getId() + " loaded");
-	        
-			HeroDTO herotmp = heroService.findByUser(login);
-			logger.info("Hero find by user, id: " + herotmp.getId() + " loaded");
+			HeroDTO firstHeroLoaded = null;
+			if (heroes.iterator().hasNext()) {
+		        firstHeroLoaded = heroes.iterator().next();
+			}
+
+			logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
 			
-			return new ResponseEntity<HeroDTO>(heroLoaded, HttpStatus.OK);
+			return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
 		}
@@ -94,7 +95,7 @@ public class HeroController extends UserCommon {
     }
     
     private void copyHero(Hero heroBefore, Hero heroAfter) {
-		// TODO Auto-generated method stub
+    	heroBefore.setMoney(999);
 		
 	}
     

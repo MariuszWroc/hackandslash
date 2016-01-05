@@ -19,7 +19,7 @@
 		    			<span class="lead">Hero Management Form </span>
 		    		</div>
 					<div class="formcontainer">
-						<form ng-submit="submit()" method="POST" name="heroForm" class="form-horizontal">
+						<form ng-submit="submit()" method="post" name="heroForm" class="form-horizontal">
 							<input type="hidden" ng-model="heroDetail.id" />
 							<div class="row">
 								<div class="form-group form-group-lg">
@@ -143,7 +143,8 @@
 							</div>
 						<div class="row">
 	                          <div class="form-actions floatRight">
-	                              <input type="submit"  value="update" class="btn btn-primary btn-sm" >
+	                          	  <input type="submit"  value="{{!heroDetail.id ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" >
+	                          	  <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="heroForm.$pristine">Clear</button>
 	                          </div>
 	                     </div>
 	            	</form>
@@ -166,8 +167,8 @@
                               <td><span ng-bind="one_hero.id"></span></td>
                               <td><span ng-bind="one_hero.firstname"></span></td>
                               <td>
-                              <button type="button" ng-click="edit(one_hero.id)" class="btn btn-success custom-width">Edit</button>  
-                              <button type="button" ng-click="remove(one_hero.id)" class="btn btn-danger custom-width">Remove</button>
+                              <input type="button" ng-click="editUser()" class="btn btn-success custom-width">Edit</button>  
+                              <input type="button" ng-click="deleteUser()" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>

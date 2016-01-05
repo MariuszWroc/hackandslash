@@ -18,7 +18,7 @@
 					<span class="lead">User Management Form </span>
 				</div>
 				<div class="formcontainer">
-					<form ng-submit="submit()" method="post" name="userForm" class="form-horizontal">
+					<form ng-submit="editUser()" method="post" name="userForm" class="form-horizontal">
 						<input type="hidden" ng-model="userDetail.id" />
 						<div class="row">
 							<div class="form-group form-group-lg">

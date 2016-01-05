@@ -21,26 +21,26 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
             console.log('reset user register');
         };
         
-    $scope.submit = function(){
+    $scope.editUser = function(){
     	$http.put("user/edit/"+$scope.userDetail.id, $scope.userDetail)
-    	.success(function(res){
-            console.log('is user logged? ',res);
-            $scope.userDetail = res;
-        })
-        .error(function(error){
-            console.log('Error after getting user ' + error);
-        });
+	    	.success(function(res){
+	            console.log('is user logged? ',res);
+	            $scope.userDetail = res;
+	        })
+	        .error(function(error){
+	            console.log('Error after getting user ' + error);
+	        });
     };
     
     $scope.deleteUser = function(){
     	$http.delete("user/delete/" + $scope.userDetail.id)
-    	.success(function(res){
-            console.log('is user logged? ',res);
-            $scope.userDetail = res;
-        })
-        .error(function(error){
-            console.log('Error after getting user ' + error);
-        });
+	    	.success(function(res){
+	            console.log('is user logged? ',res);
+	            $scope.userDetail = res;
+	        })
+	        .error(function(error){
+	            console.log('Error after getting user ' + error);
+	        });
     };
 
     

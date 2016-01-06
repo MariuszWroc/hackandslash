@@ -8,6 +8,8 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
                       { id: 2, label: 'Female' },
                       ];
                       
+    $scope.errors = {};
+                      
     function getUserData() {
         $http.get(prefix + '/user/actualProfil')
         .success(function(res){
@@ -30,10 +32,25 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
     	$http.put("user/edit/"+$scope.userDetail.id, $scope.userDetail)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
-	            $scope.userDetail = res;
+	            getUserData();
 	        })
 	        .error(function(error){
-	            console.log('Error after getting user ' + error);
+                    if(error.length>0) {
+	                angular.forEach(error, function(val){
+	                   if(val.field==='login'){
+	                       $scope.errors.login = val.defaultMessage;
+	                   }
+	                   if(val.field==='password'){
+	                       $scope.errors.password = val.defaultMessage;
+	                   }
+                           if(val.field==='email'){
+	                       $scope.errors.password = val.defaultMessage;
+	                   }
+	                });
+	            } else {
+                        console.log("Can't post user register, " + error);
+                    }
+                    getUserData();
 	        });
     };
     

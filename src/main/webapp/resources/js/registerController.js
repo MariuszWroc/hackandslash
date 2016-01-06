@@ -22,7 +22,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
                        You can now play the game');
 	        })
 	        .error(function(error) {
-	        	if(error.length>0) {
+                    if(error.length>0) {
 	                angular.forEach(error, function(val){
 	                   if(val.field==='login'){
 	                       $scope.errors.login = val.defaultMessage;
@@ -32,7 +32,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
 	                   }
 	                });
 	            }
-	        	console.log("Can't post user register, " + error);
+                    console.log("Can't post user register, " + error);
 	        });
     };
     

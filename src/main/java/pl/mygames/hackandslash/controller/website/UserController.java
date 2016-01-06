@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.UserDTO;
@@ -56,18 +57,15 @@ public class UserController extends UserCommon{
     }
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<GameUser> updateUser(@PathVariable("id") Integer id, @RequestBody @Valid GameUser currentUser, BindingResult result) {
+    public ResponseEntity<List<ObjectError>> updateUser(@PathVariable("id") Integer id, @RequestBody @Valid GameUser currentUser, BindingResult result) {
     	logger.info("Updating User " + id);
         
-    	GameUser dbUser = findUser(id);
-        if (dbUser == null) {
-        	logger.info("User with id " + id + " not found");
-            return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
-        } else {
-        	GameUser userAfter = copyUser(currentUser, dbUser);
+        if ((!result.hasErrors()) && (userService.isRegisterUserValid(currentUser.getLogin(), currentUser.getEmail()))) {
             userService.update(currentUser);
-        	logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
-            return new ResponseEntity<GameUser>(userAfter, HttpStatus.OK);
+            logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
+            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
         }
     }
     

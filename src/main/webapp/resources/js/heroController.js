@@ -2,14 +2,18 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $scope.heroDetail = {};
     $scope.heroes = [];
     
-    $http.get(prefix + '/user/actualHero')
+    function getHeroData() {
+        $http.get(prefix + '/user/actualHero')
         .success(function(response){
-        console.log('Fetching hero success ', response);
+            console.log('Fetching hero success ', response);
             $scope.heroDetail = response;
         })
         .error(function(error){
             console.log("Error after getting hero. ", error);
         });
+    }
+    
+    getHeroData();
     
     $http.get(prefix + '/user/hero/getAll')
 	    .success(function(response){
@@ -43,6 +47,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     };
             
     $scope.reset = function(){
-        $scope.heroDetail = {};
+        getHeroData();
     };
 }]);

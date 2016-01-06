@@ -23,9 +23,18 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
                       { id: 2, label: 'Łowca' },
                       { id: 2, label: 'Złodziej' },
                       ];
+                      
+    $http.get(prefix + '/user/actualHero')
+        .success(function(response){
+            console.log('Fetching hero success ', response);
+            $scope.heroDetail = response;
+        })
+        .error(function(error){
+            console.log("Error after getting hero. ", error);
+        });
     
-    function getHeroData() {
-        $http.get(prefix + '/user/actualHero')
+    function getHeroData(heroId) {
+        $http.get(prefix + '/user/hero/get/' + heroId)
         .success(function(response){
             console.log('Fetching hero success ', response);
             $scope.heroDetail = response;
@@ -34,8 +43,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
             console.log("Error after getting hero. ", error);
         });
     }
-    
-    getHeroData();
     
     $http.get(prefix + '/user/hero/getAll')
 	    .success(function(response){
@@ -58,7 +65,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     };
     
     $scope.loadHero = function (heroId){
-        console.log(heroId);
+        getHeroData(heroId);
     }
     
     $scope.deleteHero = function(){
@@ -89,6 +96,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     }
             
     $scope.reset = function(){
-        getHeroData();
+        getHeroData(heroDetail.id);
     };
 }]);

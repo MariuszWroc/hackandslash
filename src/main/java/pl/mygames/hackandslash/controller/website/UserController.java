@@ -59,13 +59,19 @@ public class UserController extends UserCommon{
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
     public ResponseEntity<List<ObjectError>> updateUser(@PathVariable("id") Integer id, @RequestBody @Valid GameUser currentUser, BindingResult result) {
     	logger.info("Updating User " + id);
-        
-        if ((!result.hasErrors()) && (userService.isRegisterUserValid(currentUser.getLogin(), currentUser.getEmail()))) {
-            userService.update(currentUser);
-            logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
-            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
+  
+    	GameUser dbUser = findUser(id);
+        if (dbUser == null) {
+        	logger.info("User with id " + id + " not found");
+            return new ResponseEntity<List<ObjectError>>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
+	        if ((!result.hasErrors()) && (userService.isRegisterUserValid(currentUser.getLogin(), currentUser.getEmail()))) {
+	            userService.update(currentUser);
+	            logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
+	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
+	        }
         }
     }
     

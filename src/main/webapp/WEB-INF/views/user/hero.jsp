@@ -167,8 +167,8 @@
                               <td><span ng-bind="one_hero.id"></span></td>
                               <td><span ng-bind="one_hero.firstname"></span></td>
                               <td>
-                              <button type="button" ng-click="editUser()" class="btn btn-success custom-width">Edit</button>  
-                              <button type="button" ng-click="deleteUser()" class="btn btn-danger custom-width">Remove</button>
+                              <button type="button" ng-click="editHero(one_hero.id)" class="btn btn-success custom-width">Edit</button>  
+                              <button type="button" ng-click="deleteHero()" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>

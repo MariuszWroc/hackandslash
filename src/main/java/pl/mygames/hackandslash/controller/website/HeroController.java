@@ -50,8 +50,11 @@ public class HeroController extends UserCommon {
 			}
 
 			logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
-			
-			return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
+			if(!heroes.isEmpty()){
+                            return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
+                        } else {
+                            return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
+                        }
 		} else {
 			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
 		}

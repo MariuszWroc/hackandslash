@@ -60,6 +60,23 @@ public class HeroController extends UserCommon {
 		}
 	}
 	
+	@RequestMapping(value = "/hero/get/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Hero> getHeroById(@PathVariable("id") Integer id, ModelMap model) {
+		if (getActualLoggedUser().isEnabled()) {
+			String login = getActualLoggedUser().getUsername();
+			logger.info("Hero with user login = " + login + " loaded");
+	        List<HeroDTO> heroes = heroService.findAllByUser(login);
+			logger.info("heroes size " + heroes.size());
+			Hero heroById = findHero(id);
+
+			logger.info("Hero find by findAll, id: " + heroById.getId() + " loaded");
+			
+			return new ResponseEntity<Hero>(heroById, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Hero>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	@RequestMapping(value = "/hero/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
 	public ResponseEntity<List<ObjectError>> addHero(@RequestBody @Valid Hero hero, BindingResult result) {
 //		String login = userRegister.getLogin();

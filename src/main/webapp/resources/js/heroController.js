@@ -24,7 +24,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	        console.log("Error after getting hero. ", error);
 	    });
     
-    $scope.editHero = function(){
+    function editHero() {
     	$http.put("user/hero/edit/"+$scope.heroDetail.id, $scope.heroDetail)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
@@ -45,6 +45,22 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            console.log('Error after getting user ' + error);
 	        });
     };
+    
+    $scope.submit = function(){
+        if($scope.heroDetail.id) {
+            editHero();
+        } else {
+            // dodać do add
+            $http.post("user/hero/add/", $scope.heroDetail)
+	    	.success(function(res){
+	            console.log('is user logged? ',res);
+	            $scope.heroDetail = res;
+	        })
+	        .error(function(error){
+	            console.log('Error after getting user ' + error);
+	        });
+        }
+    }
             
     $scope.reset = function(){
         getHeroData();

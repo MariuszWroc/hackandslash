@@ -8,6 +8,8 @@ package pl.mygames.hackandslash.controller.website;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
+import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IHeroService;
 
@@ -53,6 +57,20 @@ public class HeroController extends UserCommon {
 		}
 	}
 	
+	@RequestMapping(value = "/hero/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
+	public ResponseEntity<List<ObjectError>> addHero(@RequestBody @Valid Hero hero, BindingResult result) {
+//		String login = userRegister.getLogin();
+//		logger.info("Creating User " + login);
+
+		if ((!result.hasErrors())) {
+			logger.info("Creating hero ");
+			heroService.add(hero);
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
+		}
+	}
+	
     @RequestMapping(value = "/hero/getAll", method = RequestMethod.GET)
     public ResponseEntity<List<HeroDTO>> listAllUsers() {
     	String login = getActualLoggedUser().getUsername();
@@ -74,7 +92,8 @@ public class HeroController extends UserCommon {
             return new ResponseEntity<Hero>(HttpStatus.NOT_FOUND);
         } else {
             copyHero(hero, hero);
-            heroService.update(hero);
+            logger.info("Hero with id " + id + " hero detail: " + hero.getMoney() + " " + hero.getGameUser().getLogin() + " " + hero.getGameCharacter().getFirstname());
+//            heroService.update(hero);
             return new ResponseEntity<Hero>(hero, HttpStatus.OK);
         }
     }

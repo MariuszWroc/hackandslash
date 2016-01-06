@@ -41,16 +41,17 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Gender</label>
-									<div class="col-md-7">
-										<input type="text"
-											class="form-control input-sm"
-											ng-model="heroDetail.gender" />
-									</div>
-								</div>
-							</div>
+                                                        <div class="row">
+                                                            <div class="form-group form-group-lg">
+                                                                    <label class="col-md-2 control-label" for="file">Gender</label>
+                                                                    <div class="col-md-7">
+                                                                            <select id="mySel" ng-model="heroDetail.gender" class="form-control">
+                                                                                    <option ng-repeat="gender in genders" ng-selected="heroDetail.gender==gender.id"
+                                                                                            value="{{gender.id}}">{{gender.label}}</option>
+                                                                            </select>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
 							<div class="row">
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">Age</label>
@@ -65,20 +66,22 @@
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">Race</label>
 									<div class="col-md-7">
-										<input type="text"
-											class="form-control input-sm"
-											ng-model="heroDetail.race" />
-									</div>
+                                                                            <select id="mySel" ng-model="heroDetail.race" class="form-control">
+                                                                                    <option ng-repeat="race in races" ng-selected="heroDetail.race==race.id"
+                                                                                            value="{{race.id}}">{{race.label}}</option>
+                                                                            </select>
+                                                                    </div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">Profession</label>
 									<div class="col-md-7">
-										<input type="text"
-											class="form-control input-sm"
-											ng-model="heroDetail.profession" input-sm"/>
-									</div>
+                                                                            <select id="mySel" ng-model="heroDetail.profession" class="form-control">
+                                                                                    <option ng-repeat="profession in proffesions" ng-selected="heroDetail.profession==profession.id"
+                                                                                            value="{{profession.id}}">{{profession.label}}</option>
+                                                                            </select>
+                                                                    </div>
 								</div>
 							</div>
 							<div class="row">
@@ -167,7 +170,7 @@
                               <td><span ng-bind="one_hero.id"></span></td>
                               <td><span ng-bind="one_hero.firstname"></span></td>
                               <td>
-                              <button type="button" ng-click="editHero(one_hero.id)" class="btn btn-success custom-width">Edit</button>  
+                              <button type="button" ng-click="loadHero(one_hero.id)" class="btn btn-success custom-width">Edit</button>  
                               <button type="button" ng-click="deleteHero()" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>

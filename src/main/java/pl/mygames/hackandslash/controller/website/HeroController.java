@@ -46,10 +46,10 @@ public class HeroController extends UserCommon {
 			logger.info("heroes size " + heroes.size());
 			HeroDTO firstHeroLoaded = null;
 			if (heroes.iterator().hasNext()) {
-		        firstHeroLoaded = heroes.iterator().next();
+                            firstHeroLoaded = heroes.iterator().next();
+                            logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
 			}
-
-			logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
+                        
 			if(!heroes.isEmpty()){
                             return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
                         } else {

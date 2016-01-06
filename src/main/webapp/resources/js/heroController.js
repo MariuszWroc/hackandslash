@@ -2,6 +2,28 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $scope.heroDetail = {};
     $scope.heroes = [];
     
+    $scope.genders = [
+                      { id: 0, label: '' },
+                      { id: 1, label: 'Male' },
+                      { id: 2, label: 'Female' },
+                      ];
+    
+    $scope.races = [
+                      { id: 0, label: '' },
+                      { id: 1, label: 'Człowiek' },
+                      { id: 2, label: 'Elf' },
+                      { id: 3, label: 'Krasnolud' },
+                      { id: 4, label: 'Niziołek' },
+                      ];
+    
+    $scope.proffesions = [
+                      { id: 0, label: '' },
+                      { id: 1, label: 'Mag' },
+                      { id: 2, label: 'Wojownik' },
+                      { id: 2, label: 'Łowca' },
+                      { id: 2, label: 'Złodziej' },
+                      ];
+    
     function getHeroData() {
         $http.get(prefix + '/user/actualHero')
         .success(function(response){
@@ -34,6 +56,10 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            console.log('Error after getting user ' + error);
 	        });
     };
+    
+    $scope.loadHero = function (heroId){
+        console.log(heroId);
+    }
     
     $scope.deleteHero = function(){
     	$http.delete("user/hero/delete/" + $scope.heroDetail.id)

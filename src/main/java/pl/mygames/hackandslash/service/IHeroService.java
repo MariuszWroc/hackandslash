@@ -15,4 +15,5 @@ public interface IHeroService {
 	HeroDTO getHeroByName(String heroName);
 	HeroDTO findByUser(String login);
 	List<HeroDTO> findAllByUser(String login);
+	HeroDTO findDTOById(Integer id);
 }

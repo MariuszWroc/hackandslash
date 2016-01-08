@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class HeroDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     private final Integer id;
+    private final String login;
     private final Integer activated;
     @NotBlank
     private final String firstname;
@@ -48,6 +49,7 @@ public class HeroDTO implements Serializable{
 
 	private HeroDTO(HeroBuilder builder) {
 			this.id = builder.id;
+			this.login = builder.login;
 			this.activated = builder.activated;
 			this.firstname = builder.firstname;
 			this.lastname = builder.lastname;
@@ -66,8 +68,33 @@ public class HeroDTO implements Serializable{
 			this.money = builder.money;
 		}
 
+	public HeroDTO() {
+		this.id = null;
+		this.login = null;
+		this.activated = null;
+		this.firstname = null;
+		this.lastname = null;
+		this.gender = null;
+		this.age = null;
+		this.race = null;
+		this.profession = null;
+		this.strength = null;
+		this.dexterity = null;
+		this.constitution = null;
+		this.intelligence = null;
+		this.charisma = null;
+		this.baseHP = null;
+		this.experience = null;
+		this.startingPoints = null;
+		this.money = null;
+	}
+
 	public Integer getId() {
         return id;
+    }
+	
+	public String getLogin() {
+        return login;
     }
 
     public Integer getActivated() {
@@ -136,6 +163,7 @@ public class HeroDTO implements Serializable{
 	
 	public static class HeroBuilder {
 	    private Integer id;
+	    private String login;
 	    private Integer activated;
 	    @NotBlank
 	    private final String firstname;
@@ -182,6 +210,11 @@ public class HeroDTO implements Serializable{
 		
 		public HeroBuilder id(Integer id) {
 			this.id = id;
+			return this;
+		}
+		
+		public HeroBuilder login(String login) {
+			this.login = login;
 			return this;
 		}
 

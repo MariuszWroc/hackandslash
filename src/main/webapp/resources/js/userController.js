@@ -3,7 +3,6 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
     $scope.userDetail = {id:null, password:'', email:'', firstname:'', lastname:'', age:'', gender:0};
 	
     $scope.genders = [
-                      { id: 0, label: '' },
                       { id: 1, label: 'Male' },
                       { id: 2, label: 'Female' },
                       ];

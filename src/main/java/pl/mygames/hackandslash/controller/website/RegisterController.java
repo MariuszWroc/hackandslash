@@ -33,13 +33,15 @@ public class RegisterController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
 	public ResponseEntity<List<ObjectError>> addUser(@RequestBody @Valid GameUser userRegister, BindingResult result) {
 		String login = userRegister.getLogin();
-		logger.info("Creating User " + login);
+		logger.info("Validating user " + login);
 
 		if ((!result.hasErrors()) && (userService.isRegisterUserValid(login, userRegister.getEmail()))) {
-			logger.info("Creating User " + login);
+			logger.info("Creating user " + login);
 			userService.add(userRegister);
+			logger.info("Success.");
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
 		} else {
+			logger.info("Failed add " + login);
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
 		}
 	}

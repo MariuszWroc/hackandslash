@@ -3,7 +3,6 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
 	$scope.userRegister = {id:null, password:'', email:'', firstname:'', lastname:'', age:''};
     
     $scope.genders = [
-                      { id: 0, label: '' },
                       { id: 1, label: 'Male' },
                       { id: 2, label: 'Female' },
                       ];
@@ -32,6 +31,8 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
 	                   }
 	                });
 	            }
+                    alert('registration failed\n\
+                    Please try again')
                     console.log("Can't post user register, " + error);
 	        });
     };

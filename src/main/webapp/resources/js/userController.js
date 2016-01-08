@@ -12,13 +12,13 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
                       
     function getUserData() {
         $http.get(prefix + '/user/actualProfil')
-        .success(function(res){
-            console.log('is user logged? ',res);
-            $scope.userDetail = res;
-        })
-        .error(function(error){
-            console.log('Error after getting user ' + error);
-        });
+	        .success(function(res){
+	            console.log('is user logged? ',res);
+	            $scope.userDetail = res;
+	        })
+	        .error(function(error){
+	            console.log('Error after getting user ' + error);
+	        });
     }
     
     getUserData();

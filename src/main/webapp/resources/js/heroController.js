@@ -3,25 +3,22 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $scope.heroes = [];
     
     $scope.genders = [
-                      { id: 0, label: '' },
                       { id: 1, label: 'Male' },
                       { id: 2, label: 'Female' },
                       ];
     
     $scope.races = [
-                      { id: 0, label: '' },
-                      { id: 1, label: 'Człowiek' },
+                      { id: 1, label: 'Human' },
                       { id: 2, label: 'Elf' },
-                      { id: 3, label: 'Krasnolud' },
-                      { id: 4, label: 'Niziołek' },
+                      { id: 3, label: 'Dwarf' },
+                      { id: 4, label: 'Halfling' },
                       ];
     
     $scope.proffesions = [
-                      { id: 0, label: '' },
-                      { id: 1, label: 'Mag' },
-                      { id: 2, label: 'Wojownik' },
-                      { id: 2, label: 'Łowca' },
-                      { id: 2, label: 'Złodziej' },
+                      { id: 1, label: 'Mage' },
+                      { id: 2, label: 'Warrior' },
+                      { id: 3, label: 'Ranger' },
+                      { id: 4, label: 'Thief' },
                       ];
                       
     $http.get(prefix + '/user/actualHero')
@@ -96,6 +93,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     }
             
     $scope.reset = function(){
-        getHeroData(heroDetail.id);
+        getHeroData($scope.heroDetail.id);
     };
 }]);

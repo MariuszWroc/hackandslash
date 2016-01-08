@@ -44,6 +44,16 @@ public class NavigationController {
     public String getEmail() {
         return "main/email";
     }
+	
+	@RequestMapping(value = "/email/success", method = RequestMethod.GET)
+    public String getSendEmailSuccess() {
+        return "/helper/sendSuccess";
+    }
+	
+	@RequestMapping(value = "/email/failed", method = RequestMethod.GET)
+    public String getSendEmailfailed() {
+        return "/helper/sendFailed";
+    }
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
     public String getLogout() {

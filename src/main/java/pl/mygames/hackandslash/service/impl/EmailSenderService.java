@@ -19,12 +19,13 @@ public class EmailSenderService {
         SimpleMailMessage message = new SimpleMailMessage();
 		
 		message.setFrom(emailDTO.getSender());
-		message.setTo(emailDTO.getSender());
+		message.setTo(emailDTO.getReceiver());
 		message.setSubject(emailDTO.getSubject());
 		message.setText(emailDTO.getBody());
 
 		// Send message
 		try {
+			logger.info("Email with subject = " + message.getSubject() + " from addres " + message.getFrom() + " to "+ message.getTo() + " was send");
 			sender.send(message);
 		} catch (MailException e) {
 			logger.error(e.getMessage(), e);

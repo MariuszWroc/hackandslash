@@ -13,7 +13,7 @@
 						<span class="lead">Contact us</span>
 					</div>
 					<div class="formcontainer">
-						<form ng-submit="sendEmail()" method="POST" name="emailForm" class="form-horizontal">
+						<form ng-submit="sendEmail()" method="post" name="emailForm" class="form-horizontal">
 							<div class="row">
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">From</label>

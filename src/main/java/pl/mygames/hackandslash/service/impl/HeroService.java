@@ -124,6 +124,42 @@ public class HeroService implements IHeroService {
     	}
 		return heroesDTOs;
     }
+    
+    @Override
+    public HeroDTO findDTOById(Integer id) {
+    	List<Hero> heroes = dao.findByQuery("Hero.findById", id);
+    	Hero heroEntity = new Hero();
+    	if (heroes.iterator().hasNext()) {
+    		heroEntity = heroes.iterator().next();
+    	}
+    	
+    	Integer race = heroEntity.getGameCharacter().getRace();
+		Integer strength = heroEntity.getGameCharacter().getStrength();
+		Integer age = heroEntity.getGameCharacter().getAge();
+		String firstname = heroEntity.getGameCharacter().getFirstname();
+		Integer profession = heroEntity.getGameCharacter().getProfession();
+		Integer gender = heroEntity.getGameCharacter().getGender();
+		Integer charisma = heroEntity.getGameCharacter().getCharisma();
+		Integer dexterity = heroEntity.getGameCharacter().getDexterity();
+		Integer intelligence = heroEntity.getGameCharacter().getIntelligence();
+		Integer constitution = heroEntity.getGameCharacter().getConstitution();
+		String lastname = heroEntity.getGameCharacter().getLastname();
+		Integer baseHP = heroEntity.getGameCharacter().getBaseHP();
+		Integer experience = heroEntity.getGameCharacter().getExperience();
+		String login = heroEntity.getGameUser().getLogin();
+		HeroDTO dto = new HeroDTO
+    			.HeroBuilder(firstname, gender, age, race, profession, strength, 
+    					dexterity, constitution, intelligence, charisma)
+    			.id(heroEntity.getId())
+    			.activated(heroEntity.getActivated())
+    			.lastname(lastname)
+    			.baseHP(baseHP)
+    			.experience(experience)
+    			.money(heroEntity.getMoney())
+    			.login(login)
+    			.build();
+        return dto;
+    }
 
     @Override
     public List<Hero> findById(Integer id) {

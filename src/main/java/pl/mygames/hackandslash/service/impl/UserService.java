@@ -36,17 +36,11 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public Boolean add(GameUser user) {
-    	if(!isUserExist(user.getLogin())) {
         	user.setId(generateId());
         	user.setActivated(Boolean.TRUE);
         	setDefaultRole(user);
             dao.add(user);
             return true;
-    	} else {
-    		logger.info("User already exist.");
-    		return false;
-    	}
-
     }
 
     @Transactional(readOnly = false)
@@ -126,10 +120,10 @@ public class UserService implements IUserService {
     
     @Override
 	public Boolean isRegisterUserValid(String login, String email) {
-    	if ((isUserExist(login)) && (isEmailExist(email))) {
-    		return false;
-    	} else {
+    	if ((!isUserExist(login)) && (!isEmailExist(email))) {
     		return true;
+    	} else {
+    		return false;
     	}
     }
 

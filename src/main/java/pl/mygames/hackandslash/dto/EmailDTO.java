@@ -14,7 +14,7 @@ public class EmailDTO implements Serializable{
 	private String subject;
 	@NotBlank
 	private String body;
-	private final String receiver  = "slaskManager@gmail.com";
+	private final String receiver  = "mariusz.zlatan@gmail.com";
 	
 	public String getSender() {
 		return sender;

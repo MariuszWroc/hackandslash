@@ -33,9 +33,7 @@
 					</md-content>
 				</div>
 			</div>
-			<div id="footerwrap">
 				<div ng-include = "'${contextPath}/footer'"></div>
-			</div>
 		</div>
                 <!-- Javascripts are always put last in body that way the page will render even if the scripts wont load-->
                 <script

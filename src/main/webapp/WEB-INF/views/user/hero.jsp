@@ -21,120 +21,117 @@
 					<div class="formcontainer">
 						<form ng-submit="submit()" method="post" name="heroForm" class="form-horizontal">
 							<input type="hidden" ng-model="heroDetail.id" />
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Firstname</label>
-									<div class="col-md-7">
-										<input type="text"
-											class="form-control input-sm"
-											ng-model="heroDetail.firstname" />
-									</div>
-								</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Firstname</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control input-sm"
+									ng-model="heroDetail.firstname" />
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Lastname</label>
-									<div class="col-md-7">
-										<input type="text"
-											class="form-control input-sm"
-											ng-model="heroDetail.lastname" />
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Lastname</label>
+							<div class="col-md-7">
+								<input type="text" class="form-control input-sm"
+									ng-model="heroDetail.lastname" />
 							</div>
-                                                        <div class="row">
-                                                            <div class="form-group form-group-lg">
-                                                                    <label class="col-md-2 control-label" for="file">Gender</label>
-                                                                    <div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroDetail.gender" class="form-control">
-                                                                                    <option ng-repeat="gender in genders" ng-selected="heroDetail.gender==gender.id"
-                                                                                            value="{{gender.id}}">{{gender.label}}</option>
-                                                                            </select>
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Age</label>
-									<div class="col-md-7">
-										<input type="number" min="18" max="99"
-											class="form-control input-sm"
-											ng-model="heroDetail.age" />
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Gender</label>
+							<div class="col-md-7">
+								<select id="mySel" ng-model="heroDetail.gender"
+									class="form-control">
+									<option ng-repeat="gender in genders"
+										ng-selected="heroDetail.gender==gender.id"
+										value="{{gender.id}}">{{gender.label}}</option>
+								</select>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Race</label>
-									<div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroDetail.race" class="form-control">
-                                                                                    <option ng-repeat="race in races" ng-selected="heroDetail.race==race.id"
-                                                                                            value="{{race.id}}">{{race.label}}</option>
-                                                                            </select>
-                                                                    </div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Age</label>
+							<div class="col-md-7">
+								<input type="number" min="18" max="99"
+									class="form-control input-sm" ng-model="heroDetail.age" />
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Profession</label>
-									<div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroDetail.profession" class="form-control">
-                                                                                    <option ng-repeat="profession in proffesions" ng-selected="heroDetail.profession==profession.id"
-                                                                                            value="{{profession.id}}">{{profession.label}}</option>
-                                                                            </select>
-                                                                    </div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Race</label>
+							<div class="col-md-7">
+								<select id="mySel" ng-model="heroDetail.race"
+									class="form-control">
+									<option ng-repeat="race in races"
+										ng-selected="heroDetail.race==race.id" value="{{race.id}}">{{race.label}}</option>
+								</select>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Strength</label>
-									<div class="col-md-7">
-										<input type="number"
-											class="form-control input-sm"
-											ng-model="heroDetail.strength" input-sm"/>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Profession</label>
+							<div class="col-md-7">
+								<select id="mySel" ng-model="heroDetail.profession"
+									class="form-control">
+									<option ng-repeat="profession in proffesions"
+										ng-selected="heroDetail.profession==profession.id"
+										value="{{profession.id}}">{{profession.label}}</option>
+								</select>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Dexterity</label>
-									<div class="col-md-7">
-										<input type="number"
-											class="form-control input-sm"
-											ng-model="heroDetail.dexterity" input-sm"/>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Strength</label>
+							<div class="col-md-7">
+								<input type="number" class="form-control input-sm"
+									ng-model="heroDetail.strength" input-sm"/>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Constitution</label>
-									<div class="col-md-7">
-										<input type="number"
-											class="form-control input-sm"
-											ng-model="heroDetail.constitution" input-sm"/>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Dexterity</label>
+							<div class="col-md-7">
+								<input type="number" class="form-control input-sm"
+									ng-model="heroDetail.dexterity" input-sm"/>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Intelligence</label>
-									<div class="col-md-7">
-										<input type="number"
-											class="form-control input-sm"
-											ng-model="heroDetail.intelligence" input-sm"/>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Constitution</label>
+							<div class="col-md-7">
+								<input type="number" class="form-control input-sm"
+									ng-model="heroDetail.constitution" input-sm"/>
 							</div>
-							<div class="row">
-								<div class="form-group form-group-lg">
-									<label class="col-md-2 control-label" for="file">Charisma</label>
-									<div class="col-md-7">
-										<input type="number"
-											class="form-control input-sm"
-											ng-model="heroDetail.charisma" input-sm"/>
-									</div>
-								</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Intelligence</label>
+							<div class="col-md-7">
+								<input type="number" class="form-control input-sm"
+									ng-model="heroDetail.intelligence" input-sm"/>
 							</div>
-							<div class="row">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group form-group-lg">
+							<label class="col-md-2 control-label" for="file">Charisma</label>
+							<div class="col-md-7">
+								<input type="number" class="form-control input-sm"
+									ng-model="heroDetail.charisma" input-sm"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
 								<div class="form-group form-group-lg">
 									<label class="col-md-2 control-label" for="file">BaseHp</label>
 									<div class="col-md-7">

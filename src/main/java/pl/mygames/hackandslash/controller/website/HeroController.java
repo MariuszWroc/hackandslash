@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
-import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IHeroService;
 
@@ -61,19 +60,16 @@ public class HeroController extends UserCommon {
 	}
 	
 	@RequestMapping(value = "/hero/get/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Hero> getHeroById(@PathVariable("id") Integer id, ModelMap model) {
+	public ResponseEntity<HeroDTO> getHeroById(@PathVariable("id") Integer id, ModelMap model) {
+		HeroDTO heroById = null;
 		if (getActualLoggedUser().isEnabled()) {
-			String login = getActualLoggedUser().getUsername();
-			logger.info("Hero with user login = " + login + " loaded");
-	        List<HeroDTO> heroes = heroService.findAllByUser(login);
-			logger.info("heroes size " + heroes.size());
-			Hero heroById = findHero(id);
+			heroById = heroService.findDTOById(id);
 
 			logger.info("Hero find by findAll, id: " + heroById.getId() + " loaded");
-			
-			return new ResponseEntity<Hero>(heroById, HttpStatus.OK);
+			return new ResponseEntity<HeroDTO>(heroById, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Hero>(HttpStatus.NO_CONTENT);
+			HeroDTO heroDTO = new HeroDTO();
+			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
 		}
 	}
 	
@@ -103,18 +99,24 @@ public class HeroController extends UserCommon {
     }
 	
 	@RequestMapping(value = "/hero/edit/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Hero> updateHero(@PathVariable("id") Integer id, @RequestBody Hero hero, BindingResult result) {
+    public ResponseEntity<List<ObjectError>> updateHero(@PathVariable("id") Integer id, @RequestBody @Valid HeroDTO heroDTO, BindingResult result) {
     	logger.info("Updating hero " + id);
         
     	Hero dbHero = findHero(id);
         if (dbHero == null) {
         	logger.info("Hero with id " + id + " not found");
-            return new ResponseEntity<Hero>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.NOT_FOUND);
         } else {
-            copyHero(hero, hero);
-            logger.info("Hero with id " + id + " hero detail: " + hero.getMoney() + " " + hero.getGameUser().getLogin() + " " + hero.getGameCharacter().getFirstname());
-//            heroService.update(hero);
-            return new ResponseEntity<Hero>(hero, HttpStatus.OK);
+        	if (!result.hasErrors()) {
+//              copyHero(dbHero, heroDTO);
+                logger.info("Hero with id " + id + " hero detail: " + heroDTO.getMoney() );
+//                heroService.update(hero);
+                return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);
+        	} else {
+                return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.CONFLICT);        		
+        	}
+        			
+
         }
     }
 

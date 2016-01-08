@@ -18,7 +18,7 @@
 					<span class="lead">User Management Form </span>
 				</div>
 				<div class="formcontainer">
-					<form ng-submit="editUser()" method="post" name="userForm" class="form-horizontal">
+					<form ng-submit="editUser()" method="post" name="userForm" class="form-horizontal" accept-charset="UTF-8">
 						<input type="hidden" ng-model="userDetail.id" />
 						<div class="row">
 							<div class="form-group form-group-lg">
@@ -109,7 +109,7 @@
 									class="btn btn-primary btn-sm">
 								<input type="button" ng-click="deleteUser()" value="Remove"
 									class="btn btn-danger btn-sm">
-								 <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="registerForm.$pristine">Clear</button>
+								 <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="userForm.$pristine">Clear</button>
 							</div>
 						</div>
 					</form>

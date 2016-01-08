@@ -58,17 +58,20 @@ public class UserController extends UserCommon{
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
     public ResponseEntity<List<ObjectError>> updateUser(@PathVariable("id") Integer id, @RequestBody @Valid GameUser currentUser, BindingResult result) {
-    	logger.info("Updating User " + id);
+    	logger.info("Updating User " + currentUser.getId() + " " + currentUser.getEmail());
   
     	GameUser dbUser = findUser(id);
+
         if (dbUser == null) {
         	logger.info("User with id " + id + " not found");
             return new ResponseEntity<List<ObjectError>>(HttpStatus.NOT_FOUND);
         } else {
-	        if ((!result.hasErrors()) && (userService.isRegisterUserValid(currentUser.getLogin(), currentUser.getEmail()))) {
+        	logger.info("Fetching user with login " + dbUser.getId());
+	        if (!result.hasErrors()) {
+	            logger.info("User with id " + id + " updating, currentUser " + currentUser.getLogin());
 	            userService.update(currentUser);
-	            logger.info("User with id " + id + " updated, currentUser " + currentUser.getLogin());
-	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.OK);
+	            logger.info("User updated");
+	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);
 	        } else {
 	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
 	        }
@@ -120,7 +123,7 @@ public class UserController extends UserCommon{
         
 		logger.info("New user " + userAfter.getId() + " " + userAfter.getGender() + " " + userAfter.getGameRole()  + " " + userAfter.getHeroList());
 		
-        return userAfter;
+        return userBefore;
 	}
 
 //    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)

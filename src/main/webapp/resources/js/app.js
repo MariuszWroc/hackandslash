@@ -82,17 +82,19 @@ module.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdSidenav) {
 				$mdSidenav('left').toggle();
 			};
 	
+			var locals = {'fromUserProfile':false};
         $scope.logout = function(ev) {
-	    $mdDialog.show({
-	    	templateUrl: prefix + '/logout',
-	        parent: angular.element(document.querySelector('#container')),
-	        targetEvent: ev,
-	        plain: true,
+            $mdDialog.show({
+    	    	templateUrl: prefix + '/logout',
+    	        parent: angular.element(document.querySelector('#container')),
+    	        targetEvent: ev,
+    	        plain: true,
+    	        locals: locals,
                 controller: 'DialogController',
-            // perform delete operation
-            }, function (value) {
-                //Do something 
-            });
+                // perform delete operation
+                }, function (value) {
+                    //Do something 
+                });
         };
         
         $scope.login = function(ev) {
@@ -100,6 +102,7 @@ module.controller('AppCtrl', function($scope, $mdDialog, $mdMedia, $mdSidenav) {
 	    	templateUrl: prefix + '/login',
 	        parent: angular.element(document.querySelector('#container')),
 	        targetEvent: ev,
+	        locals: locals,
 	        plain: true,
                 controller: 'DialogController',
             // perform delete operation

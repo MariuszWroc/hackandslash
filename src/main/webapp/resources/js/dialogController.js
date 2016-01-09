@@ -1,4 +1,5 @@
-module.controller('DialogController', function($scope, $mdDialog) {
+module.controller('DialogController', function($scope, $mdDialog, locals) {
+	$scope.fromUserProfile = locals.fromUserProfile;
     $scope.hide = function() {
       $mdDialog.hide();
     };

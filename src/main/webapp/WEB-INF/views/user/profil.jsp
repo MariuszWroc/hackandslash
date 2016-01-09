@@ -27,7 +27,7 @@
 								<div class="col-md-7">
 									<input id="inputLogin" type="text"
 										ng-model="userDetail.login" class="form-control input-sm"
-										disabled="disabled">
+										disabled>
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
 									<label ng-show="errors.login" class="help-block">{{errors.login}} </label>
@@ -40,7 +40,8 @@
 									for="inputPassword"><span class="pull-left">Password</span></label>
 								<div class="col-md-7">
 									<input id="inputPassword" type="password"
-										ng-model="userDetail.password" class="form-control input-sm" />
+										ng-model="userDetail.password" class="form-control input-sm" 
+										disabled/>
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
 									<label ng-show="errors.password" class="help-block">{{errors.password}} </label>
@@ -54,7 +55,7 @@
 										e-mail</span></label>
 								<div class="col-md-7">
 									<input id="inputEmail" type="email" ng-model="userDetail.email"
-										class="form-control input-sm" />
+										class="form-control input-sm" disabled/>
 								</div>
 								<div class="has-error" ng-show="userForm.$dirty">
 									<label ng-show="errors.email" class="help-block">{{errors.email}} </label>
@@ -107,7 +108,7 @@
 							<div class="form-actions floatRight">
 								<input type="submit" value="Update"
 									class="btn btn-primary btn-sm">
-								<input type="button" ng-click="deleteUser()" value="Remove"
+								<input type="button" ng-click="deleteUser($event)" value="Remove"
 									class="btn btn-danger btn-sm">
 								 <button type="button" ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="userForm.$pristine">Clear</button>
 							</div>

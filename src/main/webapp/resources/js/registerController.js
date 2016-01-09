@@ -1,4 +1,4 @@
-module.controller('registerController', ['$scope', '$http', function($scope, $http){
+module.controller('registerController', ['$scope', '$http', '$window', function($scope, $http, $window){
     
 	$scope.userRegister = {id:null, password:'', email:'', firstname:'', lastname:'', age:''};
     
@@ -19,6 +19,7 @@ module.controller('registerController', ['$scope', '$http', function($scope, $ht
         	.success(function(response) {
                 alert('registration successfull\n\
                        You can now play the game');
+                $window.location.href = '#/welcome';
 	        })
 	        .error(function(error) {
                     if(error.length>0) {

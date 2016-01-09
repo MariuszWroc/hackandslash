@@ -1,4 +1,4 @@
-module.controller('userController', ['$scope', '$http', function($scope, $http){
+module.controller('userController', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
     
     $scope.userDetail = {id:null, password:'', email:'', firstname:'', lastname:'', age:'', gender:0};
 	
@@ -53,11 +53,23 @@ module.controller('userController', ['$scope', '$http', function($scope, $http){
 	        });
     };
     
-    $scope.deleteUser = function(){
+    $scope.deleteUser = function(ev){
     	$http.delete("user/delete/" + $scope.userDetail.id)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
 	            $scope.userDetail = res;
+	            var locals = {'fromUserProfile':true};
+	            $mdDialog.show({
+	    	    	templateUrl: prefix + '/logout',
+	    	        parent: angular.element(document.querySelector('#container')),
+	    	        targetEvent: ev,
+	    	        plain: true,
+	    	        locals: locals,
+	                controller: 'DialogController',
+	                // perform delete operation
+	                }, function (value) {
+	                    //Do something 
+	                });
 	        })
 	        .error(function(error){
 	            console.log('Error after getting user ' + error);

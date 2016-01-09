@@ -57,7 +57,37 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            $scope.heroDetail = res;
 	        })
 	        .error(function(error){
-	            console.log('Error after getting user ' + error);
+	            if(error.length>0) {
+                        console.log(error);
+	                angular.forEach(error, function(val){
+                            if(!$scope.errors){
+                                $scope.errors = []
+                            }
+                            if(val.field==='age'){
+                                $scope.errors.age = val.defaultMessage;
+                            }
+                            if(val.field==='constitution'){
+                                $scope.errors.constitution = val.defaultMessage;
+                            }
+                            if(val.field==='charisma'){
+                                $scope.errors.charisma = val.defaultMessage;
+                            }
+                            if(val.field==='intelligence'){
+                                $scope.errors.intelligence = val.defaultMessage;
+                            }
+                            if(val.field==='firstname'){
+                                $scope.errors.firstname = val.defaultMessage;
+                            }
+                            if(val.field==='dexterity'){
+                                $scope.errors.dexterity = val.defaultMessage;
+                            }
+                            if(val.field==='strength'){
+                                $scope.errors.strength = val.defaultMessage;
+                            }
+	                });
+	            } else {
+                        console.log('Error trying to update hero ' + error);
+                    }
 	        });
     };
     
@@ -72,7 +102,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            $scope.heroDetail = res;
 	        })
 	        .error(function(error){
-	            console.log('Error after getting user ' + error);
+	            console.log('Error trying to update hero ' + error);
 	        });
     };
     

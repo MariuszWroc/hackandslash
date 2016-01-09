@@ -28,6 +28,9 @@
 								<input type="text" class="form-control input-sm"
 									ng-model="heroDetail.firstname" />
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.firstname" class="help-block">{{errors.firstname}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -59,6 +62,9 @@
 								<input type="number" min="18" max="99"
 									class="form-control input-sm" ng-model="heroDetail.age" />
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.age" class="help-block">{{errors.age}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -93,6 +99,9 @@
 								<input type="number" class="form-control input-sm"
 									ng-model="heroDetail.strength" input-sm"/>
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.strength" class="help-block">{{errors.strength}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -102,6 +111,9 @@
 								<input type="number" class="form-control input-sm"
 									ng-model="heroDetail.dexterity" input-sm"/>
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.dexterity" class="help-block">{{errors.dexterity}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -111,6 +123,9 @@
 								<input type="number" class="form-control input-sm"
 									ng-model="heroDetail.constitution" input-sm"/>
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.constitution" class="help-block">{{errors.constitution}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -120,6 +135,9 @@
 								<input type="number" class="form-control input-sm"
 									ng-model="heroDetail.intelligence" input-sm"/>
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.intelligence" class="help-block">{{errors.intelligence}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">
@@ -129,6 +147,9 @@
 								<input type="number" class="form-control input-sm"
 									ng-model="heroDetail.charisma" input-sm"/>
 							</div>
+                                                        <div class="has-error" ng-show="heroForm.$dirty">
+                                                                <label ng-show="errors.charisma" class="help-block">{{errors.charisma}} </label>
+                                                        </div>
 						</div>
 					</div>
 					<div class="row">

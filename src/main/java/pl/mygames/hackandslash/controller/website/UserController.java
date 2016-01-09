@@ -87,7 +87,7 @@ public class UserController extends UserCommon{
         	logger.info("Unable to delete. User with id " + id + " not found");
             return new ResponseEntity<GameUser>(HttpStatus.NOT_FOUND);
         } else {
-//            userService.delete(id)
+            userService.delete(id);
         	logger.info("User with id " + id + " deleted");
             return new ResponseEntity<GameUser>(HttpStatus.NO_CONTENT);
         }

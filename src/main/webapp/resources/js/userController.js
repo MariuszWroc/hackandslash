@@ -1,6 +1,6 @@
 module.controller('userController', ['$scope', '$http', '$mdDialog', function($scope, $http, $mdDialog){
     
-    $scope.userDetail = {id:null, password:'', email:'', firstname:'', lastname:'', age:''};
+    $scope.userDetail = {id:null, password:'', email:'', firstname:'', lastname:'', age:'', gender:0};
 	
     $scope.genders = [
                       { id: 1, label: 'Male' },

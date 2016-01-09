@@ -28,6 +28,7 @@
                                         <input type="password" name="password" value="" required/>
                                 </td>
                             </tr>
+                            <span flex></span>
                             <tr>
                                 <td>
                                     <md-button type="button" ng-click="cancel()"> Cancel </md-button>

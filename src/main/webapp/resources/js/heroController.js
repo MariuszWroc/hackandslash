@@ -49,6 +49,39 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	    .error(function(error){
 	        console.log("Error after getting hero. ", error);
 	    });
+            
+    function setErrors(error){
+        if(error.length>0) {
+            if(!$scope.errors){
+                    $scope.errors = []
+                }
+            angular.forEach(error, function(val){
+                if(val.field==='age'){
+                    $scope.errors.age = val.defaultMessage;
+                }
+                if(val.field==='constitution'){
+                    $scope.errors.constitution = val.defaultMessage;
+                }
+                if(val.field==='charisma'){
+                    $scope.errors.charisma = val.defaultMessage;
+                }
+                if(val.field==='intelligence'){
+                    $scope.errors.intelligence = val.defaultMessage;
+                }
+                if(val.field==='firstname'){
+                    $scope.errors.firstname = val.defaultMessage;
+                }
+                if(val.field==='dexterity'){
+                    $scope.errors.dexterity = val.defaultMessage;
+                }
+                if(val.field==='strength'){
+                    $scope.errors.strength = val.defaultMessage;
+                }
+            });
+        } else {
+            console.log('Error trying to update hero ' + error);
+        }
+    }
     
     function editHero() {
     	$http.put("user/hero/edit/"+$scope.heroDetail.id, $scope.heroDetail)
@@ -57,37 +90,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            $scope.heroDetail = res;
 	        })
 	        .error(function(error){
-	            if(error.length>0) {
-                        console.log(error);
-	                angular.forEach(error, function(val){
-                            if(!$scope.errors){
-                                $scope.errors = []
-                            }
-                            if(val.field==='age'){
-                                $scope.errors.age = val.defaultMessage;
-                            }
-                            if(val.field==='constitution'){
-                                $scope.errors.constitution = val.defaultMessage;
-                            }
-                            if(val.field==='charisma'){
-                                $scope.errors.charisma = val.defaultMessage;
-                            }
-                            if(val.field==='intelligence'){
-                                $scope.errors.intelligence = val.defaultMessage;
-                            }
-                            if(val.field==='firstname'){
-                                $scope.errors.firstname = val.defaultMessage;
-                            }
-                            if(val.field==='dexterity'){
-                                $scope.errors.dexterity = val.defaultMessage;
-                            }
-                            if(val.field==='strength'){
-                                $scope.errors.strength = val.defaultMessage;
-                            }
-	                });
-	            } else {
-                        console.log('Error trying to update hero ' + error);
-                    }
+	            setErrors(error);
 	        });
     };
     
@@ -100,6 +103,14 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
 	            $scope.heroDetail = res;
+                    $http.get(prefix + '/user/hero/getAll')
+                    .success(function(response){
+                    console.log('Fetching hero success ', response);
+                        $scope.heroes = response;
+                    })
+                    .error(function(error){
+                        console.log("Error after getting hero. ", error);
+                    });
 	        })
 	        .error(function(error){
 	            console.log('Error trying to update hero ' + error);
@@ -117,7 +128,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            $scope.heroDetail = res;
 	        })
 	        .error(function(error){
-	            console.log('Error after getting user ' + error);
+	            setErrors(error);
 	        });
         }
     }

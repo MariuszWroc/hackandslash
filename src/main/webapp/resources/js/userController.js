@@ -6,7 +6,7 @@ module.controller('userController', ['$scope', '$http', '$mdDialog', function($s
                       { id: 1, label: 'Male' },
                       { id: 2, label: 'Female' },
                       ];
-                      
+    $scope.genderSelected = 1;                 
     $scope.errors = {};
                       
     function getUserData() {

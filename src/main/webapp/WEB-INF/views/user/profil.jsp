@@ -97,10 +97,12 @@
 								<label id="form-label" class="col-md-2 control-label"
 									for="inputGender"><span class="pull-left">Gender</span></label>
 								<div class="col-md-7">
-									<select id="mySel" class="form-control">
-									<option/>
-										<option ng-repeat="gender in genders" ng-selected="userDetail.gender==gender.id"
-											value="{{gender.id}}">{{gender.label}}</option>
+									<select id="mySel" ng-model="userDetail.gender" class="form-control">
+										<option ng-selected="userDetail.gender==1"
+											value="1">Male</option>
+											<option ng-selected="userDetail.gender==2"
+											value="2">Female</option>
+											
 									</select>
 								</div>
 							</div>

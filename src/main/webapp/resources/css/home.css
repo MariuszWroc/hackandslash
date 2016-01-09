@@ -100,12 +100,12 @@ p {
 
 #login-box {
 	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
+	padding: 1px;
+	margin: 1px auto;
 	background: #fff;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	border: 1px solid #000;
+	border: 0px solid #000;
 }
 
 body, #mainWrapper {

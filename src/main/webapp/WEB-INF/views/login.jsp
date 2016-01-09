@@ -8,7 +8,7 @@
         <c:set var="contextPath" value="${pageContext.request.contextPath}" />
         <md-dialog aria-label="Logout dialog">
             <md-dialog-content>
-                <div ng-controller="menuController" class="container" id="login-box">
+                <div ng-controller="menuController" class="container"  id="login-box">
                     <c:url var="loginAction" value="/j_spring_security_check" />
                     <form:form action="${loginAction}" method="POST" accept-charset="UTF-8">
                         <table>

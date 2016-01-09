@@ -7,8 +7,6 @@ module.controller('registerController', ['$scope', '$http', '$window', function(
                       { id: 2, label: 'Female' },
                       ];
     
-    $scope.selectedGender = 0;
-    
     $scope.doRegister = function (){
         $scope.errors = {
             'login': '',

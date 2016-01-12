@@ -77,17 +77,6 @@ public class HeroAdminController {
      * This method will return one hero.
      */
 	private Hero findHero(Integer id) {
-		Hero hero;
-		List<Hero> heroes = heroService.findById(id);
-		if (heroes.isEmpty()){
-    		logger.info("Heroes list is empty");
-    		hero = new Hero();
-    	} else {
-    		hero = heroes.iterator().next();
-    		if (heroes.size() > 1) {
-    			logger.info("Method findHero(Integer id) returned more then one result");
-    		}
-    	}
-		return hero;
+		return heroService.findById(id);
 	}
 }

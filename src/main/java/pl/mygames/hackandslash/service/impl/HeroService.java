@@ -60,7 +60,43 @@ public class HeroService implements IHeroService {
     @Transactional(readOnly = false)
     @Override
     public void update(Hero hero) {
-	dao.update(hero);
+    	Integer id = hero.getId();
+    	Hero heroEntity = findById(id);
+    	
+    	heroEntity.setMoney(hero.getMoney());
+    	
+    	dao.update(hero);
+    }
+    
+    @Transactional(readOnly = false)
+    @Override
+    public Hero update(HeroDTO dto) {
+    	Integer id = dto.getId();
+    	List<Hero> heroes = dao.findByQuery("Hero.findById", id);
+    	Hero heroEntity = new Hero();
+    	if (heroes.iterator().hasNext()) {
+    		heroEntity = heroes.iterator().next();
+    	}
+    	
+    	if(dto.getMoney() != null) {
+        	heroEntity.setMoney(dto.getMoney());	
+    	} else {
+    		heroEntity.setMoney(0);
+    	}
+    	heroEntity.getGameCharacter().setFirstname(dto.getFirstname());
+    	heroEntity.getGameCharacter().setLastname(dto.getLastname());
+    	heroEntity.getGameCharacter().setGender(dto.getGender());
+    	heroEntity.getGameCharacter().setAge(dto.getAge());
+    	heroEntity.getGameCharacter().setRace(dto.getRace());
+    	heroEntity.getGameCharacter().setProfession(dto.getProfession());
+    	heroEntity.getGameCharacter().setDexterity(dto.getDexterity());
+    	heroEntity.getGameCharacter().setConstitution(dto.getCharisma());
+    	heroEntity.getGameCharacter().setIntelligence(dto.getIntelligence());
+    	heroEntity.getGameCharacter().setCharisma(dto.getCharisma());
+    	
+    	dao.update(heroEntity);
+    	
+    	return heroEntity;
     }
     
     @Override
@@ -162,9 +198,21 @@ public class HeroService implements IHeroService {
     }
 
     @Override
-    public List<Hero> findById(Integer id) {
-        return dao.findByQuery("Hero.findById", id);
+    public Hero findById(Integer id) {
+		Hero hero;
+		List<Hero> heroes = dao.findByQuery("Hero.findById", id);
+		if (heroes.isEmpty()){
+    		logger.info("Heroes list is empty");
+    		hero = new Hero();
+    	} else {
+    		hero = heroes.iterator().next();
+    		if (heroes.size() > 1) {
+    			logger.info("Method findHero(Integer id) returned more then one result");
+    		}
+    	}
+		return hero;
     }
+    
 
     @Override
     public List<Hero> findAll() {

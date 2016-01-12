@@ -41,22 +41,20 @@ public class HeroController extends UserCommon {
 		if (getActualLoggedUser().isEnabled()) {
 			String login = getActualLoggedUser().getUsername();
 			logger.info("Hero with user login = " + login + " loaded");
-	        List<HeroDTO> heroes = heroService.findAllByUser(login);
+			List<HeroDTO> heroes = heroService.findAllByUser(login);
 			logger.info("heroes size " + heroes.size());
 			HeroDTO firstHeroLoaded = null;
 			if (heroes.iterator().hasNext()) {
-                            firstHeroLoaded = heroes.iterator().next();
-                            logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
+				firstHeroLoaded = heroes.iterator().next();
+				logger.info("Hero find by findAll, id: " + firstHeroLoaded.getId() + " loaded");
+				return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
 			}
-                        
-			if(!heroes.isEmpty()){
-                            return new ResponseEntity<HeroDTO>(firstHeroLoaded, HttpStatus.OK);
-                        } else {
-                            return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
-                        }
+
+			return new ResponseEntity<HeroDTO>(HttpStatus.NOT_FOUND);
 		} else {
 			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
 		}
+              
 	}
 	
 	@RequestMapping(value = "/hero/get/{id}", method = RequestMethod.GET)
@@ -68,19 +66,19 @@ public class HeroController extends UserCommon {
 			logger.info("Hero find by findAll, id: " + heroById.getId() + " loaded");
 			return new ResponseEntity<HeroDTO>(heroById, HttpStatus.OK);
 		} else {
-			HeroDTO heroDTO = new HeroDTO();
-			return new ResponseEntity<HeroDTO>(HttpStatus.NO_CONTENT);
+			HeroDTO heroDTO = new HeroDTO ();
+			return new ResponseEntity<HeroDTO>(heroDTO, HttpStatus.NO_CONTENT);
 		}
 	}
 	
 	@RequestMapping(value = "/hero/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
 	public ResponseEntity<List<ObjectError>> addHero(@RequestBody @Valid Hero hero, BindingResult result) {
 //		String login = userRegister.getLogin();
-//		logger.info("Creating User " + login);
-
+		logger.info("Creating hero");
+		hero.setId(1);
 		if ((!result.hasErrors())) {
 			logger.info("Creating hero ");
-			heroService.add(hero);
+//			heroService.add(hero);
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
@@ -102,21 +100,18 @@ public class HeroController extends UserCommon {
     public ResponseEntity<List<ObjectError>> updateHero(@PathVariable("id") Integer id, @RequestBody @Valid HeroDTO heroDTO, BindingResult result) {
     	logger.info("Updating hero " + id);
         
-    	Hero dbHero = findHero(id);
+    	Hero dbHero = heroService.findById(id);
         if (dbHero == null) {
         	logger.info("Hero with id " + id + " not found");
             return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.NOT_FOUND);
         } else {
         	if (!result.hasErrors()) {
-//              copyHero(dbHero, heroDTO);
-                logger.info("Hero with id " + id + " hero detail: " + heroDTO.getMoney() );
-//                heroService.update(hero);
+    			Hero updatedHero = heroService.update(heroDTO);
+                logger.info("Hero with id " + updatedHero.getId() + " updated ");
                 return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);
         	} else {
                 return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.CONFLICT);        		
         	}
-        			
-
         }
     }
 
@@ -124,7 +119,7 @@ public class HeroController extends UserCommon {
     public ResponseEntity<Hero> deleteHero(@PathVariable("id") Integer id) {
     	logger.info("Fetching & Deleting hero with id " + id);
   
-    	Hero dbHero = findHero(id);
+    	Hero dbHero = heroService.findById(id);
         if (dbHero == null) {
         	logger.info("Unable to delete. Hero with id " + id + " not found");
             return new ResponseEntity<Hero>(HttpStatus.NOT_FOUND);
@@ -135,9 +130,20 @@ public class HeroController extends UserCommon {
 
     }
     
-    private void copyHero(Hero heroBefore, Hero heroAfter) {
-    	heroBefore.setMoney(999);
-		
+    private Hero copyHero(Hero heroBefore, HeroDTO heroAfter) {
+//    	heroBefore.getGameCharacter().setFirstname(heroAfter.getFirstname());
+//    	heroBefore.getGameCharacter().setLastname(heroAfter.getLastname());
+//    	heroBefore.getGameCharacter().setGender(heroAfter.getGender());
+//    	heroBefore.getGameCharacter().setAge(heroAfter.getAge());
+//    	heroBefore.getGameCharacter().setRace(heroAfter.getRace());
+//    	heroBefore.getGameCharacter().setProfession(heroAfter.getProfession());
+//    	heroBefore.getGameCharacter().setDexterity(heroAfter.getDexterity());
+//    	heroBefore.getGameCharacter().setConstitution(heroAfter.getCharisma());
+//    	heroBefore.getGameCharacter().setIntelligence(heroAfter.getIntelligence());
+//    	heroBefore.getGameCharacter().setCharisma(heroAfter.getCharisma());
+    	heroBefore.setMoney(123);
+    	
+		return heroBefore;
 	}
     
 //	@RequestMapping(value = "/hero/{login}", method = RequestMethod.GET)
@@ -155,20 +161,6 @@ public class HeroController extends UserCommon {
 //		return null;
 //	}
     
-    private Hero findHero(Integer id) {
-		Hero hero;
-		List<Hero> heroes = heroService.findById(id);
-		if (heroes.isEmpty()){
-    		logger.info("Heroes list is empty");
-    		hero = new Hero();
-    	} else {
-    		hero = heroes.iterator().next();
-    		if (heroes.size() > 1) {
-    			logger.info("Method findHero(Integer id) returned more then one result");
-    		}
-    	}
-		return hero;
-	}
 
 	@RequestMapping(value = "/hero/raceList", method = RequestMethod.GET)
 	public @ResponseBody List<RaceDTO> getRaces() {

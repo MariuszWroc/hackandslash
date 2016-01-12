@@ -105,6 +105,7 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
 
     @Override
     public void update(T entity) {
+    	getSession().flush();
         getSession().update(entity);
         logger.info("update " + entity.getClass().getSimpleName());
     }

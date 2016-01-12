@@ -8,7 +8,7 @@ public interface IHeroService {
     void add(Hero hero);
     void delete(Hero hero);
     void update(Hero hero);
-    List<Hero> findById(Integer id);	
+    Hero findById(Integer id);	
     List<Hero> findAll();
 	void delete(Integer id);
 	void add(HeroDTO heroDTO, String login);
@@ -16,4 +16,5 @@ public interface IHeroService {
 	HeroDTO findByUser(String login);
 	List<HeroDTO> findAllByUser(String login);
 	HeroDTO findDTOById(Integer id);
+	Hero update(HeroDTO hero);
 }

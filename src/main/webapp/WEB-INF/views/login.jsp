@@ -34,7 +34,7 @@
                                     <md-button type="button" ng-click="cancel()"> Cancel </md-button>
                                 </td>
                                 <td colspan='2'>
-                                    <md-button name="submit" class="md-primary" type="submit"> submit </md-button>
+                                    <md-button name="submit" class="md-primary" type="submit"> Log in </md-button>
                                 </td>
                             </tr>
                         </table>

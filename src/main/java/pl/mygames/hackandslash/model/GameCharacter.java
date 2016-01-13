@@ -19,20 +19,14 @@ import javax.validation.constraints.*;
     @NamedQuery(name = "GameCharacter.findById", query = "SELECT g FROM GameCharacter g WHERE g.id = :id"),
     @NamedQuery(name = "GameCharacter.findByFirstname", query = "SELECT g FROM GameCharacter g WHERE g.firstname = :firstname"),
     @NamedQuery(name = "GameCharacter.findByLastname", query = "SELECT g FROM GameCharacter g WHERE g.lastname = :lastname"),
-    @NamedQuery(name = "GameCharacter.findByGender", query = "SELECT g FROM GameCharacter g WHERE g.gender = :gender"),
-    @NamedQuery(name = "GameCharacter.findByAge", query = "SELECT g FROM GameCharacter g WHERE g.age = :age"),
     @NamedQuery(name = "GameCharacter.findByRace", query = "SELECT g FROM GameCharacter g WHERE g.race = :race"),
-    @NamedQuery(name = "GameCharacter.findByProfession", query = "SELECT g FROM GameCharacter g WHERE g.profession = :profession"),
-    @NamedQuery(name = "GameCharacter.findByStrength", query = "SELECT g FROM GameCharacter g WHERE g.strength = :strength"),
-    @NamedQuery(name = "GameCharacter.findByDexterity", query = "SELECT g FROM GameCharacter g WHERE g.dexterity = :dexterity"),
-    @NamedQuery(name = "GameCharacter.findByConstitution", query = "SELECT g FROM GameCharacter g WHERE g.constitution = :constitution"),
-    @NamedQuery(name = "GameCharacter.findByIntelligence", query = "SELECT g FROM GameCharacter g WHERE g.intelligence = :intelligence"),
-    @NamedQuery(name = "GameCharacter.findByCharisma", query = "SELECT g FROM GameCharacter g WHERE g.charisma = :charisma")})
+    @NamedQuery(name = "GameCharacter.findByProfession", query = "SELECT g FROM GameCharacter g WHERE g.profession = :profession")})
 public class GameCharacter extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Size(max = 45)
     @Basic(optional = false)

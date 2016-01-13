@@ -8,7 +8,6 @@ package pl.mygames.hackandslash.model;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 /**
  *
@@ -23,7 +22,8 @@ public class Hero extends AbstractEntity {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Basic(optional = false)
     @Column(nullable = false)

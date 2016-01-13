@@ -32,6 +32,7 @@
 					</md-button>
 				</c:if>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
+					<label class="font-size-small">Witaj, </label>
 					<md-button class="md-icon-button" aria-label="Log out" ng-click="logout($event)">
 						<md-tooltip>Log out</md-tooltip> 
 						<img src="${contextPath}/resources/img/icons/login.svg"

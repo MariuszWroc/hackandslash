@@ -1,5 +1,5 @@
 module.controller('heroController', ['$scope', '$http', function($scope, $http){
-    $scope.heroDetail = {};
+    $scope.heroDetail = {id : 0};
     $scope.heroes = [];
     
     $scope.genders = [

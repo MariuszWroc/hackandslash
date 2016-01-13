@@ -72,13 +72,12 @@ public class HeroController extends UserCommon {
 	}
 	
 	@RequestMapping(value = "/hero/add", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
-	public ResponseEntity<List<ObjectError>> addHero(@RequestBody @Valid Hero hero, BindingResult result) {
-//		String login = userRegister.getLogin();
+	public ResponseEntity<List<ObjectError>> addHero(@RequestBody @Valid HeroDTO hero, BindingResult result) {
+		String login = getActualLoggedUser().getUsername();
 		logger.info("Creating hero");
-		hero.setId(1);
 		if ((!result.hasErrors())) {
 			logger.info("Creating hero ");
-//			heroService.add(hero);
+			heroService.add(hero, login);
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(),HttpStatus.CONFLICT);
@@ -91,7 +90,7 @@ public class HeroController extends UserCommon {
         List<HeroDTO> heroes = heroService.findAllByUser(login);
         logger.info("Heroes list with size + " + heroes.size() + " and with user login = " + login + " loaded");
         if(heroes.isEmpty()){
-            return new ResponseEntity<List<HeroDTO>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+            return new ResponseEntity<List<HeroDTO>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<HeroDTO>>(heroes, HttpStatus.OK);
     }
@@ -129,37 +128,6 @@ public class HeroController extends UserCommon {
         }
 
     }
-    
-    private Hero copyHero(Hero heroBefore, HeroDTO heroAfter) {
-//    	heroBefore.getGameCharacter().setFirstname(heroAfter.getFirstname());
-//    	heroBefore.getGameCharacter().setLastname(heroAfter.getLastname());
-//    	heroBefore.getGameCharacter().setGender(heroAfter.getGender());
-//    	heroBefore.getGameCharacter().setAge(heroAfter.getAge());
-//    	heroBefore.getGameCharacter().setRace(heroAfter.getRace());
-//    	heroBefore.getGameCharacter().setProfession(heroAfter.getProfession());
-//    	heroBefore.getGameCharacter().setDexterity(heroAfter.getDexterity());
-//    	heroBefore.getGameCharacter().setConstitution(heroAfter.getCharisma());
-//    	heroBefore.getGameCharacter().setIntelligence(heroAfter.getIntelligence());
-//    	heroBefore.getGameCharacter().setCharisma(heroAfter.getCharisma());
-    	heroBefore.setMoney(123);
-    	
-		return heroBefore;
-	}
-    
-//	@RequestMapping(value = "/hero/{login}", method = RequestMethod.GET)
-//	public @ResponseBody UserDTO getHeroByUserLogin(@PathVariable("login") String login, ModelMap model) {
-//		if (authenticateUser(login)) {
-//			logger.info("Hero with user login = " + login + " loaded");
-//			return userService.getUserDTO(login);
-//		} else {
-//			return null;
-//		}
-//	}
-//
-//	@RequestMapping(value = "/hero/details", method = RequestMethod.GET)
-//	public @ResponseBody HeroDTO getHero() {
-//		return null;
-//	}
     
 
 	@RequestMapping(value = "/hero/raceList", method = RequestMethod.GET)

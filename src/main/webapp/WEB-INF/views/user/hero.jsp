@@ -76,7 +76,7 @@
 							<label class="col-md-2 control-label" for="file">Race</label>
 							<div class="col-md-7">
 								<select id="mySel" ng-model="heroDetail.race"
-									class="form-control" disabled>
+									class="form-control" ng-disabled="heroDetail.id!=0">
 									<option ng-repeat="race in races"
 										ng-selected="heroDetail.race==race.id" value="{{race.id}}">{{race.label}}</option>
 								</select>
@@ -88,7 +88,7 @@
 							<label class="col-md-2 control-label" for="file">Profession</label>
 							<div class="col-md-7">
 								<select id="mySel" ng-model="heroDetail.profession"
-									class="form-control" disabled>
+									class="form-control" ng-disabled="heroDetail.id!=0">
 									<option ng-repeat="profession in proffesions" 
 										ng-selected="heroDetail.profession==profession.id"
 										value="{{profession.id}}">{{profession.label}}</option>
@@ -100,7 +100,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">Strength</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.strength" input-sm"/>
 							</div>
 							<div class="has-error" ng-show="heroForm.$dirty">
@@ -113,7 +113,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">Dexterity</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.dexterity" input-sm"/>
 							</div>
 							<div class="has-error" ng-show="heroForm.$dirty">
@@ -126,7 +126,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">Constitution</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.constitution" input-sm"/>
 							</div>
 							<div class="has-error" ng-show="heroForm.$dirty">
@@ -139,7 +139,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">Intelligence</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.intelligence" input-sm"/>
 							</div>
 							<div class="has-error" ng-show="heroForm.$dirty">
@@ -152,7 +152,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">Charisma</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.charisma" input-sm"/>
 							</div>
 							<div class="has-error" ng-show="heroForm.$dirty">
@@ -165,7 +165,7 @@
 						<div class="form-group form-group-lg">
 							<label class="col-md-2 control-label" for="file">BaseHp</label>
 							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" disabled
+								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
 									ng-model="heroDetail.baseHp" input-sm"/>
 							</div>
 						</div>

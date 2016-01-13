@@ -34,7 +34,6 @@ public class HeroService implements IHeroService {
     @Transactional(readOnly = false)
     @Override
     public void add(Hero hero) {
-    	hero.setId(null);
         dao.add(hero);
     }
     

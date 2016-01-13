@@ -23,10 +23,12 @@ public class CharacterService implements ICharacterService {
 
     @Transactional(readOnly = false)
     @Override
-    public void add(GameCharacter character) {
+    public GameCharacter add(GameCharacter character) {
         dao.add(character);
+        
+        return character;
     }
-
+    
     @Transactional(readOnly = false)
     @Secured("ROLE_ADMIN")
     @Override

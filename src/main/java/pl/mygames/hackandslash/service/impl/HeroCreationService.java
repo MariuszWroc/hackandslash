@@ -50,17 +50,18 @@ public class HeroCreationService implements IHeroCreationService {
     	Integer idPlace = StartingPoint.CITY.getId();
 		List<Place> place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
-		setDefaultId(heroDTO, hero);
+		hero.setId(null);
 		hero.setActivated(YES);
 		hero.setMoney(chooseMoney());
 		if (place.iterator().hasNext()) {
 			hero.setPlace(place.iterator().next());			
 		}
-		hero.setGameCharacter(character);
+
 		if (user.iterator().hasNext()) {
 			hero.setGameUser(user.iterator().next());			
 		}
 		addCharacter(character, heroDTO);
+		hero.setGameCharacter(character);
 		
     	dao.add(hero);
     	
@@ -82,10 +83,13 @@ public class HeroCreationService implements IHeroCreationService {
 	}
 	
 	private void addCharacter(GameCharacter character, HeroDTO heroDTO) {
-		character.setId(characterService.findAll().size()+1);
+		character.setId(null);
 		character.setAge(heroDTO.getAge());
 		character.setBaseHP(calculateHP(heroDTO.getConstitution()));
 		character.setCharisma(heroDTO.getCharisma());
+		character.setStrength(heroDTO.getStrength());
+		character.setStrength(heroDTO.getIntelligence());
+		character.setBaseHP(heroDTO.getBaseHP());
 		character.setConstitution(heroDTO.getConstitution());
 		character.setDexterity(heroDTO.getDexterity());
 		character.setExperience(START_EXPERIENCE);

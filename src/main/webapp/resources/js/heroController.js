@@ -1,5 +1,24 @@
 module.controller('heroController', ['$scope', '$http', function($scope, $http){
-    $scope.heroDetail = {id : 0};
+    
+    function initializeHero(){
+        $scope.heroDetail = {
+            'firstname': '',
+            'lastname': '',
+            'gender': 0,
+            'age': 0,
+            'race': 0,
+            'profession': 0,
+            'strength': 0,
+            'dexterity': 0,
+            'constitution': 0,
+            'intelligence': 0,
+            'charisma': 0,
+            'baseHP': 0
+        };
+    }
+    
+    initializeHero();
+    
     $scope.heroes = [];
     
     $scope.genders = [
@@ -24,7 +43,11 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $http.get(prefix + '/user/actualHero')
         .success(function(response){
             console.log('Fetching hero success ', response);
-            $scope.heroDetail = response;
+            if(response){
+                $scope.heroDetail = response;
+            } else {
+                initializeHero();
+            }
         })
         .error(function(error){
             console.log("Error after getting hero. ", error);
@@ -34,7 +57,11 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
         $http.get(prefix + '/user/hero/get/' + heroId)
         .success(function(response){
             console.log('Fetching hero success ', response);
-            $scope.heroDetail = response;
+            if(response){
+                $scope.heroDetail = response;
+            } else {
+                initializeHero();
+            }
         })
         .error(function(error){
             console.log("Error after getting hero. ", error);
@@ -51,6 +78,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	    });
             
     function setErrors(error){
+        console.log(error);
         if(error.length>0) {
             if(!$scope.errors){
                     $scope.errors = []
@@ -87,7 +115,11 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     	$http.put("user/hero/edit/"+$scope.heroDetail.id, $scope.heroDetail)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
-	            $scope.heroDetail = res;
+	            if(res){
+                        $scope.heroDetail = res;
+                    } else {
+                        initializeHero();
+                    }
 	        })
 	        .error(function(error){
 	            setErrors(error);
@@ -102,10 +134,14 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     	$http.delete("user/hero/delete/" + $scope.heroDetail.id)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
-	            $scope.heroDetail = res;
+	            if(res){
+                        $scope.heroDetail = res;
+                    } else {
+                        initializeHero();
+                    }
                     $http.get(prefix + '/user/hero/getAll')
                     .success(function(response){
-                    console.log('Fetching hero success ', response);
+                        console.log('Fetching hero success ', response);
                         $scope.heroes = response;
                     })
                     .error(function(error){
@@ -121,11 +157,15 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
         if($scope.heroDetail.id) {
             editHero();
         } else {
-            // dodać do add
-            $http.post("user/hero/add/", $scope.heroDetail)
+            console.log($scope.heroDetail);
+            $http.post("user/hero/add", $scope.heroDetail)
 	    	.success(function(res){
 	            console.log('is user logged? ',res);
-	            $scope.heroDetail = res;
+	            if(res){
+                        $scope.heroDetail = res;
+                    } else {
+                        initializeHero();
+                    }
 	        })
 	        .error(function(error){
 	            setErrors(error);

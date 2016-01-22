@@ -112,12 +112,6 @@ public class HeroService implements IHeroService {
     	if (heroByUserLogin.iterator().hasNext()) {
     		heroEntity = heroByUserLogin.iterator().next();
     	}
-//    	
-//        List<GameCharacter> characters = new ArrayList<>();
-//        GameCharacter character = null;
-//        if (!characters.isEmpty()) {
-//        	character = characters.iterator().next();
-//        }
     	
     	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 

@@ -40,6 +40,9 @@ public class Hero extends AbstractEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
     private List<Journal> journalList;
     private Integer money;
+    private Integer speed;
+    private Integer reputation;
+    private Integer fatigue;
 
     public Hero() {
     }
@@ -105,4 +108,28 @@ public class Hero extends AbstractEntity {
 		this.money = money;
 	}
     
+	public Integer getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(Integer speed) {
+		this.speed = speed;
+	}
+
+	public Integer getReputation() {
+		return reputation;
+	}
+
+	public void setReputation(Integer reputation) {
+		this.reputation = reputation;
+	}
+
+	public Integer getFatigue() {
+		return fatigue;
+	}
+
+	public void setFatigue(Integer fatigue) {
+		this.fatigue = fatigue;
+	}
+	
 }

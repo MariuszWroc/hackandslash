@@ -16,7 +16,6 @@ import pl.mygames.hackandslash.model.*;
  */
 public class BackpackDTO implements Serializable{
     private static final long serialVersionUID = 1L;
-    private Hero hero;
     private Item leftHand;
     private Item rightHand;
     private Item boot;
@@ -27,12 +26,8 @@ public class BackpackDTO implements Serializable{
     private Item gloves;
     private List<Item> quickItems;
     private List<Item> otherItems;
-	public Hero getHero() {
-		return hero;
-	}
-	public void setHero(Hero hero) {
-		this.hero = hero;
-	}
+    private Integer heroId;
+    
 	public Item getLeftHand() {
 		return leftHand;
 	}
@@ -93,6 +88,11 @@ public class BackpackDTO implements Serializable{
 	public void setOtherItems(List<Item> otherItems) {
 		this.otherItems = otherItems;
 	}   
-    
+    public Integer getHeroId() {
+		return heroId;
+	}
+    public void setHeroId(Integer heroId) {
+		this.heroId = heroId;
+	}
     
 }

@@ -16,7 +16,7 @@ import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.general.GenderEnum;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
-import pl.mygames.hackandslash.logic.Rules;
+import pl.mygames.hackandslash.logic.rule.CreateHeroRule;
 import pl.mygames.hackandslash.service.IHeroCreationService;
 
 @Controller
@@ -35,12 +35,12 @@ public class CreateHeroAdminController {
 		model.addAttribute("raceEnum", UserRace.values());
 		model.addAttribute("professionEnum", UserProfession.values());
 
-		Map<String, DefaultAttributesDTO> populateDefaultAttributes = Rules.populateDefaultAttributes();
+		Map<String, DefaultAttributesDTO> populateDefaultAttributes = CreateHeroRule.populateDefaultAttributes();
 		DefaultAttributesDTO raceAttributes = populateDefaultAttributes.get("ELF");
 		DefaultAttributesDTO professionAttributes = populateDefaultAttributes.get("MAGE");
-		AttributeDTO createMinimumAttributes = Rules.createMinimumAttributes(raceAttributes, professionAttributes);
-		AttributeDTO createMaximumAttributes = Rules.createMaximumAttributes(raceAttributes);
-		AttributeDTO createDrawedAttributes = Rules.getDrawedAttributes(createMinimumAttributes, createMaximumAttributes);
+		AttributeDTO createMinimumAttributes = CreateHeroRule.createMinimumAttributes(raceAttributes, professionAttributes);
+		AttributeDTO createMaximumAttributes = CreateHeroRule.createMaximumAttributes(raceAttributes);
+		AttributeDTO createDrawedAttributes = CreateHeroRule.getDrawedAttributes(createMinimumAttributes, createMaximumAttributes);
 		
 		model.addAttribute("maxCharisma", createMaximumAttributes.getCharisma());
 		model.addAttribute("maxDexterity", createMaximumAttributes.getDexterity());

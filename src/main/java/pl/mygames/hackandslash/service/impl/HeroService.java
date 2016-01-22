@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.Dice;
-import pl.mygames.hackandslash.logic.Rules;
+import pl.mygames.hackandslash.logic.rule.CreateHeroRule;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.*;
@@ -113,7 +113,7 @@ public class HeroService implements IHeroService {
     		heroEntity = heroByUserLogin.iterator().next();
     	}
     	
-    	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
+    	int diceRoller = CreateHeroRule.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 
 		HeroDTO heroDTO = new HeroDTO
 				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
@@ -137,7 +137,7 @@ public class HeroService implements IHeroService {
     public List<HeroDTO> findAllByUser(String login) {
     	List<Hero> heroesByUserLogin = dao.getHeroByParam("login", login);
     	List<HeroDTO> heroesDTOs = new ArrayList<HeroDTO>();
-    	int diceRoller = Rules.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
+    	int diceRoller = CreateHeroRule.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
     	
     	for (Hero heroEntity : heroesByUserLogin) {
     		logger.info("findAllByUser " + heroEntity.getId() + " " + heroEntity.getMoney());

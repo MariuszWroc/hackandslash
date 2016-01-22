@@ -162,15 +162,6 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group form-group-lg">
-							<label class="col-md-2 control-label" for="file">BaseHp</label>
-							<div class="col-md-7">
-								<input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-									ng-model="heroDetail.baseHp" input-sm"/>
-							</div>
-						</div>
-					</div>
-					<div class="row">
 						<div class="form-actions floatRight">
 							<input type="submit"
 								value="{{!heroDetail.id ? 'Add' : 'Update'}}"

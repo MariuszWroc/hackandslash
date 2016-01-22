@@ -3,7 +3,7 @@ package pl.mygames.hackandslash.dto.util.npc;
 import pl.mygames.hackandslash.service.util.RandomValue;
 
 public enum GeneralProfession {
-	VILLAGER(0,"Wieśniak", RandomValue.randomInteger(0, 10)),
+	VILLAGER(0, "Wieśniak", RandomValue.randomInteger(0, 10)),
 	MAGE(1, "Mag", RandomValue.randomInteger(0, 70)),
 	WARRIOR(2, "Wojownik", RandomValue.randomInteger(0, 100)),
 	HUNTER(3, "Łowca", RandomValue.randomInteger(0, 90)),

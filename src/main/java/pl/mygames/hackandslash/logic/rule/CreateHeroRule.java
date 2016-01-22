@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.logic;
+package pl.mygames.hackandslash.logic.rule;
 
 import java.util.*;
 
@@ -12,8 +12,8 @@ import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
 import pl.mygames.hackandslash.service.util.RandomValue;
 
-public class Rules {
-    private static final Logger logger = LoggerFactory.getLogger(Rules.class);
+public class CreateHeroRule {
+    private static final Logger logger = LoggerFactory.getLogger(CreateHeroRule.class);
     private static Map<String, DefaultAttributesDTO> allAttributes = populateDefaultAttributes();
     
 	public static int diceRoller(int diceNumber, int sideNumber) {
@@ -175,6 +175,6 @@ public class Rules {
 	}
 
 	public static void setAllAttributes(Map<String, DefaultAttributesDTO> allAttributes) {
-		Rules.allAttributes = allAttributes;
+		CreateHeroRule.allAttributes = allAttributes;
 	}
 }

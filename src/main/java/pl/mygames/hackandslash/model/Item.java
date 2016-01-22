@@ -21,15 +21,6 @@ import javax.validation.constraints.*;
     @NamedQuery(name = "Item.findByName", query = "SELECT i FROM Item i WHERE i.name = :name"),
     @NamedQuery(name = "Item.findByCategory", query = "SELECT i FROM Item i WHERE i.category = :category"),
     @NamedQuery(name = "Item.findByWage", query = "SELECT i FROM Item i WHERE i.wage = :wage"),
-    @NamedQuery(name = "Item.findByAttack", query = "SELECT i FROM Item i WHERE i.attack = :attack"),
-    @NamedQuery(name = "Item.findByDefend", query = "SELECT i FROM Item i WHERE i.defend = :defend"),
-    @NamedQuery(name = "Item.findByMagic", query = "SELECT i FROM Item i WHERE i.magic = :magic"),
-    @NamedQuery(name = "Item.findByAddHealth", query = "SELECT i FROM Item i WHERE i.addHealth = :addHealth"),
-    @NamedQuery(name = "Item.findByAddStrength", query = "SELECT i FROM Item i WHERE i.addStrength = :addStrength"),
-    @NamedQuery(name = "Item.findByAddDexterity", query = "SELECT i FROM Item i WHERE i.addDexterity = :addDexterity"),
-    @NamedQuery(name = "Item.findByAddConstitution", query = "SELECT i FROM Item i WHERE i.addConstitution = :addConstitution"),
-    @NamedQuery(name = "Item.findByAddIntelligence", query = "SELECT i FROM Item i WHERE i.addIntelligence = :addIntelligence"),
-    @NamedQuery(name = "Item.findByAddCharisma", query = "SELECT i FROM Item i WHERE i.addCharisma = :addCharisma"),
     @NamedQuery(name = "Item.findByAmount", query = "SELECT i FROM Item i WHERE i.amount = :amount")})
 public class Item extends AbstractEntity {
     private static final long serialVersionUID = 1L;

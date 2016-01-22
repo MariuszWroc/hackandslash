@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.logic.CopyingObjectFactory;
 import pl.mygames.hackandslash.model.Hero;
-import pl.mygames.hackandslash.service.impl.logic.CopyingObjectFactory;
 
 public class FactoryMain {
 	private static final Logger logger = LoggerFactory.getLogger(HeroMain.class);

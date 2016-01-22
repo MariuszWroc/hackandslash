@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.service.impl.logic;
+package pl.mygames.hackandslash.logic;
 
 import java.util.*;
 

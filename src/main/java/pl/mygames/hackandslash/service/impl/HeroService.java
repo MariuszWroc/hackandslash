@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.Dice;
+import pl.mygames.hackandslash.logic.Rules;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.*;
-import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Service
 @Transactional(readOnly = true)

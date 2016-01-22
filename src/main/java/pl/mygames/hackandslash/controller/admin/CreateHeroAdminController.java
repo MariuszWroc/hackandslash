@@ -16,8 +16,8 @@ import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.dto.util.general.GenderEnum;
 import pl.mygames.hackandslash.dto.util.user.UserProfession;
 import pl.mygames.hackandslash.dto.util.user.UserRace;
+import pl.mygames.hackandslash.logic.Rules;
 import pl.mygames.hackandslash.service.IHeroCreationService;
-import pl.mygames.hackandslash.service.impl.logic.Rules;
 
 @Controller
 @RequestMapping(value = {"/admin"})

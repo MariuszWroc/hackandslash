@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import pl.mygames.hackandslash.dto.AttributeDTO;
 import pl.mygames.hackandslash.dto.DefaultAttributesDTO;
-import pl.mygames.hackandslash.service.impl.logic.Rules;
+import pl.mygames.hackandslash.logic.Rules;
 
 public class RulesMain {
 	private static final Logger logger = LoggerFactory.getLogger(RulesMain.class);

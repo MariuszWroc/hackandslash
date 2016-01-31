@@ -122,6 +122,11 @@ body, .form-control{
 	margin-right: 18px;
 }
 
+.floatLeft{
+	float:left;
+	margin-left: 18px;
+}
+
 .has-error{
 	color:red;
 }

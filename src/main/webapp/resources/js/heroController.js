@@ -1,5 +1,8 @@
 module.controller('heroController', ['$scope', '$http', function($scope, $http){
-    
+        
+    $scope.tabIndex = 0;
+    $scope.disableFirstStep = false;
+    $scope.disableSecondStep = true;
     function initializeHero(){
         $scope.heroDetail = {
             'firstname': '',
@@ -125,6 +128,31 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            setErrors(error);
 	        });
     };
+    
+    $scope.next = function(index){
+        $scope.tabIndex = index+1;
+        console.log($scope.tabIndex);
+    };
+    
+    $scope.goBack = function(){
+        if($scope.tabIndex>0){
+            $scope.tabIndex--;
+        }
+    }
+    
+    $scope.$watch('tabIndex', function(value){
+        console.log($scope.tabIndex, value);
+        switch(value){
+            case 0:
+                $scope.disableFirstStep = false;
+                $scope.disableSecondStep = true;
+                break;
+            case 1:
+                $scope.disableFirstStep = true;
+                $scope.disableSecondStep = false;
+                break;
+        }
+    });
     
     $scope.loadHero = function (heroId){
         getHeroData(heroId);

@@ -35,11 +35,16 @@ CREATE TABLE IF NOT EXISTS `hackandslash`.`GameCharacter` (
   `intelligence` INT(11) NULL DEFAULT NULL,
   `charisma` INT(11) NULL DEFAULT NULL,
   `baseHP` INT(11) NOT NULL,
+  `currentHP` INT(11) NOT NULL,
+  `baseAC` INT(11) NOT NULL,
+  `effectiveAC` INT(11) NOT NULL,
+  `attacks` INT(11) NOT NULL,
+  `morale` INT(11) NOT NULL,
   `experience` INT(11) NOT NULL,
+  `level` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
 
 -- -----------------------------------------------------
 -- Table `hackandslash`.`Item`
@@ -149,6 +154,9 @@ CREATE TABLE IF NOT EXISTS `hackandslash`.`Hero` (
   `GameUser_id` INT(11) NOT NULL,
   `GameCharacter_id` INT(11) NOT NULL,
   `money` INT(11) NOT NULL DEFAULT 0,
+  `speed` INT(11) NOT NULL DEFAULT 1,
+  `reputation` INT(11) NOT NULL DEFAULT 12,
+  `fatigue` INT(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Hero_Place_idx` (`Place_id` ASC) ,
   INDEX `fk_Hero_GameUser1_idx` (`GameUser_id` ASC) ,
@@ -237,11 +245,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hackandslash`;
-INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `experience`) VALUES (1, 'Mariusz', 'Braveheart', 1, 27, 1, 3, 12, 16, 16, 12, 10, 10, 1);
-INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `experience`) VALUES (2, 'Ork', 'Warrior', 1, NULL, 3, 2, 12, 10, 14, 2, 2, 8, 1);
-INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `experience`) VALUES (3, 'Villager', NULL, 1, NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, 1, 1);
-INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `experience`) VALUES (4, 'Jacek', NULL, 1, 26, 1, 3, 14, 16, 15, 12, 10, 10, 1);
-INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `experience`) VALUES (5, 'Jacek2', NULL, 1, 26, 1, 3, 14, 16, 15, 12, 10, 10, 1000);
+INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `currentHP`, `baseAC`, `effectiveAC`, `attacks`, `morale`, `experience`, `level`) VALUES (1, 'Mariusz', 'Braveheart', 1, 27, 1, 3, 12, 16, 16, 12, 10, 10, 10, 5, 5, 1, 1, 1, 1);
+INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `currentHP`, `baseAC`, `effectiveAC`, `attacks`, `morale`, `experience`, `level`) VALUES (2, 'Ork', 'Warrior', 1, NULL, 3, 2, 12, 10, 14, 2, 2, 8, 8, 3, 3, 1, 1, 1, 1);
+INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `currentHP`, `baseAC`, `effectiveAC`, `attacks`, `morale`, `experience`, `level`) VALUES (3, 'Villager', NULL, 1, NULL, 1, 0, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `currentHP`, `baseAC`, `effectiveAC`, `attacks`, `morale`, `experience`, `level`) VALUES (4, 'Jacek', NULL, 1, 26, 1, 3, 14, 16, 15, 12, 10, 10, 10, 4, 4, 1, 1, 1, 1);
+INSERT INTO `hackandslash`.`GameCharacter` (`id`, `firstname`, `lastname`, `gender`, `age`, `race`, `profession`, `strength`, `dexterity`, `constitution`, `intelligence`, `charisma`, `baseHP`, `currentHP`, `baseAC`, `effectiveAC`, `attacks`, `morale`, `experience`, `level`) VALUES (5, 'Jacek2', NULL, 1, 26, 1, 3, 14, 16, 15, 12, 10, 10, 10, 3, 3, 1, 1, 1000, 1);
 
 COMMIT;
 
@@ -310,9 +318,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `hackandslash`;
-INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`) VALUES (1, 1, 1, 1, 1, DEFAULT);
-INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`) VALUES (2, 1, 1, 2, 4, DEFAULT);
-INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`) VALUES (3, 1, 1, 2, 5, DEFAULT);
+INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`, `speed`, `reputation`, `fatigue`) VALUES (1, 1, 1, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`, `speed`, `reputation`, `fatigue`) VALUES (2, 1, 1, 2, 4, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `hackandslash`.`Hero` (`id`, `activated`, `Place_id`, `GameUser_id`, `GameCharacter_id`, `money`, `speed`, `reputation`, `fatigue`) VALUES (3, 1, 1, 2, 5, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 COMMIT;
 
 

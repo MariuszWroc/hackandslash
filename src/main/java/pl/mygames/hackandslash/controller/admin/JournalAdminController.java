@@ -78,7 +78,7 @@ public class JournalAdminController {
 	     */
 		private Journal findJournal(Integer id) {
 			Journal journal;
-			List<Journal> journals = journalService.findById(id);
+			List<Journal> journals = null;
 			if (journals.isEmpty()){
 	    		logger.info("Journals list is empty");
 	    		journal = new Journal();
@@ -88,6 +88,6 @@ public class JournalAdminController {
 	    			logger.info("Method findJournal(Integer id) returned more then one result");
 	    		}
 	    	}
-			return journal;
+			return journalService.findById(id);
 		}
 }

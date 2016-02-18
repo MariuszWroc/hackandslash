@@ -1,6 +1,5 @@
 package pl.mygames.hackandslash.controller.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -63,32 +62,13 @@ public class CharacterAdminController {
      * This method will list all existing characters.
      */
 	private List<GameCharacter> findCharacters() {
-		List<GameCharacter> characters;
-		if(characterService.findAll().isEmpty()) {
-        	logger.info("Characters list is empty");
-        	characters = new ArrayList<>();
-        } else {
-        	characters = characterService.findAll();
- 
-        }
-		return characters;
+		return characterService.findAll();
 	}
 	
     /*
      * This method will return one character.
      */
 	private GameCharacter findCharacter(Integer id) {
-		GameCharacter character;
-		List<GameCharacter> characters = characterService.findById(id);
-		if (characters.isEmpty()){
-    		logger.info("Characters list is empty");
-    		character = new GameCharacter();
-    	} else {
-    		character = characters.iterator().next();
-    		if (characters.size() > 1) {
-    			logger.info("Method findCharacter(Integer id) returned more then one result");
-    		}
-    	}
-		return character;
+		return characterService.findById(id);
 	}
 }

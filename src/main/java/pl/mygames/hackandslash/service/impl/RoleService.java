@@ -2,21 +2,26 @@ package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.IRoleDao;
 import pl.mygames.hackandslash.dao.impl.RoleDao;
+import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
 
 @Service
 @Transactional(readOnly = true)
 public class RoleService implements IRoleService {
-    
+	private static final Logger logger = LoggerFactory.getLogger(RoleService.class);
+	
     @Autowired
-    private RoleDao dao;
+    private IRoleDao dao;
 
     public void setDao(RoleDao dao) {
         this.dao = dao;
@@ -36,7 +41,7 @@ public class RoleService implements IRoleService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -49,8 +54,19 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public List<GameRole> findById(Integer id) {
-        return dao.findByQuery("GameRole.findById", id);
+    public GameRole findById(Integer id) {
+    	GameRole role;
+		List<GameRole> roles = dao.findByQuery("GameCharacter.findById", id);
+		if (roles.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		role = new GameRole();
+    	} else {
+    		role = roles.iterator().next();
+    		if (roles.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return role;
     }
 
     @Override

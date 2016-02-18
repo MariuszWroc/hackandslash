@@ -41,11 +41,10 @@ public class RegisterAdminController {
     @RequestMapping(value = "/registerTest/add", method = RequestMethod.POST)  
     public String addUser(@ModelAttribute("user") @Valid GameUser user, BindingResult result, RedirectAttributes redirectAttributes) {
             if (!result.hasErrors() ) {
-                Boolean savingSuccess = userService.add(user);
+                Boolean savingSuccess = userService.isAdd(user);
                 if (savingSuccess) {
-                            logger.info("User with id = " + user.getId() + ", added");
+                	logger.info("User with id = " + user.getId() + ", added");
                 } else {
-
                     redirectAttributes.addFlashAttribute("loginExist","Login name is used by someone elsey.");
                 }
 

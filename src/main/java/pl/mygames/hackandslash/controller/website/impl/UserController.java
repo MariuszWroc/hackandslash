@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.mygames.hackandslash.controller.website;
+package pl.mygames.hackandslash.controller.website.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -33,7 +32,6 @@ import pl.mygames.hackandslash.service.IUserService;
 @Scope("session")
 @RequestMapping(value = {"/user"})
 public class UserController extends UserCommon{
-
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -42,8 +40,7 @@ public class UserController extends UserCommon{
     @RequestMapping(value = "/actualProfil", method = RequestMethod.GET)
     public ResponseEntity<UserDTO> getUser(ModelMap model) {
         if (getActualLoggedUser().isEnabled()) {
-        	UserDTO userLoaded = loadActualProfil();
-        	return new ResponseEntity<UserDTO>(userLoaded, HttpStatus.OK);
+        	return new ResponseEntity<UserDTO>(loadActualProfil(), HttpStatus.OK);
         } else {
         	return new ResponseEntity<UserDTO>(HttpStatus.NO_CONTENT);
         }
@@ -125,50 +122,18 @@ public class UserController extends UserCommon{
 		
         return userBefore;
 	}
-
-//    @RequestMapping(value = "/profil/{login}", method = RequestMethod.GET)
-//    public @ResponseBody
-//    UserDTO getUserByLogin(@PathVariable("login") String login, ModelMap model) {
-//        if (authenticateUser(login)) {
-//            logger.info("User with login = " + login + " loaded");
-//        	return userService.getUserDTO(login);
-//        } else {
-//        	return null;
-//        }
-//    }
-    
-
-      
     
     /*
      * This method will list all existing users.
      */
     private List<GameUser> findUsers() {
-        List<GameUser> users;
-        if (userService.findAll().isEmpty()) {
-            logger.info("Users list is empty");
-            users = new ArrayList<>();
-        } else {
-            users = userService.findAll();
-        }
-        return users;
+        return userService.findAll();
     }
 
     /*
      * This method will return one user.
      */
     private GameUser findUser(Integer id) {
-        GameUser user;
-        List<GameUser> users = userService.findById(id);
-        if (users.isEmpty()) {
-            logger.info("Users list is empty");
-            user = new GameUser();
-        } else {
-            user = users.iterator().next();
-            if (users.size() > 1) {
-                logger.info("Method findUser returned more then one result");
-            }
-        }
-        return user;
+        return userService.findById(id);
     }
 }

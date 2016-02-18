@@ -1,11 +1,15 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.IItemDao;
 import pl.mygames.hackandslash.dao.impl.ItemDao;
 import pl.mygames.hackandslash.model.Item;
 import pl.mygames.hackandslash.service.IItemService;
@@ -13,9 +17,10 @@ import pl.mygames.hackandslash.service.IItemService;
 @Service
 @Transactional(readOnly = true)
 public class ItemService implements IItemService {
-
+	private static final Logger logger = LoggerFactory.getLogger(ItemService.class);
+	
     @Autowired
-    private ItemDao dao;
+    private IItemDao dao;
 
     @Transactional(readOnly = false)
     @Override
@@ -31,7 +36,7 @@ public class ItemService implements IItemService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -44,8 +49,19 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    public List<Item> findById(Integer id) {
-        return dao.findByQuery("Item.findById", id);
+    public Item findById(Integer id) {
+    	Item item;
+		List<Item> items = dao.findByQuery("GameCharacter.findById", id);
+		if (items.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		item = new Item();
+    	} else {
+    		item = items.iterator().next();
+    		if (items.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return item;
     }
 
     @Override

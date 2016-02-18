@@ -9,6 +9,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.IHeroDao;
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.HeroDTO;
 import pl.mygames.hackandslash.dto.util.general.Dice;
@@ -23,7 +24,7 @@ public class HeroService implements IHeroService {
 	private static final Logger logger = LoggerFactory.getLogger(HeroService.class);
 	
     @Autowired
-    private HeroDao dao;
+    private IHeroDao dao;
     
     @Autowired
     private IHeroCreationService heroCreationService;
@@ -52,7 +53,7 @@ public class HeroService implements IHeroService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);

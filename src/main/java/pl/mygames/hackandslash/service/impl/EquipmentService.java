@@ -1,21 +1,25 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.impl.EquipmentDao;
+import pl.mygames.hackandslash.dao.IEquipmentDao;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
 @Service
 @Transactional(readOnly = true)
 public class EquipmentService implements IEquipmentService {
-
+	private static final Logger logger = LoggerFactory.getLogger(EquipmentService.class);
+	
     @Autowired
-    private EquipmentDao dao;
+    private IEquipmentDao dao;
 
     @Transactional(readOnly = false)
     @Override
@@ -31,7 +35,7 @@ public class EquipmentService implements IEquipmentService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -44,8 +48,19 @@ public class EquipmentService implements IEquipmentService {
     }
 
     @Override
-    public List<Equipment> findById(Integer id) {
-        return dao.findByQuery("Equipment.findById", id);
+    public Equipment findById(Integer id) {
+    	Equipment equipment;
+		List<Equipment> equipments = dao.findByQuery("GameCharacter.findById", id);
+		if (equipments.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		equipment = new Equipment();
+    	} else {
+    		equipment = equipments.iterator().next();
+    		if (equipments.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return equipment;
     }
 
     @Override
@@ -53,7 +68,7 @@ public class EquipmentService implements IEquipmentService {
         return dao.findByQuery("Equipment.findAll");
     }
 
-    public void setDao(EquipmentDao dao) {
+    public void setDao(IEquipmentDao dao) {
         this.dao = dao;
     }
 }

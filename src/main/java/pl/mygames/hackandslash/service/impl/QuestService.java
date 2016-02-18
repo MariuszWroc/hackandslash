@@ -1,21 +1,27 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.IQuestDao;
 import pl.mygames.hackandslash.dao.impl.QuestDao;
+import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
 @Service
 @Transactional(readOnly = true)
 public class QuestService implements IQuestService {
-
+	private static final Logger logger = LoggerFactory.getLogger(QuestService.class);
+	
     @Autowired
-    private QuestDao dao;
+    private IQuestDao dao;
 
     public void setDao(QuestDao dao) {
         this.dao = dao;
@@ -48,8 +54,19 @@ public class QuestService implements IQuestService {
     }
 
     @Override
-    public List<Quest> findById(Integer id) {
-        return dao.findByQuery("Quest.findById", id);
+    public Quest findById(Integer id) {
+    	Quest quest;
+		List<Quest> quests = dao.findByQuery("GameCharacter.findById", id);
+		if (quests.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		quest = new Quest();
+    	} else {
+    		quest = quests.iterator().next();
+    		if (quests.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return quest;
     }
 
 

@@ -1,11 +1,15 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.INpcDao;
 import pl.mygames.hackandslash.dao.impl.NpcDao;
 import pl.mygames.hackandslash.model.Npc;
 import pl.mygames.hackandslash.service.INpcService;
@@ -13,9 +17,10 @@ import pl.mygames.hackandslash.service.INpcService;
 @Service
 @Transactional(readOnly = true)
 public class NpcService implements INpcService {
-
+	private static final Logger logger = LoggerFactory.getLogger(NpcService.class);
+	
     @Autowired
-    private NpcDao dao;
+    private INpcDao dao;
 
     @Transactional(readOnly = false)
     @Override
@@ -31,7 +36,7 @@ public class NpcService implements INpcService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -44,8 +49,19 @@ public class NpcService implements INpcService {
     }
 
     @Override
-    public List<Npc> findById(Integer id) {
-        return dao.findByQuery("Npc.findById", id);
+    public Npc findById(Integer id) {
+    	Npc npc;
+		List<Npc> npcs = dao.findByQuery("GameCharacter.findById", id);
+		if (npcs.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		npc = new Npc();
+    	} else {
+    		npc = npcs.iterator().next();
+    		if (npcs.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return npc;
     }
 
     @Override

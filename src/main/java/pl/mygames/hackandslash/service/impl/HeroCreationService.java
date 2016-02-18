@@ -3,6 +3,8 @@ package pl.mygames.hackandslash.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import pl.mygames.hackandslash.service.*;
 @Service
 @Transactional(readOnly = true)
 public class HeroCreationService implements IHeroCreationService {
+	private static final Logger logger = LoggerFactory.getLogger(HeroCreationService.class);
+	
 	private static final int NO = 0;
 	private static final int YES = 1;
 	private static final Integer START_EXPERIENCE = 1;
@@ -48,14 +52,11 @@ public class HeroCreationService implements IHeroCreationService {
     	Hero hero = new Hero();
 		GameCharacter character = new GameCharacter();
     	Integer idPlace = StartingPoint.CITY.getId();
-		List<Place> place = placeService.findById(idPlace);
+		Place place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
 		hero.setId(null);
 		hero.setActivated(YES);
 		hero.setMoney(chooseMoney());
-		if (place.iterator().hasNext()) {
-			hero.setPlace(place.iterator().next());			
-		}
 
 		if (user.iterator().hasNext()) {
 			hero.setGameUser(user.iterator().next());			

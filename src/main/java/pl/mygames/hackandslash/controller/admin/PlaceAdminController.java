@@ -77,17 +77,6 @@ public class PlaceAdminController {
      * This method will return one equipment.
      */
 	private Place findPlace(Integer id) {
-		Place place;
-		List<Place> places = placeService.findById(id);
-		if (places.isEmpty()){
-    		logger.info("Places list is empty");
-    		place = new Place();
-    	} else {
-    		place = places.iterator().next();
-    		if (places.size() > 1) {
-    			logger.info("Method findPlace(Integer id) returned more then one result");
-    		}
-    	}
-		return place;
+		return placeService.findById(id);
 	}
 }

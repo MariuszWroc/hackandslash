@@ -77,17 +77,6 @@ public class NpcAdminController {
      * This method will return one npc.
      */
 	private Npc findNpc(Integer id) {
-		Npc npc;
-		List<Npc> npcs = npcService.findById(id);
-		if (npcs.isEmpty()){
-    		logger.info("Npcs list is empty");
-    		npc = new Npc();
-    	} else {
-    		npc = npcs.iterator().next();
-    		if (npcs.size() > 1) {
-    			logger.info("Method findNpc(Integer id) returned more then one result");
-    		}
-    	}
-		return npc;
+		return npcService.findById(id);
 	}
 }

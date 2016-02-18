@@ -78,17 +78,6 @@ public class EquipmentAdminController {
      * This method will return one equipment.
      */
 	private Equipment findEquipment(Integer id) {
-		Equipment equipment;
-		List<Equipment> equipments = equipmentService.findById(id);
-		if (equipments.isEmpty()){
-    		logger.info("Equipments list is empty");
-    		equipment = new Equipment();
-    	} else {
-    		equipment = equipments.iterator().next();
-    		if (equipments.size() > 1) {
-    			logger.info("Method findEquipment(Integer id) returned more then one result");
-    		}
-    	}
-		return equipment;
+		return equipmentService.findById(id);
 	}
 }

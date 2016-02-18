@@ -17,13 +17,13 @@ import org.springframework.dao.EmptyResultDataAccessException;
  * @param <PK>
  */
 public interface IGenericExtendedDao<T, PK extends Serializable> {
-    List<T> findAll();
+    List<T> findAll() throws EmptyResultDataAccessException;
     
     void flushSession();
 
     void clearSession();
             
-    void refresh(T entity);
+    void refresh(T entity) throws DataAccessException;
 
     void add(T entity) throws DataAccessException;
     
@@ -41,14 +41,14 @@ public interface IGenericExtendedDao<T, PK extends Serializable> {
     
     Integer generateId();
 
-	T get(PK id);
+	T get(PK id) throws EmptyResultDataAccessException;
 
-	void delete(PK id);
+	void delete(PK id) throws DataAccessException;
 
-	List<T> findByQuery(String namedQuery);
+	List<T> findByQuery(String namedQuery) throws EmptyResultDataAccessException;
 
-	List<T> findByQuery(String namedQuery, Integer id);
+	List<T> findByQuery(String namedQuery, Integer id) throws EmptyResultDataAccessException;
 
-	List<T> findByQuery(String namedQuery, String paramName, String paramValue);
+	List<T> findByQuery(String namedQuery, String paramName, String paramValue) throws EmptyResultDataAccessException;
 
 }

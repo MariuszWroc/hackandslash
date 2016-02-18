@@ -1,32 +1,38 @@
 package pl.mygames.hackandslash.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import pl.mygames.hackandslash.dao.impl.CharacterDao;
+import pl.mygames.hackandslash.dao.ICharacterDao;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.service.ICharacterService;
 
 @Service
 @Transactional(readOnly = true)
 public class CharacterService implements ICharacterService {
-
+	private static final Logger logger = LoggerFactory.getLogger(CharacterService.class);
+	
     @Autowired
-    private CharacterDao dao;
-
-    public void setDao(CharacterDao dao) {
-        this.dao = dao;
-    }
+    private ICharacterDao dao;
 
     @Transactional(readOnly = false)
     @Override
-    public GameCharacter add(GameCharacter character) {
-        dao.add(character);
+    public GameCharacter createCharacter(GameCharacter character) {
+        add(character);
         
         return character;
+    }
+    
+    @Transactional(readOnly = false)
+    @Override
+    public void add(GameCharacter character) {
+        dao.add(character);
     }
     
     @Transactional(readOnly = false)
@@ -37,7 +43,7 @@ public class CharacterService implements ICharacterService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -50,8 +56,19 @@ public class CharacterService implements ICharacterService {
     }
     
     @Override
-    public List<GameCharacter> findById(Integer id) {
-        return dao.findByQuery("GameCharacter.findById", id);
+    public GameCharacter findById(Integer id) {
+    	GameCharacter character;
+		List<GameCharacter> characters = dao.findByQuery("GameCharacter.findById", id);
+		if (characters.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		character = new GameCharacter();
+    	} else {
+    		character = characters.iterator().next();
+    		if (characters.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return character;
     }
 
     @Override

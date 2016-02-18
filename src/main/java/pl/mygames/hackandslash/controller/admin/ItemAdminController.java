@@ -78,7 +78,7 @@ public class ItemAdminController {
      */
 	private Item findItem(Integer id) {
 		Item item;
-		List<Item> items = itemService.findById(id);
+		List<Item> items = null;
 		if (items.isEmpty()){
     		logger.info("Items list is empty");
     		item = new Item();
@@ -88,6 +88,6 @@ public class ItemAdminController {
     			logger.info("Method findItem(Integer id) returned more then one result");
     		}
     	}
-		return item;
+		return itemService.findById(id);
 	}
 }

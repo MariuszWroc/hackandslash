@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.website;
+package pl.mygames.hackandslash.controller.website.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

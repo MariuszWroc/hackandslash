@@ -1,4 +1,4 @@
-package pl.mygames.hackandslash.controller.website;
+package pl.mygames.hackandslash.controller.website.impl.routing;
 
 import java.util.Locale;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class NavigationController {
-	private static final Logger logger = LoggerFactory.getLogger(NavigationController.class);
+public class NavigationGeneralController {
+	private static final Logger logger = LoggerFactory.getLogger(NavigationGeneralController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {

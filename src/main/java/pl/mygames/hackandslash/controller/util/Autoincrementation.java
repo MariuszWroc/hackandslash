@@ -1,9 +1,8 @@
 package pl.mygames.hackandslash.controller.util;
 
-public class Autoincrementation {
+public enum Autoincrementation {
 	
-	public Autoincrementation() {
-	}
+	INSTANCE;
 
 	public static Integer getValue(Integer actualValue) {
 		if (actualValue != null) {

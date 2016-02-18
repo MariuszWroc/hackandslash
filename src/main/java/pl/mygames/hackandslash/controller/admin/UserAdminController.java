@@ -88,18 +88,7 @@ public class UserAdminController {
 	 * This method will return one user.
 	 */
 	private GameUser findUser(Integer id) {
-		GameUser user;
-		List<GameUser> users = userService.findById(id);
-		if (users.isEmpty()){
-			logger.info("Users list is empty");
-			user = new GameUser();
-		} else {
-			user = users.iterator().next();
-			if (users.size() > 1) {
-				logger.info("Method findUserInteger id) returned more then one result");
-			}
-		}
-		return user;
+		return userService.findById(id);
 	}
 	
 	

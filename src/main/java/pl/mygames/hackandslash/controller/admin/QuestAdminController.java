@@ -78,17 +78,6 @@ public class QuestAdminController {
      * This method will return one quest.
      */
 	private Quest findQuest(Integer id) {
-		Quest quest;
-		List<Quest> quests = questService.findById(id);
-		if (quests.isEmpty()){
-    		logger.info("Quests list is empty");
-    		quest = new Quest();
-    	} else {
-    		quest = quests.iterator().next();
-    		if (quests.size() > 1) {
-    			logger.info("Method findQuest() returned more then one result");
-    		}
-    	}
-		return quest;
+		return questService.findById(id);
 	}
 }

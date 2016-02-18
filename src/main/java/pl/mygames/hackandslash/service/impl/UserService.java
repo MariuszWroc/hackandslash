@@ -9,10 +9,12 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.mygames.hackandslash.dao.IUserDao;
 import pl.mygames.hackandslash.dao.impl.UserDao;
 import pl.mygames.hackandslash.dto.LoginDTO;
 import pl.mygames.hackandslash.dto.UserDTO;
 import pl.mygames.hackandslash.dto.util.general.Rolename;
+import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IRoleService;
@@ -24,7 +26,7 @@ public class UserService implements IUserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 	
     @Autowired
-    private UserDao dao;
+    private IUserDao dao;
     
     @Autowired
     private IRoleService roleService;
@@ -35,7 +37,7 @@ public class UserService implements IUserService {
 
     @Transactional(readOnly = false)
     @Override
-    public Boolean add(GameUser user) {
+    public Boolean isAdd(GameUser user) {
         	user.setId(generateId());
         	user.setActivated(Boolean.TRUE);
         	setDefaultRole(user);
@@ -96,8 +98,19 @@ public class UserService implements IUserService {
 
 
     @Override
-    public List<GameUser> findById(Integer id) {
-        return dao.findByQuery("GameUser.findById", id);
+    public GameUser findById(Integer id) {
+    	GameUser user;
+		List<GameUser> users = dao.findByQuery("GameCharacter.findById", id);
+		if (users.isEmpty()){
+    		logger.info("Equipments list is empty");
+    		user = new GameUser();
+    	} else {
+    		user = users.iterator().next();
+    		if (users.size() > 1) {
+    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    		}
+    	}
+        return user;
     }
 
     @Override
@@ -129,10 +142,7 @@ public class UserService implements IUserService {
 
 	private void setDefaultRole(GameUser user) {
 		Integer idRole = Rolename.USER.getId();
-		List<GameRole> gameRole = roleService.findById(idRole);
-        if(gameRole.iterator().hasNext()) {
-        	user.setGameRole(gameRole.iterator().next());	
-        }
+        user.setGameRole(roleService.findById(idRole));	
 	}
 	
 	private Boolean isUserExist(String login) {
@@ -160,5 +170,11 @@ public class UserService implements IUserService {
     		return true;
     	}
     }
+
+	@Override
+	public void add(GameUser user) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

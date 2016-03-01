@@ -1,14 +1,16 @@
 package pl.mygames.hackandslash.dto.util.general;
 
 public enum ItemPlace {
-	RightHand(1, "Prawa ręka"),
-	LeftHand(2, "Lewa ręka"),
-	Head(3, "Głowa"),
-	Body(4, "Tułów"),
-	Feet(5, "Stopy"),
-	Hands(6, "Ręce"),
-	LeftFinger(7, "Lewy palec"),
-	RightFinger(8, "Prawy palec");
+	RIGHT_HAND(1, "Prawa ręka"),
+	LEFT_HAND(2, "Lewa ręka"),
+	HEAD(3, "Głowa"),
+	BODY(4, "Tułów"),
+	FEET(5, "Stopy"),
+	HANDS(6, "Ręce"),
+	LEFT_FINGER(7, "Lewy palec"),
+	RIGHT_FINGER(8, "Prawy palec"),
+	QUICK_ITEM_SLOT(9, "Quick item"),
+	OTHER(0, "Backpack");
 	
 	private final int id;
 	private final String name;

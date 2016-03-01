@@ -7,7 +7,9 @@ package pl.mygames.hackandslash.dto;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
+import pl.mygames.hackandslash.dto.util.general.ItemPlace;
 import pl.mygames.hackandslash.model.*;
 
 /**
@@ -21,19 +23,14 @@ public class BackpackDTO implements Serializable{
     private Item boot;
     private Item armor;
     private Item headgear;
-    private Item leftring;
-    private Item rightring;
+    private Item leftRing;
+    private Item righRring;
     private Item gloves;
     private List<Item> quickItems;
     private List<Item> otherItems;
     private Integer heroId;
     
-	public Item getLeftHand() {
-		return leftHand;
-	}
-	public void setLeftHand(Item leftHand) {
-		this.leftHand = leftHand;
-	}
+
 	public Item getRightHand() {
 		return rightHand;
 	}
@@ -58,17 +55,17 @@ public class BackpackDTO implements Serializable{
 	public void setHeadgear(Item headgear) {
 		this.headgear = headgear;
 	}
-	public Item getLeftring() {
-		return leftring;
+	public Item getLeftRing() {
+		return leftRing;
 	}
-	public void setLeftring(Item leftring) {
-		this.leftring = leftring;
+	public void setLeftRing(Item leftRing) {
+		this.leftRing = leftRing;
 	}
-	public Item getRightring() {
-		return rightring;
+	public Item getRighRring() {
+		return righRring;
 	}
-	public void setRightring(Item rightring) {
-		this.rightring = rightring;
+	public void setRighRring(Item righRring) {
+		this.righRring = righRring;
 	}
 	public Item getGloves() {
 		return gloves;
@@ -93,6 +90,12 @@ public class BackpackDTO implements Serializable{
 	}
     public void setHeroId(Integer heroId) {
 		this.heroId = heroId;
+	}
+	public Item getLeftHand() {
+		return leftHand;
+	}
+	public void setLeftHand(Item leftHand) {
+		this.leftHand = leftHand;
 	}
     
 }

@@ -15,6 +15,5 @@ public class CombatDTO {
 	
 	private void test() {
 		BackpackDTO backpack = new BackpackDTO();
-		backpack.getLeftHand().put(ItemPlace.HANDS, new Item());
 	}
 }

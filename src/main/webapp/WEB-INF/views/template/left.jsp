@@ -18,10 +18,20 @@
 						</md-button>
 					</div>
 				</md-toolbar> 
-				<md-content layout-padding=""> 
+				<md-content layout-padding="" style="height:100%"> 
 					<md-button md-raised md-primary layout-fill href="#/user/profil">Profil</md-button> 
 					<md-button md-raised md-primary layout-fill href="#/user/hero">Heroes</md-button> 
-					<md-button md-raised md-primary layout-fill href="#/user/game">Play</md-button>
+                                        <div class="dropdown">
+                                            <md-button layout-fill class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Play
+                                                <span class="caret"></span>
+                                            </md-button>
+                                            <ul class="dropdown-menu" style="width:100%">
+                                              <li><md-button layout-fill href="#/user/game">New game</md-button></li>
+                                              <li><md-button layout-fill>Battle</md-button></li>
+                                              <li><md-button layout-fill>Equipment</md-button></li>
+                                              <li><md-button layout-fill>Journal</md-button></li>
+                                            </ul>
+                                        </div>
 				</md-content> 
 			</md-sidenav>
 		</div>

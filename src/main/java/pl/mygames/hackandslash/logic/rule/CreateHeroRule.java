@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 
 import pl.mygames.hackandslash.dto.AttributeDTO;
 import pl.mygames.hackandslash.dto.DefaultAttributesDTO;
-import pl.mygames.hackandslash.dto.util.general.Dice;
-import pl.mygames.hackandslash.dto.util.user.UserProfession;
-import pl.mygames.hackandslash.dto.util.user.UserRace;
+import pl.mygames.hackandslash.util.constant.Dice;
+import pl.mygames.hackandslash.util.constant.user.UserProfession;
+import pl.mygames.hackandslash.util.constant.user.UserRace;
 import pl.mygames.hackandslash.service.util.RandomValue;
 
-public class CreateHeroRule {
+public final class CreateHeroRule {
     private static final Logger logger = LoggerFactory.getLogger(CreateHeroRule.class);
     private static Map<String, DefaultAttributesDTO> allAttributes = populateDefaultAttributes();
     

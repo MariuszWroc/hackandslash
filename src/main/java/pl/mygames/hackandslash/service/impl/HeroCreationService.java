@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.impl.HeroDao;
-import pl.mygames.hackandslash.dto.HeroDTO;
-import pl.mygames.hackandslash.dto.util.general.StartingPoint;
-import pl.mygames.hackandslash.dto.util.user.UserProfession;
+import pl.mygames.hackandslash.dto.user.HeroDTO;
+import pl.mygames.hackandslash.util.constant.StartingPoint;
+import pl.mygames.hackandslash.util.constant.user.UserProfession;
 import pl.mygames.hackandslash.model.*;
 import pl.mygames.hackandslash.service.*;
 

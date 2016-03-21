@@ -5,13 +5,15 @@
  */
 package pl.mygames.hackandslash.dto;
 
-import pl.mygames.hackandslash.dto.util.general.GenderEnum;
+import java.io.Serializable;
+import pl.mygames.hackandslash.util.constant.GenderEnum;
 
 /**
  *
  * @author Jaca
  */
-public final class GenderDTO {
+public final class GenderDTO implements Serializable{
+    private static final long serialVersionUID = 1L;
     private final int id;
     private final String name;
 

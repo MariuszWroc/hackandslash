@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import pl.mygames.hackandslash.dto.EmailDTO;
+import pl.mygames.hackandslash.dto.web.EmailDTO;
 import pl.mygames.hackandslash.service.impl.EmailSenderService;
 
 @Controller

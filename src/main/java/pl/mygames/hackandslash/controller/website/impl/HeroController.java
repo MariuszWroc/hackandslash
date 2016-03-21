@@ -5,6 +5,9 @@
  */
 package pl.mygames.hackandslash.controller.website.impl;
 
+import pl.mygames.hackandslash.dto.user.HeroDTO;
+import pl.mygames.hackandslash.dto.general.ProfessionDTO;
+import pl.mygames.hackandslash.dto.general.RaceDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +25,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.*;
-import pl.mygames.hackandslash.dto.util.user.UserProfession;
-import pl.mygames.hackandslash.dto.util.user.UserRace;
+import pl.mygames.hackandslash.util.constant.user.UserProfession;
+import pl.mygames.hackandslash.util.constant.user.UserRace;
 import pl.mygames.hackandslash.model.Hero;
 import pl.mygames.hackandslash.service.IHeroService;
 

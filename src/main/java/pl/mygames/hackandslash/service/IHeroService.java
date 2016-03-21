@@ -1,7 +1,7 @@
 package pl.mygames.hackandslash.service;
 
 import java.util.List;
-import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.dto.user.HeroDTO;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.model.Hero;
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.*;
 import org.springframework.stereotype.Service;
 
-import pl.mygames.hackandslash.dto.EmailDTO;
+import pl.mygames.hackandslash.dto.web.EmailDTO;
 
 @Service
 public class EmailSenderService {

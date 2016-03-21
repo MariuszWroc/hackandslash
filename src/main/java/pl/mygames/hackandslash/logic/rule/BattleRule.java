@@ -1,9 +1,9 @@
 package pl.mygames.hackandslash.logic.rule;
 
-import pl.mygames.hackandslash.dto.util.user.AttackUI;
+import pl.mygames.hackandslash.util.constant.AttackUI;
 import pl.mygames.hackandslash.model.Hero;
 
-public class BattleRule {
+public final class BattleRule {
 	private final Hero player;
 	private final Hero enemy;
 

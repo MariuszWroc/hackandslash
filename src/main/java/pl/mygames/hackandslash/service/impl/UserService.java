@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IUserDao;
 import pl.mygames.hackandslash.dao.impl.UserDao;
-import pl.mygames.hackandslash.dto.LoginDTO;
-import pl.mygames.hackandslash.dto.UserDTO;
-import pl.mygames.hackandslash.dto.util.general.Rolename;
+import pl.mygames.hackandslash.dto.web.LoginDTO;
+import pl.mygames.hackandslash.dto.user.UserDTO;
+import pl.mygames.hackandslash.util.constant.Rolename;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;

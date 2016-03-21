@@ -1,12 +1,13 @@
 package pl.mygames.hackandslash.dto;
 
+import pl.mygames.hackandslash.dto.user.BackpackDTO;
+import java.io.Serializable;
 import java.util.List;
 
-import pl.mygames.hackandslash.dto.util.general.ItemPlace;
 import pl.mygames.hackandslash.model.GameCharacter;
-import pl.mygames.hackandslash.model.Item;
 
-public class CombatDTO {
+public class CombatDTO implements Serializable{
+    private static final long serialVersionUID = 1L;
 	private Integer userHeroId;
 	private Integer enemyId;
 	private Integer attackRoll;

@@ -1,7 +1,7 @@
 package pl.mygames.hackandslash.service;
 
 
-import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.dto.user.HeroDTO;
 
 public interface IHeroCreationService {
 	Integer generateId();

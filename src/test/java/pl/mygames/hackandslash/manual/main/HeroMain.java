@@ -3,7 +3,7 @@ package pl.mygames.hackandslash.manual.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pl.mygames.hackandslash.dto.HeroDTO;
+import pl.mygames.hackandslash.dto.user.HeroDTO;
 import pl.mygames.hackandslash.service.impl.HeroCreationService;
 
 public class HeroMain {

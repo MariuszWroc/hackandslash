@@ -1,5 +1,6 @@
 package pl.mygames.hackandslash.controller.admin;
 
+import pl.mygames.hackandslash.dto.user.HeroDTO;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -13,9 +14,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.*;
-import pl.mygames.hackandslash.dto.util.general.GenderEnum;
-import pl.mygames.hackandslash.dto.util.user.UserProfession;
-import pl.mygames.hackandslash.dto.util.user.UserRace;
+import pl.mygames.hackandslash.util.constant.GenderEnum;
+import pl.mygames.hackandslash.util.constant.user.UserProfession;
+import pl.mygames.hackandslash.util.constant.user.UserRace;
 import pl.mygames.hackandslash.logic.rule.CreateHeroRule;
 import pl.mygames.hackandslash.service.IHeroCreationService;
 

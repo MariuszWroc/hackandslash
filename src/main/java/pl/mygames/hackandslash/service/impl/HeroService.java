@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IHeroDao;
 import pl.mygames.hackandslash.dao.impl.HeroDao;
-import pl.mygames.hackandslash.dto.HeroDTO;
-import pl.mygames.hackandslash.dto.util.general.Dice;
+import pl.mygames.hackandslash.dto.user.HeroDTO;
+import pl.mygames.hackandslash.util.constant.Dice;
 import pl.mygames.hackandslash.logic.rule.CreateHeroRule;
 import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Hero;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IEquipmentDao;
-import pl.mygames.hackandslash.dto.BackpackDTO;
+import pl.mygames.hackandslash.dto.user.BackpackDTO;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
@@ -51,15 +51,15 @@ public class EquipmentService implements IEquipmentService {
     public void findDTOById(Integer id) {
     	BackpackDTO backpack = new BackpackDTO();
     	Equipment equipment = findById(id);
-    	backpack.setHeroId(equipment.getGameCharacter().getHero().getId());
-    	backpack.setArmor(equipment.getItem());
-    	backpack.setBoot(equipment.getItem());
-    	backpack.setGloves(equipment.getItem());
-    	backpack.setHeadgear(equipment.getItem());
-    	backpack.setLeftHand(equipment.getItem());
-    	backpack.setRightHand(equipment.getItem());
-    	backpack.setLeftRing(equipment.getItem());
-    	backpack.setRighRring(equipment.getItem());
+//    	backpack.setHeroId(equipment.getGameCharacter().getHero().getId());
+//    	backpack.setArmor(equipment.getItem());
+//    	backpack.setBoot(equipment.getItem());
+//    	backpack.setGloves(equipment.getItem());
+//    	backpack.setHeadgear(equipment.getItem());
+//    	backpack.setLeftHand(equipment.getItem());
+//    	backpack.setRightHand(equipment.getItem());
+//    	backpack.setLeftRing(equipment.getItem());
+//    	backpack.setRighRring(equipment.getItem());
     }
 
     @Override

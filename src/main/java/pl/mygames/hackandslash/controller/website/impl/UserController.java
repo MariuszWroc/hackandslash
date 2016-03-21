@@ -20,7 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
-import pl.mygames.hackandslash.dto.UserDTO;
+import pl.mygames.hackandslash.dto.user.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 

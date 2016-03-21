@@ -2,8 +2,8 @@ package pl.mygames.hackandslash.service;
 
 import java.util.List;
 
-import pl.mygames.hackandslash.dto.LoginDTO;
-import pl.mygames.hackandslash.dto.UserDTO;
+import pl.mygames.hackandslash.dto.web.LoginDTO;
+import pl.mygames.hackandslash.dto.user.UserDTO;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.model.GameUser;
 

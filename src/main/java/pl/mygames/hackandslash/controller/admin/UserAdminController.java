@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
-import pl.mygames.hackandslash.dto.UserDTO;
+import pl.mygames.hackandslash.dto.user.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 

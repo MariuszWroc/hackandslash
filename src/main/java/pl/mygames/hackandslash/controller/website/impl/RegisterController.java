@@ -17,7 +17,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.dto.GenderDTO;
-import pl.mygames.hackandslash.dto.util.general.GenderEnum;
+import pl.mygames.hackandslash.util.constant.GenderEnum;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IUserService;
 

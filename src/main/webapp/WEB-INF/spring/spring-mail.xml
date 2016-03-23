@@ -22,7 +22,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
        <!-- Email Properties Placeholder -->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:database.local.properties" />
+        <property name="location" value="classpath:database.h2.properties" />
     </bean>	
 	
 <bean id="emailSenderService" class="pl.mygames.hackandslash.service.impl.EmailSenderService">

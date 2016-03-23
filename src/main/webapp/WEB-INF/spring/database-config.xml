@@ -42,6 +42,7 @@
             <beans:props>
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect
                 </beans:prop>
+                <beans:prop key="hibernate.default_schema">hackandslash</beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
                 <beans:prop key="jadira.usertype.autoRegisterUserTypes">true</beans:prop>
             </beans:props>

@@ -32,9 +32,12 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"  users-by-username-query=" 
-				SELECT 'mczarny', '123', 'true'"
-                                authorities-by-username-query=" SELECT 
-				u.login, r.rolename FROM hackandslash.GameUser u, hackandslash.GameRole r WHERE r.id = u.GameRole_id AND u.login='mczarny';"   
+				SELECT login, password, CASE activated WHEN 1 THEN 'true' ELSE 'false' END 
+				activated FROM hackandslash.GameUser WHERE login=?;
+				"
+                                authorities-by-username-query=" 
+SELECT u.login, r.rolename FROM hackandslash.GameUser u, hackandslash.GameRole r WHERE r.id = u.GameRole_id AND u.login=?;
+				"   
 				/>
                 </authentication-provider>
             </authentication-manager>

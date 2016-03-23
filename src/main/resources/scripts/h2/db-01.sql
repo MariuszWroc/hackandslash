@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 /**
- * Author:  XE050991049
+ * Author:  Mariusz Czarny
  * Created: Mar 22, 2016
  */
 -- MySQL Workbench Forward Engineering

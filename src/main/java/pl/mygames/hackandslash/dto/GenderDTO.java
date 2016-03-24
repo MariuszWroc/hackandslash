@@ -29,4 +29,10 @@ public final class GenderDTO implements Serializable{
     public String getName() {
             return name;
     }
+
+    @Override
+    public String toString() {
+        return "GenderDTO{" + "id=" + id + ", name=" + name + '}';
+    }
+    
 }

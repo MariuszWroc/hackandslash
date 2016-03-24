@@ -36,4 +36,10 @@ public class EmailDTO implements Serializable{
 	public String getReceiver() {
 		return receiver;
 	}
+
+    @Override
+    public String toString() {
+        return "EmailDTO{" + "sender=" + sender + ", subject=" + subject + ", body=" + body + ", receiver=" + receiver + '}';
+    }
+        
 }

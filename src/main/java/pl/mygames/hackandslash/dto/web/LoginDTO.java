@@ -48,5 +48,10 @@ public class LoginDTO implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "LoginDTO{" + "username=" + username + ", password=" + password + '}';
+    }
     
 }

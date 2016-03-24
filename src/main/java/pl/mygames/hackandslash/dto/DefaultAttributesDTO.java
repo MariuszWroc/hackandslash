@@ -102,5 +102,10 @@ public class DefaultAttributesDTO implements Serializable{
 	public void setMaxCharisma(int maxCharisma) {
 		this.maxCharisma = maxCharisma;
 	}
+
+    @Override
+    public String toString() {
+        return "DefaultAttributesDTO{" + "minStrength=" + minStrength + ", minDexterity=" + minDexterity + ", minIntelligence=" + minIntelligence + ", minConstitution=" + minConstitution + ", minCharisma=" + minCharisma + ", maxStrength=" + maxStrength + ", maxDexterity=" + maxDexterity + ", maxIntelligence=" + maxIntelligence + ", maxConstitution=" + maxConstitution + ", maxCharisma=" + maxCharisma + '}';
+    }
     
 }

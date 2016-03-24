@@ -59,4 +59,9 @@ public class AttributeDTO implements Serializable{
 		this.charisma = charisma;
 	}
 
+    @Override
+    public String toString() {
+        return "AttributeDTO{" + "strength=" + strength + ", dexterity=" + dexterity + ", intelligence=" + intelligence + ", constitution=" + constitution + ", charisma=" + charisma + '}';
+    }
+        
 }

@@ -20,7 +20,7 @@
 									<div class="col-md-7">
 										<input type="email" class="form-control input-sm"
 											ng-model="emailDetail.sender" required="required"/>									
-									</div>								
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -29,7 +29,7 @@
 									<div class="col-md-7">
 										<input type="text" class="form-control input-sm"
 											ng-model="emailDetail.subject" required="required"/>									
-									</div>								
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -38,7 +38,7 @@
 									<div class="col-md-7">
 										<textarea rows="10" class="form-control input-sm"
 											ng-model="emailDetail.body" required="required"></textarea>
-									</div>								
+									</div>
 								</div>
 							</div>
 							<div class="row">

@@ -25,6 +25,7 @@ public class EmailSenderController {
 		
 	    @RequestMapping(value = "/email/send", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })  
 	    public ResponseEntity<List<ObjectError>> sendEmail(@RequestBody @Valid EmailDTO email, BindingResult result) {
+                logger.info("Validating email " + email);
 			if (!result.hasErrors()) {
 	    		mailSender.sendMail(email);
 	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);

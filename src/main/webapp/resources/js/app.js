@@ -59,6 +59,22 @@ module.config(['$routeProvider',
                     templateUrl: prefix + '/admin/panel',
                     controller: 'adminController'
                 }).
+                when('/user/journal', {
+                    templateUrl: prefix + '/user/journal',
+                    controller: 'gameController'
+                }).
+                when('/user/combat', {
+                    templateUrl: prefix + '/user/combat',
+                    controller: 'gameController'
+                }).
+                when('/user/shop', {
+                    templateUrl: prefix + '/user/shop',
+                    controller: 'gameController'
+                }).
+                when('/user/equipment', {
+                    templateUrl: prefix + '/user/equipment',
+                    controller: 'gameController'
+                }).                         
                 when('/', {
                    templateUrl: prefix + '/welcome',
                    controller: 'menuController'

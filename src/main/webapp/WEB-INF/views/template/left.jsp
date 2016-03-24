@@ -27,9 +27,10 @@
                                             </md-button>
                                             <ul class="dropdown-menu" style="width:100%">
                                               <li><md-button layout-fill href="#/user/game">New game</md-button></li>
-                                              <li><md-button layout-fill>Battle</md-button></li>
-                                              <li><md-button layout-fill>Equipment</md-button></li>
-                                              <li><md-button layout-fill>Journal</md-button></li>
+                                              <li><md-button layout-fill href="#/user/combat">Battle</md-button></li>
+                                              <li><md-button layout-fill href="#/user/equipment">Equipment</md-button></li>
+                                              <li><md-button layout-fill href="#/user/journal">Journal</md-button></li>
+                                              <li><md-button layout-fill href="#/user/shop">Shop</md-button></li>                
                                             </ul>
                                         </div>
 				</md-content> 

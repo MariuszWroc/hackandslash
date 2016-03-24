@@ -26,5 +26,29 @@ public class NavigationUserController {
 	public String getPlayGame() {
 		return "user/game";
 	}
+        
+        @Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping(value = "/shop", method = RequestMethod.GET)
+	public String getShop() {
+		return "user/shop";
+	}
+        
+        @Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping(value = "/equipment", method = RequestMethod.GET)
+	public String getEquipment() {
+		return "user/equipment";
+	}
+        
+        @Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping(value = "/journal", method = RequestMethod.GET)
+	public String getJournal() {
+		return "user/journal";
+	}
+        
+        @Secured(value = {"ROLE_USER", "ROLE_ADMIN"})
+	@RequestMapping(value = "/combat", method = RequestMethod.GET)
+	public String getCombat() {
+		return "user/combat";
+	}
 }
 

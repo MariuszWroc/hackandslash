@@ -33,7 +33,7 @@
                                                         <div class="form-group form-group-lg">
                                                                     <label class="col-md-2 control-label" for="file">Helmet</label>
                                                                     <div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroEquipment.helmet"
+                                                                            <select id="mySel" ng-model="heroEquipment.headgear"
                                                                                     class="form-control">
                                                                                     <option ng-repeat="helmet in helmets" value="{{helmet.id}}">{{helmet.label}}</option>
                                                                             </select>
@@ -42,7 +42,7 @@
                                                         <div class="form-group form-group-lg">
                                                                 <label class="col-md-2 control-label" for="file">Main hand</label>
                                                                 <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.mainHand"
+                                                                        <select id="mySel" ng-model="heroEquipment.rightHand"
                                                                                 class="form-control">
                                                                                 <option ng-repeat="mainHand in mainHands" value="{{mainHand.id}}">{{mainHand.label}}</option>
                                                                         </select>
@@ -53,7 +53,7 @@
                                                         <div class="form-group form-group-lg">
                                                                     <label class="col-md-2 control-label" for="file">Off hand</label>
                                                                     <div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroEquipment.offHand"
+                                                                            <select id="mySel" ng-model="heroEquipment.leftHand"
                                                                                     class="form-control">
                                                                                     <option ng-repeat="offHand in offHands" value="{{offHand.id}}">{{offHand.label}}</option>
                                                                             </select>
@@ -62,7 +62,7 @@
                                                         <div class="form-group form-group-lg">
                                                                 <label class="col-md-2 control-label" for="file">MainArmor</label>
                                                                 <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.mainArmor"
+                                                                        <select id="mySel" ng-model="heroEquipment.armor"
                                                                                 class="form-control">
                                                                                 <option ng-repeat="mainArmor in mainArmors" value="{{mainArmor.id}}">{{mainArmor.label}}</option>
                                                                         </select>
@@ -71,7 +71,25 @@
                                                         <div class="form-group form-group-lg">
                                                                 <label class="col-md-2 control-label" for="file">Boots</label>
                                                                 <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.boots"
+                                                                        <select id="mySel" ng-model="heroEquipment.boot"
+                                                                                class="form-control">
+                                                                                <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
+                                                                        </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="form-group form-group-lg">
+                                                                <label class="col-md-2 control-label" for="file">Left ring</label>
+                                                                <div class="col-md-7">
+                                                                        <select id="mySel" ng-model="heroEquipment.leftRing"
+                                                                                class="form-control">
+                                                                                <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
+                                                                        </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="form-group form-group-lg">
+                                                                <label class="col-md-2 control-label" for="file">Right ring</label>
+                                                                <div class="col-md-7">
+                                                                        <select id="mySel" ng-model="heroEquipment.righRring"
                                                                                 class="form-control">
                                                                                 <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
                                                                         </select>

@@ -1,59 +1,70 @@
 module.controller('gameController', ['$scope', '$http', function($scope, $http){
+        
         $scope.backpackItems = [
             {
                 id: 1,
                 label:'item11',
-                type: 'helmet'
+                type: 'headgear'
             },
             {
                 id: 2,
                 label:'item1',
-                type: 'glove'
+                type: 'gloves'
             },
             {
                 id: 3,
                 label:'item2',
-                type: 'mainHand'
+                type: 'leftHand'
+            },
+            {
+                id: 12,
+                label:'item2',
+                type: 'righRring'
             },
             {
                 id: 4,
                 label:'item3',
-                type: 'offHand'
+                type: 'boot'
+            },
+            {
+                id: 13,
+                label:'item3',
+                type: 'leftRing'
             },
             {
                 id: 5,
                 label:'item4',
-                type: 'mainArmor'
+                type: 'rightHand'
             },
             {
                 id: 6,
                 label:'item5',
-                type: 'boots'
+                type: 'headgear'
             },
             {
                 id: 7,
                 label:'item6',
-                type: 'helmet'
+                type: 'headgear'
             },
             {
                 id: 8,
                 label:'item7',
-                type: 'mainHand'
+                type: 'rightHand'
             },
             {
                 id: 9,
                 label:'item8',
-                type: 'offHand'
+                type: 'leftHand'
             },
             {
                 id: 10,
                 label:'item9',
-                type: 'mainArmor'
+                type: 'armor'
             },
             {
                 id: 11,
                 label:'item10',
-                type: 'boots'
+                type: 'boot'
             },
         ];
 	$scope.gloves = [];
@@ -62,7 +73,8 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
         $scope.offHands = [];
         $scope.mainArmors = [];
         $scope.bootsList = [];
-        $scope.heroEquipment = {};
+        $scope.heroEquipment = {
+        };
         
         filterItems();
         
@@ -77,6 +89,22 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
         $scope.$watch('backpackItems', function(value){
             filterItems();
         });
+        
+        $scope.watch('heroEquipment.mainHand', function(value) {
+           mainHands.forEach(function(val, key) {
+               if (val.id === value.id) {
+                   mainHands.splice(key, 1);
+               }
+           }) 
+        });
+        
+        function addQuickItem (item) {
+            if ($scope.quickItems.length === 10) {
+                //show allert
+            } else {
+                $scope.quickItems.push(item)
+            }
+        }
         
         function filterItems() {
             var regEx = new RegExp('glove');

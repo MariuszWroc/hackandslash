@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IEquipmentDao;
-import pl.mygames.hackandslash.dto.user.BackpackDTO;
+import pl.mygames.hackandslash.dto.user.EquipmentDTO;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
@@ -49,7 +49,7 @@ public class EquipmentService implements IEquipmentService {
     }
     
     public void findDTOById(Integer id) {
-    	BackpackDTO backpack = new BackpackDTO();
+    	EquipmentDTO backpack = new EquipmentDTO();
     	Equipment equipment = findById(id);
 //    	backpack.setHeroId(equipment.getGameCharacter().getHero().getId());
 //    	backpack.setArmor(equipment.getItem());

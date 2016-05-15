@@ -1,6 +1,5 @@
 package pl.mygames.hackandslash.dto;
 
-import pl.mygames.hackandslash.dto.user.BackpackDTO;
 import java.io.Serializable;
 import java.util.List;
 

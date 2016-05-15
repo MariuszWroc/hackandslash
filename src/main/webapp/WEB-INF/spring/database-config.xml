@@ -14,7 +14,7 @@
     
        <!-- DB Properties Placeholder -->
     <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <beans:property name="location" value="classpath:database.h2.properties" />
+        <beans:property name="location" value="classpath:database.mysql.properties" />
     </beans:bean>
 
 	

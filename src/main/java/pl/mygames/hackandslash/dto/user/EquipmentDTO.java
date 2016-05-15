@@ -14,7 +14,7 @@ import pl.mygames.hackandslash.model.Equipment;
  *
  * @author mariusz
  */
-public class BackpackDTO implements Serializable{
+public class EquipmentDTO implements Serializable{
     private static final long serialVersionUID = 1L;
     
     private Integer id;
@@ -29,10 +29,10 @@ public class BackpackDTO implements Serializable{
     private List<ItemDTO> quickItems;
     private List<ItemDTO> otherItems;
 
-    public BackpackDTO() {
+    public EquipmentDTO() {
     }
 
-    public BackpackDTO(Equipment equipment) {
+    public EquipmentDTO(Equipment equipment) {
         this.id = equipment.getId();
         this.leftHand = null;
         this.rightHand = null;

@@ -18,82 +18,58 @@
 		    		<div class="panel-heading">
 		    			<span class="lead">Equipment</span>
 		    		</div>
-					<div class="formcontainer">
-                                            <form ng-submit="saveEquipment()" method="post" name="equipmentForm"class="form-horizontal">
+					<div class="formcontainer" layout="row">
+                                            <form ng-submit="saveEquipment()" method="post" name="equipmentForm"class="form-horizontal" flex="50">
                                                 <div class="row">
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">Gloves</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.gloves"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="glove in gloves" value="{{glove.id}}">{{glove.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Gloves</label>
+                                                                <input ng-disabled="true" style="color:black;"  ng-model="heroEquipment.gloves.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                    <label class="col-md-2 control-label" for="file">Helmet</label>
-                                                                    <div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroEquipment.headgear"
-                                                                                    class="form-control">
-                                                                                    <option ng-repeat="helmet in helmets" value="{{helmet.id}}">{{helmet.label}}</option>
-                                                                            </select>
-                                                                    </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Headgear</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.headgear.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">Main hand</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.rightHand"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="mainHand in mainHands" value="{{mainHand.id}}">{{mainHand.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Right hand</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.rightHand.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                 </div>
                                                 <div class="row">
                                                         <div class="form-group form-group-lg">
-                                                                    <label class="col-md-2 control-label" for="file">Off hand</label>
-                                                                    <div class="col-md-7">
-                                                                            <select id="mySel" ng-model="heroEquipment.leftHand"
-                                                                                    class="form-control">
-                                                                                    <option ng-repeat="offHand in offHands" value="{{offHand.id}}">{{offHand.label}}</option>
-                                                                            </select>
-                                                                    </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Left hand</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.leftHand.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">MainArmor</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.armor"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="mainArmor in mainArmors" value="{{mainArmor.id}}">{{mainArmor.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Armor</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.armor.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">Boots</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.boot"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Boots</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.boot.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">Left ring</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.leftRing"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Left ring</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.leftRing.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                         <div class="form-group form-group-lg">
-                                                                <label class="col-md-2 control-label" for="file">Right ring</label>
-                                                                <div class="col-md-7">
-                                                                        <select id="mySel" ng-model="heroEquipment.righRring"
-                                                                                class="form-control">
-                                                                                <option ng-repeat="boots in bootsList" value="{{boots.id}}">{{boots.label}}</option>
-                                                                        </select>
-                                                                </div>
+                                                            <md-input-container>
+                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Right ring</label>
+                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.righRring.label"/>
+                                                            </md-input-container>
                                                         </div>
                                                     <div class="form-actions floatRight">
                                                             <input type="submit"
@@ -104,6 +80,43 @@
                                                     </div>
                                                 </div>
                                             </form>
+                                            <div class="tablecontainer">
+                                                    <div class="form-group form-group-lg">
+                                                            <label class="col-md-2 control-label" for="file">Select items to display</label>
+                                                            <div class="col-md-7">
+                                                                <select id="mySel" ng-change="filterTable()" ng-model="filterType" class="form-control">
+                                                                    <option value="all">All</option>
+                                                                    <option value="gloves">Gloves</option>
+                                                                    <option value="headgear">Headgear</option>
+                                                                    <option value="boot">Boots</option>
+                                                                    <option value="leftHand">Left hand</option>
+                                                                    <option value="rightHand">Right hand</option>
+                                                                    <option value="righRring">Right ring</option>
+                                                                    <option value="leftRing">Left ring</option>
+                                                                    <option value="armor">Armor</option>
+                                                                </select>
+                                                            </div>
+                                                    </div>
+                                                    <table class="table table-hover">
+                                                            <thead>
+                                                                    <tr>
+                                                                            <th>Name</th>
+                                                                            <th>Type</th>
+                                                                            <th width="20%"></th>
+                                                                    </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                    <tr ng-repeat="eq in backpackItems">
+                                                                            <td>{{eq.label}}</td>
+                                                                            <td>{{eq.type}}</td>
+                                                                            <td>
+                                                                                    <button type="button" ng-click="selectItem(eq)"
+                                                                                            class="btn btn-success custom-width">Select</button>
+                                                                            </td>
+                                                                    </tr>
+                                                            </tbody>
+                                                    </table>
+                                            </div>
 					</div>
 				</div>
 		    </md-content>  

@@ -67,12 +67,9 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
                 type: 'boot'
             },
         ];
-	$scope.gloves = [];
-        $scope.helmets = [];
-        $scope.mainHands = [];
-        $scope.offHands = [];
-        $scope.mainArmors = [];
-        $scope.bootsList = [];
+        
+        var allItems = $scope.backpackItems;
+
         $scope.heroEquipment = {
         };
         
@@ -86,17 +83,16 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
             $scope.heroEquipment = {};
         }
         
-        $scope.$watch('backpackItems', function(value){
-            filterItems();
-        });
+//        $scope.$watch('backpackItems', function(value){
+//            $scope.backpackItems = allItems;
+//            filterItems();
+//        });
         
-        $scope.watch('heroEquipment.mainHand', function(value) {
-           mainHands.forEach(function(val, key) {
-               if (val.id === value.id) {
-                   mainHands.splice(key, 1);
-               }
-           }) 
-        });
+        $scope.selectItem = function (item) {
+            $scope.heroEquipment[item.type] = item;
+            $scope.backpackItems = allItems;
+            filterItems();
+        };
         
         function addQuickItem (item) {
             if ($scope.quickItems.length === 10) {
@@ -106,35 +102,25 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
             }
         }
         
+        $scope.filterTable = function () {
+            $scope.backpackItems = allItems;
+            if($scope.filterType) {
+                if($scope.filterType !== 'all') {
+                    filterItems();
+                    $scope.backpackItems = $scope.backpackItems.filter(function(element, index, array) {
+                        return (element.type===$scope.filterType);
+                    });
+                }
+            }
+        };
+        
         function filterItems() {
-            var regEx = new RegExp('glove');
-            $scope.gloves = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
-            
-            regEx = new RegExp('mainHand');
-            $scope.mainHands = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
-            
-            regEx = new RegExp('helmet');
-            $scope.helmets = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
-            
-            regEx = new RegExp('offHand');
-            $scope.offHands = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
-            
-            regEx = new RegExp('mainArmor');
-            $scope.mainArmors = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
-            
-            regEx = new RegExp('boots');
-            $scope.bootsList = $scope.backpackItems.filter(function(value){
-                return regEx.test(value.type);
-            });
+            for(key in $scope.heroEquipment) {
+                if($scope.heroEquipment[key] && $scope.heroEquipment[key].id) {
+                    $scope.backpackItems = $scope.backpackItems.filter(function(element, index, array) {
+                        return (element.id!=$scope.heroEquipment[key].id);
+                    });
+                }
+            }
         }
 }]);

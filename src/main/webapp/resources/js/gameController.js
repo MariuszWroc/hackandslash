@@ -336,4 +336,149 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
             }
         ]
         }
+        
+        $scope.shop = [
+            {
+                id: 0,
+                label: 'item 0',
+                price: 10,
+                type: 'headgear'
+            },
+            {
+                id: 1,
+                label: 'item 1',
+                price: 20,
+                type: 'headgear'
+            },
+            {
+                id: 2,
+                label: 'item 2',
+                price: 30,
+                type: 'headgear'
+            },
+            {
+                id: 3,
+                label: 'item 3',
+                price: 40,
+                type: 'headgear'
+            },
+            {
+                id: 4,
+                label: 'item 4',
+                price: 50,
+                type: 'headgear'
+            },
+            {
+                id: 5,
+                label: 'item 5',
+                price: 60,
+                type: 'headgear'
+            },
+            {
+                id: 6,
+                label: 'item 6',
+                price: 70,
+                type: 'headgear'
+            },
+            {
+                id: 7,
+                label: 'item 7',
+                price: 80,
+                type: 'headgear'
+            },
+            {
+                id: 8,
+                label: 'item 8',
+                price: 90,
+                type: 'headgear'
+            },
+            {
+                id: 9,
+                label: 'item 9',
+                price: 100,
+                type: 'headgear'
+            },
+        ];
+        
+        $scope.bought = [];
+        $scope.cash = 1000;
+        
+        $scope.buy = function(id) {
+            if ($scope.cash>=$scope.shop[id].price) {
+                $scope.bought.push(angular.copy($scope.shop[id]));
+                $scope.cash -= $scope.shop[id].price;
+                $scope.shop.splice(id, 1);
+            }
+        }
+        
+        $scope.sellBack = function(index) {
+            $scope.shop.splice($scope.bought[index].id, 0, angular.copy($scope.bought[index]));
+            $scope.cash += $scope.bought[index].price;
+            $scope.bought.splice(index, 1);
+        }
+        
+        $scope.restoreShop = function() {
+            $scope.shop = [
+            {
+                id: 0,
+                label: 'item 0',
+                price: 10,
+                type: 'headgear'
+            },
+            {
+                id: 1,
+                label: 'item 1',
+                price: 20,
+                type: 'headgear'
+            },
+            {
+                id: 2,
+                label: 'item 2',
+                price: 30,
+                type: 'headgear'
+            },
+            {
+                id: 3,
+                name: 'item 3',
+                price: 40,
+                type: 'headgear'
+            },
+            {
+                id: 4,
+                name: 'item 4',
+                price: 50,
+                type: 'headgear'
+            },
+            {
+                id: 5,
+                name: 'item 5',
+                price: 60,
+                type: 'headgear'
+            },
+            {
+                id: 6,
+                name: 'item 6',
+                price: 70,
+                type: 'headgear'
+            },
+            {
+                id: 7,
+                name: 'item 7',
+                price: 80,
+                type: 'headgear'
+            },
+            {
+                id: 8,
+                name: 'item 8',
+                price: 90,
+                type: 'headgear'
+            },
+            {
+                id: 9,
+                name: 'item 9',
+                price: 100,
+                type: 'headgear'
+            },
+        ]
+        }
 }]);

@@ -14,14 +14,54 @@
 	<body ng-cloak class="ng-cloak">
 		<div ng-controller="gameController" flex id="content">
 		    <md-content layout="column" flex class="md-padding">
-		    	<div id="game" class="panel panel-default">
-		    		<div class="panel-heading">
-		    			<span class="lead">Shop</span>
-		    		</div>
-					<div class="formcontainer">
-					</div>
-				</div>
-		    </md-content>  
+                        <label>{{cash}} gold available</label>
+                        <div layout="row">
+                            <div class="tablecontainer">
+                                <table class="table table-hover">
+                                        <thead>
+                                                <tr>
+                                                    <th>Item name</th>
+                                                    <th>Item price</th>
+                                                    <th width="20%"></th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr ng-repeat="item in shop">
+                                                        <td>{{item.label}}</td>
+                                                        <td>{{item.price}}</td>
+                                                        <td>
+                                                            <button type="button" ng-click="buy(item.id)"
+                                                                    class="btn btn-success custom-width">Buy</button>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+                            </div>
+                            <div class="tablecontainer">
+                                <table class="table table-hover">
+                                        <thead>
+                                                <tr>
+                                                    <th>Item name</th>
+                                                    <th>Sell price</th>
+                                                    <th width="20%"></th>
+                                                </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr ng-repeat="item in bought track by $index">
+                                                        <td>{{item.label}}</td>
+                                                        <td>{{item.price}}</td>
+                                                        <td>
+                                                            <button type="button" ng-click="sellBack($index)"
+                                                                    class="btn btn-success custom-width">Sell</button>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <button type="button" ng-click="restoreShop()"
+                                class="btn btn-success custom-width">restore</button>
+		    </md-content>
 		</div>
 	</body>
 </html>

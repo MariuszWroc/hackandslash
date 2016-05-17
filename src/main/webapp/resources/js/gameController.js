@@ -123,4 +123,217 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
                 }
             }
         }
+        
+        $scope.journal = {
+            id: 15002900,
+            questList: [
+            {
+                description:'Quest 1',
+                assignmentList:[
+                    {
+                        description: 'Quest 1 Assigment 1 description',
+                        target: 'Quest 1 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 1 Assigment 2 description',
+                        target: 'Quest 1 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 1 Assigment 3 description',
+                        target: 'Quest 1 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            },
+            {
+                description:'Quest 2',
+                assignmentList:[
+                    {
+                        description: 'Quest 2 Assigment 1 description',
+                        target: 'Quest 2 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 2 Assigment 2 description',
+                        target: 'Quest 2 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 2 Assigment 3 description',
+                        target: 'Quest 2 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            },
+            {
+                description:'Quest 3',
+                assignmentList:[
+                    {
+                        description: 'Quest 3 Assigment 1 description',
+                        target: 'Quest 3 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 3 Assigment 2 description',
+                        target: 'Quest 3 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 3 Assigment 3 description',
+                        target: 'Quest 3 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            }
+        ]
+        };
+        
+        $scope.sellectedQuest = {};
+        
+        $scope.questSelect = function(quest) {
+            $scope.sellectedQuest = quest
+        }
+        
+        $scope.abandonQuest = function(id) {
+            $scope.journal.questList.splice(id,1);
+        }
+        
+        $scope.restoreView = function() {
+            $scope.journal.questList = [
+            {
+                description:'Quest 1',
+                assignmentList:[
+                    {
+                        description: 'Quest 1 Assigment 1 description',
+                        target: 'Quest 1 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 1 Assigment 2 description',
+                        target: 'Quest 1 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 1 Assigment 3 description',
+                        target: 'Quest 1 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            },
+            {
+                description:'Quest 2',
+                assignmentList:[
+                    {
+                        description: 'Quest 2 Assigment 1 description',
+                        target: 'Quest 2 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 2 Assigment 2 description',
+                        target: 'Quest 2 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 2 Assigment 3 description',
+                        target: 'Quest 2 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            },
+            {
+                description:'Quest 3',
+                assignmentList:[
+                    {
+                        description: 'Quest 3 Assigment 1 description',
+                        target: 'Quest 3 Assigment 1 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 3 Assigment 2 description',
+                        target: 'Quest 3 Assigment 2 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    },
+                    {
+                        description: 'Quest 3 Assigment 3 description',
+                        target: 'Quest 3 Assigment 3 target',
+                        place: {
+                            latitude: 125,
+                            longitude: 125,
+                            radius: 50
+                        }
+                    }
+                ]
+            }
+        ]
+        }
 }]);

@@ -3,67 +3,42 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
         $scope.backpackItems = [
             {
                 id: 1,
-                label:'item11',
+                label:'Winged Helm',
                 type: 'headgear'
             },
             {
                 id: 2,
-                label:'item1',
+                label:'Bards Gloves',
                 type: 'gloves'
             },
             {
                 id: 3,
-                label:'item2',
-                type: 'leftHand'
-            },
-            {
-                id: 12,
-                label:'item2',
-                type: 'righRring'
+                label:'Bastard Sword',
+                type: 'rightHand'
             },
             {
                 id: 4,
-                label:'item3',
-                type: 'boot'
-            },
-            {
-                id: 13,
-                label:'item3',
-                type: 'leftRing'
-            },
-            {
-                id: 5,
-                label:'item4',
-                type: 'rightHand'
-            },
-            {
-                id: 6,
-                label:'item5',
-                type: 'headgear'
-            },
-            {
-                id: 7,
-                label:'item6',
-                type: 'headgear'
-            },
-            {
-                id: 8,
-                label:'item7',
-                type: 'rightHand'
-            },
-            {
-                id: 9,
-                label:'item8',
+                label:'Large Shield',
                 type: 'leftHand'
             },
             {
-                id: 10,
-                label:'item9',
+                id: 5,
+                label:'Ring of Protection +1',
+                type: 'righRring'
+            },
+            {
+                id: 6,
+                label:'Gold Ring',
+                type: 'leftRing'
+            },
+            {
+                id: 7,
+                label:'Plate armor',
                 type: 'armor'
             },
             {
-                id: 11,
-                label:'item10',
+                id: 8,
+                label:'Boots of speed',
                 type: 'boot'
             },
         ];

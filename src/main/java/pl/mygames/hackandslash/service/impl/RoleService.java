@@ -56,14 +56,14 @@ public class RoleService implements IRoleService {
     @Override
     public GameRole findById(Integer id) {
     	GameRole role;
-		List<GameRole> roles = dao.findByQuery("GameCharacter.findById", id);
+		List<GameRole> roles = dao.findByQuery("GameRole.findById", id);
 		if (roles.isEmpty()){
-    		logger.info("Equipments list is empty");
+    		logger.info("Role list is empty");
     		role = new GameRole();
     	} else {
     		role = roles.iterator().next();
     		if (roles.size() > 1) {
-    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    			logger.info("Method findById(Integer id) returned more then one result");
     		}
     	}
         return role;

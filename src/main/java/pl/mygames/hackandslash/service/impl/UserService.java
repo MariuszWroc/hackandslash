@@ -62,7 +62,7 @@ public class UserService implements IUserService {
     @Transactional(readOnly = false)
     @Override
     public void update(GameUser user) {
-    	setDefaultRole(user);
+//    	setDefaultRole(user);
     	dao.update(user);
     }
 	
@@ -172,9 +172,12 @@ public class UserService implements IUserService {
     }
 
 	@Override
+	@Transactional(readOnly = false)
 	public void add(GameUser user) {
-		// TODO Auto-generated method stub
-		
+    	user.setActivated(Boolean.TRUE);
+    	setDefaultRole(user);
+        dao.add(user);
+        logger.info("Add user in service");
 	}
 
 }

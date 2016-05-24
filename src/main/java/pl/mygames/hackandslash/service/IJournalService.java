@@ -2,7 +2,6 @@ package pl.mygames.hackandslash.service;
 
 import java.util.List;
 import pl.mygames.hackandslash.model.Journal;
-import pl.mygames.hackandslash.model.Quest;
 
 public interface IJournalService extends IGenericService<Journal, Integer>{
     void add(Journal journal);

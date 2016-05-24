@@ -4,7 +4,6 @@ import java.util.List;
 
 import pl.mygames.hackandslash.dto.web.LoginDTO;
 import pl.mygames.hackandslash.dto.user.UserDTO;
-import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.model.GameUser;
 
 public interface IUserService extends IGenericService<GameUser, Integer>{

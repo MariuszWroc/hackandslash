@@ -24,7 +24,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
-import pl.mygames.hackandslash.dto.*;
 import pl.mygames.hackandslash.util.constant.user.UserProfession;
 import pl.mygames.hackandslash.util.constant.user.UserRace;
 import pl.mygames.hackandslash.model.Hero;

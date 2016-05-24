@@ -2,7 +2,6 @@ package pl.mygames.hackandslash.service;
 
 import java.util.List;
 import pl.mygames.hackandslash.model.Item;
-import pl.mygames.hackandslash.model.Quest;
 
 public interface IItemService extends IGenericService<Item, Integer>{
     void add(Item item);

@@ -2,7 +2,6 @@ package pl.mygames.hackandslash.service;
 
 import java.util.List;
 import pl.mygames.hackandslash.model.Npc;
-import pl.mygames.hackandslash.model.Quest;
 
 public interface INpcService extends IGenericService<Npc, Integer>{
     void add(Npc npc);

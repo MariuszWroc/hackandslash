@@ -35,8 +35,6 @@ public class EmailAdminController {
 			logger.info("Validation failed. " + result.getFieldError());
 			return "admin/procedures/sendEmail";
 		}
- 
     } 
- 
     
 }

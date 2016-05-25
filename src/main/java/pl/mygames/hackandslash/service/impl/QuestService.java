@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IQuestDao;
 import pl.mygames.hackandslash.dao.impl.QuestDao;
-import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.Quest;
 import pl.mygames.hackandslash.service.IQuestService;
 
@@ -23,9 +22,6 @@ public class QuestService implements IQuestService {
     @Autowired
     private IQuestDao dao;
 
-    public void setDao(QuestDao dao) {
-        this.dao = dao;
-    }
 
     @Transactional(readOnly = false)
     @Override
@@ -41,7 +37,7 @@ public class QuestService implements IQuestService {
     }
     
     @Transactional(readOnly = false)
-//  @Secured("ROLE_ADMIN")
+    @Secured("ROLE_ADMIN")
     @Override
     public void delete(Integer id) {
     	dao.delete(id);
@@ -69,9 +65,12 @@ public class QuestService implements IQuestService {
         return quest;
     }
 
-
     @Override
     public List<Quest> findAll() {
         return dao.findByQuery("Quest.findAll");
+    }
+
+    public void setDao(QuestDao dao) {
+        this.dao = dao;
     }
 }

@@ -18,20 +18,20 @@ import pl.mygames.hackandslash.service.impl.EmailSenderService;
 
 @RestController
 public class EmailSenderController {
-	 private static final Logger logger = LoggerFactory.getLogger(EmailSenderController.class);
-		
-	    @Autowired	
-	    private EmailSenderService mailSender;
-		
-	    @RequestMapping(value = "/email/send", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })  
-	    public ResponseEntity<List<ObjectError>> sendEmail(@RequestBody @Valid EmailDTO email, BindingResult result) {
-                logger.info("Validating email " + email);
-			if (!result.hasErrors()) {
-	    		mailSender.sendMail(email);
-	            return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);
-			} else {
-				logger.info("Validation failed. " + result.getFieldError());
-				return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.CONFLICT);
-			}
-	    } 
+	private static final Logger logger = LoggerFactory.getLogger(EmailSenderController.class);
+
+	@Autowired
+	private EmailSenderService mailSender;
+
+	@RequestMapping(value = "/email/send", method = RequestMethod.POST, consumes = { "application/json;charset=UTF-8" })
+	public ResponseEntity<List<ObjectError>> sendEmail(@RequestBody @Valid EmailDTO email, BindingResult result) {
+		logger.info("Validating email " + email);
+		if (!result.hasErrors()) {
+			mailSender.sendMail(email);
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.OK);
+		} else {
+			logger.info("Validation failed. " + result.getFieldError());
+			return new ResponseEntity<List<ObjectError>>(result.getAllErrors(), HttpStatus.CONFLICT);
+		}
+	}
 }

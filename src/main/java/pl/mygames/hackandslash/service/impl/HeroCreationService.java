@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.user.HeroDTO;
-import pl.mygames.hackandslash.util.constant.StartingPoint;
-import pl.mygames.hackandslash.util.constant.user.UserProfession;
+import static pl.mygames.hackandslash.util.constant.StartingPoint.CITY;
+import static pl.mygames.hackandslash.util.constant.user.UserProfession.*;
 import pl.mygames.hackandslash.model.*;
 import pl.mygames.hackandslash.service.*;
 
@@ -20,10 +20,6 @@ import pl.mygames.hackandslash.service.*;
 @Transactional(readOnly = true)
 public class HeroCreationService implements IHeroCreationService {
 	private static final Logger logger = LoggerFactory.getLogger(HeroCreationService.class);
-	
-	private static final int NO = 0;
-	private static final int YES = 1;
-	private static final Integer START_EXPERIENCE = 1;
 
 	@Autowired
 	private HeroDao dao;
@@ -51,7 +47,7 @@ public class HeroCreationService implements IHeroCreationService {
 	public void add(HeroDTO heroDTO, String login) {
     	Hero hero = new Hero();
 		GameCharacter character = new GameCharacter();
-    	Integer idPlace = StartingPoint.CITY.getId();
+    	Integer idPlace = CITY.getId();
 		Place place = placeService.findById(idPlace);
 		List<GameUser> user = userService.findByLogin(login);
 		hero.setId(null);
@@ -122,7 +118,6 @@ public class HeroCreationService implements IHeroCreationService {
 		equipments.add(potionEquiped);
 		
 		return equipments;
-		
 	}
 	
 	private Equipment setBasicItem(Item item, GameCharacter character) {
@@ -149,14 +144,17 @@ public class HeroCreationService implements IHeroCreationService {
 
 	private Integer calculateHP(Integer constitution) {
 		int baseHP = 10; 
-		if (constitution>0) {
+		if (constitution > 0) {
 			//TODO: Logic for create baseHP for constitution
 		}
 		return baseHP;
 	}
 
 	private int chooseMoney() {
-		return UserProfession.WARRIOR.getMoney();
+		return WARRIOR.getMoney();
 	}
 
+	public void setDao(HeroDao dao) {
+		this.dao = dao;
+	}
 }

@@ -14,8 +14,6 @@ import pl.mygames.hackandslash.dao.impl.UserDao;
 import pl.mygames.hackandslash.dto.web.LoginDTO;
 import pl.mygames.hackandslash.dto.user.UserDTO;
 import pl.mygames.hackandslash.util.constant.Rolename;
-import pl.mygames.hackandslash.model.GameCharacter;
-import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.model.GameUser;
 import pl.mygames.hackandslash.service.IRoleService;
 import pl.mygames.hackandslash.service.IUserService;
@@ -30,10 +28,6 @@ public class UserService implements IUserService {
     
     @Autowired
     private IRoleService roleService;
-
-    public void setUserDao(UserDao dao) {
-        this.dao = dao;
-    }
 
     @Transactional(readOnly = false)
     @Override
@@ -167,6 +161,7 @@ public class UserService implements IUserService {
     	if (findByPassword(password).isEmpty()) {
     		return false;
     	} else {
+    		logger.info("password is corrrect");
     		return true;
     	}
     }
@@ -180,4 +175,7 @@ public class UserService implements IUserService {
         logger.info("Add user in service");
 	}
 
+    public void setUserDao(UserDao dao) {
+        this.dao = dao;
+    }
 }

@@ -77,17 +77,6 @@ public class ItemAdminController {
      * This method will return one item.
      */
 	private Item findItem(Integer id) {
-		Item item;
-		List<Item> items = null;
-		if (items.isEmpty()){
-    		logger.info("Items list is empty");
-    		item = new Item();
-    	} else {
-    		item = items.iterator().next();
-    		if (items.size() > 1) {
-    			logger.info("Method findItem(Integer id) returned more then one result");
-    		}
-    	}
 		return itemService.findById(id);
 	}
 }

@@ -30,10 +30,17 @@ import pl.mygames.hackandslash.dao.IGenericExtendedDao;
  */
 public abstract class GenericExtendedDao<T, PK extends Serializable> implements IGenericExtendedDao<T, PK> {
     private static final Logger logger = LoggerFactory.getLogger(GenericExtendedDao.class);
-    
+    private final Class<T> type;
     @Autowired
     private SessionFactory sessionFactory;
 
+    @SuppressWarnings("unchecked")
+    public GenericExtendedDao() {
+        Type t = getClass().getGenericSuperclass();
+        ParameterizedType pt = (ParameterizedType) t;
+        type = (Class<T>) pt.getActualTypeArguments()[0];
+    }
+    
     protected Session getSession() {
         return this.sessionFactory.getCurrentSession();
     }
@@ -41,8 +48,6 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-    private final Class<T> type;
 
     protected Class<T> getType() {
         return this.type;
@@ -52,12 +57,7 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
         return type.getName();
     }
 
-    @SuppressWarnings("unchecked")
-    public GenericExtendedDao() {
-        Type t = getClass().getGenericSuperclass();
-        ParameterizedType pt = (ParameterizedType) t;
-        type = (Class<T>) pt.getActualTypeArguments()[0];
-    }
+
 
     @Override
     public void flushSession() {
@@ -153,10 +153,6 @@ public abstract class GenericExtendedDao<T, PK extends Serializable> implements 
 		return getSession().getNamedQuery(namedQuery).setString(paramName, paramValue).list();
     }
     
-     /**
-     * Find all entities
-     * @return
-     */
     @SuppressWarnings("unchecked")
     @Override
     public List<T> findAll() {

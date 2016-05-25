@@ -7,12 +7,6 @@ import pl.mygames.hackandslash.dto.user.UserDTO;
 import pl.mygames.hackandslash.model.GameUser;
 
 public interface IUserService extends IGenericService<GameUser, Integer>{
-	void add(GameUser user);
-    void delete(GameUser user);
-    void update(GameUser user);
-    GameUser findById(Integer id);
-    List<GameUser> findAll();
-	void delete(Integer id);
 	List<GameUser> findByLogin(String login);
 	Integer generateId();
     UserDTO getUserDTO(String login);

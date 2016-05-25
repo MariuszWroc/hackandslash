@@ -5,12 +5,7 @@ import pl.mygames.hackandslash.dto.user.HeroDTO;
 import pl.mygames.hackandslash.model.Hero;
 
 public interface IHeroService extends IGenericService<Hero, Integer>{
-    void add(Hero hero);
-    void delete(Hero hero);
-    void update(Hero hero);
-    Hero findById(Integer id);	
-    List<Hero> findAll();
-	void delete(Integer id);
+	public static final int ACTIVATED = 1;
 	void add(HeroDTO heroDTO, String login);
 	HeroDTO getHeroByName(String heroName);
 	HeroDTO findByUser(String login);

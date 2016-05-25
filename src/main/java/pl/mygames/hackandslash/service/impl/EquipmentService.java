@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IEquipmentDao;
-import pl.mygames.hackandslash.dto.user.EquipmentDTO;
 import pl.mygames.hackandslash.model.Equipment;
 import pl.mygames.hackandslash.service.IEquipmentService;
 
@@ -46,20 +45,6 @@ public class EquipmentService implements IEquipmentService {
     @Override
     public void update(Equipment equipment) {
         dao.update(equipment);
-    }
-    
-    public void findDTOById(Integer id) {
-    	EquipmentDTO backpack = new EquipmentDTO();
-    	Equipment equipment = findById(id);
-//    	backpack.setHeroId(equipment.getGameCharacter().getHero().getId());
-//    	backpack.setArmor(equipment.getItem());
-//    	backpack.setBoot(equipment.getItem());
-//    	backpack.setGloves(equipment.getItem());
-//    	backpack.setHeadgear(equipment.getItem());
-//    	backpack.setLeftHand(equipment.getItem());
-//    	backpack.setRightHand(equipment.getItem());
-//    	backpack.setLeftRing(equipment.getItem());
-//    	backpack.setRighRring(equipment.getItem());
     }
 
     @Override

@@ -35,7 +35,6 @@ public class UserCommon {
 	}
 	
 	protected UserDetails getActualLogoutUser() {
-//		SecurityContextHolder.getContext().setAuthentication(null);
 		logger.info("Username in actual session: was logged out");
 		SecurityContextHolder.clearContext();
 		return null;

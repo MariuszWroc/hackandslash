@@ -23,16 +23,19 @@ public class EmailSenderService {
 		message.setSubject(emailDTO.getSubject());
 		message.setText(emailDTO.getBody());
 
-		// Send message
+		sendMessage(message);
+		
+		logger.info("Sent message successfully....");
+    }
+
+	private void sendMessage(SimpleMailMessage message) {
 		try {
 			logger.info("Email with subject = " + message.getSubject() + " from addres " + message.getFrom() + " to "+ message.getTo() + " was send");
 			sender.send(message);
 		} catch (MailException e) {
 			logger.error(e.getMessage(), e);
 		}
-		
-		logger.info("Sent message successfully....");
-    }
+	}
     
 	public void setMailSender(MailSender mailSender) {
 		this.sender = mailSender;

@@ -1,6 +1,6 @@
 package pl.mygames.hackandslash.logic.rule;
 
-import pl.mygames.hackandslash.util.constant.AttackUI;
+import static pl.mygames.hackandslash.util.constant.AttackUI.*;
 import pl.mygames.hackandslash.model.Hero;
 
 public final class BattleRule {
@@ -12,12 +12,12 @@ public final class BattleRule {
 		this.enemy = enemy;
 	}
 	
-	public void attack(AttackUI selectedAction) {
-		if(selectedAction.ATTACK_BY_HAND.name() != null) {
+	public void attack(String commend) {
+		if(ATTACK_BY_HAND.name().equals(commend)) {
 			
-		} else if (selectedAction.USE_ABILITY.name() != null) {
+		} else if (USE_ABILITY.name().equals(commend)) {
 			
-		} else if (selectedAction.USE_SPELL.name() != null) {
+		} else if (USE_SPELL.name().equals(commend)) {
 			
 		}
 	}

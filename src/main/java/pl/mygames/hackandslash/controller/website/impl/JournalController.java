@@ -2,6 +2,7 @@ package pl.mygames.hackandslash.controller.website.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,11 @@ import pl.mygames.hackandslash.dto.user.JournalDTO;
 public class JournalController extends UserCommon{
 	private static final Logger logger = LoggerFactory.getLogger(JournalController.class);
 	
+	@Autowired
+	private HeroController heroController;
+	
 	@RequestMapping(value = "/journal", method = RequestMethod.GET)
-	public ResponseEntity<JournalDTO> getEquipment(ModelMap model) {
+	public ResponseEntity<JournalDTO> getJournal(ModelMap model) {
 		if (getActualLoggedUser().isEnabled()) {
 			String login = getActualLoggedUser().getUsername();
 			JournalDTO journal = new JournalDTO();

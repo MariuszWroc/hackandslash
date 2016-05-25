@@ -77,17 +77,6 @@ public class JournalAdminController {
 	     * This method will return one equipment.
 	     */
 		private Journal findJournal(Integer id) {
-			Journal journal;
-			List<Journal> journals = null;
-			if (journals.isEmpty()){
-	    		logger.info("Journals list is empty");
-	    		journal = new Journal();
-	    	} else {
-	    		journal = journals.iterator().next();
-	    		if (journals.size() > 1) {
-	    			logger.info("Method findJournal(Integer id) returned more then one result");
-	    		}
-	    	}
 			return journalService.findById(id);
 		}
 }

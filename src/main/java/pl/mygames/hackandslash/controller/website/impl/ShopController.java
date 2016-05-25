@@ -2,6 +2,7 @@ package pl.mygames.hackandslash.controller.website.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = {"/game"})
 public class ShopController extends UserCommon{
 	private static final Logger logger = LoggerFactory.getLogger(ShopController.class);
+	
+	@Autowired
+	private CharacterController CharacterController;
 	
 	@RequestMapping(value = "/shop", method = RequestMethod.GET)
 	public ResponseEntity<Object> getEquipment(ModelMap model) {

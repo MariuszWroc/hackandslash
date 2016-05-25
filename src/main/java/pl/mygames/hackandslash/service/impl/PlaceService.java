@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IPlaceDao;
 import pl.mygames.hackandslash.dao.impl.PlaceDao;
-import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Place;
 import pl.mygames.hackandslash.service.IPlaceService;
 

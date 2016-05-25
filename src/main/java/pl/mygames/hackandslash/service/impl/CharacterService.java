@@ -80,4 +80,8 @@ public class CharacterService implements ICharacterService {
     public List<GameCharacter> findByName(String characterName) {
         return dao.findByQuery("GameCharacter.findByFirstname", "firstname", characterName);
     }
+    
+    public void setDao(ICharacterDao dao) {
+		this.dao = dao;
+	}
 }

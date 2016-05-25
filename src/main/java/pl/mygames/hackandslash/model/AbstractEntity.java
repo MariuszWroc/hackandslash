@@ -1,6 +1,7 @@
 package pl.mygames.hackandslash.model;
 
 import java.io.Serializable;
+
 import javax.persistence.MappedSuperclass;
 /**
  * @author mczarny
@@ -30,11 +31,12 @@ public abstract class AbstractEntity implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (this.getId() != null ? this.getId().hashCode() : 0);
+    	final int prime = 31;
+        int hash = super.hashCode();
+        hash = prime * hash + (this.getId() != null ? this.getId().hashCode() : 0);
         return hash;
     }
 

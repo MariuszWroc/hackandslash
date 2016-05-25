@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IRoleDao;
 import pl.mygames.hackandslash.dao.impl.RoleDao;
-import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.GameRole;
 import pl.mygames.hackandslash.service.IRoleService;
 
@@ -22,10 +21,6 @@ public class RoleService implements IRoleService {
 	
     @Autowired
     private IRoleDao dao;
-
-    public void setDao(RoleDao dao) {
-        this.dao = dao;
-    }
 
     @Transactional(readOnly = false)
     @Override
@@ -74,4 +69,7 @@ public class RoleService implements IRoleService {
         return dao.findByQuery("GameRole.findAll");
     }
 
+    public void setDao(RoleDao dao) {
+        this.dao = dao;
+    }
 }

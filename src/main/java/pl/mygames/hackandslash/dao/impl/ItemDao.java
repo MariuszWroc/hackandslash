@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.IItemDao;
 import pl.mygames.hackandslash.model.Item;
 
 @Repository
-public class ItemDao extends GenericExtendedDao<Item, Integer> implements IItemDao{
+public final class ItemDao extends GenericExtendedDao<Item, Integer> implements IItemDao{
 
 }

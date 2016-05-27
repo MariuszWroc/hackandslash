@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.IPlaceDao;
 import pl.mygames.hackandslash.model.Place;
 
 @Repository
-public class PlaceDao extends GenericExtendedDao<Place, Integer> implements IPlaceDao{
+public final class PlaceDao extends GenericExtendedDao<Place, Integer> implements IPlaceDao{
 
 }

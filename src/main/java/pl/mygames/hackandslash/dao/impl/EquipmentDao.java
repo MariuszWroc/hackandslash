@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.IEquipmentDao;
 import pl.mygames.hackandslash.model.Equipment;
 
 @Repository
-public class EquipmentDao extends GenericExtendedDao<Equipment, Integer> implements IEquipmentDao{
+public final class EquipmentDao extends GenericExtendedDao<Equipment, Integer> implements IEquipmentDao{
 
 }

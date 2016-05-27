@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.INpcDao;
 import pl.mygames.hackandslash.model.Npc;
 
 @Repository
-public class NpcDao extends GenericExtendedDao<Npc, Integer> implements INpcDao{
+public final class NpcDao extends GenericExtendedDao<Npc, Integer> implements INpcDao{
 
 }

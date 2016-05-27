@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.IUserDao;
 import pl.mygames.hackandslash.model.GameUser;
 
 @Repository
-public class UserDao extends GenericExtendedDao<GameUser, Integer> implements IUserDao{
+public final class UserDao extends GenericExtendedDao<GameUser, Integer> implements IUserDao{
 
 }

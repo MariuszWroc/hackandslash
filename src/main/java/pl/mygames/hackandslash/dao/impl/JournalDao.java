@@ -6,6 +6,6 @@ import pl.mygames.hackandslash.dao.IJournalDao;
 import pl.mygames.hackandslash.model.Journal;
 
 @Repository
-public class JournalDao extends GenericExtendedDao<Journal, Integer> implements IJournalDao{
+public final class JournalDao extends GenericExtendedDao<Journal, Integer> implements IJournalDao{
 
 }

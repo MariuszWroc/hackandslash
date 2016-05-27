@@ -10,7 +10,7 @@ import pl.mygames.hackandslash.dao.IHeroDao;
 import pl.mygames.hackandslash.model.Hero;
 
 @Repository
-public class HeroDao extends GenericExtendedDao<Hero, Integer> implements IHeroDao{
+public final class HeroDao extends GenericExtendedDao<Hero, Integer> implements IHeroDao{
     
     @SuppressWarnings("unchecked")
 	@Override

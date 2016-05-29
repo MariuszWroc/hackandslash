@@ -78,7 +78,7 @@
                                                             <label class="col-md-2 control-label" for="file">Race</label>
                                                             <div class="col-md-7">
                                                                     <select id="mySel" ng-model="heroDetail.race"
-                                                                            class="form-control" ng-disabled="heroDetail.id!=0">
+                                                                            class="form-control" ng-disabled="heroDetail.age<=0">
                                                                             <option ng-repeat="race in races"
                                                                                     ng-selected="heroDetail.race==race.id" value="{{race.id}}">{{race.label}}</option>
                                                                     </select>
@@ -90,7 +90,7 @@
 							<label class="col-md-2 control-label" for="file">Profession</label>
 							<div class="col-md-7">
 								<select id="mySel" ng-model="heroDetail.profession"
-									class="form-control" ng-disabled="heroDetail.id!=0">
+									class="form-control" ng-disabled="!heroDetail.race">
 									<option ng-repeat="profession in proffesions" 
 										ng-selected="heroDetail.profession==profession.id"
 										value="{{profession.id}}">{{profession.label}}</option>
@@ -106,8 +106,8 @@
                                                     <div class="form-group form-group-lg">
                                                             <label class="col-md-2 control-label" for="file">Strength</label>
                                                             <div class="col-md-7">
-                                                                    <input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-                                                                            ng-model="heroDetail.strength" input-sm"/>
+                                                                    <input type="number" class="form-control input-sm" ng-disabled="!heroDetail.race"
+                                                                            ng-model="heroDetail.strength"/>
                                                             </div>
                                                             <div class="has-error" ng-show="heroForm.$dirty">
                                                                     <label ng-show="errors.strength" class="help-block">{{errors.strength}}
@@ -119,8 +119,8 @@
                                                     <div class="form-group form-group-lg">
                                                             <label class="col-md-2 control-label" for="file">Dexterity</label>
                                                             <div class="col-md-7">
-                                                                    <input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-                                                                            ng-model="heroDetail.dexterity" input-sm"/>
+                                                                    <input type="number" class="form-control input-sm" ng-disabled="!heroDetail.race"
+                                                                            ng-model="heroDetail.dexterity"/>
                                                             </div>
                                                             <div class="has-error" ng-show="heroForm.$dirty">
                                                                     <label ng-show="errors.dexterity" class="help-block">{{errors.dexterity}}
@@ -132,8 +132,8 @@
                                                     <div class="form-group form-group-lg">
                                                             <label class="col-md-2 control-label" for="file">Constitution</label>
                                                             <div class="col-md-7">
-                                                                    <input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-                                                                            ng-model="heroDetail.constitution" input-sm"/>
+                                                                    <input type="number" class="form-control input-sm" ng-disabled="!heroDetail.race"
+                                                                            ng-model="heroDetail.constitution"/>
                                                             </div>
                                                             <div class="has-error" ng-show="heroForm.$dirty">
                                                                     <label ng-show="errors.constitution" class="help-block">{{errors.constitution}}
@@ -145,8 +145,8 @@
                                                     <div class="form-group form-group-lg">
                                                             <label class="col-md-2 control-label" for="file">Intelligence</label>
                                                             <div class="col-md-7">
-                                                                    <input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-                                                                            ng-model="heroDetail.intelligence" input-sm"/>
+                                                                    <input type="number" class="form-control input-sm" ng-disabled="!heroDetail.race"
+                                                                            ng-model="heroDetail.intelligence"/>
                                                             </div>
                                                             <div class="has-error" ng-show="heroForm.$dirty">
                                                                     <label ng-show="errors.intelligence" class="help-block">{{errors.intelligence}}
@@ -158,8 +158,8 @@
                                                     <div class="form-group form-group-lg">
                                                             <label class="col-md-2 control-label" for="file">Charisma</label>
                                                             <div class="col-md-7">
-                                                                    <input type="number" class="form-control input-sm" ng-disabled="heroDetail.id!=0"
-                                                                            ng-model="heroDetail.charisma" input-sm"/>
+                                                                    <input type="number" class="form-control input-sm" ng-disabled="!heroDetail.race"
+                                                                            ng-model="heroDetail.charisma"/>
                                                             </div>
                                                             <div class="has-error" ng-show="heroForm.$dirty">
                                                                     <label ng-show="errors.charisma" class="help-block">{{errors.charisma}}
@@ -187,6 +187,8 @@
 			<!-- Default panel contents -->
 			<div class="panel-heading">
 				<span class="lead">List of Heroes </span>
+                                <button type="button" ng-click="initializeHero()"
+                                                                    class="btn btn-success btn-sm floatRight">Create new</button>
 			</div>
 			<div class="tablecontainer">
 				<table class="table table-hover">

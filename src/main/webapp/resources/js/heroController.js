@@ -3,7 +3,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     $scope.tabIndex = 0;
     $scope.disableFirstStep = false;
     $scope.disableSecondStep = true;
-    function initializeHero(){
+    $scope.initializeHero = function(){
         $scope.heroDetail = {
             'firstname': '',
             'lastname': '',
@@ -20,7 +20,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
         };
     }
     
-    initializeHero();
+    $scope.initializeHero();
     
     $scope.heroes = [];
     
@@ -49,12 +49,14 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
             if(response){
                 $scope.heroDetail = response;
             } else {
-                initializeHero();
+                $scope.initializeHero();
             }
         })
         .error(function(error){
             console.log("Error after getting hero. ", error);
         });
+    
+    loadAllHeroes();
     
     function getHeroData(heroId) {
         $http.get(prefix + '/user/hero/get/' + heroId)
@@ -63,7 +65,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
             if(response){
                 $scope.heroDetail = response;
             } else {
-                initializeHero();
+                $scope.initializeHero();
             }
         })
         .error(function(error){
@@ -71,7 +73,8 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
         });
     }
     
-    $http.get(prefix + '/user/hero/getAll')
+    function loadAllHeroes() {
+        $http.get(prefix + '/user/hero/getAll')
 	    .success(function(response){
 	    console.log('Fetching hero success ', response);
 	        $scope.heroes = response;
@@ -79,6 +82,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	    .error(function(error){
 	        console.log("Error after getting hero. ", error);
 	    });
+    }
             
     function setErrors(error){
         console.log(error);
@@ -117,12 +121,8 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
     function editHero() {
     	$http.put("user/hero/edit/"+$scope.heroDetail.id, $scope.heroDetail)
 	    	.success(function(res){
-	            console.log('is user logged? ',res);
-	            if(res){
-                        $scope.heroDetail = res;
-                    } else {
-                        initializeHero();
-                    }
+                    getHeroData($scope.heroDetail.id)
+	            loadAllHeroes();
 	        })
 	        .error(function(error){
 	            setErrors(error);
@@ -165,7 +165,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            if(res){
                         $scope.heroDetail = res;
                     } else {
-                        initializeHero();
+                        $scope.initializeHero();
                     }
                     $http.get(prefix + '/user/hero/getAll')
                     .success(function(response){
@@ -192,7 +192,7 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
 	            if(res){
                         $scope.heroDetail = res;
                     } else {
-                        initializeHero();
+                        $scope.initializeHero();
                     }
 	        })
 	        .error(function(error){

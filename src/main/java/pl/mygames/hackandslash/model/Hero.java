@@ -39,9 +39,17 @@ public class Hero extends AbstractEntity {
     private Place place;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
     private List<Journal> journalList;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer money;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer speed;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer reputation;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer fatigue;
 
     public Hero() {

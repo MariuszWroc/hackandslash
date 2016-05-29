@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.impl.HeroDao;
 import pl.mygames.hackandslash.dto.user.HeroDTO;
-import static pl.mygames.hackandslash.util.constant.StartingPoint.CITY;
+import static pl.mygames.hackandslash.util.constant.StartingPoint.START_CITY;
 import static pl.mygames.hackandslash.util.constant.user.UserProfession.*;
 import pl.mygames.hackandslash.model.*;
 import pl.mygames.hackandslash.service.*;
@@ -47,22 +47,25 @@ public class HeroCreationService implements IHeroCreationService {
 	public void add(HeroDTO heroDTO, String login) {
     	Hero hero = new Hero();
 		GameCharacter character = new GameCharacter();
-    	Integer idPlace = CITY.getId();
-		Place place = placeService.findById(idPlace);
+		Place place = placeService.findById(START_CITY.getId());
 		List<GameUser> user = userService.findByLogin(login);
+		
+		addCharacter(character, heroDTO);
+		addBasicEquipment(character);
+		
 		hero.setId(null);
 		hero.setActivated(YES);
 		hero.setMoney(chooseMoney());
-
+		hero.setFatigue(DEFAULT_FATIGUE);
+		hero.setReputation(DEFAULT_REPUTATION);
+		hero.setSpeed(DEFAULT_SPEED);
+		hero.setPlace(place);
+		hero.setGameCharacter(character);
 		if (user.iterator().hasNext()) {
 			hero.setGameUser(user.iterator().next());			
-		}
-		addCharacter(character, heroDTO);
-		hero.setGameCharacter(character);
+		} 
 		
-    	dao.add(hero);
-    	
-    	addBasicEquipment(character);
+    	dao.add(hero);  	
 	}
 	
     @Override
@@ -80,22 +83,47 @@ public class HeroCreationService implements IHeroCreationService {
 	}
 	
 	private void addCharacter(GameCharacter character, HeroDTO heroDTO) {
+		Integer calculatedHP = calculateHP(heroDTO.getConstitution());
+		Integer calculatedAC = calculateAC(heroDTO.getDexterity());
+		Integer calculatedLevel = calculateLevel(heroDTO.getProfession());
 		character.setId(null);
 		character.setAge(heroDTO.getAge());
-		character.setBaseHP(calculateHP(heroDTO.getConstitution()));
 		character.setCharisma(heroDTO.getCharisma());
 		character.setStrength(heroDTO.getStrength());
 		character.setStrength(heroDTO.getIntelligence());
-		character.setBaseHP(heroDTO.getBaseHP());
 		character.setConstitution(heroDTO.getConstitution());
 		character.setDexterity(heroDTO.getDexterity());
-		character.setExperience(START_EXPERIENCE);
 		character.setFirstname(heroDTO.getFirstname());
 		character.setLastname(heroDTO.getLastname());
 		character.setRace(heroDTO.getRace());
 		character.setGender(heroDTO.getGender());
 		character.setProfession(heroDTO.getProfession());
+		character.setAttacks(BASIC_ATTACK);
+		character.setBaseAC(calculatedAC);
+		character.setEffectiveAC(calculatedAC);
+		character.setBaseHP(calculatedHP);
+		character.setCurrentHP(calculatedHP);
+		character.setLevel(calculatedLevel);
+		character.setExperience(START_EXPERIENCE);
+		character.setMorale(START_MORALE);
+		
 		characterService.add(character);
+	}
+
+	private Integer calculateLevel(Integer profession) {
+		int level = 1; 
+		if (profession > 0) {
+			//TODO: Logic for create level for profession
+		}
+		return level;
+	}
+
+	private Integer calculateAC(Integer dexterity) {
+		int baseAC = 10; 
+		if (dexterity > 0) {
+			//TODO: Logic for create baseAC for dexterity
+		}
+		return baseAC;
 	}
 
 	// TODO: dokończyć

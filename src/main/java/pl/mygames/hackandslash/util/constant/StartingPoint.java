@@ -1,7 +1,7 @@
 package pl.mygames.hackandslash.util.constant;
 
 public enum StartingPoint {
-	CITY(1, "Miasto - Stolica");
+	START_CITY(1, "Miasto - Stolica");
 	
 	private final int id;
 	private final String name;

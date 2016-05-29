@@ -51,14 +51,14 @@ public class PlaceService implements IPlaceService {
     @Override
     public Place findById(Integer id) {
     	Place place;
-		List<Place> places = dao.findByQuery("GameCharacter.findById", id);
+		List<Place> places = dao.findByQuery("Place.findById", id);
 		if (places.isEmpty()){
-    		logger.info("Equipments list is empty");
+    		logger.info("Places list is empty");
     		place = new Place();
     	} else {
     		place = places.iterator().next();
     		if (places.size() > 1) {
-    			logger.info("Method findEquipment(Integer id) returned more then one result");
+    			logger.info("Method findById(Integer id) returned more then one result");
     		}
     	}
         return place;

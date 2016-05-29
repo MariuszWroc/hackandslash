@@ -49,13 +49,29 @@ public class GameCharacter extends AbstractEntity {
     private Integer constitution;
     private Integer intelligence;
     private Integer charisma;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer baseHP;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer currentHP;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer baseAC;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer effectiveAC;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer attacks;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer morale;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer experience;
+    @Basic(optional = false)
+    @Column(nullable = false)
     private Integer level;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Npc> npcList;

@@ -38,19 +38,13 @@ public class Hero extends AbstractEntity {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Place place;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hero", fetch = FetchType.LAZY)
-    private List<Journal> journalList;
+    private List<JournalPage> journalPageList;
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer money;
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer speed;
-    @Basic(optional = false)
-    @Column(nullable = false)
-    private Integer reputation;
-    @Basic(optional = false)
-    @Column(nullable = false)
-    private Integer fatigue;
 
     public Hero() {
     }
@@ -100,12 +94,12 @@ public class Hero extends AbstractEntity {
         this.place = place;
     }
 
-    public List<Journal> getJournalList() {
-        return journalList;
+    public List<JournalPage> getJournalPageList() {
+        return journalPageList;
     }
 
-    public void setJournalList(List<Journal> journalList) {
-        this.journalList = journalList;
+    public void setJournalPageList(List<JournalPage> journalList) {
+        this.journalPageList = journalList;
     }
 
 	public Integer getMoney() {
@@ -122,22 +116,6 @@ public class Hero extends AbstractEntity {
 	
 	public void setSpeed(Integer speed) {
 		this.speed = speed;
-	}
-
-	public Integer getReputation() {
-		return reputation;
-	}
-
-	public void setReputation(Integer reputation) {
-		this.reputation = reputation;
-	}
-
-	public Integer getFatigue() {
-		return fatigue;
-	}
-
-	public void setFatigue(Integer fatigue) {
-		this.fatigue = fatigue;
 	}
 	
 }

@@ -56,14 +56,8 @@ public class HeroCreationService implements IHeroCreationService {
 		hero.setId(null);
 		hero.setActivated(YES);
 		hero.setMoney(chooseMoney());
-		hero.setFatigue(DEFAULT_FATIGUE);
-		hero.setReputation(DEFAULT_REPUTATION);
 		hero.setSpeed(DEFAULT_SPEED);
 		hero.setPlace(place);
-		hero.setGameCharacter(character);
-		if (user.iterator().hasNext()) {
-			hero.setGameUser(user.iterator().next());			
-		} 
 		
     	dao.add(hero);  	
 	}
@@ -88,7 +82,6 @@ public class HeroCreationService implements IHeroCreationService {
 		Integer calculatedLevel = calculateLevel(heroDTO.getProfession());
 		character.setId(null);
 		character.setAge(heroDTO.getAge());
-		character.setCharisma(heroDTO.getCharisma());
 		character.setStrength(heroDTO.getStrength());
 		character.setStrength(heroDTO.getIntelligence());
 		character.setConstitution(heroDTO.getConstitution());
@@ -98,14 +91,12 @@ public class HeroCreationService implements IHeroCreationService {
 		character.setRace(heroDTO.getRace());
 		character.setGender(heroDTO.getGender());
 		character.setProfession(heroDTO.getProfession());
-		character.setAttacks(BASIC_ATTACK);
 		character.setBaseAC(calculatedAC);
 		character.setEffectiveAC(calculatedAC);
 		character.setBaseHP(calculatedHP);
 		character.setCurrentHP(calculatedHP);
-		character.setLevel(calculatedLevel);
-		character.setExperience(START_EXPERIENCE);
-		character.setMorale(START_MORALE);
+		character.setActualLevel(calculatedLevel);
+		character.setExperienceOnLevel(START_EXPERIENCE);
 		
 		characterService.add(character);
 	}

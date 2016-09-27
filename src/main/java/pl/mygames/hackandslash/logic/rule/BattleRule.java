@@ -1,6 +1,11 @@
 package pl.mygames.hackandslash.logic.rule;
 
 import static pl.mygames.hackandslash.util.constant.AttackUI.*;
+
+import java.util.List;
+
+import pl.mygames.hackandslash.model.Equipment;
+import pl.mygames.hackandslash.model.GameCharacter;
 import pl.mygames.hackandslash.model.Hero;
 
 public final class BattleRule {
@@ -31,7 +36,11 @@ public final class BattleRule {
 	}
 	
 	public void useQuickItem(Hero player) {
-		player.getGameCharacter().getEquipmentList().iterator().next().getItem();
+		GameCharacter gameCharacter = player.getGameCharacter();
+		List<Equipment> equipmentList = gameCharacter.getEquipmentList();
+		if (equipmentList.iterator().hasNext()) {
+			equipmentList.iterator().next().getItem();			
+		}
 	}
 	
 	

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.mygames.hackandslash.dao.IJournalDao;
 import pl.mygames.hackandslash.dao.impl.JournalDao;
-import pl.mygames.hackandslash.model.Journal;
+import pl.mygames.hackandslash.model.JournalPage;
 import pl.mygames.hackandslash.service.IJournalService;
 
 @Service
@@ -24,14 +24,14 @@ public class JournalService implements IJournalService {
 
     @Transactional(readOnly = false)
     @Override
-    public void add(Journal journal) {
+    public void add(JournalPage journal) {
         dao.add(journal);
     }
 
     @Transactional(readOnly = false)
     @Secured("ROLE_ADMIN")
     @Override
-    public void delete(Journal journal) {
+    public void delete(JournalPage journal) {
         dao.delete(journal);
     }
     
@@ -44,17 +44,17 @@ public class JournalService implements IJournalService {
 
     @Transactional(readOnly = false)
     @Override
-    public void update(Journal journal) {
+    public void update(JournalPage journal) {
     	dao.update(journal);
     }
 
     @Override
-    public Journal findById(Integer id) {
-    	Journal journal;
-		List<Journal> journals = dao.findByQuery("GameCharacter.findById", id);
+    public JournalPage findById(Integer id) {
+    	JournalPage journal;
+		List<JournalPage> journals = dao.findByQuery("GameCharacter.findById", id);
 		if (journals.isEmpty()){
     		logger.info("Equipments list is empty");
-    		journal = new Journal();
+    		journal = new JournalPage();
     	} else {
     		journal = journals.iterator().next();
     		if (journals.size() > 1) {
@@ -65,7 +65,7 @@ public class JournalService implements IJournalService {
     }
 
     @Override
-    public List<Journal> findAll() {
+    public List<JournalPage> findAll() {
         return dao.findByQuery("Journal.findAll");
     }
 

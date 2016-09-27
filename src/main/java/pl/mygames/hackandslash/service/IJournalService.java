@@ -1,6 +1,6 @@
 package pl.mygames.hackandslash.service;
 
-import pl.mygames.hackandslash.model.Journal;
+import pl.mygames.hackandslash.model.JournalPage;
 
-public interface IJournalService extends IGenericService<Journal, Integer>{
+public interface IJournalService extends IGenericService<JournalPage, Integer>{
 }

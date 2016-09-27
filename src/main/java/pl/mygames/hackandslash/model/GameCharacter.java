@@ -48,7 +48,6 @@ public class GameCharacter extends AbstractEntity {
     private Integer dexterity;
     private Integer constitution;
     private Integer intelligence;
-    private Integer charisma;
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer baseHP;
@@ -63,16 +62,10 @@ public class GameCharacter extends AbstractEntity {
     private Integer effectiveAC;
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer attacks;
+    private Integer experienceOnLevel;
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer morale;
-    @Basic(optional = false)
-    @Column(nullable = false)
-    private Integer experience;
-    @Basic(optional = false)
-    @Column(nullable = false)
-    private Integer level;
+    private Integer actualLevel;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
     private List<Npc> npcList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "gameCharacter", fetch = FetchType.LAZY)
@@ -176,14 +169,6 @@ public class GameCharacter extends AbstractEntity {
         this.intelligence = intelligence;
     }
 
-    public Integer getCharisma() {
-        return charisma;
-    }
-
-    public void setCharisma(Integer charisma) {
-        this.charisma = charisma;
-    }
-
     public List<Npc> getNpcList() {
         return npcList;
     }
@@ -216,12 +201,12 @@ public class GameCharacter extends AbstractEntity {
 		this.baseHP = baseHP;
 	}
 
-	public Integer getExperience() {
-		return experience;
+	public Integer getExperienceOnLevel() {
+		return experienceOnLevel;
 	}
 
-	public void setExperience(Integer experience) {
-		this.experience = experience;
+	public void setExperienceOnLevel(Integer experienceOnLevel) {
+		this.experienceOnLevel = experienceOnLevel;
 	}
 
 	public Integer getCurrentHP() {
@@ -248,28 +233,13 @@ public class GameCharacter extends AbstractEntity {
 		this.effectiveAC = effectiveAC;
 	}
 
-	public Integer getAttacks() {
-		return attacks;
+	public Integer getActualLevel() {
+		return actualLevel;
 	}
 
-	public void setAttacks(Integer attacks) {
-		this.attacks = attacks;
+	public void setActualLevel(Integer actualLevel) {
+		this.actualLevel = actualLevel;
 	}
 
-	public Integer getMorale() {
-		return morale;
-	}
-
-	public void setMorale(Integer morale) {
-		this.morale = morale;
-	}
-
-	public Integer getLevel() {
-		return level;
-	}
-
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
 	
 }

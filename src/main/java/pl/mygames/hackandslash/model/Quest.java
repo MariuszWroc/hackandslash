@@ -32,7 +32,7 @@ public class Quest extends AbstractEntity {
     @Column(nullable = false, length = 45)
     private String target;
     @OneToMany(mappedBy = "quest", fetch = FetchType.LAZY)
-    private List<Journal> journalList;
+    private List<JournalPage> journalList;
 
     public Quest() {
     }
@@ -66,11 +66,11 @@ public class Quest extends AbstractEntity {
         this.target = target;
     }
 
-	public List<Journal> getJournalList() {
+	public List<JournalPage> getJournalList() {
 		return journalList;
 	}
 
-	public void setJournalList(List<Journal> journalList) {
+	public void setJournalList(List<JournalPage> journalList) {
 		this.journalList = journalList;
 	}
     

@@ -42,7 +42,6 @@ public class HeroDTO implements Serializable{
     @NotNull
     private final Integer intelligence;
     @NotNull
-    private final Integer charisma;
     private final Integer baseHP;
     private final Integer experience;
     private final Integer startingPoints;
@@ -62,7 +61,6 @@ public class HeroDTO implements Serializable{
 			this.dexterity = builder.dexterity;
 			this.constitution = builder.constitution;
 			this.intelligence = builder.intelligence;
-			this.charisma = builder.charisma;
 			this.baseHP = builder.baseHP;
 			this.experience = builder.experience;
 			this.startingPoints = builder.startingPoints;
@@ -83,7 +81,6 @@ public class HeroDTO implements Serializable{
 		this.dexterity = null;
 		this.constitution = null;
 		this.intelligence = null;
-		this.charisma = null;
 		this.baseHP = null;
 		this.experience = null;
 		this.startingPoints = null;
@@ -142,10 +139,6 @@ public class HeroDTO implements Serializable{
         return intelligence;
     }
 
-    public Integer getCharisma() {
-        return charisma;
-    }
-
 	public Integer getBaseHP() {
 		return baseHP;
 	}
@@ -185,8 +178,6 @@ public class HeroDTO implements Serializable{
 	    private final Integer constitution;
 	    @NotNull
 	    private final Integer intelligence;
-	    @NotNull
-	    private final Integer charisma;
 	    private Integer baseHP;
 	    private Integer experience;
 	    private Integer startingPoints;
@@ -196,7 +187,7 @@ public class HeroDTO implements Serializable{
 	    
 		public HeroBuilder(String firstname, Integer gender,
 				Integer age, Integer race, Integer profession, Integer strength, Integer dexterity,
-				Integer constitution, Integer intelligence, Integer charisma) {
+				Integer constitution, Integer intelligence) {
 			this.firstname = firstname;
 			this.gender = gender;
 			this.age = age;
@@ -206,7 +197,6 @@ public class HeroDTO implements Serializable{
 			this.dexterity = dexterity;
 			this.constitution = constitution;
 			this.intelligence = intelligence;
-			this.charisma = charisma;
 		}
 		
 		public HeroBuilder id(Integer id) {

@@ -30,8 +30,9 @@ public final class PlaceDTO implements Serializable{
 
     public PlaceDTO(Place place) {
         this.id = place.getId();
-        this.latitude = place. getLatitude();
-        this.longitude = place.getLongitude();
+        // TODO: Zrobić funkdje faktycznie parsującą zapis dł. i szer. geogr. na liczby
+        this.latitude = Integer.decode(place. getLatitude());
+        this.longitude = Integer.decode(place.getLongitude());
         this.radius = place.getRadius();
     }
 

@@ -27,10 +27,10 @@ public class Place extends AbstractEntity {
     private Integer id;
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    private Integer latitude;
+    private String latitude;
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    private Integer longitude;
+    private String longitude;
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private Integer radius;
@@ -53,19 +53,19 @@ public class Place extends AbstractEntity {
         this.id = id;
     }
 
-    public Integer getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Integer latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public Integer getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Integer longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

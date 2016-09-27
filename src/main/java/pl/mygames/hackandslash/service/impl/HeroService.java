@@ -85,16 +85,15 @@ public class HeroService implements IHeroService {
     	} else {
     		heroEntity.setMoney(0);
     	}
-    	heroEntity.getGameCharacter().setFirstname(dto.getFirstname());
-    	heroEntity.getGameCharacter().setLastname(dto.getLastname());
-    	heroEntity.getGameCharacter().setGender(dto.getGender());
-    	heroEntity.getGameCharacter().setAge(dto.getAge());
-    	heroEntity.getGameCharacter().setRace(dto.getRace());
-    	heroEntity.getGameCharacter().setProfession(dto.getProfession());
-    	heroEntity.getGameCharacter().setDexterity(dto.getDexterity());
-    	heroEntity.getGameCharacter().setConstitution(dto.getCharisma());
-    	heroEntity.getGameCharacter().setIntelligence(dto.getIntelligence());
-    	heroEntity.getGameCharacter().setCharisma(dto.getCharisma());
+    	GameCharacter gameCharacter = heroEntity.getGameCharacter();
+		gameCharacter.setFirstname(dto.getFirstname());
+    	gameCharacter.setLastname(dto.getLastname());
+    	gameCharacter.setGender(dto.getGender());
+    	gameCharacter.setAge(dto.getAge());
+    	gameCharacter.setRace(dto.getRace());
+    	gameCharacter.setProfession(dto.getProfession());
+    	gameCharacter.setDexterity(dto.getDexterity());
+    	gameCharacter.setIntelligence(dto.getIntelligence());
     	
     	dao.update(heroEntity);
     	
@@ -117,7 +116,7 @@ public class HeroService implements IHeroService {
     	int diceRoller = CreateHeroRule.diceRoller(Dice.DICE3D6.getNumberOfDiceThrow(), Dice.DICE3D6.getSideNumber());
 
 		HeroDTO heroDTO = new HeroDTO
-				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16, 14)
+				.HeroBuilder("firstname", 1, 19, 1, 1, 10, 12, 14, 16)
 					.id(heroEntity.getId())
 					.activated(heroEntity.getActivated())
 					.startingPoints(diceRoller)
@@ -146,7 +145,7 @@ public class HeroService implements IHeroService {
 			HeroDTO dto = new HeroDTO				
     				.HeroBuilder(gameCharacter.getFirstname(), gameCharacter.getGender(), gameCharacter.getAge(), 
     						gameCharacter.getRace(), gameCharacter.getProfession(), gameCharacter.getStrength(), gameCharacter.getDexterity(), 
-    						gameCharacter.getConstitution(), gameCharacter.getIntelligence(), gameCharacter.getCharisma())
+    						gameCharacter.getConstitution(), gameCharacter.getIntelligence())
 					.id(heroEntity.getId())
 					.activated(heroEntity.getActivated())
 					.startingPoints(diceRoller)
@@ -165,23 +164,23 @@ public class HeroService implements IHeroService {
     		heroEntity = heroes.iterator().next();
     	}
     	
-    	Integer race = heroEntity.getGameCharacter().getRace();
-		Integer strength = heroEntity.getGameCharacter().getStrength();
-		Integer age = heroEntity.getGameCharacter().getAge();
-		String firstname = heroEntity.getGameCharacter().getFirstname();
-		Integer profession = heroEntity.getGameCharacter().getProfession();
-		Integer gender = heroEntity.getGameCharacter().getGender();
-		Integer charisma = heroEntity.getGameCharacter().getCharisma();
-		Integer dexterity = heroEntity.getGameCharacter().getDexterity();
-		Integer intelligence = heroEntity.getGameCharacter().getIntelligence();
-		Integer constitution = heroEntity.getGameCharacter().getConstitution();
-		String lastname = heroEntity.getGameCharacter().getLastname();
-		Integer baseHP = heroEntity.getGameCharacter().getBaseHP();
-		Integer experience = heroEntity.getGameCharacter().getExperience();
+    	GameCharacter gameCharacter = heroEntity.getGameCharacter();
+		Integer race = gameCharacter.getRace();
+		Integer strength = gameCharacter.getStrength();
+		Integer age = gameCharacter.getAge();
+		String firstname = gameCharacter.getFirstname();
+		Integer profession = gameCharacter.getProfession();
+		Integer gender = gameCharacter.getGender();
+		Integer dexterity = gameCharacter.getDexterity();
+		Integer intelligence = gameCharacter.getIntelligence();
+		Integer constitution = gameCharacter.getConstitution();
+		String lastname = gameCharacter.getLastname();
+		Integer baseHP = gameCharacter.getBaseHP();
+		Integer experience = gameCharacter.getExperienceOnLevel();
 		String login = heroEntity.getGameUser().getLogin();
 		HeroDTO dto = new HeroDTO
     			.HeroBuilder(firstname, gender, age, race, profession, strength, 
-    					dexterity, constitution, intelligence, charisma)
+    					dexterity, constitution, intelligence)
     			.id(heroEntity.getId())
     			.activated(heroEntity.getActivated())
     			.lastname(lastname)

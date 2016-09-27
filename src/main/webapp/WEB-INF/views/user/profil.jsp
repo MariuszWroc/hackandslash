@@ -51,8 +51,8 @@
 						<div class="row">
 							<div class="form-group form-group-lg">
 								<label id="form-label" class="col-md-2 control-label"
-									for="inputEmail"><span class="pull-left">Address
-										e-mail</span></label>
+									for="inputEmail"><span class="pull-left">
+										E-mail</span></label>
 								<div class="col-md-7">
 									<input id="inputEmail" type="email" ng-model="userDetail.email"
 										class="form-control input-sm" disabled/>

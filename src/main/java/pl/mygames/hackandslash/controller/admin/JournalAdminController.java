@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import pl.mygames.hackandslash.controller.util.Autoincrementation;
-import pl.mygames.hackandslash.model.Journal;
+import pl.mygames.hackandslash.model.JournalPage;
 import pl.mygames.hackandslash.service.IJournalService;
 
 @Controller
@@ -24,15 +24,15 @@ public class JournalAdminController {
     
 	  @RequestMapping(value = {"/journals"}, method = RequestMethod.GET)
 	    public String getJournals(ModelMap model) {
-	        List<Journal> journals = findJournals();
+	        List<JournalPage> journals = findJournals();
 	        keyValue = Autoincrementation.getValue(journals.size());
 	    	model.addAttribute("journals", journals);
-	    	model.addAttribute("one_journal", new Journal());
+	    	model.addAttribute("one_journal", new JournalPage());
 	        return "admin/journals";
 	    }
 	  
 	    @RequestMapping(value = "/journals/add", method = RequestMethod.POST)  
-	    public String addJournal(@ModelAttribute("one_journal")Journal journal, @RequestParam String action) {
+	    public String addJournal(@ModelAttribute("one_journal")JournalPage journal, @RequestParam String action) {
 	        if ((journal.getId() == null) && (action.equals("Add"))) {
 	        	journal.setId(keyValue);
 	        	journalService.add(journal);
@@ -62,8 +62,8 @@ public class JournalAdminController {
 	    /*
 	     * This method will list all existing journals.
 	     */
-		private List<Journal> findJournals() {
-			List<Journal> journals;
+		private List<JournalPage> findJournals() {
+			List<JournalPage> journals;
 			if(journalService.findAll().isEmpty()) {
 	        	logger.info("Journals list is empty");
 	        	journals = new ArrayList<>();
@@ -76,7 +76,7 @@ public class JournalAdminController {
 	    /*
 	     * This method will return one equipment.
 	     */
-		private Journal findJournal(Integer id) {
+		private JournalPage findJournal(Integer id) {
 			return journalService.findById(id);
 		}
 }

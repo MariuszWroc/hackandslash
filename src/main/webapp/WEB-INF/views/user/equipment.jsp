@@ -21,63 +21,64 @@
 					<div class="formcontainer" layout="row">
                                             <form ng-submit="saveEquipment()" method="post" name="equipmentForm"class="form-horizontal" flex="50">
                                                 <div class="row">
-                                                        <div class="form-group form-group-lg">
+                                                        <div class="row form-group form-group-lg col-md-1" style="width:50%; margin: auto;">
+                                                            <!--<md-button type="button" class="md-primary" ng-click="removeItem"> Remove item </md-button>-->
                                                             <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Gloves</label>
-                                                                <input ng-disabled="true" style="color:black;"  ng-model="heroEquipment.gloves.label"/>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Gloves</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;"  ng-model="heroEquipment.gloves.label"/>
                                                             </md-input-container>
                                                         </div>
-                                                        <div class="form-group form-group-lg">
+                                                        <div class="form-group form-group-lg col-md-1" style="width:50%; margin: auto">
+                                                            <!--<md-button type="button" class="md-primary" ng-click="removeItem"> Remove item </md-button>-->
                                                             <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Headgear</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.headgear.label"/>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Headgear</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.headgear.label"/>
                                                             </md-input-container>
                                                         </div>
-                                                        <div class="form-group form-group-lg">
+                                                        <div class="form-group form-group-lg col-md-1" style="width:50%; margin: auto">
+                                                            <!--<md-button type="button" class="md-primary" ng-click="removeItem"> Remove item </md-button>-->
                                                             <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Right hand</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.rightHand.label"/>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Right hand</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.rightHand.label"/>
+                                                            </md-input-container>
+                                                        </div>
+                                                        <div class="form-group form-group-lg col-md-1" style="width:50%; margin: auto">
+                                                            <md-input-container>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Left hand</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.leftHand.label"/>
+                                                            </md-input-container>
+                                                        </div>
+                                                        <div class="form-group form-group-lg col-md-1" style="width:50%; margin: auto">
+                                                            <md-input-container>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Armor</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.armor.label"/>
+                                                            </md-input-container>
+                                                        </div>
+                                                        <div class="form-group form-group-lg col-md-1" style="width:50%; margin: auto">
+                                                            <md-input-container>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Boots</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.boot.label"/>
+                                                            </md-input-container>
+                                                        </div>
+                                                        <div class="form-group form-group-lg col-md-1 " style="width:50%; margin: auto">
+                                                            <md-input-container>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Left ring</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.leftRing.label"/>
+                                                            </md-input-container>
+                                                        </div>
+                                                        <div class="form-group form-group-lg col-md-1 " style="width:50%; margin: auto">
+                                                            <md-input-container>
+                                                                <label class="control-label" style="color:black; margin: auto;" for="file">Right ring</label>
+                                                                <input ng-disabled="true" style="color:black; margin: auto;" ng-model="heroEquipment.righRring.label"/>
                                                             </md-input-container>
                                                         </div>
                                                 </div>
-                                                <div class="row">
-                                                        <div class="form-group form-group-lg">
-                                                            <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Left hand</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.leftHand.label"/>
-                                                            </md-input-container>
-                                                        </div>
-                                                        <div class="form-group form-group-lg">
-                                                            <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Armor</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.armor.label"/>
-                                                            </md-input-container>
-                                                        </div>
-                                                        <div class="form-group form-group-lg">
-                                                            <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Boots</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.boot.label"/>
-                                                            </md-input-container>
-                                                        </div>
-                                                        <div class="form-group form-group-lg">
-                                                            <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Left ring</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.leftRing.label"/>
-                                                            </md-input-container>
-                                                        </div>
-                                                        <div class="form-group form-group-lg">
-                                                            <md-input-container>
-                                                                <label class="col-md-2 control-label" style="color:black;" for="file">Right ring</label>
-                                                                <input ng-disabled="true" style="color:black;" ng-model="heroEquipment.righRring.label"/>
-                                                            </md-input-container>
-                                                        </div>
-                                                    <div class="form-actions floatRight">
-                                                            <input type="submit"
-                                                                    value="save"
-                                                                    class="btn btn-primary btn-sm">
-                                                            <button type="button" ng-click="reset()"
-                                                                    class="btn btn-warning btn-sm">Clear</button>
-                                                    </div>
+                                                <div class="form-actions floatRight col-md-1 " style="width:50%; margin: auto">
+                                                    <input type="submit"
+                                                            value="save"
+                                                            class="btn btn-primary btn-sm">
+                                                    <button type="button" ng-click="reset()"
+                                                            class="btn btn-warning btn-sm">Clear</button>
                                                 </div>
                                             </form>
                                             <div class="tablecontainer">

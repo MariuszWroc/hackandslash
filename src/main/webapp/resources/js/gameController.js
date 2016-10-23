@@ -56,6 +56,15 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
         
         $scope.reset = function () {
             $scope.heroEquipment = {};
+            $scope.backpackItems = allItems;
+        }
+        
+        $scope.removeItem = function (item) {
+            console.log(item);
+            /*
+             * clear the cheroEcuipment item and then
+             * restore it in the available list
+             */
         }
         
 //        $scope.$watch('backpackItems', function(value){

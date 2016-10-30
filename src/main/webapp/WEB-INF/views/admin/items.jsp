@@ -24,7 +24,7 @@
 	                <td>Id</td><td>name</td><td>type</td><td>wage</td>
 	                <td>attack</td><td>defend</td><td>magic</td><td>addHealth</td>
 	                <td>addStrength</td><td>addDexterity</td><td>addConstitution</td>
-	                <td>addIntelligence</td><td>addCharisma</td><td>amount</td>
+	                <td>addIntelligence</td><td>amount</td>
 	            </tr>
 	            <c:forEach items="${items}" var="item">
 	                <tr>
@@ -40,7 +40,6 @@
 	                    <td>${item.addDexterity}</td>
 	                    <td>${item.addConstitution}</td>
 	                    <td>${item.addIntelligence}</td>
-	                    <td>${item.addCharisma}</td>
 	                    <td>${item.amount}</td>
 	                    <td><a href="<c:url value='/admin/items/edit/${item.id}' />">Edit</a></td>
 						<td><a href="<c:url value='/admin/items/remove/${item.id}' />">Delete</a></td>
@@ -149,14 +148,6 @@
 	                        <form:input path="addIntelligence" />
 	                    </td> 
 	                </tr>  
-	                <tr>
-	                    <td>
-	                        <form:label path="addCharisma"><spring:message text="Add Charisma"/></form:label>
-	                    </td>
-	                    <td>
-	                        <form:input path="addCharisma" />
-	                    </td> 
-	                </tr>
 	                <tr>
 	                    <td>
 	                        <form:label path="amount"><spring:message text="Amount"/></form:label>

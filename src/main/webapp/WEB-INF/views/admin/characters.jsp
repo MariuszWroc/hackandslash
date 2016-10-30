@@ -23,8 +23,7 @@
 	            <tr>
 	                <td>Id</td><td>first name</td><td>last name</td><td>gender</td>
 	                <td>age</td><td>race</td><td>profession</td><td>strength</td>
-	                <td>dexterity</td><td>constitution</td><td>intelligence</td>
-	                <td>charisma</td><td>baseHP</td><td>experience</td>
+	                <td>dexterity</td><td>constitution</td><td>intelligence</td><td>baseHP</td><td>experience</td>
 	            </tr>
 	            <c:forEach items="${characters}" var="character">
 	                <tr>
@@ -39,7 +38,6 @@
 	                    <td>${character.dexterity}</td>
 	                    <td>${character.constitution}</td>
 	                    <td>${character.intelligence}</td>
-	                    <td>${character.charisma}</td>
 	                    <td>${character.baseHP}</td>
 	                    <td>${character.experience}</td>
 	                    <td><a href="<c:url value='/admin/characters/edit/${character.id}' />">Edit</a></td>
@@ -147,14 +145,6 @@
 	                    </td>
 	                    <td>
 	                        <form:input path="intelligence" />
-	                    </td> 
-	                </tr> 
-	                <tr>
-	                    <td>
-	                        <form:label path="charisma"><spring:message text="charisma"/></form:label>
-	                    </td>
-	                    <td>
-	                        <form:input path="charisma" />
 	                    </td> 
 	                </tr> 
 	                <tr>

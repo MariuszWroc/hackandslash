@@ -56,14 +56,6 @@
 	        		</tr>
 	        		<tr>
 	        			<td>
-	        				<form:label path="charisma"><spring:message text="Charisma"/></form:label>
-	        			</td>
-						<td>
-							<form:input path="charisma" type="number" value="${value}" min = "${min}" max = "${max}"/>
-	        			</td>
-	        		</tr>
-	        		<tr>
-	        			<td>
 	        				<form:label path="startingPoints"><spring:message text="Attributes points"/></form:label>
 	        		    </td>
 	        			<td>

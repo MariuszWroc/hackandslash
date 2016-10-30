@@ -15,7 +15,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
             'dexterity': 0,
             'constitution': 0,
             'intelligence': 0,
-            'charisma': 0,
             'baseHP': 0
         };
     }
@@ -96,9 +95,6 @@ module.controller('heroController', ['$scope', '$http', function($scope, $http){
                 }
                 if(val.field==='constitution'){
                     $scope.errors.constitution = val.defaultMessage;
-                }
-                if(val.field==='charisma'){
-                    $scope.errors.charisma = val.defaultMessage;
                 }
                 if(val.field==='intelligence'){
                     $scope.errors.intelligence = val.defaultMessage;

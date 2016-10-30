@@ -64,11 +64,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td><label>Charisma:</label></td>
-				<td><input type="number" ng-model="hero.charisma" /> <!--<label ng-show="errors.password" class="error">{{errors.password}}</label>-->
-				</td>
-			</tr>
-			<tr>
 				<td><label>Atribute points</label></td>
 				<td><label>10</label> <!--<label ng-show="errors.password" class="error">{{errors.password}}</label>-->
 				</td>

@@ -123,14 +123,6 @@
 										max="${maxIntelligence}" /></td>
 							</tr>
 							<tr>
-								<td><form:label path="charisma">
-										<spring:message text="Charisma" />
-									</form:label></td>
-								<td><form:input path="charisma" type="number"
-										value="${charisma}" min="${minCharisma}" max="${maxCharisma}" />
-								</td>
-							</tr>
-							<tr>
 								<td><form:label path="startingPoints">
 										<spring:message text="Attributes points" />
 									</form:label></td>

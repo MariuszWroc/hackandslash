@@ -14,14 +14,11 @@
 	<body ng-cloak class="ng-cloak">
 		<div ng-controller="gameController" flex id="content">
 		    <md-content layout="column" flex class="md-padding">
-		    	<div id="game" class="panel panel-default">
-		    		<div class="panel-heading">
-		    			<span class="lead">Start game</span>
-		    		</div>
-					<div class="formcontainer">
-					</div>
-				</div>
-		    </md-content>  
+                        <div ng-controller="heroController">
+                            <div ng-include src="'${contextPath}/heroCreateForm'" ng-if="!heroes.length"></div>
+                            <div ng-include src="'${contextPath}/heroListView'" ng-if="heroes.length && heroes.length >= 1"></div>
+                        </div>
+            	    </md-content>  
 		</div>
 	</body>
 </html>

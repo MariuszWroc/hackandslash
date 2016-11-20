@@ -100,4 +100,14 @@ public class NavigationGeneralController {
         return "template/footer";
     }
     
+    @RequestMapping(value = {"/heroCreateForm"}, method = RequestMethod.GET)
+    public String getHeroCreateForm() {
+        return "template/heroCreateForm";   // change to the propper path
+    }
+    
+    @RequestMapping(value = {"/heroListView"}, method = RequestMethod.GET)
+    public String getHeroListView() {
+        return "template/heroListView";   // change to the propper path
+    }
+    
 }

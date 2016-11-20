@@ -43,6 +43,19 @@ module.controller('gameController', ['$scope', '$http', function($scope, $http){
             },
         ];
         
+        function loadAllHeroes() {
+            $http.get(prefix + '/user/hero/getAll')
+                .success(function(response){
+                console.log('Fetching hero success ', response);
+                    $scope.heroes = response;
+                })
+                .error(function(error){
+                    console.log("Error after getting hero. ", error);
+                });
+        }
+        
+        loadAllHeroes();
+        
         var allItems = $scope.backpackItems;
 
         $scope.heroEquipment = {

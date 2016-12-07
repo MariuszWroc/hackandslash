@@ -12,11 +12,7 @@
 	<body ng-cloak class="ng-cloak">
 		<div id="welcome" class="panel panel-default">
 			<div class="panel-heading">
-				<span class="lead">Welcome Page</span>
-			</div>
-			<div class="formcontainer" layout="row" layout-sm="column" layout-align="center center">
-				<md-button class="md-primary" ng-click="login($event)" >Login</md-button>
-				<md-button class="md-primary" ng-href="#/register">Register</md-button>
+				<span class="lead">Hello and welcome to the index page of the best hackandslash game to ever grace the world</span>
 			</div>
 		</div>
 	</body>
